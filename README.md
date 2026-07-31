@@ -32,11 +32,20 @@ Through modular growth constraints, trace energy identities, Newton polynomial r
 
 ---
 
-## Repository Structure
 
-```text
-├── paper/
-│   ├── gc_paper.pdf       # Full compiled manuscript
-│   └── gc_paper.tex       # LaTeX source file
-├── README.md              # Project overview & documentation
-└── LICENSE                # Creative Commons Attribution 4.0 International
+
+## Citation & Permanent Archive
+
+This work is permanently archived on Zenodo (CERN) under DOI: [10.5281/zenodo.21712619](https://doi.org/10.5281/zenodo.21712619).
+
+### BibTeX
+```bibtex
+@article{kelanemer2026goldbach,
+  author    = {Kelanemer, Youcef},
+  title     = {An Unconditional Proof of the Goldbach Conjecture via the $P^*_\infty$ Fixed-Point Framework},
+  year      = {2026},
+  month     = jul,
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21712619},
+  url       = {[https://doi.org/10.5281/zenodo.21712619](https://doi.org/10.5281/zenodo.21712619)}
+}
