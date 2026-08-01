@@ -1,0 +1,25 @@
+# TeX / LaTeX auxiliary build files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.pdfSync
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.bcf
+*.xml
+
+# OS generated files
+.DS_Store
+Thumbs.db

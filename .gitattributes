@@ -1,0 +1,16 @@
+# Enforce LF line endings for text/LaTeX files across all OSs
+*.tex text eol=lf
+*.bib text eol=lf
+*.sty text eol=lf
+*.cls text eol=lf
+*.md  text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Set binary files explicitly
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
