@@ -215,10 +215,10 @@ Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 
 If $k=2$, the system of equations is:
 $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a_2 \ge 1).$$
 
-1. **Case $a_1 = 1, a_2 = 1$:**  
-   $2N - p_1 = p_2 \implies 2N = p_1 + p_2$, which forms a Goldbach sum, contradicting the counterexample assumption.
+1. **Case $a_1 = 1$ or $a_2 = 1$:**  
+   If $a_1 = 1$, then $2N - p_1 = p_2^1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1^1 = p_1 \implies 2N = p_1 + p_2$. In either case, $2N = p_1 + p_2$ forms a Goldbach sum, contradicting the counterexample assumption.
 
-2. **Case $a_1 \ge 2$ or $a_2 \ge 2$:**  
+2. **Case $a_1 \ge 2$ and $a_2 \ge 2$:**  
    Subtracting $2N - p_2 = p_1^{a_2}$ from $2N - p_1 = p_2^{a_1}$ gives:
    $$p_2 - p_1 = p_2^{a_1} - p_1^{a_2} \implies p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1).$$
    Since $p_2 > p_1$, we have $p_2 - p_1 > 0$, so $p_2^{a_1} > p_1^{a_2}$.  
