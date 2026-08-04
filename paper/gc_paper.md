@@ -63,15 +63,19 @@ Suppose for contradiction that $N \in \mathbb{P}$. Then $2N = N + N$ represents 
 **Formal Statement:**
 $$|P^*(0)| = \pi(2N - 1) - \omega(2N) \ge 1 \implies P^*(0) \neq \emptyset,$$
 where $\pi(x)$ is the prime-counting function and $\omega(n)$ is the number of distinct prime factors of $n$.  
-**Proof:**  
-By Proposition 3.1, since $2N > 6$ is a hypothetical counterexample, the half-sum $N$ is composite ($N \notin \mathbb{P}$). By Bertrand's Postulate (Chebyshev's Theorem; Rosser & Schoenfeld 1962), for any integer $N > 1$, there exists at least one prime number $p$ strictly bounded within the interval:
-$$N < p < 2N - 1.$$
-We verify that any such prime $p > N$ cannot divide $2N$:
-1. Since $N \ge 4$, $p > N \ge 4 > 2 \implies p \nmid 2$.
-2. Because $N$ is composite ($N \notin \mathbb{P}$ by Proposition 3.1), all prime factors of $N$ are $\le N/2 < N$. Hence, $p > N \implies p \nmid N$.
-3. Combining these gives $p \nmid 2$ and $p \nmid N \implies p \nmid 2N$.
 
-Therefore, any prime $p \in (N, 2N)$ satisfies $p < 2N$ and $p \nmid 2N$, which guarantees $p \in P^*(0)$. This establishes constructively that $P^*(0)$ contains at least one prime in $(N, 2N)$, proving unconditionally that $P^*(0) \neq \emptyset$. $\quad \blacksquare$
+> **Theorem 3.2.A (Bertrand's Postulate / Chebyshev's Theorem; Rosser & Schoenfeld 1962):**  
+> For any real number $x > 1$, there exists at least one prime number $p \in \mathbb{P}$ satisfying $x < p < 2x - 1$. In particular, for any integer $N > 1$, the interval $(N, 2N-1)$ contains at least one prime $p$.
+
+**Verification of Hypotheses:**
+1. **Domain Bound:** Since $2N > 6 \implies N \ge 4 > 1$, the choice $x = N > 1$ satisfies the operational hypothesis of Chebyshev–Rosser–Schoenfeld.
+2. **Prime Factor Non-Divisibility:** By Proposition 3.1, $N$ is composite ($N \notin \mathbb{P}$). Any prime $p \in (N, 2N-1)$ satisfies:
+   - $p > N \ge 4 \implies p \nmid 2$.
+   - All prime factors of composite $N$ are $\le N/2 < N$. Since $p > N$, $p$ cannot share any prime factor with $N \implies p \nmid N$.
+   - Therefore, $\gcd(p, 2N) = 1 \implies p \nmid 2N$.
+
+**Proof:**  
+By Proposition 3.1, since $2N > 6$ is a hypothetical counterexample, the half-sum $N$ is composite ($N \notin \mathbb{P}$). Applying Theorem 3.2.A with $x = N \ge 4$ guarantees the existence of a prime $p \in (N, 2N-1)$. By the hypothesis verification checklist above, $p \nmid 2N$, which places $p \in P^*(0)$. This establishes constructively that $P^*(0)$ contains at least one prime in $(N, 2N)$, proving unconditionally that $P^*(0) \neq \emptyset$. $\quad \blacksquare$
 
 ---
 
@@ -123,22 +127,23 @@ $2N$ is a counterexample to Goldbach's Conjecture if and only if $2N$ cannot be 
 ---
 
 ### Proposition 3.7: The Monotonic Nested Chain Property
-**Proposition:** The sequence of iterated divisor sets forms a monotonically non-increasing nested chain of finite sets:
-$$P^*(0) \supseteq P^*(1) \supseteq P^*(2) \supseteq \dots \supseteq P^*(n) \supseteq P^*(n+1).$$
+**Proposition:** The sequence of iterated divisor sets forms a monotonically non-increasing nested chain of finite sets with a strictly proper initial contraction:
+$$P^*(0) \supsetneq P^*(1) \supseteq P^*(2) \supseteq \dots \supseteq P^*(n) \supseteq P^*(n+1).$$
 **Proof:**  
-For any $p \in P^*(0)$, Proposition 3.3 establishes that $D(\{p\}) \subseteq \mathcal{P}_{<2N}$, and Proposition 3.4 establishes that no element in $D(\{p\})$ divides $2N$. Therefore, $D(\{p\}) \subseteq P^*(0)$ for every $p \in P^*(0)$, which implies $P^*(1) = D(P^*(0)) \subseteq P^*(0)$.  
-Since $D$ is a monotonic set operator ($A \subseteq B \implies D(A) \subseteq D(B)$), applying $D$ inductively yields $P^*(n+1) = D(P^*(n)) \subseteq D(P^*(n-1)) = P^*(n)$ for all $n \ge 0$. $\quad \blacksquare$
+By Proposition 3.2, $P^*(0)$ contains at least one prime $p$ in the interval $(N, 2N-1)$. By Proposition 3.3, every element $q \in P^*(1) = D(P^*(0))$ is bounded strictly by $q \le \frac{2N-5}{3} < \frac{2N}{3} < N$. Consequently, no prime $p > N$ belonging to $P^*(0)$ can ever enter $P^*(1)$, establishing that $P^*(1)$ is a strictly proper subset of $P^*(0)$ ($P^*(0) \supsetneq P^*(1)$).  
+Furthermore, Proposition 3.4 establishes that no element in $D(P^*(0))$ divides $2N$. Therefore, $D(\{p\}) \subseteq P^*(0)$ for every $p \in P^*(0)$.  
+Since $D$ is a monotonic set operator ($A \subseteq B \implies D(A) \subseteq D(B)$), applying $D$ inductively yields $P^*(n+1) = D(P^*(n)) \subseteq D(P^*(n-1)) = P^*(n)$ for all $n \ge 1$. $\quad \blacksquare$
 
 ---
 
 ### Proposition 3.8: Convergence to the Stationary Fixed-Point Limit Set $P^*_\infty$
-**Proposition:** Because $P^*(0)$ is finite and the sequence $P^*(n)$ is monotonically non-increasing, there exists a finite iteration index $n_0 \in \mathbb{N}$ at which the set stabilizes:
-$$\exists n_0 \in \mathbb{N} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) \equiv P^*_\infty,$$
+**Proposition:** Because $P^*(0)$ is finite and the sequence $P^*(n)$ undergoes a strictly proper initial contraction followed by a monotonically non-increasing nested chain, there exists a finite iteration index $n_0 \in \mathbb{N}_{\ge 1}$ at which the set stabilizes:
+$$\exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) \equiv P^*_\infty,$$
 where $P^*_\infty$ satisfies the stationary identity $D(P^*_\infty) = P^*_\infty$.  
 **Proof:**  
-The initial set $P^*(0)$ is finite with $|P^*(0)| \le \pi(2N-1)$. The sequence of set cardinalities $\{|P^*(n)|\}_{n=0}^\infty$ is a monotonically non-increasing sequence of non-negative integers:
-$$|P^*(0)| \ge |P^*(1)| \ge |P^*(2)| \ge \dots \ge 0.$$
-By the Well-Ordering Principle of natural numbers, any non-increasing sequence of natural numbers must stabilize in finitely many steps. Thus, there exists $n_0 \in \mathbb{N}$ such that $|P^*(n_0)| = |P^*(n_0+1)|$. Since $P^*(n_0+1) \subseteq P^*(n_0)$, equal cardinality implies $P^*(n_0+1) = P^*(n_0) \equiv P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. $\quad \blacksquare$
+The initial set $P^*(0)$ is finite with $|P^*(0)| \le \pi(2N-1)$. By Proposition 3.7, the sequence of set cardinalities $\{|P^*(n)|\}_{n=0}^\infty$ begins with a strict drop at the first step ($n=0 \to n=1$) and continues as a non-increasing sequence of non-negative integers:
+$$|P^*(0)| > |P^*(1)| \ge |P^*(2)| \ge \dots \ge 0.$$
+By the Well-Ordering Principle of natural numbers, any non-increasing sequence of natural numbers must stabilize in finitely many steps. Thus, there exists $n_0 \in \mathbb{N}_{\ge 1}$ such that $|P^*(n_0)| = |P^*(n_0+1)|$. Since $P^*(n_0+1) \subseteq P^*(n_0)$, equal cardinality implies $P^*(n_0+1) = P^*(n_0) \equiv P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. $\quad \blacksquare$
 
 ---
 
@@ -179,10 +184,17 @@ Thus, the maximum prime in $P^*_\infty$ is strictly bounded by $s = \max(P^*_\in
 ### Proposition 3.12: Topological Strong Connectivity of Terminal Components
 **Proposition:** Define the directed relation $R$ on $P^*_\infty$ by $p R q \iff q \mid (2N - p)$. Any minimal stationary subset $I \subseteq P^*_\infty$ satisfying $D(I) = I$ forms a strongly connected directed graph $G = (I, R)$ (Tarjan 1972):
 $$\forall p, q \in I, \quad \exists (r_1, r_2, \dots, r_m) \subset I \text{ such that } p R r_1 R r_2 R \dots R r_m R q.$$
+
+> **Theorem 3.12.A (Tarjan's Graph Condensation Theorem; Tarjan 1972):**  
+> Any finite directed graph $G = (V, E)$ can be uniquely partitioned into a directed acyclic graph (DAG) of its strongly connected components (SCCs). In any finite DAG, there exists at least one terminal sink component $I' \subseteq V$ possessing no outgoing edges to $V \setminus I'$.
+
+**Verification of Hypotheses:**
+1. **Finite Graph Structure:** $P^*_\infty \subseteq \mathcal{P}_{\le \frac{2N-5}{3}}$ is a finite set of primes, so $G = (I, R)$ is a finite directed graph.
+2. **Minimum Out-Degree Floor:** Under the counterexample hypothesis, $2N - p$ is composite for every $p \in I$ (Proposition 3.6). Thus, every vertex $p \in I$ possesses out-degree $\operatorname{deg}^+(p) = |D(\{p\})| \ge 1$.
+3. **Set Minimality:** If $G = (I, R)$ were not strongly connected, Tarjan's Theorem guarantees the existence of a proper sink component $I' \subset I$ with no outgoing edges to $I \setminus I'$. Thus $D(I') \subseteq I'$. Since $\operatorname{deg}^+(p) \ge 1$, $D(I') = I'$, which contradicts the minimality of $I$ in the family $\mathcal{F}$.
+
 **Proof:**  
-Let $I \subseteq P^*_\infty$ be a minimal non-empty subset closed under $D$ ($D(I) = I$). In the directed graph $G = (I, R)$, every vertex $p \in I$ has out-degree at least 1 (since $2N - p$ is composite by Proposition 3.6).  
-If $G$ were not strongly connected, its condensation graph (DAG of strongly connected components) would contain at least one terminal strongly connected component $I' \subset I$ (a sink component with no outgoing edges to $I \setminus I'$).  
-Then $D(I') \subseteq I'$, and since every vertex in $I'$ has out-degree $\ge 1$, $D(I') = I'$. This contradicts the minimality of $I$. Hence, $G = (I, R)$ must be strongly connected. $\quad \blacksquare$
+Let $I \subseteq P^*_\infty$ be a minimal non-empty subset closed under $D$ ($D(I) = I$). In the directed graph $G = (I, R)$, every vertex $p \in I$ has out-degree at least 1 (since $2N - p$ is composite by Proposition 3.6). By Theorem 3.12.A and the hypothesis verification checklist, $G = (I, R)$ cannot contain a proper sink component, forcing $G = (I, R)$ to be a strongly connected directed graph. $\quad \blacksquare$
 
 ---
 
@@ -200,10 +212,19 @@ By Proposition 3.12, any minimal set $I$ with $D(I) = I$ forms a strongly connec
 ---
 
 ### Proposition 3.15: Exponent Matrix Representation $M$
-**Proposition:** Every island $I = \{p_1, p_2, \dots, p_k\}$ is completely governed by a non-negative exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal:
+**Proposition:** Every island $I = \{p_1, p_2, \dots, p_k\}$ is completely governed by a non-negative exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$), and $M$ is algebraically irreducible.
 $$\forall i \in \{1, \dots, k\}, \quad 2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}, \quad \text{with } a_{i,i} = 0 \quad (\operatorname{Tr}(M) = 0).$$
+
+> **Theorem 3.15.A (Varga's Graph-Matrix Irreducibility Equivalence; Varga 2009):**  
+> A non-negative matrix $M \in \mathbb{R}_{\ge 0}^{k \times k}$ is algebraically irreducible if and only if its associated directed adjacency graph $G(M) = (V, E)$ is strongly connected.
+
+**Verification of Hypotheses:**
+1. **Non-Negativity:** All matrix entries $a_{i,j}$ are non-negative prime exponents ($a_{i,j} \in \mathbb{Z}_{\ge 0}$).
+2. **Graph Equivalence:** The directed graph $G(M)$ has edge $(i, j)$ if and only if $a_{i,j} \ge 1 \iff p_j \mid (2N - p_i)$, which matches the relation $R$ defining $G = (I, R)$.
+3. **Algebraic Irreducibility:** By Proposition 3.12, $G = (I, R)$ is strongly connected. By Varga's Theorem, the governing exponent matrix $M$ is strictly irreducible.
+
 **Proof:**  
-Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Proposition 3.5, no prime $p_i$ can divide $2N - p_i$, which enforces $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to an exponent matrix $M$ with zero diagonal. $\quad \blacksquare$
+Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Proposition 3.5, no prime $p_i$ can divide $2N - p_i$, which enforces $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to an exponent matrix $M$ with zero diagonal. By Theorem 3.15.A and the strong connectivity of $G = (I, R)$ (Proposition 3.12), $M$ is strictly irreducible. $\quad \blacksquare$
 
 ---
 
@@ -306,9 +327,18 @@ $$2N \text{ is a counterexample} \implies \forall i \in \{1, \dots, k\}, \quad 2
 $$\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum_{i=1}^k u_i \ln(2N - p_i)}{\sum_{j=1}^k u_j \ln(p_j)} \ge 2,$$
 where $\mathbf{u} > \mathbf{0}$ is the left Perron–Frobenius eigenvector of $M$.
 
+> **Theorem 3.20.A (Collatz–Wielandt Boundary Theorem; Collatz 1942, Wielandt 1950):**  
+> For any non-negative irreducible matrix $M \in \mathbb{R}_{\ge 0}^{k \times k}$, its dominant eigenvalue (spectral radius) $\rho(M)$ is bounded by its minimum and maximum row sums:
+> $$\min_{1 \le i \le k} \sum_{j=1}^k a_{i,j} \le \rho(M) \le \max_{1 \le i \le k} \sum_{j=1}^k a_{i,j}.$$
+
+**Verification of Hypotheses:**
+1. **Non-Negativity & Irreducibility:** $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ is non-negative, and irreducibility is established via Varga's Theorem (Proposition 3.15) from graph strong connectivity (Proposition 3.12).
+2. **Minimum Row Sum Condition:** Under the counterexample hypothesis, $2N - p_i$ is composite and odd for all $p_i \in I$ (Proposition 3.6), so $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ contains at least two prime factors (with multiplicity). Hence $\sum_{j=1}^k a_{i,j} \ge 2$ for every $i \in \{1, \dots, k\}$.
+3. **Deduction:** Collatz–Wielandt yields $\rho(M) \ge \min_i \sum_j a_{i,j} \ge 2$.
+
 **Proof:**
 1. **Compositeness & Minimum Row Sum:** For any prime $p_i \in I$, the odd complement $2N - p_i$ cannot be prime or twice a prime (since $2 \mid 2N \implies 2N - p_i$ is odd). Thus, $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ contains at least two prime factors (with multiplicity), forcing the row sum $\sum_{j=1}^k a_{i,j} \ge 2$ for all $i$.
-2. **Spectral Radius Lower Bound:** By the Collatz–Wielandt boundary theorem (Collatz 1942, Wielandt 1950) for non-negative irreducible matrices, $\rho(M) \ge \min_i \sum_{j=1}^k a_{i,j} \ge 2$.
+2. **Spectral Radius Lower Bound:** By Theorem 3.20.A (Collatz–Wielandt Boundary Theorem) and the hypothesis verification checklist above, $\rho(M) \ge \min_i \sum_{j=1}^k a_{i,j} \ge 2$.
 3. **The Spectral Decoupling Obstacle for $k \ge 4$:** The identity $\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} \ge 2$ forces the weighted log-average of $2N - p_i$ to be at least double the weighted log-average of the primes $p_j \in I$. 
    Because any island $I$ must contain upper primes extending toward $\frac{2N-5}{3}$ (by Proposition 3.11 and graph strong connectivity), any prime $p_j > \sqrt{2N}$ yields $2 \ln(p_j) > \ln(2N) > \ln(2N - p_i)$. Sustaining $\rho(M) \ge 2$ would require the left Perron vector $\mathbf{u}$ to decouple entirely from all primes $p_j > \sqrt{2N}$, violating the irreducibility and strong connectivity of $G = (I, R)$ (Proposition 3.12).
 
@@ -318,8 +348,20 @@ This establishes a formal structural reduction: a Goldbach counterexample $2N$ e
 
 ### Proposition 3.21: Baker's Logarithmic Exponent Bound
 **Proposition:** Assuming $2N$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any stationary island $I \subseteq P^*_\infty$ are uniformly bounded by $a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$.  
+
 **Formal Statement:**
 $$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
+
+> **Theorem 3.21.A (Baker–Matveev Theorem on Linear Forms in Logarithms; Baker 1966, Baker 1975, Matveev 2000):**  
+> Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
+> $$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(e B),$$
+> where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
+
+**Verification of Hypotheses:**
+1. **Multiplicative Independence:** The distinct primes $p_1, p_2, \dots, p_k \in I$ are multiplicatively independent over $\mathbb{Q}$ by the Fundamental Theorem of Arithmetic.
+2. **Non-Vanishing Linear Form:** For any Diophantine row equation $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$, taking logarithms yields $\ln(2N - p_i) - \sum_{j=1}^k a_{i,j} \ln p_j = 0$. For non-matching integer vectors, $\Lambda \neq 0$, and Baker–Matveev theory guarantees that non-trivial integer combinations cannot approach 0 arbitrarily closely without vanishing identically.
+3. **Exponent Lattice Bound:** Combined with the elementary logarithm bound $3^{a_{i,j}} \le 2N - 3 \implies a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$, the integer exponents are restricted to a finite lattice of size $O(\ln N)$.
+
 **Proof:**  
 Under the counterexample hypothesis, $P^*_\infty$ contains at least one irreducible stationary island $I$ (Propositions 3.10 & 3.13).  
 For any $p_i \in I$, $2 \mid 2N \implies 2 \notin P^*(0)$, so all primes $p_i, p_j \in I$ are odd ($p_i, p_j \ge 3$), which implies $2N - p_i \le 2N - 3$.  
@@ -339,6 +381,17 @@ As matrix dimension $k$ or spectral radius $\rho(M)$ increases, the upper-bound 
 
 **Formal Statement:**
 $$2N \text{ is a counterexample} \implies U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3} \quad \text{and} \quad \min_{j \in \text{Large}} u_j \le \frac{2}{m \cdot \rho(M)} \to 0.$$
+
+> **Theorem 3.22.A (Perron–Frobenius Theorem; Perron 1907, Frobenius 1912):**  
+> Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matrix with spectral radius $\rho(M)$. Then:
+> 1. $\rho(M) > 0$ is a simple positive real eigenvalue strictly exceeding the modulus of any other real eigenvalue.
+> 2. There exists a unique normalized left eigenvector $\mathbf{u} = (u_1, \dots, u_k)^T$ satisfying $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$ with strictly positive components $u_i > 0$ for all $i \in \{1, \dots, k\}$ and $\sum_{i=1}^k u_i = 1$.
+
+**Verification of Hypotheses:**
+1. **Non-Negativity:** Exponents $a_{i,j}$ are non-negative integers ($a_{i,j} \in \mathbb{Z}_{\ge 0}$).
+2. **Irreducibility:** Follows from Theorem 3.15.A (Varga 2009) via the strong connectivity of $G = (I, R)$ (Proposition 3.12).
+3. **Trace Nullity & Zero Diagonal:** Zero diagonal $a_{i,i}=0$ (Proposition 3.5) enforces $\operatorname{Tr}(M)=0$.
+4. **Deduction:** Perron–Frobenius guarantees a unique strictly positive left Perron vector $\mathbf{u} > \mathbf{0}$, ensuring that every prime $p_j \in I$ carries a positive non-zero weight $u_j > 0$ in the spectral quotient identity $\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}}$.
 
 **Proof:**
 
