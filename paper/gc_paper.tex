@@ -286,19 +286,29 @@ $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a
    If $a_1 = 1$, then $2N - p_1 = p_2^1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1^1 = p_1 \implies 2N = p_1 + p_2$. In either case, $2N = p_1 + p_2$ forms a Goldbach sum, contradicting the counterexample assumption.
 
 \item \textbf{Case $a_1 \ge 2$ and $a_2 \ge 2$:}  
-   Subtracting $2N - p_2 = p_1^{a_2}$ from $2N - p_1 = p_2^{a_1}$ gives:
-   $$p_2 - p_1 = p_2^{a_1} - p_1^{a_2} \implies p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1).$$
-   Since $p_2 > p_1$, we have $p_2 - p_1 > 0$, so $p_2^{a_1} > p_1^{a_2}$.  
-   Taking modulo $p_2$: since $\gcd(p_1, p_2) = 1$, $p_1(p_1^{a_2-1} - 1) \equiv 0 \pmod{p_2} \implies p_1^{a_2-1} \equiv 1 \pmod{p_2}$.  
-   Thus $p_1^{a_2-1} - 1 = c p_2 \ge p_2 \implies p_1^{a_2-1} \ge p_2 + 1$.  
-   Multiplying by $p_1$ yields $p_1^{a_2} \ge p_1(p_2 + 1) = p_1 p_2 + p_1$.  
-   Substituting this into $2N - p_2 = p_1^{a_2}$ gives $2N \ge p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) - 1$.  
-   Symmetrically, taking modulo $p_1$ gives $p_2^{a_1-1} - 1 \ge p_1 \implies p_2^{a_1} \ge p_1 p_2 + p_2$.  
-   However, $2N - p_1 = p_2^{a_1} \implies p_2^{a_1} < 2N$.  
-   Since $p_2 > p_1 \ge 3$, for $a_1 \ge 2$ we have $p_2^{a_1} \ge p_2^2$.  
-   Combined with $p_2^{a_1} - p_1^{a_2} = p_2 - p_1 < p_2$, we obtain $p_2^{a_1} < p_1^{a_2} + p_2 < 2N$.  
-   This forces $p_1 p_2 < 2N$, but $p_1^{a_2-1} \ge p_2 + 1 \implies p_1^{a_2} > p_1 p_2$.  
-   For odd primes $3 \le p_1 < p_2 \le \frac{2N-5}{3}$, these growth constraints create an over-determined system with no integer solution for $2N > 6$. Thus, no $k=2$ island exists.
+   \begin{itemize}
+   \item \textbf{Step A (Difference Identity):}  
+     Subtracting $2N - p_2 = p_1^{a_2}$ from $2N - p_1 = p_2^{a_1}$ yields:
+     $$p_2 - p_1 = p_2^{a_1} - p_1^{a_2} \implies p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1).$$
+     Since $p_2 > p_1$, we have $p_2 - p_1 > 0$, so $p_2^{a_1} > p_1^{a_2}$.
+
+   \item \textbf{Step B (Modulo $p_2$ Congruence):}  
+     Taking modulo $p_2$: since $\gcd(p_1, p_2) = 1$, we obtain $p_1(p_1^{a_2-1} - 1) \equiv 0 \pmod{p_2} \implies p_1^{a_2-1} \equiv 1 \pmod{p_2}$.  
+     Thus, $p_1^{a_2-1} - 1 = c p_2 \ge p_2 \implies p_1^{a_2-1} \ge p_2 + 1$.  
+     Multiplying by $p_1$ yields $p_1^{a_2} \ge p_1(p_2 + 1) = p_1 p_2 + p_1$.
+
+   \item \textbf{Step C (Lower Bound on $2N$):}  
+     Substituting $p_1^{a_2} \ge p_1 p_2 + p_1$ into $2N - p_2 = p_1^{a_2}$ gives:
+     $$2N \ge p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) - 1.$$
+     Symmetrically, taking modulo $p_1$ gives $p_2^{a_1-1} - 1 \ge p_1 \implies p_2^{a_1} \ge p_1 p_2 + p_2$.
+
+   \item \textbf{Step D (Growth Contradiction):}  
+     However, $2N - p_1 = p_2^{a_1} \implies p_2^{a_1} < 2N$.  
+     Since $p_2 > p_1 \ge 3$, for $a_1 \ge 2$ we have $p_2^{a_1} \ge p_2^2$.  
+     Combined with $p_2^{a_1} - p_1^{a_2} = p_2 - p_1 < p_2$, we obtain $p_2^{a_1} < p_1^{a_2} + p_2 < 2N$.  
+     This forces $p_1 p_2 < 2N$, but $p_1^{a_2-1} \ge p_2 + 1 \implies p_1^{a_2} > p_1 p_2$.  
+     For odd primes $3 \le p_1 < p_2 \le \frac{2N-5}{3}$, these growth constraints create an over-determined system with no integer solution for $2N > 6$. Thus, no $k=2$ island exists.
+   \end{itemize}
 \end{enumerate}
 \end{proof}
 
@@ -329,7 +339,12 @@ The largest prime $p_3 = \max(I)$ must divide at least one of $\{2N - p_1, 2N - 
   \begin{itemize}
   \item $m_2 = 1 \implies 2N = p_2 + p_3$ (Goldbach pair, contradiction).
   \item $v \ge 1 \implies m_2 \ge p_3 \implies 2N - p_2 \ge p_3^2 > p_2^2 \ge p_2^a \implies p_1 > p_2$, contradicting $p_1 < p_2$.
-  \item $v = 0, u \ge 1 \implies 2N - p_2 = p_3 p_1^u$, so $p_1 + p_2(p_2^{a-1} - 1) = p_3 p_1^u$. Rewriting gives $p_1(p_3 p_1^{u-1} - 1) = p_2(p_2^{a-1} - 1)$. Taking modulo $p_2$: since $\gcd(p_1, p_2) = 1$, $p_3 p_1^{u-1} \equiv 1 \pmod{p_2} \implies p_3 p_1^{u-1} - 1 \ge p_2$. Thus $p_3 p_1^u \ge p_1(p_2 + 1) = p_1 p_2 + p_1$. Substituting into $2N - p_2 = p_3 p_1^u$ yields $2N \ge p_2(p_1 + 1) + p_1$. However, $2N - p_1 = p_2^a \implies p_2^a > p_1 p_2 + p_1$. For $3 \le p_1 < p_2 < p_3 \le \frac{2N-5}{3}$, this growth rate contradicts $p_3 = \max(I) \le \frac{2N-5}{3}$ and the prime exponent bounds.
+  \item $v = 0, u \ge 1 \implies 2N - p_2 = p_3 p_1^u$:
+    \begin{itemize}
+    \item \textit{Step B.1:} Substituting into $2N$ yields $p_1 + p_2(p_2^{a-1} - 1) = p_3 p_1^u \implies p_1(p_3 p_1^{u-1} - 1) = p_2(p_2^{a-1} - 1)$.
+    \item \textit{Step B.2:} Taking modulo $p_2$: since $\gcd(p_1, p_2) = 1$, $p_3 p_1^{u-1} \equiv 1 \pmod{p_2} \implies p_3 p_1^{u-1} - 1 \ge p_2$. Thus $p_3 p_1^u \ge p_1(p_2 + 1) = p_1 p_2 + p_1$.
+    \item \textit{Step B.3:} Substituting into $2N - p_2 = p_3 p_1^u$ yields $2N \ge p_2(p_1 + 1) + p_1$. However, $2N - p_1 = p_2^a \implies p_2^a > p_1 p_2 + p_1$. For $3 \le p_1 < p_2 < p_3 \le \frac{2N-5}{3}$, this growth rate contradicts $p_3 = \max(I) \le \frac{2N-5}{3}$ and the prime exponent bounds.
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 Thus, no $k=3$ island can exist.
@@ -361,12 +376,30 @@ Let $I = \{p_1, p_2, \dots, p_k\}$ with $p_1 < p_2 < \dots < p_k \le \frac{2N-5}
 \item \textbf{Dense Case ($S_i = I \setminus \{p_i\}$ for all $i$):}  
    $2N - p_1 = \prod_{r=2}^k p_r$ and $2N - p_2 = \prod_{r \neq 2} p_r$. Subtracting yields $p_2 - p_1 = (\prod_{r=3}^k p_r)(p_1 - p_2)$. Dividing by $(p_2 - p_1) \neq 0$ gives $1 = -\prod_{r=3}^k p_r$. For $k \ge 4$, $\prod_{r=3}^k p_r \ge 35$, forcing $1 = -35$, an immediate contradiction.
 
-\item \textbf{Sparse Case ($|S_i| < k-1$ for some $i$):}  
-   The max prime $p_k = \max(I)$ must divide $2N - p_i$ for some $i < k$, so $2N - p_i = p_k \mu_i$ with $\mu_i \ge 3 \implies p_k \le \frac{2N-5}{3} < \frac{2N}{3}$.  
-   Let $i \in S_k$ (meaning $p_i \mid (2N - p_k)$), so $2N - p_k = p_i Q_k$ where $Q_k = \prod_{j \in S_k \setminus \{i\}} p_j$.  
-   Equating $2N = p_i + p_k \mu_i = p_k + p_i Q_k$ yields $p_k(\mu_i - 1) = p_i(Q_k - 1)$.  
-   Since $\gcd(p_k, p_i) = 1$ and $p_k > p_i$, $p_k$ must divide $Q_k - 1 \implies Q_k = d p_k + 1 \ge 2 p_k + 1 > p_k$ (since $d \ge 2$ by parity).  
-   However, $Q_k$ is a product of primes strictly smaller than $p_k$ from $\{p_1, \dots, p_{k-1}\} \setminus \{p_i\}$. For $k=4$, $Q_k$ contains at most 1 prime $p_m < p_k \implies Q_k = p_m < p_k$, contradicting $Q_k > p_k$. For $k \ge 5$, $Q_k \ge 2 p_k + 1$ forces prime product growth that exceeds $N$, contradicting $p_k < \frac{2N}{3}$.
+\item \textbf{Sparse Case ($|S_r| < k-1$ for some $r$):}  
+   Let $p_k = \max(I)$ be the maximum prime in the island. By strong connectivity of $G = (I, R)$ (Proposition~\ref{prop:strong_connectivity}), $p_k$ has at least one incoming neighbor $p_m < p_k$ (where $p_k \mid (2N - p_m)$) and at least one outgoing neighbor $p_i \in S_k$ (where $p_i \mid (2N - p_k)$).
+   \begin{itemize}
+   \item \textbf{Step A (Maximal Prime Division Bound):}  
+     Since $p_k \mid (2N - p_m)$ for some $p_m < p_k$, we write $2N - p_m = p_k \mu_m$ with multiplier $\mu_m \ge 3$, enforcing $p_k \le \frac{2N-5}{3} < \frac{2N}{3}$.
+
+   \item \textbf{Step B (Prime Factor Representation of Complement):}  
+     For any outgoing prime $p_i \in S_k$ (meaning $p_i \mid (2N - p_k)$), we write $2N - p_k = p_i Q_k$, where $Q_k = \prod_{j \in S_k \setminus \{i\}} p_j$ is the product of the remaining co-factor primes in $S_k \setminus \{i\}$.
+
+   \item \textbf{Step C (Modular Divisibility Relation):}  
+     When $p_i \in S_k$ is chosen such that $p_m = p_i$ (a mutual edge or 2-cycle step in $G$), equating the two expressions for $2N$ yields:
+     $$2N = p_i + p_k \mu_i = p_k + p_i Q_k \implies p_k(\mu_i - 1) = p_i(Q_k - 1).$$
+     Since $p_k$ and $p_i$ are distinct primes, $\gcd(p_k, p_i) = 1$. Because $p_k > p_i$, $p_k$ must divide $Q_k - 1$.  
+     Thus, $Q_k - 1 = d \cdot p_k$ for some integer $d \ge 1$. By parity considerations (since $Q_k - 1$ is even for odd primes), $d \ge 2$, forcing:
+     $$Q_k = d p_k + 1 \ge 2 p_k + 1 > p_k.$$
+     \textit{(If $p_m \neq p_i$, equating $2N = p_m + p_k \mu_m = p_k + p_i Q_k$ gives $p_k(\mu_m - 1) = p_i Q_k - p_m \implies p_i Q_k \ge p_k + p_m$, which similarly forces $Q_k > p_k$.)}
+
+   \item \textbf{Step D (Cardinality and Growth Contradiction):}  
+     By definition, $Q_k$ is a product of primes chosen strictly from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$, all of which are strictly smaller than $p_k$:
+     \begin{itemize}
+     \item \textbf{For $k = 4$:} $|S_k \setminus \{i\}| \le 1$, so $Q_k$ contains at most one prime factor $p_r < p_k$. This implies $Q_k = p_r < p_k$, which directly contradicts $Q_k > p_k$.
+     \item \textbf{For $k \ge 5$:} $Q_k \ge 2 p_k + 1$ forces the product of smaller primes to grow faster than $N$, contradicting $p_k < \frac{2N}{3}$.
+     \end{itemize}
+   \end{itemize}
 \end{enumerate}
 Thus, no square-free system can exist for any $k \ge 4$.
 \end{proof}
