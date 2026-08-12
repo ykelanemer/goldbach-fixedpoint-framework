@@ -253,7 +253,8 @@ $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a
    - **Step C (Lower Bound on $2N$):**  
      Substituting $p_1^{a_2} \ge p_1 p_2 + p_1$ into $2N - p_2 = p_1^{a_2}$ gives:
      $$2N \ge p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) - 1.$$
-     Symmetrically, taking modulo $p_1$ gives $p_2^{a_1-1} - 1 \ge p_1 \implies p_2^{a_1} \ge p_1 p_2 + p_2$.
+     Similarly, since $p_2 \ge p_1 + 1$ and $a_1 \ge 2$, we have directly:
+     $$p_2^{a_1} \ge p_2^2 \ge p_2(p_1 + 1) = p_1 p_2 + p_2.$$
 
    - **Step D (Growth Contradiction):**  
      However, $2N - p_1 = p_2^{a_1} \implies p_2^{a_1} < 2N$.  
