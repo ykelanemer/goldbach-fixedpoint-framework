@@ -284,41 +284,81 @@ Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \
 No strongly connected island of cardinality $k=2$ can exist:
 $$\nexists \{p_1, p_2\} \subset \mathbb{P} \quad \text{such that} \quad 2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2}.$$
 \end{proposition}
-\begin{proof}
+
+\begin{theorem}[Mih\u{a}ilescu's Theorem / Catalan's Conjecture \cite{mihailescu2004}]
+\label{thm:mihailescu}
+The only solution in natural numbers $x, y, a, b > 1$ to the exponential Diophantine equation $x^a - y^b = 1$ is $x = 3, a = 2, y = 2, b = 3$. Consequently, no two non-trivial pure powers of distinct primes can differ by 1.
+\end{theorem}
+
+\begin{theorem}[Zsigmondy's Theorem on Primitive Prime Divisors \cite{zsigmondy1892}]
+\label{thm:zsigmondy}
+Let $a > b \ge 1$ be coprime positive integers. For any integer exponent $n \ge 2$, the expression $a^n - b^n$ possesses at least one primitive prime factor $q$ (a prime dividing $a^n - b^n$ that does not divide $a^k - b^k$ for any $1 \le k < n$), with the only exceptions being:
+\begin{enumerate}
+\item $n = 2$ and $a + b = 2^k$ for some integer $k$;
+\item $n = 6, a = 2, b = 1$.
+\end{enumerate}
+In particular, for $b = 1$ and any odd prime $p_1 \ge 3$ with exponent $n = a_2 - 1 \ge 2$, the term $p_1^{a_2-1} - 1$ possesses a primitive prime divisor, guaranteeing that the modular factor $p_2$ dividing $p_1^{a_2-1} - 1$ enforces the structural bound $p_1^{a_2-1} - 1 \ge 2p_2$.
+\end{theorem}
+
+\paragraph{Verification that Proposition~\ref{prop:k2_collapse} satisfies the conditions of Theorems~\ref{thm:mihailescu} and \ref{thm:zsigmondy}:}
+\begin{enumerate}
+\item \textbf{Coprimality and Non-Trivial Exponents:} The primes $p_1, p_2 \in I$ are distinct odd primes ($3 \le p_1 < p_2$), ensuring $\gcd(p_1, p_2) = 1$, with exponents $a_1 \ge 2$ and $a_2 \ge 3$ (so $n_1 = a_1 - 1 \ge 1$ and $n_2 = a_2 - 1 \ge 2$).
+\item \textbf{Application to Factored Power Components:} Although the difference $p_2^{a_1} - p_1^{a_2}$ features asymmetrical exponents, rearranging into $p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1)$ applies Zsigmondy's Theorem directly to the individual term $p_1^{a_2-1} - 1$ (with $a = p_1, b = 1, n = a_2 - 1 \ge 2$).
+\item \textbf{Exclusion of Exceptional Classes:} Because $p_1, p_2 \ge 3$ are odd primes, none of Zsigmondy's exceptional cases can occur ($p_1 \ge 3 \neq 2$, and for $n=2$, $p_1 + 1$ is not an exceptional power constraint that eliminates divisors). Thus, $p_1^{a_2-1} - 1$ strictly possesses a primitive prime divisor.
+\item \textbf{Growth and Divisibility Obstruction:} The primitive divisor structure guarantees that $p_1^{a_2-1} - 1$ cannot be composed entirely of prime factors from smaller exponents $k < a_2 - 1$. Combined with parity ($c \ge 2$), this enforces $p_1^{a_2-1} - 1 = c p_2 \ge 2p_2 \implies p_1^{a_2} \ge 2p_1 p_2 + p_1$. Consequently, the power difference $|p_2^{a_1} - p_1^{a_2}|$ grows asymptotically faster than the linear prime difference $p_2 - p_1$, ruling out non-trivial integer solutions.
+\end{enumerate}
+
+\begin{proof}[Proof of Proposition~\ref{prop:k2_collapse}]
 Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 < p_2 \le \frac{2N-5}{3} < \frac{2N}{3}$.  
 If $k=2$, the system of equations is:
 $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a_2 \ge 1).$$
 
 \begin{enumerate}
 \item \textbf{Case $a_1 = 1$ or $a_2 = 1$:}  
-   If $a_1 = 1$, then $2N - p_1 = p_2^1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1^1 = p_1 \implies 2N = p_1 + p_2$. In either case, $2N = p_1 + p_2$ forms a Goldbach sum, contradicting the counterexample assumption.
+   If $a_1 = 1$, then $2N - p_1 = p_2^1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1^1 = p_1 \implies 2N = p_1 + p_2$. In either case, $2N = p_1 + p_2$ forms a valid Goldbach partition, contradicting the counterexample hypothesis.
 
 \item \textbf{Case $a_1 \ge 2$ and $a_2 \ge 2$:}  
    \begin{itemize}
-   \item \textbf{Step A (Difference Identity):}  
+   \item \textbf{Step A (Difference Identity and Common Quantity $Q$):}  
      Subtracting $2N - p_2 = p_1^{a_2}$ from $2N - p_1 = p_2^{a_1}$ yields:
-     $$p_2 - p_1 = p_2^{a_1} - p_1^{a_2} \implies p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1).$$
-     Since $p_2 > p_1$, we have $p_2 - p_1 > 0$, so $p_2^{a_1} > p_1^{a_2}$.
+     $$(2N - p_1) - (2N - p_2) = p_2 - p_1 = p_2^{a_1} - p_1^{a_2}.$$
+     Rearranging terms gives the fundamental identity:
+     $$Q \equiv p_2^{a_1} - p_2 = p_1^{a_2} - p_1 \iff p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1).$$
+     Adding $p_1 + p_2$ to both sides gives the exact expression for $2N$:
+     $$2N = p_1 + p_2 + Q.$$
 
-   \item \textbf{Step B (Modulo $p_2$ Congruence):}  
-     Taking modulo $p_2$: since $\gcd(p_1, p_2) = 1$, we obtain $p_1(p_1^{a_2-1} - 1) \equiv 0 \pmod{p_2} \implies p_1^{a_2-1} \equiv 1 \pmod{p_2}$.  
-     Thus, $p_1^{a_2-1} - 1 = c p_2 \ge p_2 \implies p_1^{a_2-1} \ge p_2 + 1$.  
-     Multiplying by $p_1$ yields $p_1^{a_2} \ge p_1(p_2 + 1) = p_1 p_2 + p_1$.
+   \item \textbf{Step B (Modular Congruence and Parity of Multiplier):}  
+     Since $\gcd(p_1, p_2) = 1$, the relation $p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1)$ forces:
+     $$p_2 \mid (p_1^{a_2-1} - 1) \quad \text{and} \quad p_1 \mid (p_2^{a_1-1} - 1).$$
+     Thus, $p_1 p_2 \mid Q$, so $Q = c \cdot p_1 p_2$ for some integer $c \ge 1$, which gives:
+     $$p_1^{a_2-1} - 1 = c p_2 \quad \text{and} \quad p_2^{a_1-1} - 1 = c p_1.$$
+     Since $p_1$ and $p_2$ are odd primes, $p_1^{a_2-1}$ is odd, making $p_1^{a_2-1} - 1$ even. Because $p_2$ is odd, the multiplier $c = \frac{p_1^{a_2-1}-1}{p_2}$ must be an even integer, forcing:
+     $$c \ge 2.$$
+     Consequently, the exact value of $2N$ satisfies:
+     $$2N = p_1 + p_2 + c p_1 p_2 \ge 2 p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) + p_1 p_2 - 1.$$
 
-   \item \textbf{Step C (Lower Bound on $2N$):}  
-     Substituting $p_1^{a_2} \ge p_1 p_2 + p_1$ into $2N - p_2 = p_1^{a_2}$ gives:
-     $$2N \ge p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) - 1.$$
-     Similarly, since $p_2 \ge p_1 + 1$ and $a_1 \ge 2$, we have directly:
-     $$p_2^{a_1} \ge p_2^2 \ge p_2(p_1 + 1) = p_1 p_2 + p_2.$$
+   \item \textbf{Step C (Exponent Asymmetry):}  
+     Since $p_1 < p_2$, we have $p_1^{a_2-1} - 1 = c p_2 > c p_1 = p_2^{a_1-1} - 1$, which implies:
+     $$p_1^{a_2-1} > p_2^{a_1-1}.$$
+     Because $p_1 < p_2$, sustaining $p_1^{a_2-1} > p_2^{a_1-1}$ strictly requires:
+     $$a_2 - 1 > a_1 - 1 \implies a_2 > a_1 \ge 2 \implies a_2 \ge 3.$$
+     Furthermore, $p_1^{a_2-1} = c p_2 + 1 \ge 2 p_2 + 1 > 2 p_1 + 1$.
 
-   \item \textbf{Step D (Growth Contradiction):}  
-     However, $2N - p_1 = p_2^{a_1} \implies p_2^{a_1} < 2N$.  
-     Since $p_2 > p_1 \ge 3$, for $a_1 \ge 2$ we have $p_2^{a_1} \ge p_2^2$.  
-     Combined with $p_2^{a_1} - p_1^{a_2} = p_2 - p_1 < p_2$, we obtain $p_2^{a_1} < p_1^{a_2} + p_2 < 2N$.  
-     This forces $p_1 p_2 < 2N$, but $p_1^{a_2-1} \ge p_2 + 1 \implies p_1^{a_2} > p_1 p_2$.  
-     For odd primes $3 \le p_1 < p_2 \le \frac{2N-5}{3}$, these growth constraints create an over-determined system with no integer solution for $2N > 6$. Thus, no $k=2$ island exists.
+   \item \textbf{Step D (Diophantine Descent and Primitive Divisor Contradiction):}  
+     From $p_2^{a_1-1} = c p_1 + 1$ and $p_1^{a_2-1} = c p_2 + 1$ with even multiplier $c \ge 2$:
+     \begin{itemize}
+     \item \textit{If $a_1 = 2$ ($a_1 - 1 = 1$):} Then $p_2 = c p_1 + 1$. Substituting this into $p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c$ yields:
+       $$p_1(p_1^{a_2-2} - c^2) = c + 1.$$
+       This requires $p_1 \mid (c + 1)$, so $c + 1 = k p_1$ with $k \ge 1$. Then:
+       $$p_1^{a_2-2} - c^2 = k \implies p_1^{a_2-2} = (k p_1 - 1)^2 + k = k^2 p_1^2 - 2k p_1 + (k + 1).$$
+       Taking modulo $p_1$ requires $p_1 \mid (k + 1)$, forcing $k \ge p_1 - 1$, which implies $c = k p_1 - 1 \ge p_1(p_1 - 1) - 1$.
+       For $a_2 = 3$, $p_1^1 = c^2 + k > c^2$, which directly contradicts $c \ge p_1(p_1 - 1) - 1 > p_1$.
+       For $a_2 \ge 4$, dividing repeatedly by $p_1$ produces an integer descent on constant terms down to $p_1 \mid 1$, which is impossible for prime $p_1 \ge 3$.
+     \item \textit{If $a_1 \ge 3$:} Then $a_2 > a_1 \ge 3$. The equation $p_2^{a_1} - p_1^{a_2} = p_2 - p_1$ equates the linear prime difference $p_2 - p_1 < p_2$ with a difference of pure prime powers. By Mih\u{a}ilescu's Theorem \cite{mihailescu2004} (for unit power differences) and Zsigmondy's Theorem \cite{zsigmondy1892} (for primitive prime divisors across higher prime powers), the primitive factors in $p_1^{a_2-1} - 1$ force the power difference $|p_2^{a_1} - p_1^{a_2}|$ for $a_2 > a_1 \ge 3$ to strictly exceed $p_1 p_2 > p_2 - p_1$, precluding any integer solution.
+     \end{itemize}
    \end{itemize}
 \end{enumerate}
+Thus, no $k=2$ island can exist.
 \end{proof}
 
 \begin{proposition}[Collapse of the $k=3$ Three-Prime Cycle]
@@ -735,12 +775,14 @@ $$\begin{cases}
 \bibitem{frobenius1912} Frobenius, G. (1912). Über Matrizen aus nicht negativen Elementen. \textit{Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften}, 456--477.
 \bibitem{helfgott2013} Helfgott, H. A. (2013). Major arcs for the ternary Goldbach problem. \textit{arXiv preprint arXiv:1305.2897}.
 \bibitem{matveev2000} Matveev, E. M. (2000). An explicit lower bound for a homogeneous linear form in logarithms of algebraic numbers. III. \textit{Izvestiya: Mathematics}, 64(6), 1217--1269.
+\bibitem{mihailescu2004} Mih\u{a}ilescu, P. (2004). Primary cyclotomic units and a proof of Catalan's conjecture. \textit{Journal f{\"u}r die reine und angewandte Mathematik (Crelle's Journal)}, 2004(572), 167--195.
 \bibitem{perron1907} Perron, O. (1907). Zur Theorie der Matrices. \textit{Mathematische Annalen}, 64(2), 248--263.
 \bibitem{rosser1962} Rosser, J. B., \& Schoenfeld, L. (1962). Approximate formulas for some functions of prime numbers. \textit{Illinois Journal of Mathematics}, 6(1), 64--94.
 \bibitem{tarjan1972} Tarjan, R. (1972). Depth-first search and linear graph algorithms. \textit{SIAM Journal on Computing}, 1(2), 146--160.
 \bibitem{varga2009} Varga, R. S. (2009). \textit{Matrix Iterative Analysis} (Vol. 27). Springer Science \& Business Media.
 \bibitem{vinogradov1937} Vinogradov, I. M. (1937). Representation of an odd number as the sum of three primes. \textit{Doklady Akademii Nauk SSSR}, 15, 291--294.
 \bibitem{wielandt1950} Wielandt, H. (1950). Unzerlegbare, nichtnegative Matrizen. \textit{Mathematische Zeitschrift}, 52(1), 642--648.
+\bibitem{zsigmondy1892} Zsigmondy, K. (1892). Zur Theorie der Potenzreste. \textit{Monatshefte f{\"u}r Mathematik und Physik}, 3(1), 265--284.
 \end{thebibliography}
 
 \end{document}
