@@ -3,6 +3,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21712619.svg)](https://doi.org/10.5281/zenodo.21712619)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
 
+SSRN Abstract ID: 7274460
+
 **Author:** Dr. Youcef Kelanemer (Ph.D. in Numerical Analysis, Université Paris XI - Paris-Sud)  
 **MSC2020 Classification:** Primary 11P32; Secondary 15A18, 05C20, 11D45  
 **Keywords:** Goldbach Conjecture, Fixed-Point Dynamics, Perron–Frobenius Theorem, Trace Nullities, Spectral Radius, Diophantine Systems  
