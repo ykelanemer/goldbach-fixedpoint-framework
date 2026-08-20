@@ -349,7 +349,7 @@ $$\left( \forall i, j, \, a_{i,j} \in \{0, 1\} \right) \implies \text{Impossible
 Let $I = \{p_1, p_2, \dots, p_k\}$ with $p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3} < \frac{2N}{3}$. Every $2N - p_i$ is a square-free product of a subset $S_i \subseteq I \setminus \{p_i\}$ with $|S_i| \ge 2$:
 
 1. **Dense Case ($S_i = I \setminus \{p_i\}$ for all $i$):**  
-   $2N - p_1 = \prod_{r=2}^k p_r$ and $2N - p_2 = \prod_{r \neq 2} p_r$. Subtracting yields $p_2 - p_1 = (\prod_{r=3}^k p_r)(p_1 - p_2)$. Dividing by $(p_2 - p_1) \neq 0$ gives $1 = -\prod_{r=3}^k p_r$. For $k \ge 4$, $\prod_{r=3}^k p_r \ge 35$, forcing $1 = -35$, an immediate contradiction.
+   $2N - p_1 = \prod_{r=2}^k p_r$ and $2N - p_2 = \prod_{r \neq 2} p_r$. Subtracting yields $p_2 - p_1 = (\prod_{r=3}^k p_r)(p_2 - p_1)$. Dividing by $(p_2 - p_1) \neq 0$ gives $1 = \prod_{r=3}^k p_r$. For $k \ge 4$, $\prod_{r=3}^k p_r \ge 7 \cdot 11 = 77$, forcing $1 \ge 77$, an immediate contradiction.
 
 2. **Sparse Case ($|S_r| < k-1$ for some $r$):**  
    Let $p_k = \max(I)$ be the maximum prime in the island. By strong connectivity of $G = (I, R)$ (Proposition 3.12), $p_k$ has at least one incoming neighbor $p_m < p_k$ (where $p_k \mid (2N - p_m)$) and at least one outgoing neighbor $p_i \in S_k$ (where $p_i \mid (2N - p_k)$).
