@@ -432,21 +432,21 @@ Let $I = \{p_1, p_2, \dots, p_k\}$ with $p_1 < p_2 < \dots < p_k \le \frac{2N-5}
      Since $p_k \mid (2N - p_m)$ for some $p_m < p_k$, we write $2N - p_m = p_k \mu_m$ with multiplier $\mu_m \ge 3$, enforcing $p_k \le \frac{2N-5}{3} < \frac{2N}{3}$.
 
    \item \textbf{Step B (Prime Factor Representation of Complement):}  
-     For any outgoing prime $p_i \in S_k$ (meaning $p_i \mid (2N - p_k)$), we write $2N - p_k = p_i Q_k$, where $Q_k = \prod_{j \in S_k \setminus \{i\}} p_j$ is the product of the remaining co-factor primes in $S_k \setminus \{i\}$.
+     For any outgoing prime $p_i \in S_k$ (meaning $p_i \mid (2N - p_k)$), we write $2N - p_k = p_i Q_{k,i}$, where $Q_{k,i} = \prod_{j \in S_k \setminus \{i, k\}} p_j$ is the product of the remaining co-factor primes in $S_k \setminus \{i, k\}$.
 
    \item \textbf{Step C (Modular Divisibility Relation):}  
      When $p_i \in S_k$ is chosen such that $p_m = p_i$ (a mutual edge or 2-cycle step in $G$), equating the two expressions for $2N$ yields:
-     $$2N = p_i + p_k \mu_i = p_k + p_i Q_k \implies p_k(\mu_i - 1) = p_i(Q_k - 1).$$
-     Since $p_k$ and $p_i$ are distinct primes, $\gcd(p_k, p_i) = 1$. Because $p_k > p_i$, $p_k$ must divide $Q_k - 1$.  
-     Thus, $Q_k - 1 = d \cdot p_k$ for some integer $d \ge 1$. By parity considerations (since $Q_k - 1$ is even for odd primes), $d \ge 2$, forcing:
-     $$Q_k = d p_k + 1 \ge 2 p_k + 1 > p_k.$$
-     \textit{(If $p_m \neq p_i$, equating $2N = p_m + p_k \mu_m = p_k + p_i Q_k$ gives $p_k(\mu_m - 1) = p_i Q_k - p_m \implies p_i Q_k = p_k(\mu_m - 1) + p_m \ge 2 p_k + p_m > 2 p_k$.)}
+     $$2N = p_i + p_k \mu_i = p_k + p_i Q_{k,i} \implies p_k(\mu_i - 1) = p_i(Q_{k,i} - 1).$$
+     Since $p_k$ and $p_i$ are distinct primes, $\gcd(p_k, p_i) = 1$. Because $p_k > p_i$, $p_k$ must divide $Q_{k,i} - 1$.  
+     Thus, $Q_{k,i} - 1 = d \cdot p_k$ for some integer $d \ge 1$. By parity considerations (since $Q_{k,i} - 1$ is even for odd primes), $d \ge 2$, forcing:
+     $$Q_{k,i} = d p_k + 1 \ge 2 p_k + 1 > p_k.$$
+     \textit{(If $p_m \neq p_i$, equating $2N = p_m + p_k \mu_m = p_k + p_i Q_{k,i}$ gives $p_k(\mu_m - 1) = p_i Q_{k,i} - p_m \implies p_i Q_{k,i} = p_k(\mu_m - 1) + p_m \ge 2 p_k + p_m > 2 p_k$.)}
 
    \item \textbf{Step D (Cardinality and Growth Contradiction):}  
-     By definition, $Q_k$ is a product of primes chosen strictly from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$, all of which are strictly smaller than $p_k$. Since $2N - p_k = p_i Q_k$ and $p_i \ge 3$, $Q_k$ is subject to the mandatory ceiling $Q_k = \frac{2N - p_k}{p_i} < \frac{2N}{3}$:
+     By definition, $Q_{k,i}$ is a product of primes chosen strictly from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$, all of which are strictly smaller than $p_k$. Since $2N - p_k = p_i Q_{k,i}$ and $p_i \ge 3$, $Q_{k,i}$ is subject to the mandatory ceiling $Q_{k,i} = \frac{2N - p_k}{p_i} < \frac{2N}{3}$:
      \begin{itemize}
-     \item \textbf{For $k = 4$:} $|S_k \setminus \{i\}| \le 1$, so $Q_k$ contains at most one prime factor $p_r < p_k$. If $p_m = p_i$, $Q_k \ge 2 p_k + 1$ directly contradicts $Q_k = p_r < p_k$; if $p_m \neq p_i$, $p_i Q_k = p_i p_r \ge 2 p_k + p_m > 2 p_k$ contradicts $p_i, p_r < p_k$ in a 4-cycle.
-     \item \textbf{For $k \ge 5$:} $Q_k$ is a product of at least two distinct primes from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$. The modular constraint $p_i Q_k \ge 2 p_k + p_m$ forces $2N - p_k = p_i Q_k \ge 3(2 p_k + 1) = 6 p_k + 3 \implies p_k \le \frac{2N - 3}{7}$. The product of these distinct primes $Q_k = \prod_{j \in S_k \setminus \{i\}} p_j$ grows superlinearly, exceeding the mandatory ceiling $Q_k < \frac{2N}{3}$, yielding a direct contradiction.
+     \item \textbf{For $k = 4$:} $|S_k \setminus \{i, k\}| \le 1$, so $Q_{k,i}$ contains at most one prime factor $p_r < p_k$. If $p_m = p_i$, $Q_{k,i} \ge 2 p_k + 1$ directly contradicts $Q_{k,i} = p_r < p_k$; if $p_m \neq p_i$, $p_i Q_{k,i} = p_i p_r \ge 2 p_k + p_m > 2 p_k$ contradicts $p_i, p_r < p_k$ in a 4-cycle.
+     \item \textbf{For $k \ge 5$:} $Q_{k,i}$ is a product of at least two distinct primes from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$. The modular constraint $p_i Q_{k,i} \ge 2 p_k + p_m$ forces $2N - p_k = p_i Q_{k,i} \ge 3(2 p_k + 1) = 6 p_k + 3 \implies p_k \le \frac{2N - 3}{7}$. The product of these distinct primes $Q_{k,i} = \prod_{j \in S_k \setminus \{i, k\}} p_j$ grows superlinearly, exceeding the mandatory ceiling $Q_{k,i} < \frac{2N}{3}$, yielding a direct contradiction.
      \end{itemize}
    \end{itemize}
 \end{enumerate}
