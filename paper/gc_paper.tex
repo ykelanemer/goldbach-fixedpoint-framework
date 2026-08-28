@@ -127,20 +127,6 @@ We prove this by induction on $n$.
 \textit{Inductive Step:} Assume $q \notin P^*(n)$ for all $q \mid 2N$. Suppose for contradiction that $q \in P^*(n+1) = D(P^*(n))$ for some $q \mid 2N$. Then there exists $p \in P^*(n)$ such that $q \mid (2N - p)$ (Definition~\ref{def:divisor_mapping}). Since $q \mid 2N$ and $q \mid (2N - p)$, it follows that $q \mid (2N - (2N - p)) \implies q \mid p$. Because $p$ is prime, we must have $q = p$. But $p \in P^*(n) \subseteq P^*(0)$, which implies $p \nmid 2N$, contradicting $q \mid 2N$. Thus, $q \notin P^*(n+1)$. By induction, no prime factor of $2N$ ever enters $P^*(n)$ for any $n \ge 0$.
 \end{proof}
 
-\begin{proposition}[Elimination of Self-Loops ($k=1$ Collapse)]
-\label{prop:k1_collapse}
-No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no 1-element stationary set $D(\{p\}) = \{p\}$ can exist. Formally:
-$$\nexists p \in P^*(0) \text{ such that } p \in D(\{p\}) \quad (p \mid (2N - p)).$$
-\end{proposition}
-\begin{proof}
-Suppose for contradiction that $p \in D(\{p\})$ for some $p \in P^*(0)$. By Definition~\ref{def:divisor_mapping} of the divisor mapping $D(S)$, $p \in D(\{p\})$ implies that $p$ divides $2N - p$. Thus:
-$$p \mid (2N - p) \implies 2N - p = c \cdot p \quad \text{for some integer } c \ge 1.$$
-Rearranging gives $2N = p + c \cdot p = p(c + 1)$, which implies $p \mid 2N$.
-However, by Definition~\ref{def:initial_domain} of the initial domain $P^*(0) = \{ q \in \mathcal{P}_{<2N} \mid q \nmid 2N \}$, every element $p \in P^*(0)$ satisfies $p \nmid 2N$, yielding a direct contradiction.
-
-Therefore, $p \notin D(\{p\})$ for all $p \in P^*(0)$, proving that no single prime can be its own prime divisor image, and ensuring that no 1-element stationary set $D(\{p\}) = \{p\}$ can exist.
-\end{proof}
-
 \begin{proposition}[Absence of Goldbach Partners in a Counterexample]
 \label{prop:compositeness_complements}
 If $2N$ is a hypothetical counterexample to Goldbach's Conjecture, then for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
@@ -200,13 +186,13 @@ By induction, every iterated divisor set satisfies $P^*(n) \neq \emptyset$ for a
 \begin{proposition}[Non-Emptiness of the Limit Set $P^*_\infty$]
 \label{prop:limit_nonempty}
 Under the counterexample assumption, the stationary limit set $P^*_\infty$ cannot degenerate to the empty set:
-$$2N \text{ is a counterexample} \implies P^*_\infty \neq \emptyset \implies k = |P^*_\infty| \ge 2.$$
+$$2N \text{ is a counterexample} \implies P^*_\infty \neq \emptyset \implies |P^*_\infty| \ge 1.$$
 \end{proposition}
 \begin{proof}
 By Proposition~\ref{prop:convergence}, the sequence of iterated sets stabilizes at a finite index $n_0 \in \mathbb{N}$ where $P^*_\infty = P^*(n_0)$.  
 By the Non-Emptiness Inheritance Property (Proposition~\ref{prop:nonempty_inheritance}), $P^*(n) \neq \emptyset$ for all $n \ge 0$. Evaluating at $n = n_0$ yields:
 $$P^*_\infty = P^*(n_0) \neq \emptyset.$$
-Combined with Proposition~\ref{prop:k1_collapse} (which eliminates $k = 1$), the cardinality of the stationary limit set satisfies $k = |P^*_\infty| \ge 2$.
+Thus, the stationary limit set has cardinality $|P^*_\infty| \ge 1$.
 \end{proof}
 
 \begin{proposition}[Structural Ceiling Rule (Compositeness Ceiling)]
@@ -244,17 +230,17 @@ Let $I \subseteq P^*_\infty$ be a minimal non-empty subset closed under $D$ ($D(
 
 \begin{proposition}[Existence and Irreducibility of Minimal Terminal Islands]
 \label{prop:minimal_island}
-Under the counterexample hypothesis ($P^*_\infty \neq \emptyset$), $P^*_\infty$ contains at least one minimal stationary island $I \subseteq P^*_\infty$ (Definition~\ref{def:terminal_island}) satisfying $D(I) = I$. Every such minimal island $I$ is an irreducible, strongly connected component of cardinality $k = |I| \ge 2$:
-$$\exists I \subseteq P^*_\infty \quad \text{such that} \quad D(I) = I, \quad G = (I, R) \text{ is strongly connected, and } k = |I| \ge 2.$$
+Under the counterexample hypothesis ($P^*_\infty \neq \emptyset$), $P^*_\infty$ contains at least one minimal stationary island $I \subseteq P^*_\infty$ (Definition~\ref{def:terminal_island}) satisfying $D(I) = I$. Every such minimal island $I$ is an irreducible, strongly connected component of cardinality $k = |I| \ge 1$:
+$$\exists I \subseteq P^*_\infty \quad \text{such that} \quad D(I) = I, \quad G = (I, R) \text{ is strongly connected, and } k = |I| \ge 1.$$
 \end{proposition}
 \begin{proof}
 Let $\mathcal{F} = \{ S \subseteq P^*_\infty \mid S \neq \emptyset \text{ and } D(S) \subseteq S \}$. Since $P^*_\infty \neq \emptyset$ (Proposition~\ref{prop:limit_nonempty}) and $D(P^*_\infty) = P^*_\infty$, $\mathcal{F}$ is a non-empty family of finite sets. By the Well-Ordering Principle of finite sets under inclusion ($\subseteq$), $\mathcal{F}$ contains at least one minimal element $I \in \mathcal{F}$.  
 For this minimal set $I$, $D(I) \subseteq I$. Since $2N - p$ is composite for all $p \in I$ under the counterexample hypothesis (Proposition~\ref{prop:compositeness_complements}), $D(I) \neq \emptyset$. The set $D(I)$ itself satisfies $D(D(I)) \subseteq D(I)$, so $D(I) \in \mathcal{F}$. By set minimality of $I$, we must have $D(I) = I$.  
-By Proposition~\ref{prop:strong_connectivity}, any minimal set $I$ with $D(I) = I$ forms a strongly connected directed graph $G = (I, R)$ with no edges leaving $I$. By Proposition~\ref{prop:k1_collapse} ($k=1$ collapse), no single prime can form a self-loop, forcing $k = |I| \ge 2$.
+By Proposition~\ref{prop:strong_connectivity}, any minimal set $I$ with $D(I) = I$ forms a strongly connected directed graph $G = (I, R)$ with no edges leaving $I$.
 \end{proof}
 
 \begin{remark}[Structure of $P^*_\infty$ and Sufficiency of Terminal Island Elimination]
-Note that $P^*_\infty$ is not required to be a pure union of minimal islands; it may contain transient prime nodes that flow into a minimal terminal island under iterated applications of $D$ without being reachable from it. However, because any non-empty stationary set $P^*_\infty \neq \emptyset$ is mathematically guaranteed to contain at least one minimal terminal island $I \subseteq P^*_\infty$, establishing the complete non-existence of minimal terminal islands $I$ across all cardinalities $k \ge 2$ unconditionally forces $P^*_\infty = \emptyset$, completing the proof without needing to analyze transient structures directly.
+Note that $P^*_\infty$ is not required to be a pure union of minimal islands; it may contain transient prime nodes that flow into a minimal terminal island under iterated applications of $D$ without being reachable from it. However, because any non-empty stationary set $P^*_\infty \neq \emptyset$ is mathematically guaranteed to contain at least one minimal terminal island $I \subseteq P^*_\infty$, establishing the complete non-existence of minimal terminal islands $I$ across all cardinalities $k \ge 1$ unconditionally forces $P^*_\infty = \emptyset$, completing the proof without needing to analyze transient structures directly.
 \end{remark}
 
 \begin{proposition}[Exponent Matrix Representation $M$]
@@ -276,7 +262,21 @@ A non-negative matrix $M \in \mathbb{R}_{\ge 0}^{k \times k}$ is algebraically i
 \end{enumerate}
 
 \begin{proof}[Proof of Proposition~\ref{prop:matrix_rep}]
-Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Proposition~\ref{prop:k1_collapse}, no prime $p_i$ can divide $2N - p_i$, which enforces $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to an exponent matrix $M$ with zero diagonal. By Theorem~\ref{thm:varga} and the strong connectivity of $G = (I, R)$ (Proposition~\ref{prop:strong_connectivity}), $M$ is strictly irreducible.
+Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Non-Divisibility Inheritance (Proposition~\ref{prop:inheritance}), no prime $p_i \in I \subseteq P^*(0)$ can divide $2N$, which enforces $p_i \nmid (2N - p_i)$ and therefore $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to an exponent matrix $M$ with zero diagonal. By Theorem~\ref{thm:varga} and the strong connectivity of $G = (I, R)$ (Proposition~\ref{prop:strong_connectivity}), $M$ is strictly irreducible.
+\end{proof}
+
+\begin{proposition}[Elimination of Self-Loops ($k=1$ Collapse)]
+\label{prop:k1_collapse}
+No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no 1-element stationary set $D(\{p\}) = \{p\}$ can exist, forcing every minimal terminal island to have cardinality $k = |I| \ge 2$. Formally:
+$$\nexists p \in P^*(0) \text{ such that } p \in D(\{p\}) \quad (p \mid (2N - p)).$$
+\end{proposition}
+\begin{proof}
+Suppose for contradiction that $p \in D(\{p\})$ for some $p \in P^*(0)$. By Definition~\ref{def:divisor_mapping} of the divisor mapping $D(S)$, $p \in D(\{p\})$ implies that $p$ divides $2N - p$. Thus:
+$$p \mid (2N - p) \implies 2N - p = c \cdot p \quad \text{for some integer } c \ge 1.$$
+Rearranging gives $2N = p + c \cdot p = p(c + 1)$, which implies $p \mid 2N$.
+However, by Definition~\ref{def:initial_domain} of the initial domain $P^*(0) = \{ q \in \mathcal{P}_{<2N} \mid q \nmid 2N \}$, every element $p \in P^*(0)$ satisfies $p \nmid 2N$, yielding a direct contradiction.
+
+Therefore, $p \notin D(\{p\})$ for all $p \in P^*(0)$, proving that no single prime can be its own prime divisor image, and ensuring that no 1-element stationary set $D(\{p\}) = \{p\}$ can exist. Consequently, every minimal terminal island satisfies $k = |I| \ge 2$.
 \end{proof}
 
 \begin{proposition}[Collapse of the $k=2$ Two-Prime Cycle]
@@ -689,7 +689,7 @@ Let $I = \{p_1, p_2, p_3, p_4, p_5\}$ be a hypothetical irreducible stationary i
 Thus, no valid matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$ can exist, completing the structural collapse of all $k=5$ islands.
 \end{proof}
 
-\section{Master Classification of Fixed-Point Islands ($P^*_\infty$)}
+\section{Master Classification of Fixed-Point Islands (\texorpdfstring{$P^*_\infty$}{P*\_infinity})}
 
 The structural findings across all propositions in Section 3 are summarized below:
 
@@ -723,7 +723,7 @@ Across the structural propositions, this framework transforms the Goldbach Conje
 \item \textbf{Graph Structure \& Matrix Governance (Props~\ref{prop:strong_connectivity}--\ref{prop:matrix_rep}):}  
    Every minimal stationary component $I \subseteq P^*_\infty$ forms an irreducible, strongly connected directed graph $G = (I, R)$ governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$).
 
-\item \textbf{Complete Unconditional Elimination Across All Cardinalities $k \ge 0$ (Props~\ref{prop:k2_collapse}--\ref{prop:k5_collapse}, \ref{prop:squarefree_collapse}, \ref{cor:large_islands}):}  
+\item \textbf{Complete Unconditional Elimination Across All Cardinalities $k \ge 0$ (Props~\ref{prop:k1_collapse}--\ref{prop:k5_collapse}, \ref{prop:squarefree_collapse}, \ref{cor:large_islands}):}  
    Diophantine growth constraints, trace nullity $c_1=c_2=c_3=0$, and the Spectral Decoupling Barrier completely rule out all cardinalities $k = 0, 1, 2, 3, 4, 5$, all square-free domains, and all large islands $k \ge 6$.
 
 \item \textbf{Final Deduction:}  
