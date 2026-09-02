@@ -47,7 +47,7 @@ $$P^*(n+1) = D(P^*(n)), \quad \forall n \ge 0.$$
 ### Proposition 2.3 (Compositeness of the Half-Sum $N$ in a Counterexample)
 If $2N > 6$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
 
-*Proof.*  
+**Proof of Proposition 2.3.**  
 Suppose for contradiction that $N$ is prime. Then $2N = N + N$ represents $2N$ as the sum of two prime numbers ($p_1 = N, p_2 = N$). This immediately satisfies Goldbach's Conjecture for $2N$, contradicting the assumption that $2N$ is a counterexample. Thus, $N$ cannot be prime, so $N$ must be composite. Consequently, $N$ can never be a prime element in $P^*(0)$ or any iterated set $P^*(n)$, guaranteeing that $N \notin P^*(0)$ and ensuring the sound definition of the domain $P^*(0)$ (Definition 2.1). $\blacksquare$
 
 ### Proposition 2.4 (Non-Emptiness of the Initial Domain $P^*(0)$)
@@ -55,24 +55,19 @@ For all even integers $2N > 6$, the initial domain set $P^*(0)$ (Definition 2.1)
 $$|P^*(0)| = \pi(2N - 1) - \omega(2N) \ge 1 \implies P^*(0) \neq \emptyset,$$
 where $\pi(x)$ is the prime-counting function and $\omega(n)$ is the number of distinct prime factors of $n$.
 
+To establish Proposition 2.4, we recall Bertrand's Postulate (Chebyshev's Theorem):
+
 #### Theorem 2.4.A (Bertrand's Postulate / Chebyshev's Theorem; Rosser & Schoenfeld 1962 [10])
 For any real number $x > 1$, there exists at least one prime number $p \in \mathbb{P}$ satisfying $x < p < 2x - 1$. In particular, for any integer $N > 1$, the interval $(N, 2N-1)$ contains at least one prime $p$.
 
-**Verification that Proposition 2.4 satisfies the conditions of Theorem 2.4.A:**
-1. **Domain Bound:** Since $2N > 6 \implies N \ge 4 > 1$, the choice $x = N > 1$ satisfies the operational hypothesis of Chebyshev--Rosser--Schoenfeld.
-2. **Prime Factor Non-Divisibility:** By Proposition 2.3, $N$ is composite. Any prime $p \in (N, 2N-1)$ satisfies:
-   - $p > N \ge 4 \implies p \nmid 2$.
-   - All prime factors of composite $N$ are $\le N/2 < N$. Since $p > N$, $p$ cannot share any prime factor with $N \implies p \nmid N$.
-   - Therefore, $\gcd(p, 2N) = 1 \implies p \nmid 2N$.
-
-*Proof of Proposition 2.4.*  
-By Proposition 2.3, since $2N > 6$ is a hypothetical counterexample, the half-sum $N$ is composite. Applying Theorem 2.4.A with $x = N \ge 4$ guarantees the existence of a prime $p \in (N, 2N-1)$. By the hypothesis verification checklist above, $p \nmid 2N$, which places $p \in P^*(0)$ by Definition 2.1. This establishes constructively that $P^*(0)$ contains at least one prime in $(N, 2N)$, proving unconditionally that $P^*(0) \neq \emptyset$. $\blacksquare$
+**Proof of Proposition 2.4.**  
+By Proposition 2.3, since $2N > 6$ is a hypothetical counterexample, the half-sum $N$ is composite. Applying Theorem 2.4.A with $x = N \ge 4 > 1$ guarantees the existence of a prime $p \in (N, 2N-1)$. Since $p > N \ge 4$, $p$ is odd ($p \nmid 2$). Furthermore, all prime factors of composite $N$ are at most $N/2 < N$. Because $p > N$, $p$ cannot share any prime factor with $N$, which implies $\gcd(p, 2N) = 1 \implies p \nmid 2N$. By Definition 2.1, this places $p \in P^*(0)$, constructively proving unconditionally that $P^*(0) \neq \emptyset$. $\blacksquare$
 
 ### Proposition 2.5 (Closure of the Divisor Image in the Bounded Domain)
 Under the counterexample hypothesis, the image of any subset $S \subseteq P^*(0)$ under the divisor mapping operator $D$ (Definition 2.2) is strictly contained within the set of primes less than or equal to $\frac{2N - 5}{3}$. Formally:
 $$\forall p \in P^*(0), \quad D(S) \subseteq \mathcal{P}_{\le \frac{2N - 5}{3}} \subset \mathcal{P}_{< \frac{2N}{3}}.$$
 
-*Proof.*  
+**Proof of Proposition 2.5.**  
 Let $p \in P^*(0)$. Since $2 \mid 2N$, $2 \notin P^*(0)$, so every element $p \in P^*(0)$ is an odd prime ($p \ge 3$). Under the counterexample hypothesis, $2N - p$ cannot be prime (since if $2N - p = q \in \mathbb{P}$, then $2N = p + q$ would be a Goldbach representation). Thus, $2N - p$ is an odd composite integer having at least two prime factors (with multiplicity), all of which must be odd primes $\ge 3$.  
 1. **Case $p \ge 5$:** $2N - p \le 2N - 5$. Any prime factor $q \mid (2N - p)$ satisfies $q \le \frac{2N - p}{3} \le \frac{2N - 5}{3}$.  
 2. **Case $p = 3$:** Then $3 \nmid 2N$ (since $p \in P^*(0)$). If $3 \mid (2N - 3)$, then $3 \mid 2N$, a contradiction. Thus $3 \nmid (2N - 3)$. Since $2N - 3$ is odd, composite, and not divisible by 3, all of its prime factors are $\ge 5$. Since $2N - 3$ has at least two prime factors, any prime factor $q \mid (2N - 3)$ satisfies $q \le \frac{2N - 3}{5} \le \frac{2N - 5}{3}$ for all $2N \ge 8$.  
@@ -83,7 +78,7 @@ Thus, every element $q \in D(\{p\})$ satisfies $q \le \frac{2N - 5}{3}$, guarant
 No prime factor dividing $2N$ can ever enter any iterated set $P^*(n)$ (Definition 2.2). Formally:
 $$\forall q \in \mathbb{P}, \quad q \mid 2N \implies q \notin P^*(n), \quad \forall n \ge 0.$$
 
-*Proof.*  
+**Proof of Proposition 2.6.**  
 We prove this by induction on $n$.  
 *Base Case ($n=0$):* By Definition 2.1, $P^*(0) = \{ p \in \mathcal{P}_{<2N} \mid p \nmid 2N \}$. Hence, if $q \mid 2N$, then $q \notin P^*(0)$.  
 *Inductive Step:* Assume $q \notin P^*(n)$ for all $q \mid 2N$. Suppose for contradiction that $q \in P^*(n+1) = D(P^*(n))$ for some $q \mid 2N$. Then there exists $p \in P^*(n)$ such that $q \mid (2N - p)$ (Definition 2.2). Since $q \mid 2N$ and $q \mid (2N - p)$, it follows that $q \mid (2N - (2N - p)) \implies q \mid p$. Because $p$ is prime, we must have $q = p$. But $p \in P^*(n) \subseteq P^*(0)$, which implies $p \nmid 2N$, contradicting $q \mid 2N$. Thus, $q \notin P^*(n+1)$. By induction, no prime factor of $2N$ ever enters $P^*(n)$ for any $n \ge 0$. $\blacksquare$
@@ -92,14 +87,14 @@ We prove this by induction on $n$.
 If $2N$ is a hypothetical counterexample to Goldbach's Conjecture, then for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
 $$2N \text{ is a counterexample} \iff \forall p \in P^*(0), \quad |D(\{p\})| \ge 1 \text{ and } 2N - p \notin \mathbb{P}.$$
 
-*Proof.*  
+**Proof of Proposition 2.7.**  
 $2N$ is a counterexample to Goldbach's Conjecture if and only if $2N$ cannot be written as $p_1 + p_2$ for any primes $p_1, p_2 \in \mathbb{P}$. For any $p \in P^*(0)$, $2N - p$ cannot be prime, because if $2N - p = q \in \mathbb{P}$, then $2N = p + q$ would be a Goldbach representation. Since $2N - p > 1$ for all $p < 2N - 1$, $2N - p$ must be composite, possessing at least one prime factor distinct from $2N - p$. Thus $|D(\{p\})| \ge 1$ and $2N - p \notin \mathbb{P}$. $\blacksquare$
 
 ### Proposition 2.8 (The Monotonic Nested Chain Property)
 The sequence of iterated divisor sets forms a monotonically non-increasing nested chain of finite sets with a strictly proper initial contraction:
 $$P^*(0) \supsetneq P^*(1) \supseteq P^*(2) \supseteq \dots \supseteq P^*(n) \supseteq P^*(n+1).$$
 
-*Proof.*  
+**Proof of Proposition 2.8.**  
 By Proposition 2.4, $P^*(0)$ contains at least one prime $p$ in the interval $(N, 2N-1)$. By Proposition 2.5, every element $q \in P^*(1) = D(P^*(0))$ is bounded strictly by $q \le \frac{2N-5}{3} < \frac{2N}{3} < N$. Consequently, no prime $p > N$ belonging to $P^*(0)$ can ever enter $P^*(1)$, establishing that $P^*(1)$ is a strictly proper subset of $P^*(0)$ ($P^*(0) \supsetneq P^*(1)$).  
 Furthermore, Proposition 2.6 establishes that no element in $D(P^*(0))$ divides $2N$. Therefore, $D(\{p\}) \subseteq P^*(0)$ for every $p \in P^*(0)$.  
 Since $D$ is a monotonic set operator ($A \subseteq B \implies D(A) \subseteq D(B)$), applying $D$ inductively yields $P^*(n+1) = D(P^*(n)) \subseteq D(P^*(n-1)) = P^*(n)$ for all $n \ge 1$. $\blacksquare$
@@ -109,7 +104,7 @@ Because $P^*(0)$ is finite and the sequence $P^*(n)$ undergoes a strictly proper
 $$\exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) \equiv P^*_\infty,$$
 where $P^*_\infty$ satisfies the stationary identity $D(P^*_\infty) = P^*_\infty$.
 
-*Proof.*  
+**Proof of Proposition 2.9.**  
 The initial set $P^*(0)$ is finite with $|P^*(0)| \le \pi(2N-1)$. By Proposition 2.8, the sequence of set cardinalities $\{|P^*(n)|\}_{n=0}^\infty$ begins with a strict drop at the first step ($n=0 \to n=1$) and continues as a non-increasing sequence of non-negative integers:
 $$|P^*(0)| > |P^*(1)| \ge |P^*(2)| \ge \dots \ge 0.$$
 By the Well-Ordering Principle of natural numbers, any non-increasing sequence of natural numbers must stabilize in finitely many steps. Thus, there exists $n_0 \in \mathbb{N}_{\ge 1}$ such that $|P^*(n_0)| = |P^*(n_0+1)|$. Since $P^*(n_0+1) \subseteq P^*(n_0)$, equal cardinality implies $P^*(n_0+1) = P^*(n_0) \equiv P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. $\blacksquare$
@@ -121,7 +116,7 @@ A set of primes $S \subseteq \mathcal{P}_{<2N}$ is called *stationary* (or a fix
 For any non-empty subset $S \subseteq P^*(0)$, its divisor image $D(S)$ is non-empty. Consequently, under the counterexample hypothesis, every iterated divisor set $P^*(n)$ is non-empty for all $n \ge 0$:
 $$\forall S \subseteq P^*(0), \quad S \neq \emptyset \implies D(S) \neq \emptyset; \quad \text{hence } P^*(n) \neq \emptyset, \quad \forall n \ge 0.$$
 
-*Proof.*  
+**Proof of Proposition 2.11.**  
 Let $p \in P^*(0)$. Since $p \le 2N - 3$, we have $2N - p \ge 3 > 1$. By the Fundamental Theorem of Arithmetic, any integer greater than 1 possesses at least one prime factor $q$, guaranteeing that $|D(\{p\})| \ge 1$ and $D(\{p\}) \neq \emptyset$ for every single element $p \in P^*(0)$.  
 For any non-empty subset $S \subseteq P^*(0)$, choosing an element $p \in S$ gives $D(\{p\}) \subseteq D(S) = \bigcup_{x \in S} D(\{x\})$, which forces $D(S) \neq \emptyset$.  
 By Proposition 2.4, the base set is non-empty ($P^*(0) \neq \emptyset$). Proceeding by induction on $n$:  
@@ -134,7 +129,7 @@ By induction, every iterated divisor set satisfies $P^*(n) \neq \emptyset$ for a
 Under the counterexample assumption, the stationary limit set $P^*_\infty$ cannot degenerate to the empty set:
 $$2N \text{ is a counterexample} \implies P^*_\infty \neq \emptyset \implies |P^*_\infty| \ge 1.$$
 
-*Proof.*  
+**Proof of Proposition 2.12.**  
 By Proposition 2.9, the sequence of iterated sets stabilizes at a finite index $n_0 \in \mathbb{N}$ where $P^*_\infty = P^*(n_0)$.  
 By the Non-Emptiness Inheritance Property (Proposition 2.11), $P^*(n) \neq \emptyset$ for all $n \ge 0$. Evaluating at $n = n_0$ yields:
 $$P^*_\infty = P^*(n_0) \neq \emptyset.$$
@@ -144,7 +139,7 @@ Thus, the stationary limit set has cardinality $|P^*_\infty| \ge 1$. $\blacksqua
 The maximum prime in $P^*_\infty$, denoted $s = \max(P^*_\infty)$, is strictly bounded above by $\frac{2N - 5}{3} < \frac{2N}{3} < N$:
 $$s = \max_{p \in P^*_\infty} p \le \frac{2N - 5}{3} < \frac{2N}{3}.$$
 
-*Proof.*  
+**Proof of Proposition 2.13.**  
 Since $P^*_\infty = D(P^*_\infty)$, every prime $p \in P^*_\infty$ is a prime factor of $2N - q$ for some $q \in P^*_\infty$.  
 By Proposition 2.5, every element of $D(P^*(0))$---and consequently every iterated set $P^*(n)$ for $n \ge 1$ including $P^*_\infty$---consists of prime factors bounded strictly by $\frac{2N - 5}{3}$.  
 Thus, the maximum prime in $P^*_\infty$ is strictly bounded by $s = \max(P^*_\infty) \le \frac{2N - 5}{3} < \frac{2N}{3} < N$. $\blacksquare$
@@ -162,22 +157,21 @@ A non-empty stationary subset $I \subseteq P^*_\infty$ is called a *minimal term
 Define the directed relation $R$ on $P^*_\infty$ by $p R q \iff q \mid (2N - p)$. Any minimal stationary subset $I \subseteq P^*_\infty$ satisfying $D(I) = I$ forms a strongly connected directed graph $G = (I, R)$ (Tarjan 1972):
 $$\forall p, q \in I, \quad \exists (r_1, r_2, \dots, r_m) \subset I \text{ such that } p R r_1 R r_2 R \dots R r_m R q.$$
 
+To establish Proposition 3.2, we recall Tarjan's Graph Condensation Theorem:
+
 #### Theorem 3.2.A (Tarjan's Graph Condensation Theorem; Tarjan 1972)
 Any finite directed graph $G = (V, E)$ can be uniquely partitioned into a directed acyclic graph (DAG) of its strongly connected components (SCCs). In any finite DAG, there exists at least one terminal sink component $I' \subseteq V$ possessing no outgoing edges to $V \setminus I'$.
 
-**Verification that Proposition 3.2 satisfies the conditions of Theorem 3.2.A:**
-1. **Finite Graph Structure:** $P^*_\infty \subseteq \mathcal{P}_{\le \frac{2N-5}{3}}$ is a finite set of primes, so $G = (I, R)$ is a finite directed graph.
-2. **Minimum Out-Degree Floor:** Under the counterexample hypothesis, $2N - p$ is composite for every $p \in I$ (Proposition 2.7). Thus, every vertex $p \in I$ possesses out-degree $\operatorname{deg}^+(p) = |D(\{p\})| \ge 1$.
-3. **Set Minimality:** If $G = (I, R)$ were not strongly connected, Tarjan's Theorem guarantees the existence of a proper sink component $I' \subset I$ with no outgoing edges to $I \setminus I'$. Thus $D(I') \subseteq I'$. Since $\operatorname{deg}^+(p) \ge 1$, $D(I') = I'$, which contradicts the minimality of $I$.
+**Proof of Proposition 3.2.**  
+Let $I \subseteq P^*_\infty$ be a minimal non-empty subset closed under $D$ ($D(I) = I$). Since $P^*_\infty \subseteq \mathcal{P}_{\le \frac{2N-5}{3}}$ is a finite set of primes, $G = (I, R)$ is a finite directed graph. Under the counterexample hypothesis, $2N - p$ is composite for every $p \in I$ (Proposition 2.7), so every vertex $p \in I$ has out-degree $\operatorname{deg}^+(p) = |D(\{p\})| \ge 1$. 
 
-*Proof of Proposition 3.2.*  
-Let $I \subseteq P^*_\infty$ be a minimal non-empty subset closed under $D$ ($D(I) = I$). In the directed graph $G = (I, R)$, every vertex $p \in I$ has out-degree at least 1 (since $2N - p$ is composite by Proposition 2.7). By Theorem 3.2.A and the hypothesis verification checklist, $G = (I, R)$ cannot contain a proper sink component, forcing $G = (I, R)$ to be a strongly connected directed graph. $\blacksquare$
+If $G = (I, R)$ were not strongly connected, Theorem 3.2.A would guarantee the existence of a proper sink component $I' \subsetneq I$ with no outgoing edges to $I \setminus I'$, implying $D(I') \subseteq I'$. Since $\operatorname{deg}^+(p) \ge 1$ for all $p \in I'$, we have $D(I') = I'$, which directly contradicts the minimality of $I$. Therefore, $G = (I, R)$ must be a strongly connected directed graph. $\blacksquare$
 
 ### Proposition 3.3 (Existence and Irreducibility of Minimal Terminal Islands)
 Under the counterexample hypothesis ($P^*_\infty \neq \emptyset$), $P^*_\infty$ contains at least one minimal stationary island $I \subseteq P^*_\infty$ (Definition 3.1) satisfying $D(I) = I$. Every such minimal island $I$ is an irreducible, strongly connected component of cardinality $k = |I| \ge 1$:
 $$\exists I \subseteq P^*_\infty \quad \text{such that} \quad D(I) = I, \quad G = (I, R) \text{ is strongly connected, and } k = |I| \ge 1.$$
 
-*Proof.*  
+**Proof of Proposition 3.3.**  
 Let $\mathcal{F} = \{ S \subseteq P^*_\infty \mid S \neq \emptyset \text{ and } D(S) \subseteq S \}$. Since $P^*_\infty \neq \emptyset$ (Proposition 2.12) and $D(P^*_\infty) = P^*_\infty$, $\mathcal{F}$ is a non-empty family of finite sets. By the Well-Ordering Principle of finite sets under inclusion ($\subseteq$), $\mathcal{F}$ contains at least one minimal element $I \in \mathcal{F}$.  
 For this minimal set $I$, $D(I) \subseteq I$. Since $2N - p$ is composite for all $p \in I$ under the counterexample hypothesis (Proposition 2.7), $D(I) \neq \emptyset$. The set $D(I)$ itself satisfies $D(D(I)) \subseteq D(I)$, so $D(I) \in \mathcal{F}$. By set minimality of $I$, we must have $D(I) = I$.  
 By Proposition 3.2, any minimal set $I$ with $D(I) = I$ forms a strongly connected directed graph $G = (I, R)$ with no edges leaving $I$. $\blacksquare$
@@ -189,16 +183,15 @@ Note that $P^*_\infty$ is not required to be a pure union of minimal islands; it
 Every island $I = \{p_1, p_2, \dots, p_k\}$ is completely governed by a non-negative exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$), and $M$ is algebraically irreducible:
 $$\forall i \in \{1, \dots, k\}, \quad 2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}, \quad \text{with } a_{i,i} = 0 \quad (\operatorname{Tr}(M) = 0).$$
 
+To establish the algebraic irreducibility of the governing exponent matrix, we recall Varga's Graph-Matrix Equivalence:
+
 #### Theorem 3.5.A (Varga's Graph-Matrix Irreducibility Equivalence; Varga 2009)
 A non-negative matrix $M \in \mathbb{R}_{\ge 0}^{k \times k}$ is algebraically irreducible if and only if its associated directed adjacency graph $G(M) = (V, E)$ is strongly connected.
 
-**Verification that Proposition 3.5 satisfies the conditions of Theorem 3.5.A:**
-1. **Non-Negativity:** All matrix entries $a_{i,j}$ are non-negative prime exponents ($a_{i,j} \in \mathbb{Z}_{\ge 0}$).
-2. **Graph Equivalence:** The directed graph $G(M)$ has edge $(i, j)$ if and only if $a_{i,j} \ge 1 \iff p_j \mid (2N - p_i)$, which matches the relation $R$ defining $G = (I, R)$.
-3. **Algebraic Irreducibility:** By Proposition 3.2, $G = (I, R)$ is strongly connected. By Theorem 3.5.A, the governing exponent matrix $M$ is strictly irreducible.
+**Proof of Proposition 3.5.**  
+Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Non-Divisibility Inheritance (Proposition 2.6), no prime $p_i \in I \subseteq P^*(0)$ can divide $2N$, which enforces $p_i \nmid (2N - p_i)$ and therefore $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to a non-negative exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$). 
 
-*Proof of Proposition 3.5.*  
-Since $D(I) = I$, all prime factors of $2N - p_i$ belong to $I$ for every $p_i \in I$. By Non-Divisibility Inheritance (Proposition 2.6), no prime $p_i \in I \subseteq P^*(0)$ can divide $2N$, which enforces $p_i \nmid (2N - p_i)$ and therefore $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$. Thus, the system is governed by $2N - p_i = \prod_{j \neq i} p_j^{a_{i,j}}$, corresponding to an exponent matrix $M$ with zero diagonal. By Theorem 3.5.A and the strong connectivity of $G = (I, R)$ (Proposition 3.2), $M$ is strictly irreducible. $\blacksquare$
+The directed graph $G(M)$ has an edge $(i, j)$ if and only if $a_{i,j} \ge 1 \iff p_j \mid (2N - p_i)$, which identically matches the relation $R$ defining $G = (I, R)$. By Proposition 3.2, $G = (I, R)$ is strongly connected. Applying Theorem 3.5.A, the governing exponent matrix $M$ is strictly irreducible. $\blacksquare$
 
 ### The Governing Linear-Algebraic & Diophantine System $\mathcal{S}(2N, k, M)$
 
@@ -227,7 +220,7 @@ In this section, we analyze the governing system $\mathcal{S}(2N, k, M)$ and exe
 No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no 1-element stationary set $D(\{p\}) = \{p\}$ can exist, forcing every minimal terminal island to have cardinality $k = |I| \ge 2$. Formally:
 $$\nexists p \in P^*(0) \text{ such that } p \in D(\{p\}) \quad (p \mid (2N - p)).$$
 
-*Proof.*  
+**Proof of Proposition 4.1.**  
 Suppose for contradiction that $p \in D(\{p\})$ for some $p \in P^*(0)$. By Definition 2.2 of the divisor mapping $D(S)$, $p \in D(\{p\})$ implies that $p$ divides $2N - p$. Thus:
 $$p \mid (2N - p) \implies 2N - p = c \cdot p \quad \text{for some integer } c \ge 1.$$
 Rearranging gives $2N = p + c \cdot p = p(c + 1)$, which implies $p \mid 2N$.
@@ -244,6 +237,8 @@ Therefore, $p \notin D(\{p\})$ for all $p \in P^*(0)$, proving that no single pr
 No strongly connected island of cardinality $k=2$ can exist:
 $$\nexists \{p_1, p_2\} \subset \mathbb{P} \quad \text{such that} \quad 2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2}.$$
 
+To establish Proposition 4.2, we recall the following classical results on exponential Diophantine equations and primitive prime divisors:
+
 #### Theorem 4.2.A (Mihăilescu's Theorem / Catalan's Conjecture; Mihăilescu 2004)
 The only solution in natural numbers $x, y, a, b > 1$ to the exponential Diophantine equation $x^a - y^b = 1$ is $x = 3, a = 2, y = 2, b = 3$. Consequently, no two non-trivial pure powers of distinct primes can differ by 1.
 
@@ -254,13 +249,7 @@ Let $a > b \ge 1$ be coprime positive integers. For any integer exponent $n \ge 
 
 In particular, for $b = 1$ and any odd prime $p_1 \ge 3$ with exponent $n = a_2 - 1 \ge 2$, the term $p_1^{a_2-1} - 1$ possesses a primitive prime divisor, guaranteeing that the modular factor $p_2$ dividing $p_1^{a_2-1} - 1$ enforces the structural bound $p_1^{a_2-1} - 1 \ge 2p_2$.
 
-**Verification that Proposition 4.2 satisfies the conditions of Theorems 4.2.A and 4.2.B:**
-1. **Coprimality and Non-Trivial Exponents:** The primes $p_1, p_2 \in I$ are distinct odd primes ($3 \le p_1 < p_2$), ensuring $\gcd(p_1, p_2) = 1$, with exponents $a_1 \ge 2$ and $a_2 \ge 3$ (so $n_1 = a_1 - 1 \ge 1$ and $n_2 = a_2 - 1 \ge 2$).
-2. **Application to Factored Power Components:** Although the difference $p_2^{a_1} - p_1^{a_2}$ features asymmetrical exponents, rearranging into $p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1)$ applies Zsigmondy's Theorem directly to the individual term $p_1^{a_2-1} - 1$ (with $a = p_1, b = 1, n = a_2 - 1 \ge 2$).
-3. **Exclusion of Exceptional Classes:** Because $p_1, p_2 \ge 3$ are odd primes, none of Zsigmondy's exceptional cases can occur ($p_1 \ge 3 \neq 2$, and for $n=2$, $p_1 + 1$ is not an exceptional power constraint that eliminates divisors). Thus, $p_1^{a_2-1} - 1$ strictly possesses a primitive prime divisor.
-4. **Growth and Divisibility Obstruction:** The primitive divisor structure guarantees that $p_1^{a_2-1} - 1$ cannot be composed entirely of prime factors from smaller exponents $k < a_2 - 1$. Combined with parity ($c \ge 2$), this enforces $p_1^{a_2-1} - 1 = c p_2 \ge 2p_2 \implies p_1^{a_2} \ge 2p_1 p_2 + p_1$. Consequently, the power difference $|p_2^{a_1} - p_1^{a_2}|$ grows asymptotically faster than the linear prime difference $p_2 - p_1$, ruling out non-trivial integer solutions.
-
-*Proof of Proposition 4.2.*  
+**Proof of Proposition 4.2.**  
 Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 < p_2 \le \frac{2N-5}{3} < \frac{2N}{3}$.  
 If $k=2$, the system of equations is:
 $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a_2 \ge 1).$$
@@ -316,7 +305,7 @@ Thus, no $k=2$ island can exist. $\blacksquare$
 No strongly connected island of cardinality $k=3$ can exist:
 $$\nexists \{p_1, p_2, p_3\} \subset \mathbb{P} \quad \text{such that} \quad D(\{p_1, p_2, p_3\}) = \{p_1, p_2, p_3\}.$$
 
-*Proof.*  
+**Proof of Proposition 4.3.**  
 Let $I = \{p_1, p_2, p_3\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 < p_2 < p_3 \le \frac{2N-5}{3} < \frac{2N}{3}$.
 
 **Case 1: Square-Free Products ($a_{i,j} \in \{0, 1\}$)**  
@@ -355,17 +344,17 @@ Thus, no $k=3$ island can exist. $\blacksquare$
 If any exponent in the matrix $M$ satisfies $a_{i,j} \ge 2$, the repeated prime $p_j$ is bounded by $p_j \le \sqrt{2N - 3} = O(\sqrt{2N})$, and any co-factor prime $p_r \in I$ dividing $2N - p_i$ ($r \neq j$) is bounded by $p_r \le \frac{2N - 3}{9}$. Formally:
 $$\left( a_{i,j} \ge 2 \right) \implies p_j \le \sqrt{2N - 3} \quad \text{and} \quad \left( a_{i,r} \ge 1, \, r \neq j \right) \implies p_r \le \frac{2N - 3}{9}.$$
 
-*Proof.*  
+**Proof of Proposition 4.4.**  
 Suppose $a_{i,j} \ge 2$ for some $i, j \in \{1, \dots, k\}$.  
 1. **Bound on $p_j$:** $2N - p_i = p_j^{a_{i,j}} \cdot \prod_{m \ne j} p_m^{a_{i,m}} \ge p_j^2$. Since $p_i \ge 3$, we have $2N - p_i \le 2N - 3$. Thus $p_j^2 \le 2N - 3 \implies p_j \le \sqrt{2N - 3}$.  
 2. **Bound on Co-Factor $p_r$:** If $a_{i,r} \ge 1$ ($r \neq j$), then $2N - p_i \ge p_j^2 p_r$. Since $p_j \ge 3$ (odd prime), $p_j^2 \ge 9$. Thus $9 p_r \le p_j^2 p_r \le 2N - 3 \implies p_r \le \frac{2N - 3}{9}$.  
-3. **Bound on Maximum Prime $s = \max(I)$:** If $s = p_j$, then $s \le \sqrt{2N - 3}$. If $s$ co-occurs with $p_j^2$ in $2N - p_i$, then $s \le \frac{2N - 3}{9}$. $\blacksquare$
+3. **Bound on Maximum Prime $s = \max(I)$:** If $s = p_j$, then $s \le \sqrt{2N - 3}$. If $s$ co-occurs with $p_j^2 in $2N - p_i$, then $s \le \frac{2N - 3}{9}$. $\blacksquare$
 
 #### Proposition 4.5 (Binary Exponent Domain Collapse: $a_{i,j} \in \{0, 1\}$)
 For any $k \ge 4$, no stationary island $I = \{p_1, p_2, \dots, p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ can exist with all exponents restricted to $a_{i,j} \in \{0, 1\}$ (square-free products). Formally:
 $$\left( \forall i, j, \, a_{i,j} \in \{0, 1\} \right) \implies \text{Impossible for all } k \ge 4.$$
 
-*Proof.*  
+**Proof of Proposition 4.5.**  
 Let $I = \{p_1, p_2, \dots, p_k\}$ with $p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3} < \frac{2N}{3}$. Every $2N - p_i$ is a square-free product of a subset $S_i \subseteq I \setminus \{p_i\}$ with $|S_i| \ge 2$:
 
 1. **Dense Case ($S_i = I \setminus \{p_i\}$ for all $i$):**  
@@ -399,17 +388,14 @@ Thus, no square-free system can exist for any $k \ge 4$. $\blacksquare$
 Assuming $2N$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any stationary island $I \subseteq P^*_\infty$ are uniformly bounded by $a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$. Formally:
 $$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
 
+To establish Proposition 4.6, we recall the Baker--Matveev Theorem on Linear Forms in Logarithms:
+
 #### Theorem 4.6.A (Baker--Matveev Theorem on Linear Forms in Logarithms; Baker 1966, Matveev 2000)
 Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
 $$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(e B),$$
 where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
 
-**Verification that Proposition 4.6 satisfies the conditions of Theorem 4.6.A:**
-1. **Multiplicative Independence:** The distinct primes $p_1, p_2, \dots, p_k \in I$ are multiplicatively independent over $\mathbb{Q}$ by the Fundamental Theorem of Arithmetic.
-2. **Non-Vanishing Linear Form:** For any Diophantine row equation $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$, taking logarithms yields $\ln(2N - p_i) - \sum_{j=1}^k a_{i,j} \ln p_j = 0$. For non-matching integer vectors, $\Lambda \neq 0$, and Baker--Matveev theory guarantees that non-trivial integer combinations cannot approach 0 arbitrarily closely without vanishing identically.
-3. **Exponent Lattice Bound:** Combined with the elementary logarithm bound $3^{a_{i,j}} \le 2N - 3 \implies a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$, the integer exponents are restricted to a finite lattice of size $O(\ln N)$.
-
-*Proof of Proposition 4.6.*  
+**Proof of Proposition 4.6.**  
 Under the counterexample hypothesis, $P^*_\infty$ contains at least one irreducible stationary island $I$ (Propositions 2.12 & 3.3).  
 For any $p_i \in I$, $2 \mid 2N \implies 2 \notin P^*(0)$, so all primes $p_i, p_j \in I$ are odd ($p_i, p_j \ge 3$), which implies $2N - p_i \le 2N - 3$.  
 Since $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ and all primes $p_j \in I$ satisfy $p_j \ge 3$, we have:
@@ -428,18 +414,15 @@ $$2N \text{ is a counterexample} \implies \forall i \in \{1, \dots, k\}, \quad 2
 $$\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum_{i=1}^k u_i \ln(2N - p_i)}{\sum_{j=1}^k u_j \ln(p_j)} \ge 2,$$
 where $\mathbf{u} > \mathbf{0}$ is the left Perron--Frobenius eigenvector of $M$.
 
+To establish the spectral radius lower bound, we recall the Collatz--Wielandt Boundary Theorem:
+
 #### Theorem 4.7.A (Collatz--Wielandt Boundary Theorem; Collatz 1942, Wielandt 1950)
 For any non-negative irreducible matrix $M \in \mathbb{R}_{\ge 0}^{k \times k}$, its dominant eigenvalue (spectral radius) $\rho(M)$ is bounded by its minimum and maximum row sums:
 $$\min_{1 \le i \le k} \sum_{j=1}^k a_{i,j} \le \rho(M) \le \max_{1 \le i \le k} \sum_{j=1}^k a_{i,j}.$$
 
-**Verification that Proposition 4.7 satisfies the conditions of Theorem 4.7.A:**
-1. **Non-Negativity & Irreducibility:** $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ is non-negative, and irreducibility is established via Varga's Theorem (Proposition 3.5) from graph strong connectivity (Proposition 3.2).
-2. **Minimum Row Sum Condition:** Under the counterexample hypothesis, $2N - p_i$ is composite and odd for all $p_i \in I$ (Proposition 2.7), so $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ contains at least two prime factors (with multiplicity). Hence $\sum_{j=1}^k a_{i,j} \ge 2$ for every $i \in \{1, \dots, k\}$.
-3. **Deduction:** Collatz--Wielandt yields $\rho(M) \ge \min_i \sum_j a_{i,j} \ge 2$.
-
-*Proof of Proposition 4.7.*  
+**Proof of Proposition 4.7.**  
 1. **Compositeness & Minimum Row Sum:** For any prime $p_i \in I$, the odd complement $2N - p_i$ cannot be prime or twice a prime (since $2 \mid 2N \implies 2N - p_i$ is odd). Thus, $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ contains at least two prime factors (with multiplicity), forcing the row sum $\sum_{j=1}^k a_{i,j} \ge 2$ for all $i$.
-2. **Spectral Radius Lower Bound:** By Theorem 4.7.A (Collatz--Wielandt Boundary Theorem) and the hypothesis verification checklist above, $\rho(M) \ge \min_i \sum_{j=1}^k a_{i,j} \ge 2$.
+2. **Spectral Radius Lower Bound:** By Theorem 4.7.A (Collatz--Wielandt Boundary Theorem), $\rho(M) \ge \min_i \sum_{j=1}^k a_{i,j} \ge 2$.
 3. **The Spectral Decoupling Obstacle for $k \ge 4$:** The identity $\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} \ge 2$ forces the weighted log-average of $2N - p_i$ to be at least double the weighted log-average of the primes $p_j \in I$. 
    Because any island $I$ must contain upper primes extending toward $\frac{2N-5}{3}$ (by Proposition 2.13 and graph strong connectivity), any prime $p_j > \sqrt{2N}$ yields $2 \ln(p_j) > \ln(2N) > \ln(2N - p_i)$. Sustaining $\rho(M) \ge 2$ would require the left Perron vector $\mathbf{u}$ to decouple entirely from all primes $p_j > \sqrt{2N}$, violating the irreducibility and strong connectivity of $G = (I, R)$ (Proposition 3.2).
 
@@ -458,18 +441,14 @@ As matrix dimension $k$ or spectral radius $\rho(M)$ increases, the upper-bound 
 Formally:
 $$2N \text{ is a counterexample} \implies U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3} \quad \text{and} \quad \min_{j \in \text{Large}} u_j \le \frac{2}{m \cdot \rho(M)} \to 0.$$
 
+To establish Proposition 4.9, we recall the classical Perron--Frobenius Theorem for irreducible non-negative matrices:
+
 #### Theorem 4.9.A (Perron--Frobenius Theorem; Perron 1907, Frobenius 1912)
 Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matrix with spectral radius $\rho(M)$. Then:
 1. $\rho(M) > 0$ is a simple positive real eigenvalue strictly exceeding the modulus of any other real eigenvalue.
 2. There exists a unique normalized left eigenvector $\mathbf{u} = (u_1, \dots, u_k)^T$ satisfying $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$ with strictly positive components $u_i > 0$ for all $i \in \{1, \dots, k\}$ and $\sum_{i=1}^k u_i = 1$.
 
-**Verification that Proposition 4.9 satisfies the conditions of Theorem 4.9.A:**
-1. **Non-Negativity:** Exponents $a_{i,j}$ are non-negative integers ($a_{i,j} \in \mathbb{Z}_{\ge 0}$).
-2. **Irreducibility:** Follows from Theorem 3.5.A (Varga 2009) via the strong connectivity of $G = (I, R)$ (Proposition 3.2).
-3. **Trace Nullity & Zero Diagonal:** Zero diagonal $a_{i,i}=0$ (Proposition 4.1) enforces $\operatorname{Tr}(M)=0$.
-4. **Deduction:** Perron--Frobenius guarantees a unique strictly positive left Perron vector $\mathbf{u} > \mathbf{0}$, ensuring that every prime $p_j \in I$ carries a positive non-zero weight $u_j > 0$ in the spectral quotient identity $\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}}$.
-
-*Proof of Proposition 4.9.*  
+**Proof of Proposition 4.9.**  
 **1. Trace Nullity and Spectral Energy Floor:**  
 Let $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ be the exponent matrix governing an irreducible island $I = \{p_1, \dots, p_k\}$. Let $\lambda_1, \lambda_2, \dots, \lambda_k \in \mathbb{C}$ denote the eigenvalues of $M$, with $\lambda_1 = \rho(M)$ being the dominant real Perron--Frobenius eigenvalue.
 
@@ -520,7 +499,7 @@ Forcing $U_{\text{Large}} < \frac{2}{\rho(M)}$ under discrete integer exponent c
 #### Corollary 4.10 (Asymptotic Non-Existence of Large Islands: $k \ge 6$)
 For all island dimensions $k \ge 6$, no irreducible non-negative integer matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ can govern a stationary limit set $P^*_\infty$. All large fixed-point islands $k \ge 6$ are structurally eliminated.
 
-*Proof.*  
+**Proof of Corollary 4.10.**  
 By Proposition 3.2, an irreducible island of dimension $k \ge 6$ must distribute its prime vertices across the domain, forcing at least $m \ge \lfloor k/2 \rfloor \ge 3$ distinct primes into the upper spectrum $(\sqrt{2N}, \frac{2N-5}{3}]$. With zero diagonal and trace nullities $\operatorname{Tr}(M) = \operatorname{Tr}(M^2) = \operatorname{Tr}(M^3) = 0$, the row sums satisfy $\sum_j a_{i,j} \ge 2$ with average degree $\overline{r} \ge 3$, ensuring $\rho(M) \ge 3$. 
 Applying Proposition 4.9 yields the cumulative upper bound $U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3}$, which restricts the average upper-prime weight to:
 $$\min_{j \in \text{Large}} u_j \le \frac{U_{\text{Large}}}{m} < \frac{2}{3 \times 3} = \frac{2}{9} \approx 0.222.$$
@@ -535,7 +514,7 @@ As $k \ge 6$ increases, the capacity per upper prime decays as $O(1/k) \to 0$. U
 No strongly connected, irreducible stationary island of cardinality $k = 4$ can exist for any hypothetical Goldbach counterexample $2N > 6$:
 $$\nexists \{p_1, p_2, p_3, p_4\} \subset \mathbb{P} \quad \text{such that} \quad D(\{p_1, p_2, p_3, p_4\}) = \{p_1, p_2, p_3, p_4\}.$$
 
-*Proof.*  
+**Proof of Proposition 4.11.**  
 Let $I = \{p_1, p_2, p_3, p_4\}$ be a hypothetical irreducible stationary island governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$.
 1. **Trace Nullities ($c_1 = c_2 = c_3 = 0$):**  
    - By Proposition 4.1 ($k=1$ collapse), $a_{i,i} = 0 \implies c_1 = \operatorname{Tr}(M) = 0$.  
@@ -571,7 +550,7 @@ Thus, no governing matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$ can exist, est
 No strongly connected, irreducible stationary island of cardinality $k = 5$ can exist for any hypothetical Goldbach counterexample $2N > 6$:
 $$\nexists \{p_1, p_2, p_3, p_4, p_5\} \subset \mathbb{P} \quad \text{such that} \quad D(\{p_1, p_2, p_3, p_4, p_5\}) = \{p_1, p_2, p_3, p_4, p_5\}.$$
 
-*Proof.*  
+**Proof of Proposition 4.12.**  
 Let $I = \{p_1, p_2, p_3, p_4, p_5\}$ be a hypothetical irreducible stationary island governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$.
 1. **Trace Nullities ($c_1 = c_2 = c_3 = 0$):**  
    - By Proposition 4.1 ($k=1$ collapse), $a_{i,i} = 0 \implies c_1 = \operatorname{Tr}(M) = 0$.  
