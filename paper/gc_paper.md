@@ -390,11 +390,11 @@ Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 
 If $k=2$, the system of equations is:
 $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a_2 \ge 1).$$
 
-1. **Case $a_1 = 1$ or $a_2 = 1$:**  
+1. **Case 1 ($a_1 = 1$ or $a_2 = 1$):**  
    If $a_1 = 1$, then $2N - p_1 = p_2^1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1^1 = p_1 \implies 2N = p_1 + p_2$. In either case, $2N = p_1 + p_2$ forms a valid Goldbach partition, contradicting the counterexample hypothesis.
 
-2. **Case $a_1 \ge 2$ and $a_2 \ge 2$:**  
-   - **Step A (Difference Identity and Common Quantity $Q$):**  
+2. **Case 2 ($a_1 \ge 2$ and $a_2 \ge 2$):**  
+   - **Step 2.1 (Difference Identity and Common Quantity $Q$):**  
      Subtracting $2N - p_2 = p_1^{a_2}$ from $2N - p_1 = p_2^{a_1}$ yields:
      $$(2N - p_1) - (2N - p_2) = p_2 - p_1 = p_2^{a_1} - p_1^{a_2}.$$
      Rearranging terms gives the fundamental identity:
@@ -402,7 +402,7 @@ $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a
      Adding $p_1 + p_2$ to both sides gives the exact expression for $2N$:
      $$2N = p_1 + p_2 + Q.$$
 
-   - **Step B (Modular Congruence and Parity of Multiplier):**  
+   - **Step 2.2 (Modular Congruence and Parity of Multiplier):**  
      Since $\gcd(p_1, p_2) = 1$, the relation $p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1)$ forces:
      $$p_2 \mid (p_1^{a_2-1} - 1) \quad \text{and} \quad p_1 \mid (p_2^{a_1-1} - 1).$$
      Thus, $p_1 p_2 \mid Q$, so $Q = c \cdot p_1 p_2$ for some integer $c \ge 1$, which gives:
@@ -412,23 +412,23 @@ $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a
      Consequently, the exact value of $2N$ satisfies:
      $$2N = p_1 + p_2 + c p_1 p_2 \ge 2 p_1 p_2 + p_1 + p_2 = (p_1 + 1)(p_2 + 1) + p_1 p_2 - 1.$$
 
-   - **Step C (Exponent Asymmetry):**  
+   - **Step 2.3 (Exponent Asymmetry):**  
      Since $p_1 < p_2$, we have $p_1^{a_2-1} - 1 = c p_2 > c p_1 = p_2^{a_1-1} - 1$, which implies:
      $$p_1^{a_2-1} > p_2^{a_1-1}.$$
      Because $p_1 < p_2$, sustaining $p_1^{a_2-1} > p_2^{a_1-1}$ strictly requires:
      $$a_2 - 1 > a_1 - 1 \implies a_2 > a_1 \ge 2 \implies a_2 \ge 3.$$
      Furthermore, $p_1^{a_2-1} = c p_2 + 1 \ge 2 p_2 + 1 > 2 p_1 + 1$.
 
-   - **Step D (Diophantine Descent and Primitive Divisor Contradiction):**  
+   - **Step 2.4 (Diophantine Descent and Primitive Divisor Contradiction):**  
      From $p_2^{a_1-1} = c p_1 + 1$ and $p_1^{a_2-1} = c p_2 + 1$ with even multiplier $c \ge 2$:
-     - *If $a_1 = 2$ ($a_1 - 1 = 1$):* Then $p_2 = c p_1 + 1$. Substituting this into $p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c$ yields:
+     - *Subcase 2.4.a ($a_1 = 2$):* Then $p_2 = c p_1 + 1$. Substituting this into $p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c$ yields:
        $$p_1(p_1^{a_2-2} - c^2) = c + 1.$$
        This requires $p_1 \mid (c + 1)$, so $c + 1 = k p_1$ with $k \ge 1$. Then:
        $$p_1^{a_2-2} - c^2 = k \implies p_1^{a_2-2} = (k p_1 - 1)^2 + k = k^2 p_1^2 - 2k p_1 + (k + 1).$$
        Taking modulo $p_1$ requires $p_1 \mid (k + 1)$, forcing $k \ge p_1 - 1$, which implies $c = k p_1 - 1 \ge p_1(p_1 - 1) - 1$.
        For $a_2 = 3$, $p_1^1 = c^2 + k > c^2$, which directly contradicts $c \ge p_1(p_1 - 1) - 1 > p_1$.
        For $a_2 \ge 4$, dividing repeatedly by $p_1$ produces an integer descent on constant terms down to $p_1 \mid 1$, which is impossible for prime $p_1 \ge 3$.
-     - *If $a_1 \ge 3$:* Then $a_2 > a_1 \ge 3$. The equation $p_2^{a_1} - p_1^{a_2} = p_2 - p_1$ equates the linear prime difference $p_2 - p_1 < p_2$ with a difference of pure prime powers. By Theorem 4.2.A (Mihăilescu's Theorem, for unit power differences) and Theorem 4.2.B (Zsigmondy's Theorem, for primitive prime divisors across higher prime powers), the primitive factors in $p_1^{a_2-1} - 1$ force the power difference $|p_2^{a_1} - p_1^{a_2}|$ for $a_2 > a_1 \ge 3$ to strictly exceed $p_1 p_2 > p_2 - p_1$, precluding any integer solution.
+     - *Subcase 2.4.b ($a_1 \ge 3$):* Then $a_2 > a_1 \ge 3$. The equation $p_2^{a_1} - p_1^{a_2} = p_2 - p_1$ equates the linear prime difference $p_2 - p_1 < p_2$ with a difference of pure prime powers. By Theorem 4.2.A (Mihăilescu's Theorem, for unit power differences) and Theorem 4.2.B (Zsigmondy's Theorem, for primitive prime divisors across higher prime powers), the primitive factors in $p_1^{a_2-1} - 1$ force the power difference $|p_2^{a_1} - p_1^{a_2}|$ for $a_2 > a_1 \ge 3$ to strictly exceed $p_1 p_2 > p_2 - p_1$, precluding any integer solution.
 
 Thus, no $k=2$ island can exist. $\blacksquare$
 
@@ -444,21 +444,21 @@ $$\nexists \{p_1, p_2, p_3\} \subset \mathbb{P} \quad \text{such that} \quad D(\
 **Proof of Proposition 4.3.**  
 Let $I = \{p_1, p_2, p_3\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 < p_2 < p_3 \le \frac{2N-5}{3} < \frac{2N}{3}$. The collapse of $k=3$ is proved across the exponent domains:
 
-1. **Elimination of Square-Free Products ($a_{i,j} \in \{0, 1\}$):**  
+1. **Case 1: Square-Free Products ($a_{i,j} \in \{0, 1\}$):**  
    The system is $2N - p_1 = p_2 p_3$, $2N - p_2 = p_1 p_3$, and $2N - p_3 = p_1 p_2$. Subtracting the first two equations:
    $$(2N - p_1) - (2N - p_2) = p_2 - p_1 = p_2 p_3 - p_1 p_3 = p_3(p_2 - p_1).$$
    Since $p_2 > p_1$, dividing by $p_2 - p_1 \neq 0$ yields $p_3 = 1$, contradicting $p_3 \ge 5$.
 
-2. **Elimination of Higher Exponents ($a_{i,j} \ge 2$):**  
+2. **Case 2: Higher Exponents ($a_{i,j} \ge 2$):**  
    The maximal prime $p_3 = \max(I)$ must divide at least one of $\{2N - p_1, 2N - p_2\}$:
-   - **Subcase 2A ($p_3$ divides both $2N - p_1$ and $2N - p_2$):** Let $2N - p_1 = p_3 m_1$ and $2N - p_2 = p_3 m_2$. Subtracting gives $p_2 - p_1 = p_3(m_1 - m_2)$. Since $p_2 > p_1$, $m_1 - m_2 \ge 1 \implies p_2 - p_1 \ge p_3 \implies p_2 > p_3$, contradicting $p_2 < p_3$.
-   - **Subcase 2B ($p_3$ divides only $2N - p_2$):** Here $p_3 \nmid (2N - p_1) \implies 2N - p_1 = p_2^a$ ($a \ge 2$), so $2N = p_1 + p_2^a$. Since $2N - p_2 = p_3 m_2$, substituting $2N$ gives $p_1 + p_2(p_2^{a-1} - 1) = p_3 m_2$. The multiplier $m_2 = p_1^u p_3^v$:
+   - **Step 2.1 ($p_3$ divides both $2N - p_1$ and $2N - p_2$):** Let $2N - p_1 = p_3 m_1$ and $2N - p_2 = p_3 m_2$. Subtracting gives $p_2 - p_1 = p_3(m_1 - m_2)$. Since $p_2 > p_1$, $m_1 - m_2 \ge 1 \implies p_2 - p_1 \ge p_3 \implies p_2 > p_3$, contradicting $p_2 < p_3$.
+   - **Step 2.2 ($p_3$ divides only $2N - p_2$):** Here $p_3 \nmid (2N - p_1) \implies 2N - p_1 = p_2^a$ ($a \ge 2$), so $2N = p_1 + p_2^a$. Since $2N - p_2 = p_3 m_2$, substituting $2N$ gives $p_1 + p_2(p_2^{a-1} - 1) = p_3 m_2$. The multiplier $m_2 = p_1^u p_3^v$:
      - $m_2 = 1 \implies 2N = p_2 + p_3$ (Goldbach pair, contradiction).
      - $v \ge 1 \implies m_2 \ge p_3 \implies 2N - p_2 \ge p_3^2 > p_2^2 \ge p_2^a \implies p_1 > p_2$, contradicting $p_1 < p_2$.
      - $v = 0, u \ge 1 \implies 2N - p_2 = p_3 p_1^u \implies p_1(p_3 p_1^{u-1} - 1) = p_2(p_2^{a-1} - 1)$. Taking modulo $p_2$ forces $p_3 p_1^{u-1} \equiv 1 \pmod{p_2} \implies p_3 p_1^{u-1} - 1 \ge p_2$. Thus $p_3 p_1^u \ge p_1 p_2 + p_1$, forcing $2N \ge p_2(p_1 + 1) + p_1$. This growth rate contradicts the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
 
 *Remark (Symmetric Index Configuration).*  
-Exchanging indices $1 \leftrightarrow 2$ in Subcase 2B yields the dual system $2N - p_2 = p_1^a$ and $2N - p_1 = p_3 p_2^u$ ($a \ge 2, u \ge 1$). Equating expressions for $2N$ produces the dual modular identity $p_2(p_3 p_2^{u-1} - 1) = p_1(p_1^{a-1} - 1)$. Because $\gcd(p_1, p_2) = 1$ and $p_1 < p_2$, taking modulo $p_1$ forces $p_3 p_2^{u-1} \equiv 1 \pmod{p_1}$, inducing the exact same superlinear growth floor $2N \ge p_1(p_2 + 1) + p_2$ and contradicting the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
+Exchanging indices $1 \leftrightarrow 2$ in Step 2.2 yields the dual system $2N - p_2 = p_1^a$ and $2N - p_1 = p_3 p_2^u$ ($a \ge 2, u \ge 1$). Equating expressions for $2N$ produces the dual modular identity $p_2(p_3 p_2^{u-1} - 1) = p_1(p_1^{a-1} - 1)$. Because $\gcd(p_1, p_2) = 1$ and $p_1 < p_2$, taking modulo $p_1$ forces $p_3 p_2^{u-1} \equiv 1 \pmod{p_1}$, inducing the exact same superlinear growth floor $2N \ge p_1(p_2 + 1) + p_2$ and contradicting the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
 
 Thus, no $k=3$ island can exist. $\blacksquare$
 
@@ -611,47 +611,47 @@ Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matri
 2. There exists a unique normalized left eigenvector $\mathbf{u} = (u_1, \dots, u_k)^T$ satisfying $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$ with strictly positive components $u_i > 0$ for all $i \in \{1, \dots, k\}$ and $\sum_{i=1}^k u_i = 1$.
 
 **Proof of Proposition 4.9.**  
-**1. Trace Nullity and Spectral Energy Floor:**  
-Let $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ be the exponent matrix governing an irreducible island $I = \{p_1, \dots, p_k\}$. Let $\lambda_1, \lambda_2, \dots, \lambda_k \in \mathbb{C}$ denote the eigenvalues of $M$, with $\lambda_1 = \rho(M)$ being the dominant real Perron--Frobenius eigenvalue.
+1. **Step 1 (Trace Nullity and Spectral Energy Floor):**  
+   Let $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ be the exponent matrix governing an irreducible island $I = \{p_1, \dots, p_k\}$. Let $\lambda_1, \lambda_2, \dots, \lambda_k \in \mathbb{C}$ denote the eigenvalues of $M$, with $\lambda_1 = \rho(M)$ being the dominant real Perron--Frobenius eigenvalue.
 
-The $m$-th power trace $\operatorname{Tr}(M^m) = \sum_{r=1}^k \lambda_r^m = \sum_{i_1, \dots, i_m} a_{i_1, i_2} a_{i_2, i_3} \cdots a_{i_m, i_1}$ counts directed $m$-cycles in graph $G = (I, R)$:
-1. **Zero Diagonal Identity ($m=1$):** By Proposition 4.1 ($k=1$ collapse) and Condition 3 ($a_{i,i} = 0$), $M$ has zero self-loops: $\operatorname{Tr}(M) = \sum_{r=1}^k \lambda_r = 0$.
-2. **Absence of 2-Cycles ($m=2$):** By Proposition 4.2 ($k=2$ collapse), no 2-prime cycle exists ($a_{i,j} a_{j,i} = 0$ for all $i \neq j$). Thus: $\operatorname{Tr}(M^2) = \sum_{r=1}^k \lambda_r^2 = 0$.
-3. **Absence of 3-Cycles ($m=3$):** By Proposition 4.3 ($k=3$ collapse), no 3-prime cycle exists ($a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r$). Thus: $\operatorname{Tr}(M^3) = \sum_{r=1}^k \lambda_r^3 = 0$.
+   The $m$-th power trace $\operatorname{Tr}(M^m) = \sum_{r=1}^k \lambda_r^m = \sum_{i_1, \dots, i_m} a_{i_1, i_2} a_{i_2, i_3} \cdots a_{i_m, i_1}$ counts directed $m$-cycles in graph $G = (I, R)$:
+   - **Zero Diagonal Identity ($m=1$):** By Proposition 4.1 ($k=1$ collapse) and Condition 3 ($a_{i,i} = 0$), $M$ has zero self-loops: $\operatorname{Tr}(M) = \sum_{r=1}^k \lambda_r = 0$.
+   - **Absence of 2-Cycles ($m=2$):** By Proposition 4.2 ($k=2$ collapse), no 2-prime cycle exists ($a_{i,j} a_{j,i} = 0$ for all $i \neq j$). Thus: $\operatorname{Tr}(M^2) = \sum_{r=1}^k \lambda_r^2 = 0$.
+   - **Absence of 3-Cycles ($m=3$):** By Proposition 4.3 ($k=3$ collapse), no 3-prime cycle exists ($a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r$). Thus: $\operatorname{Tr}(M^3) = \sum_{r=1}^k \lambda_r^3 = 0$.
 
-Because $\operatorname{Tr}(M^2) = 0$, the square of the dominant Perron eigenvalue $\lambda_1^2 = \rho(M)^2$ must be entirely balanced by non-real or negative eigenvalues: 
-$$\rho(M)^2 = -\sum_{r=2}^k \lambda_r^2 \implies \sum_{r=2}^k |\lambda_r|^2 \ge \rho(M)^2 \ge 4.$$
+   Because $\operatorname{Tr}(M^2) = 0$, the square of the dominant Perron eigenvalue $\lambda_1^2 = \rho(M)^2$ must be entirely balanced by non-real or negative eigenvalues: 
+   $$\rho(M)^2 = -\sum_{r=2}^k \lambda_r^2 \implies \sum_{r=2}^k |\lambda_r|^2 \ge \rho(M)^2 \ge 4.$$
 
-**2. Perron Vector Uniform Lower Floor:**  
-Because $M$ is non-negative and topologically strongly connected (Proposition 3.2), $M$ is irreducible. Let $\mathbf{u} = (u_1, \dots, u_k)^T > \mathbf{0}$ be the left Perron--Frobenius eigenvector satisfying $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$ with $u_i > 0$ and $\sum_{i=1}^k u_i = 1$. By Lemma 4.8, every prime $p_j \in I$ carries a strictly positive, non-vanishing weight $u_j \ge \delta(k, \rho) = \frac{1}{k \cdot \rho(M)^{k-1}} > 0$.
+2. **Step 2 (Perron Vector Uniform Lower Floor):**  
+   Because $M$ is non-negative and topologically strongly connected (Proposition 3.2), $M$ is irreducible. Let $\mathbf{u} = (u_1, \dots, u_k)^T > \mathbf{0}$ be the left Perron--Frobenius eigenvector satisfying $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$ with $u_i > 0$ and $\sum_{i=1}^k u_i = 1$. By Lemma 4.8, every prime $p_j \in I$ carries a strictly positive, non-vanishing weight $u_j \ge \delta(k, \rho) = \frac{1}{k \cdot \rho(M)^{k-1}} > 0$.
 
-**3. Multi-Prime Spectral Decoupling Squeeze:**  
-Combining the lower bound $\rho(M) \ge 2$ (Proposition 4.7) with the Perron inner product identity:
-$$\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum_{i=1}^k u_i \ln(2N - p_i)}{\sum_{j=1}^k u_j \ln(p_j)} \ge 2.$$
+3. **Step 3 (Multi-Prime Spectral Decoupling Squeeze):**  
+   Combining the lower bound $\rho(M) \ge 2$ (Proposition 4.7) with the Perron inner product identity:
+   $$\rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum_{i=1}^k u_i \ln(2N - p_i)}{\sum_{j=1}^k u_j \ln(p_j)} \ge 2.$$
 
-1. **Numerator Upper Bound:** Since $p_i \ge 3$, $2N - p_i \le 2N - 3 < 2N$. Using $\sum u_i = 1$, we obtain $\mathbf{u}^T \mathbf{y} = \sum_{i=1}^k u_i \ln(2N - p_i) < \ln(2N)$.
-2. **Denominator Forced Upper Bound:** Substituting $\mathbf{u}^T \mathbf{y} < \ln(2N)$ into $\frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} \ge \rho(M)$ forces:
-   $$\mathbf{u}^T \mathbf{x} = \sum_{j=1}^k u_j \ln(p_j) < \frac{1}{\rho(M)} \ln(2N) = \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
-3. **Upper-Spectrum Density Squeeze for Finite $2N \ge 8$:** By Proposition 2.13 and Proposition 3.2 (Strong Connectivity), for any dimension $k \ge 4$, an irreducible stationary island $I$ cannot cluster all of its primes below $\sqrt{2N}$. At least $m \ge 2$ distinct primes $\{p_{r_1}, p_{r_2}, \dots, p_{r_m}\} \subset I$ must lie in the upper spectrum $(\sqrt{2N}, \frac{2N-5}{3}]$.
+   - **Step 3.1 (Numerator Upper Bound):** Since $p_i \ge 3$, $2N - p_i \le 2N - 3 < 2N$. Using $\sum u_i = 1$, we obtain $\mathbf{u}^T \mathbf{y} = \sum_{i=1}^k u_i \ln(2N - p_i) < \ln(2N)$.
+   - **Step 3.2 (Denominator Forced Upper Bound):** Substituting $\mathbf{u}^T \mathbf{y} < \ln(2N)$ into $\frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} \ge \rho(M)$ forces:
+     $$\mathbf{u}^T \mathbf{x} = \sum_{j=1}^k u_j \ln(p_j) < \frac{1}{\rho(M)} \ln(2N) = \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
+   - **Step 3.3 (Upper-Spectrum Density Squeeze for Finite $2N \ge 8$):** By Proposition 2.13 and Proposition 3.2 (Strong Connectivity), for any dimension $k \ge 4$, an irreducible stationary island $I$ cannot cluster all of its primes below $\sqrt{2N}$. At least $m \ge 2$ distinct primes $\{p_{r_1}, p_{r_2}, \dots, p_{r_m}\} \subset I$ must lie in the upper spectrum $(\sqrt{2N}, \frac{2N-5}{3}]$.
 
-   For every upper-spectrum prime $p_j > \sqrt{2N}$, its logarithm satisfies $\ln(p_j) > \frac{1}{2}\ln(2N) = \ln(\sqrt{2N})$. Partitioning the sum $\mathbf{u}^T \mathbf{x}$ yields:
-   $$\mathbf{u}^T \mathbf{x} = \sum_{p_j \le \sqrt{2N}} u_j \ln(p_j) + \sum_{j \in \text{Large}} u_j \ln(p_j) > \left(\sum_{j \in \text{Small}} u_j\right) \ln(3) + \left(\sum_{j \in \text{Large}} u_j\right) \ln(\sqrt{2N}).$$
+     For every upper-spectrum prime $p_j > \sqrt{2N}$, its logarithm satisfies $\ln(p_j) > \frac{1}{2}\ln(2N) = \ln(\sqrt{2N})$. Partitioning the sum $\mathbf{u}^T \mathbf{x}$ yields:
+     $$\mathbf{u}^T \mathbf{x} = \sum_{p_j \le \sqrt{2N}} u_j \ln(p_j) + \sum_{j \in \text{Large}} u_j \ln(p_j) > \left(\sum_{j \in \text{Small}} u_j\right) \ln(3) + \left(\sum_{j \in \text{Large}} u_j\right) \ln(\sqrt{2N}).$$
 
-   Let $U_{\text{Large}} = \sum_{j \in \text{Large}} u_j$ be the cumulative Perron weight of all upper-spectrum primes, so $\sum_{j \in \text{Small}} u_j = 1 - U_{\text{Large}}$. Substituting into the spectral denominator condition $\mathbf{u}^T \mathbf{x} < \frac{2}{\rho(M)} \ln(\sqrt{2N})$ requires:
-   $$(1 - U_{\text{Large}}) \ln(3) + U_{\text{Large}} \ln(\sqrt{2N}) < \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
+     Let $U_{\text{Large}} = \sum_{j \in \text{Large}} u_j$ be the cumulative Perron weight of all upper-spectrum primes, so $\sum_{j \in \text{Small}} u_j = 1 - U_{\text{Large}}$. Substituting into the spectral denominator condition $\mathbf{u}^T \mathbf{x} < \frac{2}{\rho(M)} \ln(\sqrt{2N})$ requires:
+     $$(1 - U_{\text{Large}}) \ln(3) + U_{\text{Large}} \ln(\sqrt{2N}) < \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
 
-   Solving directly for $U_{\text{Large}}$ yields the exact finite inequality:
-   $$U_{\text{Large}} < \frac{\frac{2}{\rho(M)} \ln(\sqrt{2N}) - \ln(3)}{\ln(\sqrt{2N}) - \ln(3)} \le \frac{2}{\rho(M)}, \quad \forall 2N \ge 8.$$
+     Solving directly for $U_{\text{Large}}$ yields the exact finite inequality:
+     $$U_{\text{Large}} < \frac{\frac{2}{\rho(M)} \ln(\sqrt{2N}) - \ln(3)}{\ln(\sqrt{2N}) - \ln(3)} \le \frac{2}{\rho(M)}, \quad \forall 2N \ge 8.$$
 
-   For any mixed-exponent matrix ($a_{i,j} \ge 2$), at least one row sum satisfies $\sum_j a_{i,j} \ge 3$, driving the average row sum $\bar{r} \ge 3$. By Collatz--Wielandt (1942, 1950), $\rho(M) \ge \bar{r} \ge 3$, which forces $U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3}$.
+     For any mixed-exponent matrix ($a_{i,j} \ge 2$), at least one row sum satisfies $\sum_j a_{i,j} \ge 3$, driving the average row sum $\bar{r} \ge 3$. By Collatz--Wielandt (1942, 1950), $\rho(M) \ge \bar{r} \ge 3$, which forces $U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3}$.
 
-**4. The Discrete Diophantine Decoupling Obstruction:**  
-For an irreducible island of dimension $k \ge 4$ with $m \ge 2$ upper-spectrum primes, the spectral ceiling enforces $\min_{j \in \text{Large}} u_j \le \frac{U_{\text{Large}}}{m} < \frac{2}{m \cdot \rho(M)} \le \frac{2}{3m}$.  
-Simultaneously, the left Perron eigenvector $\mathbf{u} > \mathbf{0}$ satisfies the linear algebraic identity $\mathbf{u}^T (M - \rho(M) I) = \mathbf{0}^T$, meaning the component ratios $u_i / u_j$ are algebraic functions of the integer matrix entries $a_{i,j} \in \mathbb{Z}_{\ge 0}$.  
-By taking natural logarithms of the governing system $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$, each row generates a linear form in logarithms $\Lambda_i = \ln(2N - p_i) - \sum_{j=1}^k a_{i,j} \ln p_j = 0$. 
-Because the distinct primes $p_1, \dots, p_k$ are multiplicatively independent over $\mathbb{Q}$, Theorem 4.6.A (Baker--Matveev) establishes that non-zero linear combinations of $\ln p_j$ are bounded strictly away from zero by an effective logarithmic lattice floor. 
-Consequently, the integer exponents $a_{i,j}$ cannot be continuously fine-tuned to compress the upper-spectrum Perron weights arbitrarily close to $0$ while preserving the path-expansion component floor $u_j \ge \delta(k, \rho) = \frac{1}{k \cdot \rho(M)^{k-1}} > 0$ (Lemma 4.8). 
-Forcing $U_{\text{Large}} < \frac{2}{\rho(M)}$ under discrete integer exponent constraints forces at least one incoming or outgoing edge weight to vanish ($a_{r,j} = 0 \text{ for all } r$), causing the directed graph $G = (I, R)$ to decouple into reducible subgraphs. This directly contradicts Proposition 3.2 (Topological Strong Connectivity), proving that no governing matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ can exist for large dimensions. $\blacksquare$
+4. **Step 4 (The Discrete Diophantine Decoupling Obstruction):**  
+   For an irreducible island of dimension $k \ge 4$ with $m \ge 2$ upper-spectrum primes, the spectral ceiling enforces $\min_{j \in \text{Large}} u_j \le \frac{U_{\text{Large}}}{m} < \frac{2}{m \cdot \rho(M)} \le \frac{2}{3m}$.  
+   Simultaneously, the left Perron eigenvector $\mathbf{u} > \mathbf{0}$ satisfies the linear algebraic identity $\mathbf{u}^T (M - \rho(M) I) = \mathbf{0}^T$, meaning the component ratios $u_i / u_j$ are algebraic functions of the integer matrix entries $a_{i,j} \in \mathbb{Z}_{\ge 0}$.  
+   By taking natural logarithms of the governing system $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$, each row generates a linear form in logarithms $\Lambda_i = \ln(2N - p_i) - \sum_{j=1}^k a_{i,j} \ln p_j = 0$. 
+   Because the distinct primes $p_1, \dots, p_k$ are multiplicatively independent over $\mathbb{Q}$, Theorem 4.6.A (Baker--Matveev) establishes that non-zero linear combinations of $\ln p_j$ are bounded strictly away from zero by an effective logarithmic lattice floor. 
+   Consequently, the integer exponents $a_{i,j}$ cannot be continuously fine-tuned to compress the upper-spectrum Perron weights arbitrarily close to $0$ while preserving the path-expansion component floor $u_j \ge \delta(k, \rho) = \frac{1}{k \cdot \rho(M)^{k-1}} > 0$ (Lemma 4.8). 
+   Forcing $U_{\text{Large}} < \frac{2}{\rho(M)}$ under discrete integer exponent constraints forces at least one incoming or outgoing edge weight to vanish ($a_{r,j} = 0 \text{ for all } r$), causing the directed graph $G = (I, R)$ to decouple into reducible subgraphs. This directly contradicts Proposition 3.2 (Topological Strong Connectivity), proving that no governing matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ can exist for large dimensions. $\blacksquare$
 
 ---
 
@@ -664,20 +664,20 @@ For all island dimensions $k \ge 6$, no irreducible non-negative integer matrix 
 **Proof of Corollary 4.10.**  
 The asymptotic elimination of all large fixed-point islands $k \ge 6$ proceeds as follows:
 
-1. **Upper-Spectrum Prime Allocation:**  
+1. **Step 1 (Upper-Spectrum Prime Allocation):**  
    By Proposition 3.2, an irreducible island $I$ of dimension $k \ge 6$ must distribute its prime vertices across the domain, forcing at least $m \ge \lfloor k/2 \rfloor \ge 3$ distinct primes into the upper spectrum $(\sqrt{2N}, \frac{2N-5}{3}]$.
 
-2. **Spectral Radius Bound ($\rho(M) \ge 3$):**  
+2. **Step 2 (Spectral Radius Bound, $\rho(M) \ge 3$):**  
    With zero diagonal ($\operatorname{Tr}(M) = 0$) and trace nullities $\operatorname{Tr}(M^2) = \operatorname{Tr}(M^3) = 0$, the row sums satisfy $\sum_j a_{i,j} \ge 2$ with average degree $\overline{r} \ge 3$, ensuring $\rho(M) \ge 3$.
 
-3. **Perron Weight Compression:**  
+3. **Step 3 (Perron Weight Compression):**  
    Applying Proposition 4.9 yields the cumulative upper bound $U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3}$, which restricts the minimum upper-prime weight to:
    $$\min_{j \in \text{Large}} u_j \le \frac{U_{\text{Large}}}{m} < \frac{2}{3 \times 3} = \frac{2}{9} \approx 0.222.$$
 
-4. **Lattice Rigidity Contradiction:**  
+4. **Step 4 (Lattice Rigidity Contradiction):**  
    As $k \ge 6$ increases, the capacity per upper prime decays as $O(1/k) \to 0$. Under Theorem 4.6.A (Baker--Matveev lattice rigidity), the discrete integer matrix entries $a_{i,j} \in \mathbb{Z}_{\ge 0}$ cannot sustain this asymptotic decay without nullifying connecting path products $(M^m)_{i,j} = 0$, forcing $M$ to become reducible---a direct contradiction to Proposition 3.2.
 
-5. **Conclusion:**  
+5. **Step 5 (Conclusion):**  
    Therefore, all stationary islands of cardinality $k \ge 6$ are structurally eliminated. $\blacksquare$
 
 ---
@@ -691,23 +691,23 @@ $$\nexists \{p_1, p_2, p_3, p_4\} \subset \mathbb{P} \quad \text{such that} \qua
 
 **Proof of Proposition 4.11.**  
 Let $I = \{p_1, p_2, p_3, p_4\}$ be a hypothetical irreducible stationary island governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$.
-1. **Trace Nullities ($c_1 = c_2 = c_3 = 0$):**  
+1. **Step 1 (Trace Nullities, $c_1 = c_2 = c_3 = 0$):**  
    - By Proposition 4.1 ($k=1$ collapse), $a_{i,i} = 0 \implies c_1 = \operatorname{Tr}(M) = 0$.  
    - By Proposition 4.2 ($k=2$ collapse), $a_{i,j} a_{j,i} = 0$ for all $i \neq j \implies c_2 = \frac{1}{2} \operatorname{Tr}(M^2) = 0$.  
    - By Proposition 4.3 ($k=3$ collapse), $a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r \implies c_3 = \frac{1}{3} \operatorname{Tr}(M^3) = 0$.
 
-2. **Characteristic Polynomial Reduction:**  
+2. **Step 2 (Characteristic Polynomial Reduction):**  
    By Newton's sums for $4 \times 4$ matrices, the trace nullities $c_1 = c_2 = c_3 = 0$ force the characteristic polynomial of $M$ to reduce to:
    $$P_M(\lambda) = \det(\lambda I - M) = \lambda^4 - c_4, \quad \text{where } c_4 = \det(M) = \frac{1}{4} \operatorname{Tr}(M^4).$$
 
-3. **Row Sum Constraint vs. Matrix Structure:**  
+3. **Step 3 (Row Sum Constraint vs. Matrix Structure):**  
    By Proposition 4.7, because $2N - p_i$ is composite for all $p_i \in I$, every row sum of $M$ must satisfy $\sum_{j=1}^4 a_{i,j} \ge 2$, forcing spectral radius $\rho(M) \ge 2$.  
-   If $c_4 = 0$, then $M$ is nilpotent, implying $\rho(M) = 0$, contradicting $\rho(M) \ge 2$.  
-   If $c_4 > 0$, by the Cayley--Hamilton Theorem, $M^4 = c_4 I$. For an irreducible non-negative matrix $M$ with zero diagonal to satisfy $M^4 = c_4 I$, $M$ must be a scalar multiple of a simple 4-cycle permutation matrix ($p_1 \to p_2 \to p_3 \to p_4 \to p_1$) with constant exponent $a_{i,i+1} = d \ge 1$.
-   - If $d = 1$, row sums equal 1, violating $\sum_j a_{i,j} \ge 2$.  
-   - If $d \ge 2$, every node equation becomes $2N - p_i = p_{i+1}^d$. By Proposition 4.4 (Root Compression), $d \ge 2 \implies p_i \le \sqrt{2N-3}$ for all $i \in \{1, 2, 3, 4\}$. Subtracting equations yields $p_2 - p_1 = p_3^d - p_2^d = (p_3 - p_2)(p_3^{d-1} + \dots + p_2^{d-1}) \ge p_3 + p_2 > p_2$, forcing $p_1 < 0$, a direct contradiction.
+   - **Step 3.1 (Nilpotent Case, $c_4 = 0$):** If $c_4 = 0$, then $M$ is nilpotent, implying $\rho(M) = 0$, contradicting $\rho(M) \ge 2$.  
+   - **Step 3.2 (Non-Nilpotent Case, $c_4 > 0$):** If $c_4 > 0$, by the Cayley--Hamilton Theorem, $M^4 = c_4 I$. For an irreducible non-negative matrix $M$ with zero diagonal to satisfy $M^4 = c_4 I$, $M$ must be a scalar multiple of a simple 4-cycle permutation matrix ($p_1 \to p_2 \to p_3 \to p_4 \to p_1$) with constant exponent $a_{i,i+1} = d \ge 1$.
+     - If $d = 1$, row sums equal 1, violating $\sum_j a_{i,j} \ge 2$.  
+     - If $d \ge 2$, every node equation becomes $2N - p_i = p_{i+1}^d$. By Proposition 4.4 (Root Compression), $d \ge 2 \implies p_i \le \sqrt{2N-3}$ for all $i \in \{1, 2, 3, 4\}$. Subtracting equations yields $p_2 - p_1 = p_3^d - p_2^d = (p_3 - p_2)(p_3^{d-1} + \dots + p_2^{d-1}) \ge p_3 + p_2 > p_2$, forcing $p_1 < 0$, a direct contradiction.
 
-4. **Exhaustive Topological Edge Classification:**  
+4. **Step 4 (Exhaustive Topological Edge Classification):**  
    On a 4-vertex graph, there are $4 \times 3 = 12$ possible directed non-self-loop edges. A directed 4-cycle ($p_1 \to p_2 \to p_3 \to p_4 \to p_1$) uses 4 edges. Any additional edge added from the remaining 8 edges belongs to one of two categories:
    - *Reversed Edges* (e.g., $p_2 \to p_1$): Forms a 2-cycle ($p_1 \leftrightarrow p_2$), forcing $c_2 = \frac{1}{2} \operatorname{Tr}(M^2) > 0$.
    - *Diagonal Chords* (e.g., $p_1 \to p_3$): Short-circuits the 4-cycle into a 3-cycle ($p_1 \to p_3 \to p_4 \to p_1$), forcing $c_3 = \frac{1}{3} \operatorname{Tr}(M^3) > 0$.
@@ -727,27 +727,27 @@ $$\nexists \{p_1, p_2, p_3, p_4, p_5\} \subset \mathbb{P} \quad \text{such that}
 
 **Proof of Proposition 4.12.**  
 Let $I = \{p_1, p_2, p_3, p_4, p_5\}$ be a hypothetical irreducible stationary island governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$.
-1. **Trace Nullities ($c_1 = c_2 = c_3 = 0$):**  
+1. **Step 1 (Trace Nullities, $c_1 = c_2 = c_3 = 0$):**  
    - By Proposition 4.1 ($k=1$ collapse), $a_{i,i} = 0 \implies c_1 = \operatorname{Tr}(M) = 0$.  
    - By Proposition 4.2 ($k=2$ collapse), $a_{i,j} a_{j,i} = 0$ for all $i \neq j \implies c_2 = \frac{1}{2} \operatorname{Tr}(M^2) = 0$.  
    - By Proposition 4.3 ($k=3$ collapse), $a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r \implies c_3 = \frac{1}{3} \operatorname{Tr}(M^3) = 0$.
 
-2. **Characteristic Polynomial Reduction for $k=5$:**  
+2. **Step 2 (Characteristic Polynomial Reduction for $k=5$):**  
    By Newton's sums for $5 \times 5$ matrices, setting $c_1 = c_2 = c_3 = 0$ collapses the characteristic polynomial to:
    $$P_M(\lambda) = \det(\lambda I - M) = \lambda^5 - c_4 \lambda - c_5,$$
    where $c_4 = \frac{1}{4} \operatorname{Tr}(M^4)$ counts directed 4-cycles and $c_5 = \det(M) = \frac{1}{5} \operatorname{Tr}(M^5)$ counts directed 5-cycles.
 
-3. **Case A ($c_4 = 0, c_5 = 0$):**  
+3. **Step 3 (Nilpotent Case, $c_4 = 0, c_5 = 0$):**  
    If $c_4 = c_5 = 0$, then $P_M(\lambda) = \lambda^5 \implies M$ is nilpotent $\implies \rho(M) = 0$.  
    However, compositeness of $2N - p_i$ forces all row sums $\sum_{j=1}^5 a_{i,j} \ge 2 \implies \rho(M) \ge 2$, creating an instant contradiction.
 
-4. **Case B ($c_4 = 0, c_5 > 0$):**  
+4. **Step 4 (Simple 5-Cycle Case, $c_4 = 0, c_5 > 0$):**  
    If $c_4 = 0$, $P_M(\lambda) = \lambda^5 - c_5 \implies M^5 = c_5 I$.  
    By the Cayley--Hamilton Theorem, an irreducible non-negative matrix $M$ with zero diagonal satisfying $M^5 = c_5 I$ must be a scalar multiple of a directed 5-cycle permutation matrix ($p_1 \to p_2 \to p_3 \to p_4 \to p_5 \to p_1$) with constant exponent $d \ge 1$.  
    - If $d = 1$, row sums equal 1, violating $\sum_j a_{i,j} \ge 2$.  
    - If $d \ge 2$, $2N - p_i = p_{i+1}^d$. By Proposition 4.4 (Root Compression), $d \ge 2 \implies p_i \le \sqrt{2N-3}$ for all $i$. Subtracting adjacent equations gives $p_2 - p_1 = p_3^d - p_2^d \ge p_3 + p_2 > p_2 \implies p_1 < 0$, a direct contradiction.
 
-5. **Case C ($c_4 > 0$):**  
+5. **Step 5 (Composite 4-Cycle Case, $c_4 > 0$):**  
    If $c_4 > 0$, graph $G = (I, R)$ contains at least one directed 4-cycle $C_4 = (p_1 \to p_2 \to p_3 \to p_4 \to p_1)$.  
    To keep node $p_5$ strongly connected to $C_4$ without creating any 2-cycle ($c_2 > 0$) or 3-cycle ($c_3 > 0$), $p_5$ must connect to nodes of $C_4$.  
    - Any incoming edge $x \to p_5$ and outgoing edge $p_5 \to y$ with $y = x$ forms a 2-cycle ($p_5 \leftrightarrow x$, $c_2 > 0$).  
