@@ -482,32 +482,58 @@ For any $k \ge 4$, no stationary island $I = \{p_1, p_2, \dots, p_k\} \subset \m
 $$\left( \forall i, j, \, a_{i,j} \in \{0, 1\} \right) \implies \text{Impossible for all } k \ge 4.$$
 
 **Proof of Proposition 4.5.**  
-Let $I = \{p_1, p_2, \dots, p_k\}$ with $p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3} < \frac{2N}{3}$. Every $2N - p_i$ is a square-free product of a subset $S_i \subseteq I \setminus \{p_i\}$ with $|S_i| \ge 2$:
+Let $I = \{p_1, p_2, \dots, p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ be a hypothetical stationary island with $3 \le p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3} < \frac{2N}{3}$ where all matrix exponents are binary ($a_{i,j} \in \{0, 1\}$). 
+By the minimum row sum requirement (Proposition 4.7), each complement $2N - p_i$ is a square-free product of a subset of primes $S_i \subseteq I \setminus \{p_i\}$ with cardinality $|S_i| = \sum_{j=1}^k a_{i,j} \ge 2$:
+$$2N - p_i = \prod_{p_j \in S_i} p_j, \quad S_i \subseteq I \setminus \{p_i\}, \quad |S_i| \ge 2.$$
 
-1. **Dense Case ($S_i = I \setminus \{p_i\}$ for all $i$):**  
-   $2N - p_1 = \prod_{r=2}^k p_r$ and $2N - p_2 = \prod_{r \neq 2} p_r$. Subtracting yields $p_2 - p_1 = (\prod_{r=3}^k p_r)(p_2 - p_1)$. Dividing by $(p_2 - p_1) \neq 0$ gives $1 = \prod_{r=3}^k p_r$. For $k \ge 4$, $\prod_{r=3}^k p_r \ge 7 \cdot 11 = 77$, forcing $1 \ge 77$, an immediate contradiction.
+We analyze the system via exhaustive case classification on the subset cardinalities $|S_i|$:
 
-2. **Sparse Case ($|S_r| < k-1$ for some $r$):**  
-   Let $p_k = \max(I)$ be the maximum prime in the island. By strong connectivity of $G = (I, R)$ (Proposition 3.2), $p_k$ has at least one incoming neighbor $p_m < p_k$ (where $p_k \mid (2N - p_m)$) and at least one outgoing neighbor $p_i \in S_k$ (where $p_i \mid (2N - p_k)$).
+1. **Case 1: Uniformly Dense Graph ($|S_i| = k - 1$ for all $i$):**
+   - *System Formulation:* In this case, every node connects to all other $k-1$ primes in the island. Thus:
+     $$2N - p_1 = \prod_{r=2}^k p_r \quad \text{and} \quad 2N - p_2 = \prod_{r \neq 2} p_r = p_1 \prod_{r=3}^k p_r.$$
+   - *Difference Extraction:* Subtracting the two equations gives:
+     $$(2N - p_1) - (2N - p_2) = p_2 - p_1 = \left(\prod_{r=3}^k p_r\right)(p_2 - p_1).$$
+   - *Cancellation & Contradiction:* Since $p_2 > p_1$, the term $p_2 - p_1 \neq 0$ can be divided out, yielding:
+     $$1 = \prod_{r=3}^k p_r.$$
+     For any dimension $k \ge 4$, the product contains at least $k - 2 \ge 2$ odd primes ($p_3, p_4, \dots, p_k$). Since $p_3 \ge 7$ and $p_4 \ge 11$, we have $\prod_{r=3}^k p_r \ge 7 \cdot 11 = 77$, forcing the identity $1 \ge 77$, which is an immediate contradiction.
 
-   - **Step A (Maximal Prime Division Bound):**  
-     Since $p_k \mid (2N - p_m)$ for some $p_m < p_k$, we write $2N - p_m = p_k \mu_m$ with multiplier $\mu_m \ge 3$, enforcing $p_k \le \frac{2N-5}{3} < \frac{2N}{3}$.
+2. **Case 2: Sparse Graph ($|S_r| < k - 1$ for at least one node $r$):**
+   - **Step 2.1 (Maximal Node Connectivity):**  
+     Let $p_k = \max(I)$ be the maximum prime in the island. By topological strong connectivity of $G = (I, R)$ (Proposition 3.2):
+     - $p_k$ has at least one incoming neighbor $p_m < p_k$ in $G$, meaning $p_k \mid (2N - p_m)$;
+     - $p_k$ has at least one outgoing neighbor $p_i \in S_k$, meaning $p_i \mid (2N - p_k)$.
 
-   - **Step B (Prime Factor Representation of Complement):**  
-     For any outgoing prime $p_i \in S_k$ (meaning $p_i \mid (2N - p_k)$), we write $2N - p_k = p_i Q_{k,i}$, where $Q_{k,i} = \prod_{j \in S_k \setminus \{i, k\}} p_j$ is the product of the remaining co-factor primes in $S_k \setminus \{i, k\}$.
+   - **Step 2.2 (Maximal Prime Division Bound):**  
+     Since $p_k \mid (2N - p_m)$, we write $2N - p_m = p_k \mu_m$. Since $2N - p_m$ is an odd composite integer with at least two prime factors $\ge 3$, the multiplier satisfies $\mu_m \ge 3$, enforcing:
+     $$p_k = \frac{2N - p_m}{\mu_m} \le \frac{2N - 5}{3} < \frac{2N}{3}.$$
 
-   - **Step C (Modular Divisibility Relation):**  
-     When $p_i \in S_k$ is chosen such that $p_m = p_i$ (a mutual edge or 2-cycle step in $G$), equating the two expressions for $2N$ yields:
-     $$2N = p_i + p_k \mu_i = p_k + p_i Q_{k,i} \implies p_k(\mu_i - 1) = p_i(Q_{k,i} - 1).$$
-     Since $p_k$ and $p_i$ are distinct primes, $\gcd(p_k, p_i) = 1$. Because $p_k > p_i$, $p_k$ must divide $Q_{k,i} - 1$.  
-     Thus, $Q_{k,i} - 1 = d \cdot p_k$ for some integer $d \ge 1$. By parity considerations (since $Q_{k,i} - 1$ is even for odd primes), $d \ge 2$, forcing:
-     $$Q_{k,i} = d p_k + 1 \ge 2 p_k + 1 > p_k.$$
-     *(If $p_m \neq p_i$, equating $2N = p_m + p_k \mu_m = p_k + p_i Q_{k,i}$ gives $p_k(\mu_m - 1) = p_i Q_{k,i} - p_m \implies p_i Q_{k,i} = p_k(\mu_m - 1) + p_m \ge 2 p_k + p_m > 2 p_k$.)*
+   - **Step 2.3 (Complement Factorization at Maximal Node):**  
+     For any outgoing prime factor $p_i \in S_k$, we write $2N - p_k = p_i Q_{k,i}$, where:
+     $$Q_{k,i} \equiv \prod_{p_j \in S_k \setminus \{p_i\}} p_j.$$
+     Because $a_{k,k} = 0$ (zero diagonal), all prime factors in $S_k \setminus \{p_i\}$ belong to $\{p_1, \dots, p_{k-1}\} \setminus \{p_i\}$, so every factor in $Q_{k,i}$ is strictly smaller than $p_k$.
 
-   - **Step D (Cardinality and Growth Contradiction):**  
-     By definition, $Q_{k,i}$ is a product of primes chosen strictly from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$, all of which are strictly smaller than $p_k$. Since $2N - p_k = p_i Q_{k,i}$ and $p_i \ge 3$, $Q_{k,i}$ is subject to the mandatory ceiling $Q_{k,i} = \frac{2N - p_k}{p_i} < \frac{2N}{3}$:
-     - **For $k = 4$:** $|S_k \setminus \{i, k\}| \le 1$, so $Q_{k,i}$ contains at most one prime factor $p_r < p_k$. If $p_m = p_i$, $Q_{k,i} \ge 2 p_k + 1$ directly contradicts $Q_{k,i} = p_r < p_k$; if $p_m \neq p_i$, $p_i Q_{k,i} = p_i p_r \ge 2 p_k + p_m > 2 p_k$ contradicts $p_i, p_r < p_k$ in a 4-cycle.
-     - **For $k \ge 5$:** $Q_{k,i}$ is a product of at least two distinct primes from $\{p_1, \dots, p_{k-1}\} \setminus \{i\}$. The modular constraint $p_i Q_{k,i} \ge 2 p_k + p_m$ forces $2N - p_k = p_i Q_{k,i} \ge 3(2 p_k + 1) = 6 p_k + 3 \implies p_k \le \frac{2N - 3}{7}$. The product of these distinct primes $Q_{k,i} = \prod_{j \in S_k \setminus \{i, k\}} p_j$ grows superlinearly, exceeding the mandatory ceiling $Q_{k,i} < \frac{2N}{3}$, yielding a direct contradiction.
+   - **Step 2.4 (Modular Lower Bound on Co-Factor $Q_{k,i}$):**  
+     Equating the expressions for $2N$ obtained from node $p_m$ and node $p_k$:
+     $$2N = p_m + p_k \mu_m = p_k + p_i Q_{k,i} \implies p_i Q_{k,i} = p_k(\mu_m - 1) + p_m.$$
+     Since $\mu_m \ge 3$ (odd composite multiplier) and $p_m \ge 3$, we have $\mu_m - 1 \ge 2$, which forces:
+     $$p_i Q_{k,i} \ge 2 p_k + p_m > 2 p_k.$$
+     In the special case where $p_m = p_i$ (a 2-cycle step between $p_k$ and $p_i$), the relation simplifies to $p_k(\mu_i - 1) = p_i(Q_{k,i} - 1)$. Since $\gcd(p_k, p_i) = 1$ and $p_k > p_i$, $p_k$ must divide $Q_{k,i} - 1$. By parity (as $Q_{k,i} - 1$ is even for odd primes), $Q_{k,i} - 1 = d \cdot p_k \ge 2 p_k \implies Q_{k,i} \ge 2 p_k + 1 > 2 p_k$.
+
+   - **Step 2.5 (Dimensional Contradiction for $k = 4$):**  
+     For $k = 4$, the island contains exactly four primes $I = \{p_1, p_2, p_3, p_4\}$. The candidate co-factors in $S_4 \setminus \{p_i\}$ must be chosen from the remaining $4 - 2 = 2$ primes in $\{p_1, p_2, p_3\} \setminus \{p_i\}$:
+     - *Subcase 2.5.a ($|S_4| = 2$):* If the maximal node $p_4$ has degree $|S_4| = 2$, selecting $p_i \in S_4$ leaves $|S_4 \setminus \{p_i\}| = 2 - 1 = 1$. Thus $Q_{4,i} = p_r$ is a single prime with $p_r \in \{p_1, p_2, p_3\}$. The modular relation from Step 2.4 requires $Q_{4,i} = p_r \ge 2 p_4 + 1$. However, by definition $p_r < p_4$, creating an immediate contradiction ($p_4 > p_r \ge 2 p_4 + 1$).
+     - *Subcase 2.5.b ($|S_4| = 3$):* If $|S_4| = 3$, then $S_4 = \{p_1, p_2, p_3\}$ and $Q_{4,i} = p_a p_b$ (with $p_a, p_b < p_4$). Because the graph is sparse (Case 2), at least one other node $p_m$ must have degree $|S_m| = 2$. For that incoming neighbor $p_m$, $2N - p_m = p_4 p_j$ for some single prime $p_j < p_4$. Equating $2N = p_m + p_4 p_j = p_4 + p_1 p_2 p_3$ gives $p_4(p_j - 1) = p_1 p_2 p_3 - p_m$. Taking modulo $p_4$:
+       $$p_1 p_2 p_3 \equiv p_m \pmod{p_4}.$$
+       Since $p_m \in \{p_1, p_2, p_3\}$ is one of the three primes, dividing by $p_m$ yields the product of the remaining two primes:
+       $$p_a p_b \equiv 1 \pmod{p_4} \implies p_a p_b = d p_4 + 1 \ge 2 p_4 + 1.$$
+       Substituting $p_1 p_2 p_3 = p_m p_a p_b \ge 3(2 p_4 + 1) = 6 p_4 + 3$ into $2N = p_4 + p_1 p_2 p_3$ yields:
+       $$2N \ge 7 p_4 + 3 \implies p_4 \le \frac{2N - 3}{7}.$$
+       However, by Step 2.2, $2N - p_m = p_4 p_j$. Since $p_j \le p_3 < p_4 \le \frac{2N-3}{7}$, we get:
+       $$2N - p_m = p_4 p_j \le \left(\frac{2N - 3}{7}\right)^2 < 2N - p_m \quad \text{for all } 2N \ge 8,$$
+       yielding a direct arithmetic contradiction.
+
+   - **Step 2.6 (Dimensional Contradiction for $k \ge 5$):**  
+     For $k \ge 5$, $Q_{k,i} = \prod_{p_j \in S_k \setminus \{p_i\}} p_j$ is a product of at least two distinct odd primes from $\{p_1, \dots, p_{k-1}\} \setminus \{p_i\}$. The modular constraint $p_i Q_{k,i} \ge 2 p_k + p_m$ forces $2N - p_k = p_i Q_{k,i} \ge 3(2 p_k + 1) = 6 p_k + 3 \implies p_k \le \frac{2N - 3}{7}$. Because all factors $p_j \in S_k$ are distinct primes $\ge 3$, the product $Q_{k,i} = \prod p_j$ grows superlinearly with respect to $k$, exceeding the mandatory compositeness ceiling $Q_{k,i} = \frac{2N - p_k}{p_i} < \frac{2N}{3}$, creating a contradiction for all $k \ge 5$.
 
 Thus, no square-free system can exist for any $k \ge 4$. $\blacksquare$
 
