@@ -48,7 +48,7 @@ $$P^*(n+1) = D(P^*(n)), \quad \forall n \ge 0.$$
 If $2N > 6$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
 
 **Proof of Proposition 2.3.**  
-Suppose for contradiction that $N$ is prime. Then $2N = N + N$ represents $2N$ as the sum of two prime numbers ($p_1 = N, p_2 = N$). This immediately satisfies Goldbach's Conjecture for $2N$, contradicting the assumption that $2N$ is a counterexample. Thus, $N$ cannot be prime, so $N$ must be composite. Consequently, $N$ can never be a prime element in $P^*(0)$ or any iterated set $P^*(n)$, guaranteeing that $N \notin P^*(0)$ and ensuring the sound definition of the domain $P^*(0)$ (Definition 2.1). $\blacksquare$
+If $N$ were prime, then $2N = N + N$ would be a sum of two primes, contradicting the assumption that $2N$ is a counterexample; hence $N$ must be composite. $\blacksquare$
 
 ### Proposition 2.4 (Non-Emptiness of the Initial Domain $P^*(0)$)
 For all even integers $2N > 6$, the initial domain set $P^*(0)$ (Definition 2.1) is non-empty. Specifically,
