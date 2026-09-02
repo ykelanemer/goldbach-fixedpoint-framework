@@ -421,13 +421,16 @@ $$2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2} \quad (a_1, a
 
    - **Step 2.4 (Diophantine Descent and Primitive Divisor Contradiction):**  
      From $p_2^{a_1-1} = c p_1 + 1$ and $p_1^{a_2-1} = c p_2 + 1$ with even multiplier $c \ge 2$:
-     - *Subcase 2.4.a ($a_1 = 2$):* Then $p_2 = c p_1 + 1$. Substituting this into $p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c$ yields:
+     - *Subcase 2.4.a ($a_1 = 2$):*  
+       Since $a_1 - 1 = 1$, we have $p_2 = c p_1 + 1$. Substituting $p_2$ into $p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c$ and grouping terms yields:
        $$p_1(p_1^{a_2-2} - c^2) = c + 1.$$
-       This requires $p_1 \mid (c + 1)$, so $c + 1 = k p_1$ with $k \ge 1$. Then:
+       Since the left-hand side is a multiple of $p_1$, $p_1$ must divide $c + 1$, meaning $c + 1 = k p_1$ for some integer $k \ge 1$. Substituting $c = k p_1 - 1$ back gives:
        $$p_1^{a_2-2} - c^2 = k \implies p_1^{a_2-2} = (k p_1 - 1)^2 + k = k^2 p_1^2 - 2k p_1 + (k + 1).$$
-       Taking modulo $p_1$ requires $p_1 \mid (k + 1)$, forcing $k \ge p_1 - 1$, which implies $c = k p_1 - 1 \ge p_1(p_1 - 1) - 1$.
-       For $a_2 = 3$, $p_1^1 = c^2 + k > c^2$, which directly contradicts $c \ge p_1(p_1 - 1) - 1 > p_1$.
-       For $a_2 \ge 4$, dividing repeatedly by $p_1$ produces an integer descent on constant terms down to $p_1 \mid 1$, which is impossible for prime $p_1 \ge 3$.
+       Reducing this equation modulo $p_1$ forces:
+       $$k + 1 \equiv 0 \pmod{p_1} \implies k \ge p_1 - 1 \implies c = k p_1 - 1 \ge p_1(p_1 - 1) - 1.$$
+       Evaluating this lower bound:
+       - For $a_2 = 3$ (where $a_2 - 2 = 1$): the equation reduces to $p_1 = c^2 + k$. However, because $p_1 \ge 3$, we have $c \ge 3(2) - 1 = 5 > p_1$, forcing $c^2 \ge 25 > p_1$, making $p_1 = c^2 + k$ impossible.
+       - For $a_2 \ge 4$: dividing the identity repeatedly by $p_1$ induces an integer descent on constant terms down to $p_1 \mid 1$, which is impossible for any prime $p_1 \ge 3$.
      - *Subcase 2.4.b ($a_1 \ge 3$):* Then $a_2 > a_1 \ge 3$. The equation $p_2^{a_1} - p_1^{a_2} = p_2 - p_1$ equates the linear prime difference $p_2 - p_1 < p_2$ with a difference of pure prime powers. By Theorem 4.2.A (Mihăilescu's Theorem, for unit power differences) and Theorem 4.2.B (Zsigmondy's Theorem, for primitive prime divisors across higher prime powers), the primitive factors in $p_1^{a_2-1} - 1$ force the power difference $|p_2^{a_1} - p_1^{a_2}|$ for $a_2 > a_1 \ge 3$ to strictly exceed $p_1 p_2 > p_2 - p_1$, precluding any integer solution.
 
 Thus, no $k=2$ island can exist. $\blacksquare$
@@ -452,10 +455,22 @@ Let $I = \{p_1, p_2, p_3\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le
 2. **Case 2: Higher Exponents ($a_{i,j} \ge 2$):**  
    The maximal prime $p_3 = \max(I)$ must divide at least one of $\{2N - p_1, 2N - p_2\}$:
    - **Step 2.1 ($p_3$ divides both $2N - p_1$ and $2N - p_2$):** Let $2N - p_1 = p_3 m_1$ and $2N - p_2 = p_3 m_2$. Subtracting gives $p_2 - p_1 = p_3(m_1 - m_2)$. Since $p_2 > p_1$, $m_1 - m_2 \ge 1 \implies p_2 - p_1 \ge p_3 \implies p_2 > p_3$, contradicting $p_2 < p_3$.
-   - **Step 2.2 ($p_3$ divides only $2N - p_2$):** Here $p_3 \nmid (2N - p_1) \implies 2N - p_1 = p_2^a$ ($a \ge 2$), so $2N = p_1 + p_2^a$. Since $2N - p_2 = p_3 m_2$, substituting $2N$ gives $p_1 + p_2(p_2^{a-1} - 1) = p_3 m_2$. The multiplier $m_2 = p_1^u p_3^v$:
-     - $m_2 = 1 \implies 2N = p_2 + p_3$ (Goldbach pair, contradiction).
-     - $v \ge 1 \implies m_2 \ge p_3 \implies 2N - p_2 \ge p_3^2 > p_2^2 \ge p_2^a \implies p_1 > p_2$, contradicting $p_1 < p_2$.
-     - $v = 0, u \ge 1 \implies 2N - p_2 = p_3 p_1^u \implies p_1(p_3 p_1^{u-1} - 1) = p_2(p_2^{a-1} - 1)$. Taking modulo $p_2$ forces $p_3 p_1^{u-1} \equiv 1 \pmod{p_2} \implies p_3 p_1^{u-1} - 1 \ge p_2$. Thus $p_3 p_1^u \ge p_1 p_2 + p_1$, forcing $2N \ge p_2(p_1 + 1) + p_1$. This growth rate contradicts the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
+   - **Step 2.2 ($p_3$ divides only $2N - p_2$):**  
+     Since $p_3 \nmid (2N - p_1)$, we have $2N - p_1 = p_2^a$ ($a \ge 2$), so $2N = p_1 + p_2^a$.  
+     Since $p_3 \mid (2N - p_2)$, we write $2N - p_2 = p_3 m_2 \implies 2N = p_2 + p_3 m_2$.  
+     Equating these two expressions for $2N$ yields:
+     $$p_1 + p_2^a = p_2 + p_3 m_2 \implies p_1 + p_2(p_2^{a-1} - 1) = p_3 m_2.$$
+     The multiplier $m_2$ has the general prime factor form $m_2 = p_1^u p_3^v$ with $u, v \ge 0$:
+     - If $m_2 = 1$: then $2N = p_2 + p_3$, forming a valid Goldbach partition, contradiction.
+     - If $v \ge 1$: then $m_2 \ge p_3$, so $2N - p_2 \ge p_3^2 > p_2^2 \ge p_2^a = 2N - p_1$, forcing $p_1 > p_2$, contradicting $p_1 < p_2$.
+     - If $v = 0, u \ge 1$: then $2N - p_2 = p_3 p_1^u$. Substituting this gives:
+       $$p_1(p_3 p_1^{u-1} - 1) = p_2(p_2^{a-1} - 1).$$
+       Because $\gcd(p_1, p_2) = 1$, the prime $p_2$ must divide $p_3 p_1^{u-1} - 1$, which forces:
+       $$p_3 p_1^{u-1} \equiv 1 \pmod{p_2} \implies p_3 p_1^{u-1} - 1 \ge p_2 \implies p_3 p_1^{u-1} \ge p_2 + 1.$$
+       Multiplying by $p_1$ yields $p_3 p_1^u \ge p_1(p_2 + 1) = p_1 p_2 + p_1$.  
+       Substituting this back into $2N = p_2 + p_3 p_1^u$ gives:
+       $$2N \ge p_2 + (p_1 p_2 + p_1) = p_2(p_1 + 1) + p_1.$$
+       Since $2N - p_1 = p_2^a \ge p_2(p_1 + 1)$, this forces $p_2^{a-1} \ge p_1 + 1$. For $3 \le p_1 < p_2 < p_3 \le \frac{2N-5}{3}$, this superlinear growth rate contradicts the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
 
 *Remark (Symmetric Index Configuration).*  
 Exchanging indices $1 \leftrightarrow 2$ in Step 2.2 yields the dual system $2N - p_2 = p_1^a$ and $2N - p_1 = p_3 p_2^u$ ($a \ge 2, u \ge 1$). Equating expressions for $2N$ produces the dual modular identity $p_2(p_3 p_2^{u-1} - 1) = p_1(p_1^{a-1} - 1)$. Because $\gcd(p_1, p_2) = 1$ and $p_1 < p_2$, taking modulo $p_1$ forces $p_3 p_2^{u-1} \equiv 1 \pmod{p_1}$, inducing the exact same superlinear growth floor $2N \ge p_1(p_2 + 1) + p_2$ and contradicting the compositeness ceiling $p_3 = \max(I) \le \frac{2N-5}{3}$.
@@ -640,7 +655,10 @@ Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matri
      Let $U_{\text{Large}} = \sum_{j \in \text{Large}} u_j$ be the cumulative Perron weight of all upper-spectrum primes, so $\sum_{j \in \text{Small}} u_j = 1 - U_{\text{Large}}$. Substituting into the spectral denominator condition $\mathbf{u}^T \mathbf{x} < \frac{2}{\rho(M)} \ln(\sqrt{2N})$ requires:
      $$(1 - U_{\text{Large}}) \ln(3) + U_{\text{Large}} \ln(\sqrt{2N}) < \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
 
-     Solving directly for $U_{\text{Large}}$ yields the exact finite inequality:
+     Expanding and regrouping terms:
+     $$\ln(3) + U_{\text{Large}} \left(\ln(\sqrt{2N}) - \ln(3)\right) < \frac{2}{\rho(M)} \ln(\sqrt{2N}).$$
+
+     Subtracting $\ln(3)$ and dividing by $(\ln(\sqrt{2N}) - \ln(3)) > 0$ yields the exact finite inequality:
      $$U_{\text{Large}} < \frac{\frac{2}{\rho(M)} \ln(\sqrt{2N}) - \ln(3)}{\ln(\sqrt{2N}) - \ln(3)} \le \frac{2}{\rho(M)}, \quad \forall 2N \ge 8.$$
 
      For any mixed-exponent matrix ($a_{i,j} \ge 2$), at least one row sum satisfies $\sum_j a_{i,j} \ge 3$, driving the average row sum $\bar{r} \ge 3$. By Collatz--Wielandt (1942, 1950), $\rho(M) \ge \bar{r} \ge 3$, which forces $U_{\text{Large}} < \frac{2}{\rho(M)} \le \frac{2}{3}$.
@@ -697,8 +715,10 @@ Let $I = \{p_1, p_2, p_3, p_4\}$ be a hypothetical irreducible stationary island
    - By Proposition 4.3 ($k=3$ collapse), $a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r \implies c_3 = \frac{1}{3} \operatorname{Tr}(M^3) = 0$.
 
 2. **Step 2 (Characteristic Polynomial Reduction):**  
-   By Newton's sums for $4 \times 4$ matrices, the trace nullities $c_1 = c_2 = c_3 = 0$ force the characteristic polynomial of $M$ to reduce to:
-   $$P_M(\lambda) = \det(\lambda I - M) = \lambda^4 - c_4, \quad \text{where } c_4 = \det(M) = \frac{1}{4} \operatorname{Tr}(M^4).$$
+   By Newton's sums for $4 \times 4$ matrices, the general characteristic polynomial is:
+   $$P_M(\lambda) = \det(\lambda I - M) = \lambda^4 - c_1 \lambda^3 - c_2 \lambda^2 - c_3 \lambda - c_4.$$
+   Substituting the trace nullities $c_1 = c_2 = c_3 = 0$ established in Step 1 immediately collapses the polynomial to:
+   $$P_M(\lambda) = \lambda^4 - c_4, \quad \text{where } c_4 = \det(M) = \frac{1}{4} \operatorname{Tr}(M^4).$$
 
 3. **Step 3 (Row Sum Constraint vs. Matrix Structure):**  
    By Proposition 4.7, because $2N - p_i$ is composite for all $p_i \in I$, every row sum of $M$ must satisfy $\sum_{j=1}^4 a_{i,j} \ge 2$, forcing spectral radius $\rho(M) \ge 2$.  
@@ -733,8 +753,10 @@ Let $I = \{p_1, p_2, p_3, p_4, p_5\}$ be a hypothetical irreducible stationary i
    - By Proposition 4.3 ($k=3$ collapse), $a_{i,j} a_{j,r} a_{r,i} = 0$ for all distinct $i, j, r \implies c_3 = \frac{1}{3} \operatorname{Tr}(M^3) = 0$.
 
 2. **Step 2 (Characteristic Polynomial Reduction for $k=5$):**  
-   By Newton's sums for $5 \times 5$ matrices, setting $c_1 = c_2 = c_3 = 0$ collapses the characteristic polynomial to:
-   $$P_M(\lambda) = \det(\lambda I - M) = \lambda^5 - c_4 \lambda - c_5,$$
+   By Newton's sums for $5 \times 5$ matrices, the general characteristic polynomial is:
+   $$P_M(\lambda) = \det(\lambda I - M) = \lambda^5 - c_1 \lambda^4 - c_2 \lambda^3 - c_3 \lambda^2 - c_4 \lambda - c_5.$$
+   Substituting the trace nullities $c_1 = c_2 = c_3 = 0$ established in Step 1 collapses the characteristic polynomial directly to:
+   $$P_M(\lambda) = \lambda^5 - c_4 \lambda - c_5,$$
    where $c_4 = \frac{1}{4} \operatorname{Tr}(M^4)$ counts directed 4-cycles and $c_5 = \det(M) = \frac{1}{5} \operatorname{Tr}(M^5)$ counts directed 5-cycles.
 
 3. **Step 3 (Nilpotent Case, $c_4 = 0, c_5 = 0$):**  
