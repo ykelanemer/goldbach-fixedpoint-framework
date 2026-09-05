@@ -68,6 +68,14 @@ Let $\mathbb{P}$ denote the set of all prime numbers, and let $2N \in 2\mathbb{N
 \]
 Because $2N \ge 8$, if a Goldbach partition $2N = p_1 + p_2$ were to exist, both summands would necessarily be odd primes ($p_1, p_2 \ge 3$), since if $p_1 = 2$, then $p_2 = 2N - 2 \ge 6$ is even and composite.
 
+\begin{proposition}[Compositeness of the Half-Sum $N$ in a Counterexample]
+\label{prop:half_sum}
+If $2N \ge 8$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
+\end{proposition}
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:half_sum}}]
+If $N$ were prime, then $2N = N + N$ would be an explicit representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample. Thus $N$ must be composite.
+\end{proof}
+
 \begin{definition}[Initial Search Domain $P^*(0)$]
 \label{def:initial_domain}
 For any even integer $2N \ge 8$, let $\mathcal{P}_{\le 2N-3} = \{ p \in \mathbb{P} \mid 3 \le p \le 2N - 3 \}$ denote the set of odd primes strictly bounded between $3$ and $2N - 3$. The initial search domain $P^*(0)$ is defined as the set of primes in $\mathcal{P}_{\le 2N-3}$ that do not divide $2N$:
@@ -103,14 +111,6 @@ with $D(\emptyset) = \emptyset$. For a singleton set $S = \{p\}$, we denote $D(\
 P^*(n+1) = D(P^*(n)), \quad \forall n \ge 0.
 \]
 \end{definition}
-
-\begin{proposition}[Compositeness of the Half-Sum $N$ in a Counterexample]
-\label{prop:half_sum}
-If $2N \ge 8$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
-\end{proposition}
-\begin{proof}[\textbf{Proof of Proposition~\ref{prop:half_sum}}]
-If $N$ were prime, then $2N = N + N$ would be a valid representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample. Thus $N$ must be composite.
-\end{proof}
 
 \begin{proposition}[Non-Emptiness of the Initial Domain $P^*(0)$]
 \label{prop:domain_nonempty}

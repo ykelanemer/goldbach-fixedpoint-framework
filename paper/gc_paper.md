@@ -49,13 +49,19 @@ Let $\mathbb{P}$ denote the set of all prime numbers, and let $2N \in 2\mathbb{N
 \]
 Because $2N \ge 8$, if a Goldbach partition $2N = p_1 + p_2$ were to exist, both summands would necessarily be odd primes ($p_1, p_2 \ge 3$), since if $p_1 = 2$, then $p_2 = 2N - 2 \ge 6$ is even and composite.
 
-### Definition 2.1 (Initial Search Domain $P^*(0)$)
+### Proposition 2.1 (Compositeness of the Half-Sum $N$ in a Counterexample)
+If $2N \ge 8$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
+
+**Proof of Proposition 2.1.**  
+If $N$ were prime, then $2N = N + N$ would be a valid representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample. Thus $N$ must be composite. $\blacksquare$
+
+### Definition 2.2 (Initial Search Domain $P^*(0)$)
 For any even integer $2N \ge 8$, let $\mathcal{P}_{\le 2N-3} = \{ p \in \mathbb{P} \mid 3 \le p \le 2N - 3 \}$ denote the set of odd primes strictly bounded between $3$ and $2N - 3$. The initial search domain $P^*(0)$ is defined as the set of primes in $\mathcal{P}_{\le 2N-3}$ that do not divide $2N$:
 \[
 P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}.
 \]
 
-### Remark 2.2 (Exclusion of $2N-1$, $2$, and Prime Factors of $2N$)
+### Remark 2.3 (Exclusion of $2N-1$, $2$, and Prime Factors of $2N$)
 \label{rem:exclusion_2N_minus_1}
 The restriction of the initial domain $P^*(0)$ to odd primes $3 \le p \le 2N - 3$ not dividing $2N$ captures all genuine Goldbach candidates and ensures the dynamical validity of the divisor mapping:
 1. **Exclusion of $2N - 1$:** Even if $2N - 1$ is a prime number, it is excluded from $P^*(0)$ for three foundational structural reasons:
@@ -63,11 +69,11 @@ The restriction of the initial domain $P^*(0)$ to odd primes $3 \le p \le 2N - 3
    - *Divisor Boundedness:* For every prime $p \in P^*(0)$, since $p \ge 3$, the complement satisfies $2N - p \le 2N - 3 < 2N - 1$. Because $0 < 2N - p < 2N - 1$, the prime $2N - 1$ is strictly too large to divide any complement $2N - p$. Thus, $2N - 1$ can never enter the divisor image $D(S)$ for any subset $S \subseteq P^*(0)$.
    - *Operator Well-Definedness:* If $2N - 1$ were admitted into the domain, its complement $1$ would possess no prime divisors, yielding $D(\{2N - 1\}) = \emptyset$, which would artificially break the non-emptiness of the divisor operator. Restricting the upper bound to $2N - 3$ ensures $2N - p \ge 3 > 1$ for all $p \in P^*(0)$.
 2. **Exclusion of $p = 2$:** The complement $2N - 2 = 2(N - 1) \ge 6$ is an even composite integer.
-3. **Exclusion of $p \mid 2N$:** Any prime divisor $p \mid 2N$ dividing $2N - p$ forces $p \mid 2N$. If $2N - p = q$ were prime, then $p \mid q \implies p = q = N$, which requires $N$ to be prime (precluded in a counterexample by Proposition 2.3).
+3. **Exclusion of $p \mid 2N$:** Any prime divisor $p \mid 2N$ dividing $2N - p$ forces $p \mid 2N$. If $2N - p = q$ were prime, then $p \mid q \implies p = q = N$, which requires $N$ to be prime (precluded in a counterexample by Proposition 2.1).
 
 Consequently, $P^*(0)$ is both necessary and sufficient for investigating Goldbach counterexamples.
 
-### Definition 2.2 (Prime Divisor Mapping Operator $D$ and Iterated Chains)
+### Definition 2.4 (Prime Divisor Mapping Operator $D$ and Iterated Chains)
 For any subset of primes $S \subseteq \mathcal{P}_{\le 2N-3}$, the prime divisor mapping operator $D: \mathcal{P}(\mathcal{P}_{\le 2N-3}) \to \mathcal{P}(\mathcal{P}_{\le 2N-3})$ is defined as the union of all prime factors dividing the complements $2N - p$:
 \[
 D(S) = \bigcup_{p \in S} \{ q \in \mathbb{P} \mid q \mid (2N - p) \},
@@ -77,48 +83,42 @@ with $D(\emptyset) = \emptyset$. For a singleton set $S = \{p\}$, we denote $D(\
 P^*(n+1) = D(P^*(n)), \quad \forall n \ge 0.
 \]
 
-### Proposition 2.3 (Compositeness of the Half-Sum $N$ in a Counterexample)
-If $2N \ge 8$ is a hypothetical counterexample to Goldbach's Conjecture, then $N$ cannot be a prime number; hence $N$ is composite.
-
-**Proof of Proposition 2.3.**  
-If $N$ were prime, then $2N = N + N$ would be a valid representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample. Thus $N$ must be composite. $\blacksquare$
-
-### Proposition 2.4 (Non-Emptiness of the Initial Domain $P^*(0)$)
-For all even integers $2N \ge 8$, the initial domain set $P^*(0)$ (Definition 2.1) is non-empty. Specifically,
+### Proposition 2.5 (Non-Emptiness of the Initial Domain $P^*(0)$)
+For all even integers $2N \ge 8$, the initial domain set $P^*(0)$ (Definition 2.2) is non-empty. Specifically,
 \[
 |P^*(0)| = \pi(2N - 3) - \omega(2N) \ge 1 \implies P^*(0) \neq \emptyset,
 \]
 where $\pi(x)$ is the prime-counting function and $\omega(n)$ is the number of distinct prime factors of $n$.
 
-To establish Proposition 2.4, we recall Bertrand's Postulate (Chebyshev's Theorem):
+To establish Proposition 2.5, we recall Bertrand's Postulate (Chebyshev's Theorem):
 
-### Theorem 2.5 (Bertrand's Postulate / Chebyshev's Theorem; Rosser & Schoenfeld 1962)
+### Theorem 2.6 (Bertrand's Postulate / Chebyshev's Theorem; Rosser & Schoenfeld 1962)
 For any real number $x > 1$, there exists at least one prime number $p \in \mathbb{P}$ satisfying $x < p < 2x - 1$. In particular, for any integer $N > 1$, the interval $(N, 2N-1)$ contains at least one prime $p$.
 
-**Proof of Proposition 2.4.**  
+**Proof of Proposition 2.5.**  
 The non-emptiness of the initial domain $P^*(0)$ is established constructively:
 
-1. **Half-Sum Compositeness:** By Proposition 2.3, because $2N \ge 8$ is a counterexample, the half-sum $N$ is composite with $N \ge 4$.
-2. **Prime Existence via Bertrand's Postulate:** Applying Theorem 2.5 with $x = N \ge 4 > 1$ guarantees the existence of a prime $p$ in the open interval $p \in (N, 2N-1)$.
+1. **Half-Sum Compositeness:** By Proposition 2.1, because $2N \ge 8$ is a counterexample, the half-sum $N$ is composite with $N \ge 4$.
+2. **Prime Existence via Bertrand's Postulate:** Applying Theorem 2.6 with $x = N \ge 4 > 1$ guarantees the existence of a prime $p$ in the open interval $p \in (N, 2N-1)$.
 3. **Boundary Confinement to Candidate Primes:** Because $N \ge 4$, the upper bound $2N - 2$ is an even integer strictly greater than $2$, so the prime $p \in (N, 2N-1)$ cannot equal $2N - 2$. Hence $N < p \le 2N - 3$.
 4. **Odd Parity:** Since $p > N \ge 4$, $p$ is strictly an odd prime ($p \ge 5$), so $p \nmid 2$.
 5. **Coprimality with $2N$:** Any proper divisor of $N$ is at most $N/2 < N$. Because $p > N$, $p$ cannot divide $N$. Combining $p \nmid 2$ and $p \nmid N$ yields:
    \[
    \gcd(p, 2N) = 1 \implies p \nmid 2N.
    \]
-6. **Domain Inclusion & Conclusion:** By Definition 2.1, the conditions $3 \le p \le 2N - 3$ and $p \nmid 2N$ place $p \in P^*(0)$. Therefore, $P^*(0) \neq \emptyset$, completing the proof. $\blacksquare$
+6. **Domain Inclusion & Conclusion:** By Definition 2.2, the conditions $3 \le p \le 2N - 3$ and $p \nmid 2N$ place $p \in P^*(0)$. Therefore, $P^*(0) \neq \emptyset$, completing the proof. $\blacksquare$
 
-### Proposition 2.6 (Closure of the Divisor Image in the Bounded Domain)
-Under the counterexample hypothesis, the image of any subset $S \subseteq P^*(0)$ under the divisor mapping operator $D$ (Definition 2.2) is strictly contained within the set of primes less than or equal to $\frac{2N - 5}{3}$. Formally:
+### Proposition 2.7 (Closure of the Divisor Image in the Bounded Domain)
+Under the counterexample hypothesis, the image of any subset $S \subseteq P^*(0)$ under the divisor mapping operator $D$ (Definition 2.4) is strictly contained within the set of primes less than or equal to $\frac{2N - 5}{3}$. Formally:
 \[
 \forall S \subseteq P^*(0), \quad D(S) \subseteq \mathcal{P}_{\le \frac{2N - 5}{3}} \subset \mathcal{P}_{< \frac{2N}{3}},
 \]
 and in particular, for every singleton element $p \in P^*(0)$, $D(\{p\}) \subseteq \mathcal{P}_{\le \frac{2N - 5}{3}}$.
 
-**Proof of Proposition 2.6.**  
+**Proof of Proposition 2.7.**  
 The closure and upper bound of the divisor image $D(S)$ are established as follows:
 
-1. **Odd Parity of Domain Elements:** For any $p \in P^*(0)$, $p \ge 3$ is odd by Definition 2.1. Since $2N$ is even, the complement $2N - p$ is strictly odd.
+1. **Odd Parity of Domain Elements:** For any $p \in P^*(0)$, $p \ge 3$ is odd by Definition 2.2. Since $2N$ is even, the complement $2N - p$ is strictly odd.
 2. **Compositeness of Complements:** Under the counterexample hypothesis, $2N - p$ cannot be prime (since $2N = p + q$ would be a valid Goldbach partition). Furthermore, $p \le 2N - 3$ forces $2N - p \ge 3$. Since $2N - p$ is odd, not prime, and strictly greater than $1$, it is an odd composite integer ($\ge 9$) with at least two prime factors (counted with multiplicity), all of which are $\ge 3$.
 3. **Upper Bound for $p \ge 5$:** If $p \ge 5$, then $2N - p \le 2N - 5$. For any prime factor $q \mid (2N - p)$, the complementary quotient $(2N - p)/q$ is an integer $\ge 3$. Thus:
    \[
@@ -131,21 +131,21 @@ The closure and upper bound of the divisor image $D(S)$ are established as follo
    (Indeed, $3(2N - 3) \le 5(2N - 5) \iff 6N - 9 \le 10N - 25 \iff 4N \ge 16 \iff 2N \ge 8$).
 5. **Image Invariance Conclusion:** Every prime factor $q \in D(\{p\})$ satisfies $q \le \frac{2N - 5}{3}$. Taking the union over all $p \in S$ guarantees $D(S) \subseteq \mathcal{P}_{\le \frac{2N-5}{3}} \subset \mathcal{P}_{<\frac{2N}{3}}$. $\blacksquare$
 
-### Proposition 2.7 (Non-Divisibility Inheritance: Exclusion of Factors of $2N$)
-No prime factor dividing $2N$ can ever enter any iterated set $P^*(n)$ (Definition 2.2). Formally:
+### Proposition 2.8 (Non-Divisibility Inheritance: Exclusion of Factors of $2N$)
+No prime factor dividing $2N$ can ever enter any iterated set $P^*(n)$ (Definition 2.4). Formally:
 \[
 \forall q \in \mathbb{P}, \quad q \mid 2N \implies q \notin P^*(n), \quad \forall n \ge 0.
 \]
 
-**Proof of Proposition 2.7.**  
+**Proof of Proposition 2.8.**  
 We prove non-divisibility inheritance by mathematical induction on the iteration step $n \ge 0$:
 
-1. **Base Step ($n=0$):** By Definition 2.1, $P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}$. Hence, if $q \mid 2N$, then by construction $q \notin P^*(0)$.
+1. **Base Step ($n=0$):** By Definition 2.2, $P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}$. Hence, if $q \mid 2N$, then by construction $q \notin P^*(0)$.
 2. **Inductive Hypothesis:** Assume that for a given $n \ge 0$, no element of $P^*(n)$ divides $2N$:
    \[
    \forall p \in P^*(n), \quad p \nmid 2N.
    \]
-3. **Pre-Image Divisibility:** Suppose for contradiction that there exists a prime $q \mid 2N$ such that $q \in P^*(n+1) = D(P^*(n))$. By Definition 2.2, there exists some $p \in P^*(n)$ such that $q \mid (2N - p)$.
+3. **Pre-Image Divisibility:** Suppose for contradiction that there exists a prime $q \mid 2N$ such that $q \in P^*(n+1) = D(P^*(n))$. By Definition 2.4, there exists some $p \in P^*(n)$ such that $q \mid (2N - p)$.
 4. **Linear Combination \& Contradiction:** Because $q \mid 2N$ and $q \mid (2N - p)$, $q$ divides their linear combination:
    \[
    q \mid (2N - (2N - p)) \implies q \mid p.
@@ -153,30 +153,30 @@ We prove non-divisibility inheritance by mathematical induction on the iteration
    Since $p$ is prime, its only prime divisor is itself, forcing $q = p$. Consequently, $p \mid 2N$. However, $p \in P^*(n)$, and by the inductive hypothesis $p \nmid 2N$. This is an immediate contradiction.
 5. **Inductive Conclusion:** Thus $q \notin P^*(n+1)$. By mathematical induction, no prime factor of $2N$ ever enters $P^*(n)$ for any $n \ge 0$. $\blacksquare$
 
-### Proposition 2.8 (Absence of Goldbach Partners in a Counterexample)
+### Proposition 2.9 (Absence of Goldbach Partners in a Counterexample)
 Let $2N \ge 8$ be an even integer. If $2N$ is a counterexample to Goldbach's Conjecture, then for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
 \[
 2N \text{ is a counterexample} \implies \forall p \in P^*(0), \quad |D(\{p\})| \ge 1 \text{ and } 2N - p \notin \mathbb{P}.
 \]
 
-**Proof of Proposition 2.8.**  
+**Proof of Proposition 2.9.**  
 Suppose $2N \ge 8$ is a counterexample to Goldbach's Conjecture.
 For every prime $p \in P^*(0)$, we have $3 \le p \le 2N - 3$, which ensures that the complement satisfies $2N - p \ge 3$.
 If $2N - p = q$ were a prime number, then $2N = p + q$ would be an explicit representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample.
 Therefore, $2N - p \notin \mathbb{P}$.
 Since $2N - p \ge 3$ and $2N - p$ is not prime, the Fundamental Theorem of Arithmetic guarantees that $2N - p$ is strictly composite and possesses at least one prime factor $q \in \mathbb{P}$, which ensures $|D(\{p\})| \ge 1$. $\blacksquare$
 
-### Proposition 2.9 (The Monotonic Nested Chain Property)
+### Proposition 2.10 (The Monotonic Nested Chain Property)
 The sequence of iterated divisor sets forms a monotonically non-increasing nested chain of finite sets with a strictly proper initial contraction:
 \[
 P^*(0) \supsetneq P^*(1) \supseteq P^*(2) \supseteq \dots \supseteq P^*(n) \supseteq P^*(n+1).
 \]
 
-**Proof of Proposition 2.9.**  
+**Proof of Proposition 2.10.**  
 The nested sequence structure is proved through the following steps:
 
-1. **Domain Invariance ($D(P^*(0)) \subseteq P^*(0)$):** Let $q \in P^*(1) = D(P^*(0))$. By Proposition 2.6, $q \le \frac{2N-5}{3} < N \le 2N - 3$. By Proposition 2.7, $q \nmid 2N$. Furthermore, since $2 \mid 2N$, $q \neq 2$, so $q \ge 3$. Hence $q \in \mathcal{P}_{\le 2N-3}$ and $q \nmid 2N$, which means $q \in P^*(0)$ by Definition 2.1. Therefore, $P^*(1) = D(P^*(0)) \subseteq P^*(0)$.
-2. **Strict Initial Contraction ($P^*(0) \supsetneq P^*(1)$):** By Proposition 2.4, $P^*(0)$ contains at least one prime $p \in (N, 2N-3]$. By Proposition 2.6, every element $q \in P^*(1)$ satisfies $q \le \frac{2N-5}{3} < N$. Thus $p \in P^*(0) \setminus P^*(1)$, proving that $P^*(1)$ is a strictly proper subset of $P^*(0)$:
+1. **Domain Invariance ($D(P^*(0)) \subseteq P^*(0)$):** Let $q \in P^*(1) = D(P^*(0))$. By Proposition 2.7, $q \le \frac{2N-5}{3} < N \le 2N - 3$. By Proposition 2.8, $q \nmid 2N$. Furthermore, since $2 \mid 2N$, $q \neq 2$, so $q \ge 3$. Hence $q \in \mathcal{P}_{\le 2N-3}$ and $q \nmid 2N$, which means $q \in P^*(0)$ by Definition 2.2. Therefore, $P^*(1) = D(P^*(0)) \subseteq P^*(0)$.
+2. **Strict Initial Contraction ($P^*(0) \supsetneq P^*(1)$):** By Proposition 2.5, $P^*(0)$ contains at least one prime $p \in (N, 2N-3]$. By Proposition 2.7, every element $q \in P^*(1)$ satisfies $q \le \frac{2N-5}{3} < N$. Thus $p \in P^*(0) \setminus P^*(1)$, proving that $P^*(1)$ is a strictly proper subset of $P^*(0)$:
    \[
    P^*(0) \supsetneq P^*(1).
    \]
@@ -186,18 +186,18 @@ The nested sequence structure is proved through the following steps:
    \]
    Since $P^*(1) \subseteq P^*(0)$, applying $D$ yields $P^*(2) = D(P^*(1)) \subseteq D(P^*(0)) = P^*(1)$. Proceeding by induction, $P^*(n+1) = D(P^*(n)) \subseteq D(P^*(n-1)) = P^*(n)$ for all $n \ge 1$. $\blacksquare$
 
-### Proposition 2.10 (Convergence to the Stationary Fixed-Point Limit Set $P^*_\infty$)
+### Proposition 2.11 (Convergence to the Stationary Fixed-Point Limit Set $P^*_\infty$)
 Because $P^*(0)$ is finite and the sequence $P^*(n)$ undergoes a strictly proper initial contraction followed by a monotonically non-increasing nested chain, there exists a finite iteration index $n_0 \in \mathbb{N}_{\ge 1}$ at which the set stabilizes:
 \[
 \exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) \equiv P^*_\infty,
 \]
 where $P^*_\infty$ satisfies the stationary identity $D(P^*_\infty) = P^*_\infty$.
 
-**Proof of Proposition 2.10.**  
+**Proof of Proposition 2.11.**  
 The convergence of the finite nested chain proceeds as follows:
 
 1. **Finiteness of Base Domain:** The initial set $P^*(0)$ is finite with $|P^*(0)| \le \pi(2N-3) < \infty$.
-2. **Non-Increasing Integer Sequence:** By Proposition 2.9, the sequence of cardinalities $(|P^*(n)|)_{n \ge 0}$ is a non-increasing sequence of natural numbers with an initial strict decrease:
+2. **Non-Increasing Integer Sequence:** By Proposition 2.10, the sequence of cardinalities $(|P^*(n)|)_{n \ge 0}$ is a non-increasing sequence of natural numbers with an initial strict decrease:
    \[
    |P^*(0)| > |P^*(1)| \ge |P^*(2)| \ge \dots \ge 0.
    \]
@@ -207,47 +207,47 @@ The convergence of the finite nested chain proceeds as follows:
    \]
 4. **Set Identity \& Fixed Point:** Since $P^*(n_0+1) \subseteq P^*(n_0)$ and $|P^*(n_0+1)| = |P^*(n_0)|$, it follows that $P^*(n_0+1) = P^*(n_0) \equiv P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. $\blacksquare$
 
-### Definition 2.11 (Stationary Fixed-Point Limit Set)
-A set of primes $S \subseteq \mathcal{P}_{\le 2N-3}$ is called *stationary* (or a fixed point) under the divisor mapping operator $D$ if $D(S) = S$. The stationary limit set obtained in Proposition 2.10 is denoted $P^*_\infty = D(P^*_\infty)$.
+### Definition 2.12 (Stationary Fixed-Point Limit Set)
+A set of primes $S \subseteq \mathcal{P}_{\le 2N-3}$ is called *stationary* (or a fixed point) under the divisor mapping operator $D$ if $D(S) = S$. The stationary limit set obtained in Proposition 2.11 is denoted $P^*_\infty = D(P^*_\infty)$.
 
-### Proposition 2.12 (Non-Emptiness Inheritance of the Divisor Chain)
+### Proposition 2.13 (Non-Emptiness Inheritance of the Divisor Chain)
 For any non-empty subset $S \subseteq P^*(0)$, its divisor image $D(S)$ is non-empty. Consequently, under the counterexample hypothesis, every iterated divisor set $P^*(n)$ is non-empty for all $n \ge 0$:
 \[
 \forall S \subseteq P^*(0), \quad S \neq \emptyset \implies D(S) \neq \emptyset; \quad \text{hence } P^*(n) \neq \emptyset, \quad \forall n \ge 0.
 \]
 
-**Proof of Proposition 2.12.**  
+**Proof of Proposition 2.13.**  
 Non-emptiness propagation follows by induction:
 
-1. **Pointwise Non-Emptiness:** For any $p \in P^*(0)$, $3 \le p \le 2N - 3 \implies 2N - p \ge 3 > 1$. By the Fundamental Theorem of Arithmetic and Proposition 2.8, $2N - p$ is composite, possessing at least one prime factor $q$, guaranteeing $|D(\{p\})| \ge 1$ and $D(\{p\}) \neq \emptyset$.
+1. **Pointwise Non-Emptiness:** For any $p \in P^*(0)$, $3 \le p \le 2N - 3 \implies 2N - p \ge 3 > 1$. By the Fundamental Theorem of Arithmetic and Proposition 2.9, $2N - p$ is composite, possessing at least one prime factor $q$, guaranteeing $|D(\{p\})| \ge 1$ and $D(\{p\}) \neq \emptyset$.
 2. **Subset Image Non-Emptiness:** For any non-empty subset $S \subseteq P^*(0)$, selecting $p \in S$ gives $\emptyset \neq D(\{p\}) \subseteq D(S) = \bigcup_{x \in S} D(\{x\})$, forcing $D(S) \neq \emptyset$.
-3. **Inductive Base ($n=0$):** $P^*(0) \neq \emptyset$ by Proposition 2.4.
-4. **Inductive Step ($n \to n+1$):** Assuming $P^*(n) \neq \emptyset$, since $P^*(n) \subseteq P^*(0)$ (Proposition 2.9), applying the divisor operator gives $P^*(n+1) = D(P^*(n)) \neq \emptyset$.
+3. **Inductive Base ($n=0$):** $P^*(0) \neq \emptyset$ by Proposition 2.5.
+4. **Inductive Step ($n \to n+1$):** Assuming $P^*(n) \neq \emptyset$, since $P^*(n) \subseteq P^*(0)$ (Proposition 2.10), applying the divisor operator gives $P^*(n+1) = D(P^*(n)) \neq \emptyset$.
 5. **Inductive Conclusion:** Therefore, every iterated divisor set satisfies $P^*(n) \neq \emptyset$ for all $n \ge 0$. $\blacksquare$
 
-### Proposition 2.13 (Non-Emptiness of the Limit Set $P^*_\infty$)
+### Proposition 2.14 (Non-Emptiness of the Limit Set $P^*_\infty$)
 Under the counterexample assumption, the stationary limit set $P^*_\infty$ cannot degenerate to the empty set:
 \[
 2N \text{ is a counterexample} \implies P^*_\infty \neq \emptyset \implies |P^*_\infty| \ge 1.
 \]
 
-**Proof of Proposition 2.13.**  
+**Proof of Proposition 2.14.**  
 The non-emptiness of $P^*_\infty$ is deduced in two steps:
 
-1. **Finite Stabilization Evaluation:** By Proposition 2.10, the sequence of iterated sets stabilizes at a finite index $n_0 \in \mathbb{N}_{\ge 1}$ where $P^*_\infty = P^*(n_0)$.
-2. **Inherited Non-Emptiness:** By Proposition 2.12, $P^*(n) \neq \emptyset$ for all $n \ge 0$. Evaluating at $n = n_0$ yields $P^*_\infty = P^*(n_0) \neq \emptyset$, ensuring $|P^*_\infty| \ge 1$. $\blacksquare$
+1. **Finite Stabilization Evaluation:** By Proposition 2.11, the sequence of iterated sets stabilizes at a finite index $n_0 \in \mathbb{N}_{\ge 1}$ where $P^*_\infty = P^*(n_0)$.
+2. **Inherited Non-Emptiness:** By Proposition 2.13, $P^*(n) \neq \emptyset$ for all $n \ge 0$. Evaluating at $n = n_0$ yields $P^*_\infty = P^*(n_0) \neq \emptyset$, ensuring $|P^*_\infty| \ge 1$. $\blacksquare$
 
-### Proposition 2.14 (Structural Ceiling Rule: Compositeness Ceiling)
+### Proposition 2.15 (Structural Ceiling Rule: Compositeness Ceiling)
 The maximum prime in $P^*_\infty$, denoted $s = \max(P^*_\infty)$, is strictly bounded above by $\frac{2N - 5}{3} < \frac{2N}{3} < N$:
 \[
 s = \max_{p \in P^*_\infty} p \le \frac{2N - 5}{3} < \frac{2N}{3}.
 \]
 
-**Proof of Proposition 2.14.**  
+**Proof of Proposition 2.15.**  
 The ceiling bound is deduced as follows:
 
 1. **Fixed-Point Pre-Image:** Since $P^*_\infty = D(P^*_\infty)$, every prime $p \in P^*_\infty$ is a prime factor of $2N - q$ for some $q \in P^*_\infty \subseteq P^*(0)$.
-2. **Divisor Image Ceiling:** By Proposition 2.6, every element of $D(P^*(0))$---and consequently every iterated set $P^*(n)$ for $n \ge 1$ including $P^*_\infty$---is bounded by $\frac{2N - 5}{3}$.
+2. **Divisor Image Ceiling:** By Proposition 2.7, every element of $D(P^*(0))$---and consequently every iterated set $P^*(n)$ for $n \ge 1$ including $P^*_\infty$---is bounded by $\frac{2N - 5}{3}$.
 3. **Extremal Bound:** Therefore, the maximum prime satisfies $s = \max(P^*_\infty) \le \frac{2N - 5}{3} < \frac{2N}{3} < N$. $\blacksquare$
 
 ---
@@ -269,7 +269,7 @@ Define the directed relation $R$ on $P^*_\infty$ by $p R q \iff q \mid (2N - p)$
 The topological strong connectivity of $G = (I, R)$ is deduced as follows:
 
 1. **Finite Directed Graph:** Since $P^*_\infty \subseteq \mathcal{P}_{\le \frac{2N-5}{3}}$ is finite, the relation graph $G = (I, R)$ is a finite directed graph.
-2. **Positive Out-Degree:** By Proposition 2.8, $2N - p$ is composite for every $p \in I$. By the Fundamental Theorem of Arithmetic, $2N - p$ has at least one prime factor $q$, and because $D(I) = I$, $q \in I$. Thus every vertex $p \in I$ has out-degree $\operatorname{deg}^+(p) = |D(\{p\}) \cap I| \ge 1$.
+2. **Positive Out-Degree:** By Proposition 2.9, $2N - p$ is composite for every $p \in I$. By the Fundamental Theorem of Arithmetic, $2N - p$ has at least one prime factor $q$, and because $D(I) = I$, $q \in I$. Thus every vertex $p \in I$ has out-degree $\operatorname{deg}^+(p) = |D(\{p\}) \cap I| \ge 1$.
 3. **Condensation and Sink Component:** Any finite directed graph can be uniquely condensed into a directed acyclic graph (DAG) by contracting each strongly connected component to a single vertex. In any finite DAG, there exists at least one terminal sink (a component with out-degree zero). Let $I' \subseteq I$ be such a sink component in $G = (I, R)$.
 4. **Image Invariance of Sink:** Because $I'$ is a sink component, there are no directed edges leaving $I'$ to $I \setminus I'$. Consequently, for all $p \in I'$, $D(\{p\}) \subseteq I'$, which implies:
    \[
@@ -287,11 +287,11 @@ Under the counterexample hypothesis, the stationary limit set $P^*_\infty$ conta
 **Proof of Proposition 3.3.**  
 The existence of a minimal terminal island is established as follows:
 
-1. **Family of Invariant Subsets:** Define $\mathcal{F} = \{ S \subseteq P^*_\infty \mid S \neq \emptyset \text{ and } D(S) \subseteq S \}$. By Proposition 2.13, $P^*_\infty \neq \emptyset$, and by Proposition 2.10, $D(P^*_\infty) = P^*_\infty \subseteq P^*_\infty$. Hence $P^*_\infty \in \mathcal{F}$, so $\mathcal{F}$ is non-empty.
+1. **Family of Invariant Subsets:** Define $\mathcal{F} = \{ S \subseteq P^*_\infty \mid S \neq \emptyset \text{ and } D(S) \subseteq S \}$. By Proposition 2.14, $P^*_\infty \neq \emptyset$, and by Proposition 2.11, $D(P^*_\infty) = P^*_\infty \subseteq P^*_\infty$. Hence $P^*_\infty \in \mathcal{F}$, so $\mathcal{F}$ is non-empty.
 2. **Existence of a Minimal Element:** Because $P^*_\infty$ is finite, $\mathcal{F}$ is a non-empty family of finite sets. Under the partial order of set inclusion ($\subseteq$), every non-empty finite family of sets possesses at least one minimal element $I \in \mathcal{F}$.
-3. **Stationary Identity ($D(I) = I$):** By definition of $\mathcal{F}$, $D(I) \subseteq I$. Since $I \neq \emptyset$, Proposition 2.12 guarantees that $D(I) \neq \emptyset$. Monotonicity of $D$ yields $D(D(I)) \subseteq D(I)$, which implies $D(I) \in \mathcal{F}$. By set minimality of $I \in \mathcal{F}$, the inclusion $D(I) \subseteq I$ forces $D(I) = I$.
+3. **Stationary Identity ($D(I) = I$):** By definition of $\mathcal{F}$, $D(I) \subseteq I$. Since $I \neq \emptyset$, Proposition 2.13 guarantees that $D(I) \neq \emptyset$. Monotonicity of $D$ yields $D(D(I)) \subseteq D(I)$, which implies $D(I) \in \mathcal{F}$. By set minimality of $I \in \mathcal{F}$, the inclusion $D(I) \subseteq I$ forces $D(I) = I$.
 4. **Strict Minimality:** If any proper non-empty subset $I' \subsetneq I$ satisfied $D(I') \subseteq I'$, then $I'$ would belong to $\mathcal{F}$, contradicting the minimality of $I$. Thus $I$ satisfies Definition 3.1.
-5. **Cardinality Floor ($k \ge 2$):** If $|I| = 1$, say $I = \{p\}$, then $D(I) = I$ would imply $D(\{p\}) = \{p\}$, meaning $p \mid (2N - p)$, which forces $p \mid 2N$. However, by Non-Divisibility Inheritance (Proposition 2.7), no prime in $P^*(0)$ divides $2N$. Since $I \subseteq P^*_\infty \subseteq P^*(0)$, this is an immediate contradiction. Thus every invariant subset $S \in \mathcal{F}$ satisfies $|S| \ge 2$, forcing $k = |I| \ge 2$.
+5. **Cardinality Floor ($k \ge 2$):** If $|I| = 1$, say $I = \{p\}$, then $D(I) = I$ would imply $D(\{p\}) = \{p\}$, meaning $p \mid (2N - p)$, which forces $p \mid 2N$. However, by Non-Divisibility Inheritance (Proposition 2.8), no prime in $P^*(0)$ divides $2N$. Since $I \subseteq P^*_\infty \subseteq P^*(0)$, this is an immediate contradiction. Thus every invariant subset $S \in \mathcal{F}$ satisfies $|S| \ge 2$, forcing $k = |I| \ge 2$.
 6. **Strong Connectivity and Irreducibility:** By Proposition 3.2, $G = (I, R)$ is strongly connected. Since $k \ge 2$, the associated exponent matrix $M$ is algebraically irreducible. $\blacksquare$
 
 ### Remark 3.4 (Structure of $P^*_\infty$ and Sufficiency of Terminal Island Elimination)
@@ -308,7 +308,7 @@ Moreover, the exponent matrix $M$ is algebraically irreducible.
 The representation and irreducibility are established as follows:
 
 1. **Prime Factorization in $I$:** Since $D(I) = I$, the set of prime factors of $2N - p_i$ is contained in $I$ for every $p_i \in I$. By the Fundamental Theorem of Arithmetic, $2N - p_i$ factors uniquely as $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ for integers $a_{i,j} \ge 0$.
-2. **Zero Diagonal ($\operatorname{Tr}(M) = 0$):** By Non-Divisibility Inheritance (Proposition 2.7), no prime $p_i \in I \subseteq P^*(0)$ divides $2N$. If $p_i \mid (2N - p_i)$, then $p_i \mid 2N$, a contradiction. Thus $p_i \nmid (2N - p_i)$, which enforces $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$, so $\operatorname{Tr}(M) = \sum_{i=1}^k a_{i,i} = 0$.
+2. **Zero Diagonal ($\operatorname{Tr}(M) = 0$):** By Non-Divisibility Inheritance (Proposition 2.8), no prime $p_i \in I \subseteq P^*(0)$ divides $2N$. If $p_i \mid (2N - p_i)$, then $p_i \mid 2N$, a contradiction. Thus $p_i \nmid (2N - p_i)$, which enforces $a_{i,i} = 0$ for all $i \in \{1, \dots, k\}$, so $\operatorname{Tr}(M) = \sum_{i=1}^k a_{i,i} = 0$.
 3. **Graph-Matrix Equivalence \& Irreducibility:** The directed graph $G(M)$ of the non-negative matrix $M$ has a directed edge from $i$ to $j$ if and only if $a_{i,j} \ge 1$, which is equivalent to $p_j \mid (2N - p_i)$, matching the relation $R$ of $G = (I, R)$. By Proposition 3.2, $G = (I, R)$ is strongly connected. Since $k \ge 2$, by Varga's theorem on matrix irreducibility (Theorem 1.6, Varga 2009; originally Frobenius 1912), a non-negative matrix is algebraically irreducible if and only if its associated directed graph is strongly connected. Hence $M$ is irreducible. $\blacksquare$
 
 ### Proposition 3.6 (Linear Logarithmic System, Row Sums, and Spectral Radius Lower Bound)
@@ -337,7 +337,7 @@ Let $I = \{p_1, \dots, p_k\}$ be an irreducible minimal terminal island ($k \ge 
 **Proof of Proposition 3.6.**  
 We establish the five properties in sequence:
 
-1. **Row Sum Bound:** For every $p_i \in I$, $2N - p_i$ is composite by Proposition 2.8. Since $p_i \ge 3$ and $2N$ is even, $2N - p_i$ is an odd composite integer, possessing at least two prime factors (counted with multiplicity), all of which are $\ge 3$. Because $D(I) = I$, all prime factors belong to $I$, so the row sum $\sum_{j=1}^k a_{i,j}$ counts the total number of prime factors of $2N - p_i$. Hence $\sum_{j=1}^k a_{i,j} \ge 2$ for every $i \in \{1, \dots, k\}$.
+1. **Row Sum Bound:** For every $p_i \in I$, $2N - p_i$ is composite by Proposition 2.9. Since $p_i \ge 3$ and $2N$ is even, $2N - p_i$ is an odd composite integer, possessing at least two prime factors (counted with multiplicity), all of which are $\ge 3$. Because $D(I) = I$, all prime factors belong to $I$, so the row sum $\sum_{j=1}^k a_{i,j}$ counts the total number of prime factors of $2N - p_i$. Hence $\sum_{j=1}^k a_{i,j} \ge 2$ for every $i \in \{1, \dots, k\}$.
 2. **Linear Logarithmic System:** Taking natural logarithms of $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ gives:
    \[
    \ln(2N - p_i) = \sum_{j=1}^k a_{i,j} \ln p_j, \quad \forall i \in \{1, \dots, k\},
@@ -404,7 +404,7 @@ The impossibility of $1$-element stationary loops is deduced as follows:
    \]
 
 3. **Domain Contradiction:**  
-   By Definition 2.1 and Proposition 2.7 (Non-Divisibility Inheritance), every element $p \in P^*(0)$ satisfies $p \nmid 2N$, yielding an immediate contradiction.
+   By Definition 2.2 and Proposition 2.8 (Non-Divisibility Inheritance), every element $p \in P^*(0)$ satisfies $p \nmid 2N$, yielding an immediate contradiction.
 
 4. **Cardinality Floor Conclusion:**  
    Therefore, $p \notin D(\{p\})$ for all $p \in P^*(0)$, proving that no $1$-element fixed point $D(\{p\}) = \{p\}$ can exist and precluding any terminal island of cardinality $k = 1$. $\blacksquare$
@@ -427,7 +427,7 @@ Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 
 We analyze the possible exponent configurations:
 
 1. **Linear Exponent Case ($\min(a_1, a_2) = 1$):**  
-   If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1 \implies 2N = p_1 + p_2$. In either case, the sum $p_1 + p_2 = 2N$ forms a valid Goldbach partition of $2N$ into two odd primes, directly contradicting the hypothesis that $2N$ is a counterexample (Proposition 2.8). Thus, we must have $a_1 \ge 2$ and $a_2 \ge 2$.
+   If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1 \implies 2N = p_1 + p_2$. In either case, the sum $p_1 + p_2 = 2N$ forms a valid Goldbach partition of $2N$ into two odd primes, directly contradicting the hypothesis that $2N$ is a counterexample (Proposition 2.9). Thus, we must have $a_1 \ge 2$ and $a_2 \ge 2$.
 
 2. **Higher Exponent System ($a_1 \ge 2$ and $a_2 \ge 2$):**  
    Subtracting the two equations yields:
@@ -727,7 +727,7 @@ $$(2N - p_1) - (2N - p_2) = p_2 - p_1.$$
 Since $p_1 < p_2$, the difference satisfies $1 \le p_2 - p_1 < p_2$. Since $q \mid (p_2 - p_1)$, we must have $q \le p_2 - p_1 < p_2$.
 The only prime in the island $I$ strictly smaller than $p_2$ is $p_1$ (since $p_1 = \min(I)$).
 Therefore, the only candidate is $q = p_1$.
-However, if $p_1 \mid (2N - p_1)$, then $p_1 \mid 2N$, which directly contradicts Proposition 2.2 ($\gcd(p, 2N) = 1$ for all $p \in P^*(0)$).
+However, if $p_1 \mid (2N - p_1)$, then $p_1 \mid 2N$, which directly contradicts Proposition 2.8 ($\gcd(p, 2N) = 1$ for all $p \in P^*(0)$).
 Thus, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
 Since $I$ is an autonomous terminal island, all prime factors of $2N - p_1$ and $2N - p_2$ lie in $I$, proving that $\gcd(2N - p_1, 2N - p_2) = 1$ and $a_{1,j} a_{2,j} = 0$ for all $j \in \{1, \dots, k\}$. $\blacksquare$
 
@@ -1005,7 +1005,7 @@ The structural findings across all propositions in Section 4 are summarized belo
 
 | Island Dimension ($k$) | Exponent Domain / Configuration | Elimination Status | Ruling Result |
 | :--- | :--- | :---: | :--- |
-| $k = 0$ | Empty Set ($P^*_\infty = \emptyset$) | **Unconditionally Eliminated** | Proposition 2.13 |
+| $k = 0$ | Empty Set ($P^*_\infty = \emptyset$) | **Unconditionally Eliminated** | Proposition 2.14 |
 | $k = 1$ | Single-Prime Loop ($2N - p = p^a$) | **Unconditionally Eliminated** | Proposition 4.1 |
 | $k = 2$ | 2-Prime Cycle ($p_1, p_2$) | **Unconditionally Eliminated** | Proposition 4.2 |
 | $k = 3$ | 3-Prime Cycle ($p_1, p_2, p_3$) | **Unconditionally Eliminated** | Proposition 4.3 |
