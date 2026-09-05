@@ -142,20 +142,17 @@ We prove non-divisibility inheritance by mathematical induction on the iteration
 5. **Inductive Conclusion:** Thus $q \notin P^*(n+1)$. By mathematical induction, no prime factor of $2N$ ever enters $P^*(n)$ for any $n \ge 0$. $\blacksquare$
 
 ### Proposition 2.8 (Absence of Goldbach Partners in a Counterexample)
-Let $2N \ge 8$ be an even integer. Then $2N$ is a counterexample to Goldbach's Conjecture if and only if for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
+Let $2N \ge 8$ be an even integer. If $2N$ is a counterexample to Goldbach's Conjecture, then for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
 \[
-2N \text{ is a counterexample} \iff \forall p \in P^*(0), \quad |D(\{p\})| \ge 1 \text{ and } 2N - p \notin \mathbb{P}.
+2N \text{ is a counterexample} \implies \forall p \in P^*(0), \quad |D(\{p\})| \ge 1 \text{ and } 2N - p \notin \mathbb{P}.
 \]
 
 **Proof of Proposition 2.8.**  
-The equivalence is established in two steps:
-
-1. **Forward Implication ($\implies$):** Suppose $2N$ is a counterexample. For every $p \in P^*(0)$, $3 \le p \le 2N - 3$, which forces $2N - p \ge 3$. If $2N - p = q \in \mathbb{P}$, then $2N = p + q$ forms a valid Goldbach partition, contradicting the counterexample hypothesis. Hence $2N - p \notin \mathbb{P}$. Since $2N - p \ge 3$ and $2N - p$ is not prime, it is strictly composite, guaranteeing that it has at least one prime factor, ensuring $|D(\{p\})| \ge 1$.
-2. **Reverse Implication ($\impliedby$):** Suppose $2N - p \notin \mathbb{P}$ for all $p \in P^*(0)$. Any prime $p < 2N$ falls into one of three mutually exclusive categories:
-   - $p \in P^*(0)$: By hypothesis, $2N - p$ is composite, so no Goldbach partition arises.
-   - $p \mid 2N$: Because $2N \ge 8$ is a counterexample, the half-sum $N$ is composite by Proposition 2.3. If $p = 2$, then $2N - 2 = 2(N-1) \ge 6$ is composite. If $p$ is an odd prime divisor of $2N$, then $2N - p = p(2N/p - 1)$. Since $N$ is composite, $p \le N/2$, implying $2N/p \ge 4$, so $2N/p - 1 \ge 3$. Thus $2N - p$ is a proper multiple of $p$ strictly greater than $p$, hence composite.
-   - $p = 2N - 1$: If $2N - 1$ is prime, its complement is $2N - (2N - 1) = 1$, which is not prime.
-   Therefore, no prime $p < 2N$ can have a prime complement $2N - p$. Thus no Goldbach partition exists, confirming $2N$ is a counterexample. $\blacksquare$
+Suppose $2N \ge 8$ is a counterexample to Goldbach's Conjecture.
+For every prime $p \in P^*(0)$, we have $3 \le p \le 2N - 3$, which ensures that the complement satisfies $2N - p \ge 3$.
+If $2N - p = q$ were a prime number, then $2N = p + q$ would be an explicit representation of $2N$ as the sum of two primes, directly contradicting the hypothesis that $2N$ is a counterexample.
+Therefore, $2N - p \notin \mathbb{P}$.
+Since $2N - p \ge 3$ and $2N - p$ is not prime, the Fundamental Theorem of Arithmetic guarantees that $2N - p$ is strictly composite and possesses at least one prime factor $q \in \mathbb{P}$, which ensures $|D(\{p\})| \ge 1$. $\blacksquare$
 
 ### Proposition 2.9 (The Monotonic Nested Chain Property)
 The sequence of iterated divisor sets forms a monotonically non-increasing nested chain of finite sets with a strictly proper initial contraction:
