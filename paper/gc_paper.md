@@ -55,6 +55,18 @@ For any even integer $2N \ge 8$, let $\mathcal{P}_{\le 2N-3} = \{ p \in \mathbb{
 P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}.
 \]
 
+### Remark 2.2 (Exclusion of $2N-1$, $2$, and Prime Factors of $2N$)
+\label{rem:exclusion_2N_minus_1}
+The restriction of the initial domain $P^*(0)$ to odd primes $3 \le p \le 2N - 3$ not dividing $2N$ captures all genuine Goldbach candidates and ensures the dynamical validity of the divisor mapping:
+1. **Exclusion of $2N - 1$:** Even if $2N - 1$ is a prime number, it is excluded from $P^*(0)$ for three foundational structural reasons:
+   - *No Goldbach Partition:* If $p = 2N - 1$, its complement is $2N - (2N - 1) = 1$. Because $1$ is not a prime number, $2N - 1$ can never participate in any Goldbach partition $p + q = 2N$.
+   - *Divisor Boundedness:* For every prime $p \in P^*(0)$, since $p \ge 3$, the complement satisfies $2N - p \le 2N - 3 < 2N - 1$. Because $0 < 2N - p < 2N - 1$, the prime $2N - 1$ is strictly too large to divide any complement $2N - p$. Thus, $2N - 1$ can never enter the divisor image $D(S)$ for any subset $S \subseteq P^*(0)$.
+   - *Operator Well-Definedness:* If $2N - 1$ were admitted into the domain, its complement $1$ would possess no prime divisors, yielding $D(\{2N - 1\}) = \emptyset$, which would artificially break the non-emptiness of the divisor operator. Restricting the upper bound to $2N - 3$ ensures $2N - p \ge 3 > 1$ for all $p \in P^*(0)$.
+2. **Exclusion of $p = 2$:** The complement $2N - 2 = 2(N - 1) \ge 6$ is an even composite integer.
+3. **Exclusion of $p \mid 2N$:** Any prime divisor $p \mid 2N$ dividing $2N - p$ forces $p \mid 2N$. If $2N - p = q$ were prime, then $p \mid q \implies p = q = N$, which requires $N$ to be prime (precluded in a counterexample by Proposition 2.3).
+
+Consequently, $P^*(0)$ is both necessary and sufficient for investigating Goldbach counterexamples.
+
 ### Definition 2.2 (Prime Divisor Mapping Operator $D$ and Iterated Chains)
 For any subset of primes $S \subseteq \mathcal{P}_{\le 2N-3}$, the prime divisor mapping operator $D: \mathcal{P}(\mathcal{P}_{\le 2N-3}) \to \mathcal{P}(\mathcal{P}_{\le 2N-3})$ is defined as the union of all prime factors dividing the complements $2N - p$:
 \[
