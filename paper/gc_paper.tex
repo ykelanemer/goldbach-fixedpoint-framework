@@ -30,7 +30,7 @@
 We introduce an arithmetic-dynamical and spectral framework for the binary Goldbach Conjecture that reformulates hypothetical counterexamples $2N > 6$ through a recursive prime divisor mapping $D(S) = \bigcup_{p \in S} \{ q \in \mathbb{P} \mid q \mid (2N - p) \}$. Under the counterexample hypothesis, the iterated set sequence $P^*(n+1) = D(P^*(n))$ forms a monotonically non-increasing finite nested chain $P^*(0) \supseteq P^*(1) \supseteq \dots$ that converges in finitely many steps to a non-empty stationary limit set $P^*_\infty = D(P^*_\infty)$ bounded strictly inside $\mathcal{P}_{\le \frac{2N-5}{3}}$.
 
 We prove that every minimal terminal component $I \subseteq P^*_\infty$ forms an irreducible, strongly connected directed graph $G = (I, R)$ governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$) and spectral radius $\rho(M) \ge 2$. Within this setting, we establish three foundational structural invariants:
-(i)~\textbf{The Coprime Base Complement Theorem:} The two smallest complements $2N - p_1$ and $2N - p_2$ share zero prime factors from the island ($\gcd(2N - p_1, 2N - p_2) = 1$ in $I$), forcing disjoint prime supports $S_1 \cap S_2 = \emptyset$;
+(i)~\textbf{The Coprime Base Complement Theorem:} The two base complements $2N - p_1$ and $2N - p_2$ (the complements of the two smallest primes $p_1 < p_2$, and the two largest complements) are strictly coprime ($\gcd(2N - p_1, 2N - p_2) = 1$), forcing completely disjoint prime supports $S_1 \cap S_2 = \emptyset$;
 (ii)~\textbf{Universal Maximal Prime In-Degree Rigidity:} The maximal prime $p_k = \max(I)$ divides at most one complement in $I$ with exponent $a_{m,k} = 1$, inducing an exact eigenvector decoupling ratio $u_k = \frac{u_m}{\rho(M)} \le \frac{u_m}{2}$;
 (iii)~\textbf{The Perron Geometric Mean Ceiling:} The left Perron eigenvector $\mathbf{u} > \mathbf{0}$ enforces $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/\rho(M)} \le \sqrt{2N}$.
 
@@ -834,15 +834,19 @@ a_{1,j} \cdot a_{2,j} = 0 \quad \text{for all } j \in \{1, \dots, k\}.
 \]
 \end{lemma}
 \begin{proof}[\textbf{Proof of Lemma~\ref{lem:coprime_base}}]
-Suppose there exists a prime $q \in I$ dividing both $2N - p_1$ and $2N - p_2$. Then $q$ divides their difference:
+Suppose for contradiction that there exists a prime $q \in I$ dividing both $2N - p_1$ and $2N - p_2$.
+By Proposition~\ref{prop:inheritance} (or zero diagonal $a_{i,i} = 0$), no prime in $I$ can divide its own complement, so $q \neq p_1$ and $q \neq p_2$.
+Because the primes in $I$ are strictly ordered $p_1 < p_2 < p_3 < \dots < p_k$, having $q \notin \{p_1, p_2\}$ forces $q \ge p_3 > p_2$.
+On the other hand, $q$ must divide their positive difference:
 \[
-(2N - p_1) - (2N - p_2) = p_2 - p_1.
+(2N - p_1) - (2N - p_2) = p_2 - p_1 > 0,
 \]
-Since $p_1 < p_2$, the difference satisfies $1 \le p_2 - p_1 < p_2$. Since $q \mid (p_2 - p_1)$, we must have $q \le p_2 - p_1 < p_2$.
-The only prime in the island $I$ strictly smaller than $p_2$ is $p_1$ (since $p_1 = \min(I)$).
-Therefore, the only candidate is $q = p_1$.
-However, if $p_1 \mid (2N - p_1)$, then $p_1 \mid 2N$, which directly contradicts Proposition~\ref{prop:inheritance} ($\gcd(p, 2N) = 1$ for all $p \in P^*(0)$).
-Thus, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
+which implies $q \le p_2 - p_1 < p_2$.
+This yields the immediate contradiction:
+\[
+p_2 < q \le p_2 - p_1 < p_2 \implies p_2 < p_2.
+\]
+Hence, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
 Since $I$ is an autonomous terminal island, all prime factors of $2N - p_1$ and $2N - p_2$ lie in $I$, proving that $\gcd(2N - p_1, 2N - p_2) = 1$ and $a_{1,j} a_{2,j} = 0$ for all $j \in \{1, \dots, k\}$.
 \end{proof}
 
@@ -1129,7 +1133,7 @@ Every complement satisfies $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ with row sum
 
 \begin{enumerate}
 \item \textbf{Step 1 (Coprime Base Partitioning):}  
-By Lemma~\ref{lem:coprime_base} (The Coprime Base Complement Theorem), the two smallest complements $2N - p_1$ and $2N - p_2$ share no prime factors from $I$:
+By Lemma~\ref{lem:coprime_base} (The Coprime Base Complement Theorem), the two base complements $2N - p_1$ and $2N - p_2$ (the complements of the two smallest primes $p_1 < p_2$, and the two largest complements) are strictly coprime:
 \[
 \gcd\left( \prod_{j=1}^k p_j^{a_{1,j}}, \prod_{j=1}^k p_j^{a_{2,j}} \right) = 1.
 \]

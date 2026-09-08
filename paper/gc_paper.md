@@ -11,7 +11,7 @@
 We introduce an arithmetic-dynamical and spectral framework for the binary Goldbach Conjecture that reformulates hypothetical counterexamples $2N > 6$ through a recursive prime divisor mapping $D(S) = \bigcup_{p \in S} \{ q \in \mathbb{P} \mid q \mid (2N - p) \}$. Under the counterexample hypothesis, the iterated set sequence $P^*(n+1) = D(P^*(n))$ forms a monotonically non-increasing finite nested chain $P^*(0) \supseteq P^*(1) \supseteq \dots$ that converges in finitely many steps to a non-empty stationary limit set $P^*_\infty = D(P^*_\infty)$ bounded strictly inside $\mathcal{P}_{\le \frac{2N-5}{3}}$.
 
 We prove that every minimal terminal component $I \subseteq P^*_\infty$ forms an irreducible, strongly connected directed graph $G = (I, R)$ governed by an exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$) and spectral radius $\rho(M) \ge 2$. Within this setting, we establish three foundational structural invariants:
-(i) **The Coprime Base Complement Theorem:** The two smallest complements $2N - p_1$ and $2N - p_2$ share zero prime factors from the island ($\gcd(2N - p_1, 2N - p_2) = 1$ in $I$), forcing disjoint prime supports $S_1 \cap S_2 = \emptyset$;
+(i) **The Coprime Base Complement Theorem:** The two base complements $2N - p_1$ and $2N - p_2$ (the complements of the two smallest primes $p_1 < p_2$, and the two largest complements) are strictly coprime ($\gcd(2N - p_1, 2N - p_2) = 1$), forcing completely disjoint prime supports $S_1 \cap S_2 = \emptyset$;
 (ii) **Universal Maximal Prime In-Degree Rigidity:** The maximal prime $p_k = \max(I)$ divides at most one complement in $I$ with exponent $a_{m,k} = 1$, inducing an exact eigenvector decoupling ratio $u_k = \frac{u_m}{\rho(M)} \le \frac{u_m}{2}$;
 (iii) **The Perron Geometric Mean Ceiling:** The left Perron eigenvector $\mathbf{u} > \mathbf{0}$ enforces $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/\rho(M)} \le \sqrt{2N}$.
 
@@ -33,7 +33,7 @@ In this work, we diverge from classical additive sieve methods by establishing a
 We demonstrate that each minimal terminal component $I \subseteq P^*_\infty$ of cardinality $k = |I|$ corresponds to an irreducible non-negative integer exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$) and spectral radius $\rho(M) \ge 2$. This reformulates the existence of a counterexample into the feasibility of an isolated Diophantine matrix system $\mathcal{S}(2N, k, M)$. 
 The primary contributions of this paper are:
 1. **Complete Unconditional Low-Dimensional Elimination ($k \le 5$):** We establish the unconditional non-existence of fixed-point islands for all dimensions $k \in \{0, 1, 2, 3, 4, 5\}$, as well as for all sparse square-free exponent domains across all dimensions ($k \ge 4$).
-2. **Discovery of Multiplicative Structural Invariants:** We prove the Coprime Base Complement Theorem ($\gcd(2N - p_1, 2N - p_2) = 1$ in $I$) and the Universal Maximal Prime In-Degree Rigidity Theorem ($\operatorname{in-deg}(p_k) = 1, a_{m,k} = 1$).
+2. **Discovery of Multiplicative Structural Invariants:** We prove the Coprime Base Complement Theorem ($\gcd(2N - p_1, 2N - p_2) = 1$) and the Universal Maximal Prime In-Degree Rigidity Theorem ($\operatorname{in-deg}(p_k) = 1, a_{m,k} = 1$).
 3. **Inductive Node Contraction and Asymptotic Dimensional Ceiling ($k \ge 98$ Elimination):** By introducing a Schur-type node contraction preserving total exponent mass ($\sum_{i,j} A_{i,j} \ge 2k$), we compress high-dimensional islands down to dimension 5, proving that the average row sum satisfies $\overline{S}_5 \ge \frac{2k}{5}$. This yields an absolute dimensional bound $k \le \frac{5}{2} \lfloor \frac{\ln(2N)}{\ln 3} \rfloor$, unconditionally eliminating all islands of dimension $k \ge 98$ for $2N \approx 4 \cdot 10^{18}$.
 4. **Reduction to a Finite Dimensional Frontier ($6 \le k \le 97$):** We demonstrate that any hypothetical counterexample is strictly confined to a narrow, finite integer window of dimensions $6 \le k \le 97$ with $p_2 \le \sqrt{2N}$, where the two base factorizations satisfy an ultra-tight logarithmic coincidence $|\Lambda_{1,2}| < 10^{-9}$, providing a concrete roadmap toward an unconditional resolution via spectral decoupling.
 
@@ -717,19 +717,21 @@ $$\min_{1 \le i \le k} \sum_{j=1}^k a_{i,j} \le \rho(M) \le \max_{1 \le i \le k}
 
 #### Lemma 4.10 (The Coprime Base Complement Theorem)
 \label{lem:coprime_base}
-Let $I = \{p_1 < p_2 < \dots < p_k\}$ be an irreducible stationary island. The two base complements $2N - p_1$ and $2N - p_2$ share no prime factors from the island $I$:
-$$\gcd\left( \prod_{j=1}^k p_j^{a_{1,j}}, \prod_{j=1}^k p_j^{a_{2,j}} \right) = 1.$$
+Let $I = \{p_1 < p_2 < \dots < p_k\}$ be an irreducible stationary island. The two base complements $2N - p_1$ and $2N - p_2$ (the complements of the two smallest primes $p_1 < p_2$, and the two largest complements) are strictly coprime:
+$$\gcd(2N - p_1, 2N - p_2) = 1.$$
 Consequently, the first two rows of $M$ have disjoint prime support:
 $$a_{1,j} \cdot a_{2,j} = 0 \quad \text{for all } j \in \{1, \dots, k\}.$$
 
 **Proof of Lemma 4.10.**  
-Suppose there exists a prime $q \in I$ dividing both $2N - p_1$ and $2N - p_2$. Then $q$ divides their difference:
-$$(2N - p_1) - (2N - p_2) = p_2 - p_1.$$
-Since $p_1 < p_2$, the difference satisfies $1 \le p_2 - p_1 < p_2$. Since $q \mid (p_2 - p_1)$, we must have $q \le p_2 - p_1 < p_2$.
-The only prime in the island $I$ strictly smaller than $p_2$ is $p_1$ (since $p_1 = \min(I)$).
-Therefore, the only candidate is $q = p_1$.
-However, if $p_1 \mid (2N - p_1)$, then $p_1 \mid 2N$, which directly contradicts Proposition 2.8 ($\gcd(p, 2N) = 1$ for all $p \in P^*(0)$).
-Thus, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
+Suppose for contradiction that there exists a prime $q \in I$ dividing both $2N - p_1$ and $2N - p_2$.
+By Proposition 2.8 (or zero diagonal $a_{i,i} = 0$), no prime in $I$ can divide its own complement, so $q \neq p_1$ and $q \neq p_2$.
+Because the primes in $I$ are strictly ordered $p_1 < p_2 < p_3 < \dots < p_k$, having $q \notin \{p_1, p_2\}$ forces $q \ge p_3 > p_2$.
+On the other hand, $q$ must divide their positive difference:
+$$(2N - p_1) - (2N - p_2) = p_2 - p_1 > 0,$$
+which implies $q \le p_2 - p_1 < p_2$.
+This yields the immediate contradiction:
+$$p_2 < q \le p_2 - p_1 < p_2 \implies p_2 < p_2.$$
+Hence, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
 Since $I$ is an autonomous terminal island, all prime factors of $2N - p_1$ and $2N - p_2$ lie in $I$, proving that $\gcd(2N - p_1, 2N - p_2) = 1$ and $a_{1,j} a_{2,j} = 0$ for all $j \in \{1, \dots, k\}$. $\blacksquare$
 
 #### Lemma 4.11 (Perron Component Floor)
@@ -952,8 +954,8 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
 Every complement satisfies $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ with row sum $\sum_{j=1}^k a_{i,j} \ge 2$, and $a_{i,i} = 0$.
 
 1. **Step 1 (Coprime Base Partitioning):**  
-   By Lemma 4.10 (The Coprime Base Complement Theorem), the two smallest complements $2N - p_1$ and $2N - p_2$ share no prime factors from $I$:
-   $$\gcd\left( \prod_{j=1}^k p_j^{a_{1,j}}, \prod_{j=1}^k p_j^{a_{2,j}} \right) = 1.$$
+   By Lemma 4.10 (The Coprime Base Complement Theorem), the two base complements $2N - p_1$ and $2N - p_2$ (the complements of the two smallest primes $p_1 < p_2$, and the two largest complements) are strictly coprime:
+   $$\gcd(2N - p_1, 2N - p_2) = 1.$$
    Because $a_{1,1} = 0$ and $a_{2,2} = 0$, the non-zero entries of row 1 lie in $S_1 = \operatorname{supp}(a_{1,*}) \subseteq \{2, 3, \dots, k\}$ and of row 2 lie in $S_2 = \operatorname{supp}(a_{2,*}) \subseteq \{1, 3, \dots, k\}$, with:
    $$S_1 \cap S_2 = \emptyset.$$
    Each row must satisfy $\sum_{j \in S_1} a_{1,j} \ge 2$ and $\sum_{j \in S_2} a_{2,j} \ge 2$.
