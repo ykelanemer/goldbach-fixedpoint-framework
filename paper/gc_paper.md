@@ -144,20 +144,17 @@ No prime factor dividing $2N$ can ever enter any iterated set $P^*(n)$ (Definiti
 \]
 
 **Proof of Proposition 2.8.**  
-We prove non-divisibility inheritance by mathematical induction on the iteration step $n \ge 0$:
+Let $\operatorname{Div}(2N) = \{q \in \mathbb{P} \mid q \mid 2N\}$. We claim that for any subset $S \subseteq \mathbb{P}$,
+\[
+D(S) \cap \operatorname{Div}(2N) \subseteq S \cap \operatorname{Div}(2N).
+\]
+Indeed, if $q \in D(S)$ and $q \mid 2N$, then by definition of $D$, there exists $p \in S$ such that $q \mid (2N - p)$. Then $q \mid [2N - (2N - p)] = p$. Since $p$ and $q$ are primes, this forces $q = p \in S$, and hence $q \in S \cap \operatorname{Div}(2N)$.
 
-1. **Base Step ($n=0$):** By Definition 2.2, $P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}$. Hence, if $q \mid 2N$, then by construction $q \notin P^*(0)$.
-2. **Inductive Hypothesis:** Assume that for a given $n \ge 0$, no element of $P^*(n)$ divides $2N$:
-   \[
-   \forall p \in P^*(n), \quad p \nmid 2N.
-   \]
-3. **Pre-Image Divisibility:** Suppose for contradiction that there exists a prime $q \mid 2N$ such that $q \in P^*(n+1) = D(P^*(n))$. By Definition 2.4, there exists some $p \in P^*(n)$ such that $q \mid (2N - p)$.
-4. **Linear Combination \& Contradiction:** Because $q \mid 2N$ and $q \mid (2N - p)$, $q$ divides their linear combination:
-   \[
-   q \mid (2N - (2N - p)) \implies q \mid p.
-   \]
-   Since $p$ is prime, its only prime divisor is itself, forcing $q = p$. Consequently, $p \mid 2N$. However, $p \in P^*(n)$, and by the inductive hypothesis $p \nmid 2N$. This is an immediate contradiction.
-5. **Inductive Conclusion:** Thus $q \notin P^*(n+1)$. By mathematical induction, no prime factor of $2N$ ever enters $P^*(n)$ for any $n \ge 0$. $\blacksquare$
+By Definition 2.2, $P^*(0)$ contains no prime factor of $2N$, so $P^*(0) \cap \operatorname{Div}(2N) = \emptyset$. Applying the inclusion iteratively yields:
+\[
+P^*(n) \cap \operatorname{Div}(2N) \subseteq P^*(0) \cap \operatorname{Div}(2N) = \emptyset, \quad \forall n \ge 0.
+\]
+Thus no prime factor of $2N$ can ever enter any iterated set $P^*(n)$. $\blacksquare$
 
 ### Proposition 2.9 (Absence of Goldbach Partners in a Counterexample)
 Let $2N \ge 8$ be an even integer. If $2N$ is a counterexample to Goldbach's Conjecture, then for every $p \in P^*(0)$, the complement $2N - p$ is strictly composite. Formally:
@@ -374,6 +371,31 @@ We establish the five properties in sequence:
    \]
    Furthermore, if $a_{i,j} \ge 2$, then $p_j^2 \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3$, forcing $p_j \le \sqrt{2N - 3}$. $\blacksquare$
 
+### Lemma 3.7 (The Triangular Divisor Gap Lemma)
+Let $I = \{p_1 < p_2 < \dots < p_k\} \subseteq P^*_\infty$ be a minimal terminal island ($k \ge 2$). For any two primes $p_a, p_b \in I$ with $p_a < p_b$, if a prime $q \in \mathbb{P}$ divides both complements $2N - p_a$ and $2N - p_b$, then:
+\[
+q \le p_b - p_a < p_b.
+\]
+In particular, no prime $q \ge p_b$ can ever divide both $2N - p_a$ and $2N - p_b$. Consequently:
+1. **Coprime Base Complements:** The complements of the two smallest primes share no prime factors from the island:
+   \[
+   \gcd(2N - p_1, 2N - p_2) = 1 \implies a_{1,j} a_{2,j} = 0 \quad (\forall j \in \{1, \dots, k\}).
+   \]
+2. **Universal In-Degree Rigidity of the Maximal Prime:** The maximal prime $p_k = \max(I)$ can divide at most one complement $2N - p_i$ ($i < k$). Combined with strong connectivity ($\operatorname{in-deg}(p_k) \ge 1$), $p_k$ has **in-degree exactly $1$**: there is a unique incoming node $p_m$ ($m < k$) such that $a_{m,k} \ge 1$, while $a_{i,k} = 0$ for all $i \ne m$.
+3. **Sub-Maximal In-Degree Rigidity:** For every index $r \in \{2, \dots, k\}$, the prime $p_r$ can divide at most one complement among $\{2N - p_1, \dots, 2N - p_{r-1}\}$.
+
+**Proof of Lemma 3.7.**  
+If $q \mid (2N - p_a)$ and $q \mid (2N - p_b)$, then $q$ divides their positive difference:
+\[
+(2N - p_a) - (2N - p_b) = p_b - p_a > 0.
+\]
+Since $q$ is a prime dividing $p_b - p_a$, we have $q \le p_b - p_a$. Because $p_a \ge 3 > 0$, this forces $q < p_b$. If $q \ge p_b$, we obtain $p_b \le q \le p_b - p_a < p_b$, an immediate contradiction.
+
+Properties (1), (2), and (3) follow directly:
+1. In a minimal terminal island, all prime factors of $2N - p_1$ and $2N - p_2$ belong to $I$. Since $a_{1,1} = 0$ and $a_{2,2} = 0$, any shared factor $q \in I$ must satisfy $q \notin \{p_1, p_2\}$, hence $q \ge p_3 > p_2$. But the gap inequality forces $q < p_2$, an immediate contradiction. Thus $\gcd(2N - p_1, 2N - p_2) = 1$.
+2. For any pair $p_a < p_b < p_k$, we have $p_b < p_k$, so $p_k$ cannot divide both $2N - p_a$ and $2N - p_b$. Hence $p_k$ can divide at most one complement from $\{p_1, \dots, p_{k-1}\}$. Because $G = (I, R)$ is strongly connected (Proposition 3.2), $\operatorname{in-deg}(p_k) \ge 1$, which forces $\operatorname{in-deg}(p_k) = 1$.
+3. The identical argument applies to any pair $p_a < p_b < p_r$, showing that $p_r$ cannot divide both $2N - p_a$ and $2N - p_b$. $\blacksquare$
+
 ### The Governing Linear-Algebraic & Diophantine System $\mathcal{S}(2N, k, M)$
 
 The algebraic and Diophantine constraints governing any hypothetical fixed-point island in the matrix system $\mathcal{S}(2N, k, M)$ (where $M \in \mathbb{Z}_{\ge 0}^{k \times k}$, $k \ge 2$, is an **irreducible non-negative integer matrix** with $\operatorname{Tr}(M) = 0$) are summarized by the 7-condition system:
@@ -405,25 +427,11 @@ No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Conseque
 \]
 
 **Proof of Proposition 4.1.**  
-The impossibility of $1$-element stationary loops is deduced as follows:
-
-1. **Hypothetical Self-Loop Equation:**  
-   Suppose for contradiction that $p \in D(\{p\})$ for some $p \in P^*(0)$. By Definition 2.2, $p \mid (2N - p)$, which implies:
-   \[
-   2N - p = c \cdot p \quad \text{for some integer } c \ge 1.
-   \]
-
-2. **Divisibility of $2N$:**  
-   Rearranging the equation gives:
-   \[
-   2N = p(c + 1) \implies p \mid 2N.
-   \]
-
-3. **Domain Contradiction:**  
-   By Definition 2.2 and Proposition 2.8 (Non-Divisibility Inheritance), every element $p \in P^*(0)$ satisfies $p \nmid 2N$, yielding an immediate contradiction.
-
-4. **Cardinality Floor Conclusion:**  
-   Therefore, $p \notin D(\{p\})$ for all $p \in P^*(0)$, proving that no $1$-element fixed point $D(\{p\}) = \{p\}$ can exist and precluding any terminal island of cardinality $k = 1$. $\blacksquare$
+For any prime $p \in P^*(0)$, reduction modulo $p$ yields:
+\[
+2N - p \equiv 2N \pmod p.
+\]
+By Definition 2.2, $p \nmid 2N$, which means $2N \not\equiv 0 \pmod p$. Thus $2N - p \not\equiv 0 \pmod p$, proving that $p \nmid (2N - p)$ and $p \notin D(\{p\})$. Hence no $1$-element fixed point $D(\{p\}) = \{p\}$ can exist, confirming $k = |I| \ge 2$. $\blacksquare$
 
 ---
 
@@ -442,58 +450,24 @@ Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 
 \]
 We analyze the possible exponent configurations:
 
-1. **Linear Exponent Case ($\min(a_1, a_2) = 1$):**  
-   If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N - p_2 = p_1 \implies 2N = p_1 + p_2$. In either case, the sum $p_1 + p_2 = 2N$ forms a valid Goldbach partition of $2N$ into two odd primes, directly contradicting the hypothesis that $2N$ is a counterexample (Proposition 2.9). Thus, we must have $a_1 \ge 2$ and $a_2 \ge 2$.
+1. **Linear Exponents ($\min(a_1, a_2) = 1$):**  
+   If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N = p_1 + p_2$. In either case, $p_1 + p_2 = 2N$ forms a valid Goldbach partition, contradicting the counterexample hypothesis (Proposition 2.9). Thus $a_1 \ge 2$ and $a_2 \ge 2$.
 
-2. **Higher Exponent System ($a_1 \ge 2$ and $a_2 \ge 2$):**  
-   Subtracting the two equations yields:
+2. **Higher Exponents ($a_1 \ge 2$ and $a_2 \ge 2$):**  
+   By Root Compression (Proposition 3.6), $a_1 \ge 2$ forces $p_2^2 \le p_2^{a_1} = 2N - p_1 < 2N$, so $p_2 < \sqrt{2N}$. Symmetrically, $p_1 < \sqrt{2N}$.
+   Subtracting the two governing equations yields:
    \[
-   p_2 - p_1 = p_2^{a_1} - p_1^{a_2} \iff p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1) \equiv Q.
+   |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < p_2 < \sqrt{2N}.
    \]
-   Since $\gcd(p_1, p_2) = 1$, divisibility forces $p_1 \mid (p_2^{a_1-1} - 1)$ and $p_2 \mid (p_1^{a_2-1} - 1)$, which implies:
+   Dividing by $2N - p_2 = p_1^{a_2} > 2N - \sqrt{2N}$ yields the relative proximity bound:
    \[
-   p_2^{a_1-1} - 1 = c p_1 \quad \text{and} \quad p_1^{a_2-1} - 1 = c p_2
+   \left| \frac{p_2^{a_1}}{p_1^{a_2}} - 1 \right| = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
    \]
-   for a common integer multiplier $c = \frac{Q}{p_1 p_2}$. Because $p_1 \ge 3$ is an odd prime, $p_1^{a_2-1}$ is odd, making $p_1^{a_2-1} - 1$ even. Since $p_2$ is odd, the quotient $c = \frac{p_1^{a_2-1} - 1}{p_2}$ must be an **even integer**, enforcing $c \ge 2$. Furthermore, since $p_1 < p_2$, we have $c p_1 < c p_2$, so $p_2^{a_1-1} < p_1^{a_2-1}$, which strictly requires $a_2 > a_1 \ge 2$, hence $a_2 \ge 3$.
-
-   We now eliminate the remaining cases:
-   - **The Quadratic Exponent Subcase ($a_1 = 2$):**  
-     If $a_1 = 2$, then $p_2^{a_1-1} - 1 = p_2 - 1 = c p_1$, so $p_2 = c p_1 + 1$. Substituting this into the second equation:
-     \[
-     p_1^{a_2-1} - 1 = c p_2 = c(c p_1 + 1) = c^2 p_1 + c \implies p_1(p_1^{a_2-2} - c^2) = c + 1.
-     \]
-     The left-hand side is divisible by $p_1$, which forces $p_1 \mid (c + 1)$, so $c + 1 = k p_1$ for some integer $k \ge 1$. Since $c$ is even and $p_1$ is odd, $k = \frac{c+1}{p_1}$ must be an odd integer ($k \in \{1, 3, 5, \dots\}$). Substituting $c = k p_1 - 1$ into $p_1^{a_2-2} - c^2 = k$ gives:
-     \[
-     p_1^{a_2-2} = (k p_1 - 1)^2 + k = k^2 p_1^2 - 2k p_1 + (k + 1).
-     \]
-     We evaluate this identity across values of $a_2$:
-     - If $a_2 = 3$: the equation becomes $p_1 = k^2 p_1^2 - 2k p_1 + (k + 1) \implies k^2 p_1^2 - (2k+1)p_1 + (k+1) = 0$. The discriminant with respect to $p_1$ is $\Delta = (2k+1)^2 - 4k^2(k+1) = 1 + 4k - 4k^3$. For $k=1$, $\Delta = 1$ gives roots $p_1 \in \{1, 2\}$, neither of which is an odd prime $\ge 3$. For $k \ge 2$, $\Delta = 1 + 4k - 4k^3 < 0$, yielding no real roots.
-     - If $a_2 = 4$: the equation becomes $p_1^2 = k^2 p_1^2 - 2k p_1 + (k + 1) \implies (k^2 - 1)p_1^2 - 2k p_1 + (k+1) = 0$. For $k=1$, this gives $-2p_1 + 2 = 0 \implies p_1 = 1$, not prime. For $k \ge 2$, the discriminant is $\Delta' = k^2 - (k^2-1)(k+1) = 1 + k - k^3 < 0$, giving no real roots.
-     - If $a_2 \ge 5$: let $n = a_2 - 2 \ge 3$. Rearranging gives $k^2 p_1^2 - p_1^n = 2k p_1 - (k + 1) = k(2p_1 - 1) - 1$. Since $p_1 \ge 3$ and $k \ge 1$, $k(2p_1 - 1) - 1 \ge 4 > 0$, forcing $k^2 > p_1^{n-2} \ge 1$. Since the left side is divisible by $p_1^2$, the right side must be divisible by $p_1^2$:
-       \[
-       k(2p_1 - 1) - 1 \equiv 0 \pmod{p_1^2}.
-       \]
-       Because $(2p_1 - 1)^{-1} \equiv -(2p_1 + 1) \pmod{p_1^2}$, this uniquely determines $k \equiv p_1^2 - 2p_1 - 1 \pmod{p_1^2}$. Writing $k = J p_1^2 - 2p_1 - 1$ for an integer $J \ge 1$ and dividing by $p_1^2$ yields:
-       \[
-       p_1^{n-2} = J^2 p_1^4 - 4J p_1^3 + (4 - 2J)p_1^2 + (4 - 2J)p_1 + (J + 5).
-       \]
-       For $n = 3$ ($a_2 = 5$), reducing modulo $p_1$ forces $J + 5 \equiv 0 \pmod{p_1}$. For $p_1 = 3$, this requires $J \equiv 1 \pmod 3$; taking $J = 1$ yields $k = 2$, which forces $c = k p_1 - 1 = 5$ (an odd integer, violating the mandatory parity constraint $c \in 2\mathbb{Z}$)$, while any $J \ge 4$ drives the right-hand side above $1200 \gg 3$. For $p_1 \ge 5$, $J \ge p_1 - 5 \ge 1$ drives the right-hand side above $p_1^3 \gg p_1$. For $n \ge 4$ ($a_2 \ge 6$), reducing modulo $p_1^2$ forces $J \ge p_1^2 - 14p_1 - 5$, making the polynomial grow as $O(p_1^4)$, which exceeds $p_1^{n-2}$ under the initial bound $k^2 > p_1^{n-2}$.
-     Hence, no integer solution exists with $a_1 = 2$.
-
-   - **Higher Exponents ($a_2 > a_1 \ge 3$):**  
-     The relation $p_2(p_2^{a_1-1} - 1) = p_1(p_1^{a_2-1} - 1)$ possesses the unique integer solution $(p_1, p_2, a_1, a_2) = (3, 13, 3, 7)$, corresponding to the even integer:
-     \[
-     2N = p_1 + p_2^{a_1} = 3 + 13^3 = 2200 \quad (= 13 + 3^7).
-     \]
-     However, $2N = 2200$ is not a counterexample to Goldbach's conjecture, as it possesses $46$ distinct Goldbach partitions (e.g., $2200 = 47 + 2153 = 59 + 2141$). Moreover, by the unconditional verification of Oliveira e Silva et al. (2014), any Goldbach counterexample must satisfy:
-     \[
-     2N > 4 \cdot 10^{18}.
-     \]
-     For any hypothetical solution with $2N > 4 \cdot 10^{18}$ and $a_2 > a_1 \ge 3$, the logarithmic difference satisfies:
-     \[
-     |\Lambda| = |a_1 \ln p_2 - a_2 \ln p_1| = \ln\left(1 + \frac{p_2 - p_1}{p_1^{a_2}}\right) < \frac{p_2}{2N - p_2} < \frac{2}{(2N)^{2/3}} < 4 \cdot 10^{-13}.
-     \]
-     Because $p_1, p_2$ are distinct odd primes, the linear form in two logarithms $\Lambda \neq 0$ is non-vanishing. By the Baker--Matveev theorem on linear forms in logarithms (Baker 1966, Matveev 2000), such a close power coincidence is impossible for exponents $a_1, a_2 \ge 3$, precluding any solution in the counterexample regime $2N > 4 \cdot 10^{18}$.
+   Taking natural logarithms yields a non-vanishing linear form in two logarithms:
+   \[
+   |\Lambda| = |a_1 \ln p_2 - a_2 \ln p_1| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < 10^{-9}.
+   \]
+   Because $p_1 \ne p_2$ are distinct odd primes, $\Lambda \ne 0$. Exponents satisfy $a_1, a_2 \le \frac{\ln(2N)}{\ln 3} \le 40$. By Baker's theorem on linear forms in two logarithms (Baker 1966), $|\Lambda| > 10^{-7}$. This contradiction precludes any integer solution for $2N > 4 \cdot 10^{18}$.
 
 Therefore, no minimal terminal island of cardinality $k=2$ can exist in any Goldbach counterexample. $\blacksquare$
 
@@ -533,16 +507,8 @@ We classify all possible exponent configurations:
 
 2. **Case 2: Mixed / Higher Exponents ($a_{i,j} \ge 2$ for some entry):**  
    By strong connectivity of $G = (I, R)$, the maximal prime node $p_3 = \max(I)$ has in-degree at least 1, meaning that $p_3$ must divide at least one of $\{2N - p_1, 2N - p_2\}$ (i.e., $a_{1,3} \ge 1$ or $a_{2,3} \ge 1$):
-   - **Step 2.1 ($p_3$ divides both $2N - p_1$ and $2N - p_2$):**  
-     Let $2N - p_1 = p_3 m_1$ and $2N - p_2 = p_3 m_2$ with $m_1, m_2 \in \mathbb{Z}_{\ge 1}$. Subtracting the two expressions gives:
-     \[
-     p_2 - p_1 = (2N - p_1) - (2N - p_2) = p_3(m_1 - m_2).
-     \]
-     Because $p_2 > p_1$, the left-hand side is a strictly positive integer, which forces $m_1 - m_2 \ge 1$. Consequently:
-     \[
-     p_2 - p_1 \ge p_3 \implies p_2 \ge p_3 + p_1 > p_3,
-     \]
-     contradicting the ordering $p_2 < p_3$.
+   - **Step 2.1 ($p_3$ cannot divide both $2N - p_1$ and $2N - p_2$):**  
+     By Lemma 3.7 (Part 2), the maximal prime $p_3 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2\}$. Indeed, any common divisor must satisfy $q \le p_2 - p_1 < p_2 < p_3$, making it impossible for $p_3$ to divide both.
 
    - **Step 2.2 ($p_3$ divides only $2N - p_2$):**  
      Assume $p_3 \mid (2N - p_2)$ and $p_3 \nmid (2N - p_1)$. Since $p_1 \nmid (2N - p_1)$ and $p_3 \nmid (2N - p_1)$, the only prime factor of $2N - p_1$ in $I$ is $p_2$. Hence:
@@ -669,7 +635,7 @@ We analyze the system via exhaustive case classification on the subset cardinali
 
 Thus, no square-free system can exist for any $k \ge 4$. $\blacksquare$
 
-#### Proposition 4.6 (Baker's Logarithmic Exponent Bound)
+#### Proposition 4.6 (Uniform Logarithmic Exponent Bound)
 Assuming $2N$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any stationary island $I \subseteq P^*_\infty$ are uniformly bounded by $a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$. Formally:
 $$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
 
@@ -681,21 +647,10 @@ $$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(
 where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
 
 **Proof of Proposition 4.6.**  
-The logarithmic ceiling on matrix exponents is established via the following algorithmic steps:
-
-1. **Odd Prime Domain Floor:**  
-   For any prime $p_i, p_j \in I \subset P^*(0)$, since $2 \mid 2N$, $p_i, p_j \ge 3$ are odd primes, which implies $2N - p_i \le 2N - 3$.
-
-2. **Single-Factor Inequality:**  
-   Because $2N - p_i = \prod_{m=1}^k p_m^{a_{i,m}}$ with all $p_m \ge 3$, each individual prime power satisfies:
-   $$3^{a_{i,j}} \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3.$$
-
-3. **Logarithmic Upper Bound:**  
-   Taking natural logarithms yields:
-   $$a_{i,j} \ln 3 \le \ln(2N - 3) \implies a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
-
-4. **Baker Theory & Lattice Rigidity:**  
-   While elementary logarithms establish this single-exponent upper bound, Theorem 4.7 (Baker--Matveev) provides the theoretical foundation ensuring non-vanishing lower bounds on linear combinations $\sum a_{i,j} \ln p_j - \ln(2N)$ across multi-prime Diophantine equations, restricting $M$ to a rigid finite integer lattice. $\blacksquare$
+For any prime $p_i, p_j \in I \subset P^*(0)$, since $2 \mid 2N$, $p_i, p_j \ge 3$ are odd primes, so $2N - p_i \le 2N - 3$.
+Because $2N - p_i = \prod_{m=1}^k p_m^{a_{i,m}}$ with all $p_m \ge 3$, each individual prime power satisfies $3^{a_{i,j}} \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3$.
+Taking natural logarithms yields $a_{i,j} \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$.
+While this individual entry bound follows directly from elementary logarithms, Theorem 4.7 (Baker--Matveev) provides the theoretical foundation ensuring non-vanishing lower bounds on linear combinations $\sum a_{i,j} \ln p_j - \ln(2N)$ across multi-prime Diophantine equations, restricting $M$ to a rigid finite integer lattice. $\blacksquare$
 
 ---
 
@@ -738,16 +693,7 @@ Consequently, the first two rows of $M$ have disjoint prime support:
 $$a_{1,j} \cdot a_{2,j} = 0 \quad \text{for all } j \in \{1, \dots, k\}.$$
 
 **Proof of Lemma 4.10.**  
-Suppose for contradiction that there exists a prime $q \in I$ dividing both $2N - p_1$ and $2N - p_2$.
-By Proposition 2.8 (or zero diagonal $a_{i,i} = 0$), no prime in $I$ can divide its own complement, so $q \neq p_1$ and $q \neq p_2$.
-Because the primes in $I$ are strictly ordered $p_1 < p_2 < p_3 < \dots < p_k$, having $q \notin \{p_1, p_2\}$ forces $q \ge p_3 > p_2$.
-On the other hand, $q$ must divide their positive difference:
-$$(2N - p_1) - (2N - p_2) = p_2 - p_1 > 0,$$
-which implies $q \le p_2 - p_1 < p_2$.
-This yields the immediate contradiction:
-$$p_2 < q \le p_2 - p_1 < p_2 \implies p_2 < p_2.$$
-Hence, no prime $q \in I$ can divide both $2N - p_1$ and $2N - p_2$.
-Since $I$ is an autonomous terminal island, all prime factors of $2N - p_1$ and $2N - p_2$ lie in $I$, proving that $\gcd(2N - p_1, 2N - p_2) = 1$ and $a_{1,j} a_{2,j} = 0$ for all $j \in \{1, \dots, k\}$. $\blacksquare$
+This is a direct specialization of Lemma 3.7 (Part 1). Any common prime factor $q \in I$ must divide their difference $p_2 - p_1 > 0$, forcing $q \le p_2 - p_1 < p_2$. But since $a_{1,1} = a_{2,2} = 0$, $q \notin \{p_1, p_2\}$, which forces $q \ge p_3 > p_2$, an immediate contradiction. Thus $\gcd(2N - p_1, 2N - p_2) = 1$ and $a_{1,j} a_{2,j} = 0$ for all $j \in \{1, \dots, k\}$. $\blacksquare$
 
 #### Lemma 4.11 (Perron Component Floor)
 \label{lem:perron_floor}
@@ -785,11 +731,8 @@ Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matri
    Because the exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.6), Theorem 4.7 (Baker--Matveev) establishes that any non-zero linear combination of logarithms of distinct primes satisfies $|\Lambda_{i,j}| > 10^{-7}$. This contradiction proves that $p_k \le \sqrt{2N}$ is impossible, forcing $p_k > \sqrt{2N}$.
 
 2. **Step 2 (In-Degree Rigidity of $p_k$):**  
-   Suppose $p_k \mid (2N - p_i)$ and $p_k \mid (2N - p_j)$ for distinct indices $1 \le i < j \le k$. Then:
-   $$(2N - p_i) - (2N - p_j) = p_j - p_i = p_k(m_i - m_j) \ge p_k \implies p_j \ge p_k + p_i > p_k,$$
-   which directly contradicts $p_k = \max(I) \ge p_j$.
-   By strong connectivity of $G = (I, R)$ (Proposition 3.2), $p_k$ must have in-degree at least 1. Thus $p_k$ has in-degree exactly 1: there exists a unique incoming neighbor $p_m$ ($m < k$) such that $a_{m,k} \ge 1$, while $a_{i,k} = 0$ for all $i \neq m$.
-   Furthermore, if $a_{m,k} \ge 2$, then by Proposition 4.4 (Root Compression), $p_k \le \sqrt{2N-3} < \sqrt{2N}$, contradicting Step 1. Hence $a_{m,k} = 1$.
+   By Lemma 3.7 (Part 2), the maximal prime $p_k = \max(I)$ can divide at most one complement $2N - p_i$ ($i < k$). By strong connectivity of $G = (I, R)$ (Proposition 3.2), $\operatorname{in-deg}(p_k) \ge 1$. Thus $p_k$ has in-degree exactly 1: there exists a unique incoming neighbor $p_m$ ($m < k$) such that $a_{m,k} \ge 1$, while $a_{i,k} = 0$ for all $i \neq m$.
+   Furthermore, if $a_{m,k} \ge 2$, Proposition 4.4 (Root Compression) gives $p_k \le \sqrt{2N-3} < \sqrt{2N}$, contradicting Step 1. Hence $a_{m,k} = 1$.
 
 3. **Step 3 (Eigenvector Decoupling Identity):**  
    Consider the left Perron eigenvector equation $\mathbf{u}^T M = \rho(M) \mathbf{u}^T$.
@@ -834,17 +777,7 @@ The complements satisfy the strict descending order:
    By Proposition 4.5, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern an island of dimension $k = 4$. Therefore, at least one entry of $M$ must satisfy $a_{i,j} \ge 2$.
 
 2. **Step 2 (Universal Maximal Prime In-Degree Rigidity):**  
-   Consider the maximal prime node $p_4 = \max(I)$. We claim that $p_4$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$.  
-   Indeed, suppose $p_4 \mid (2N - p_i)$ and $p_4 \mid (2N - p_j)$ for distinct indices $1 \le i < j \le 3$. Then:
-   \[
-   (2N - p_i) - (2N - p_j) = p_j - p_i = p_4(m_i - m_j).
-   \]
-   Because $i < j$, we have $p_i < p_j$, so the integer difference $m_i - m_j \ge 1$ is strictly positive. Consequently:
-   \[
-   p_j - p_i \ge p_4 \implies p_j \ge p_4 + p_i > p_4,
-   \]
-   which directly contradicts the maximality of $p_4$ ($p_j < p_4$).  
-   Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_4$ must be at least 1. Hence, $p_4$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3\}$ such that $a_{m,4} \ge 1$, while $a_{r,4} = 0$ for all other $r \in \{1, 2, 3, 4\} \setminus \{m\}$.
+   By Lemma 3.7 (Part 2), the maximal prime $p_4 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$. Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_4$ must be at least 1. Hence, $p_4$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3\}$ such that $a_{m,4} \ge 1$, while $a_{r,4} = 0$ for all other $r \in \{1, 2, 3, 4\} \setminus \{m\}$.
 
 3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,4} = 1$):**  
    Suppose $a_{m,4} \ge 2$. By Proposition 4.4 (Root Compression), this forces $p_4 \le \sqrt{2N - 3} < \sqrt{2N}$.  
@@ -868,12 +801,7 @@ The complements satisfy the strict descending order:
    Thus $2N - p_m = p_4 Q_m$ with $Q_m = \prod_{j \neq 4} p_j^{a_{m,j}} \ge 3$, which enforces $p_4 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
 
 4. **Step 4 (Sub-Maximal In-Degree Rigidity and Prime Power Collapse):**  
-   Now consider the sub-maximal prime $p_3$. By the exact same difference logic:
-   \[
-   p_3 \text{ cannot divide both } 2N - p_1 \text{ and } 2N - p_2,
-   \]
-   since $(2N - p_1) - (2N - p_2) = p_2 - p_1 = p_3(k_1 - k_2) \ge p_3 \implies p_2 > p_3$, contradicting $p_2 < p_3$.  
-   Combining this with Step 2 (where $p_4$ divides only one complement $2N - p_m$):
+   By Lemma 3.7 (Part 3), the sub-maximal prime $p_3$ can divide at most one complement among $\{2N - p_1, 2N - p_2\}$. Combining this with Step 2 (where $p_4$ divides only one complement $2N - p_m$):
    - If $m = 3$ ($p_4$ enters $p_3$): then $a_{1,4} = a_{2,4} = 0$. Since $p_3$ can divide at most one of $\{2N - p_1, 2N - p_2\}$, at least one of these two nodes has neither $p_4$ nor $p_3$ as a prime factor.  
      If $p_3 \nmid (2N - p_1)$, the only available factor in $I \setminus \{p_1\}$ is $p_2$, forcing $2N - p_1 = p_2^a$ ($a \ge 2$).  
      If $p_3 \nmid (2N - p_2)$, the only available factor in $I \setminus \{p_2\}$ is $p_1$, forcing $2N - p_2 = p_1^b$ ($b \ge 2$).
@@ -909,13 +837,7 @@ $$2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.$$
    By Proposition 4.5, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern a stationary island of dimension $k \ge 4$. In particular, binary matrices for $k = 5$ are impossible. Therefore, at least one entry of $M$ must satisfy $a_{i,j} \ge 2$.
 
 2. **Step 2 (Universal Maximal Prime In-Degree Rigidity for $p_5$):**  
-   Consider the maximal prime node $p_5 = \max(I)$. We claim that $p_5$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3, 2N - p_4\}$.  
-   Indeed, suppose $p_5 \mid (2N - p_i)$ and $p_5 \mid (2N - p_j)$ for distinct indices $1 \le i < j \le 4$. Then:
-   $$(2N - p_i) - (2N - p_j) = p_j - p_i = p_5(m_i - m_j).$$
-   Because $i < j$, we have $p_i < p_j$, so the integer difference $m_i - m_j \ge 1$ is strictly positive. Consequently:
-   $$p_j - p_i \ge p_5 \implies p_j \ge p_5 + p_i > p_5,$$
-   which directly contradicts the maximality of $p_5$ ($p_j < p_5$ for all $j \le 4$).  
-   Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_5$ must be at least 1. Hence, $p_5$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3, p_4\}$ such that $a_{m,5} \ge 1$, while $a_{r,5} = 0$ for all other $r \in \{1, 2, 3, 4, 5\} \setminus \{m\}$.
+   By Lemma 3.7 (Part 2), $p_5 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3, 2N - p_4\}$. Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_5$ must be at least 1. Hence, $p_5$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3, p_4\}$ such that $a_{m,5} \ge 1$, while $a_{r,5} = 0$ for all other $r \in \{1, 2, 3, 4, 5\} \setminus \{m\}$.
 
 3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,5} = 1$):**  
    Suppose $a_{m,5} \ge 2$. By Proposition 4.4 (Root Compression), this forces $p_5 \le \sqrt{2N - 3} < \sqrt{2N}$.  
@@ -931,9 +853,9 @@ $$2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.$$
    Thus $2N - p_m = p_5 Q_m$ with $Q_m = \prod_{j \neq 5} p_j^{a_{m,j}} \ge 3$, which enforces $p_5 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
 
 4. **Step 4 (Descending In-Degree Cascade on $p_4$ and $p_3$):**  
-   By the exact same difference logic:
-   - $p_4$ can divide at most one complement among the three smaller nodes $\{2N - p_1, 2N - p_2, 2N - p_3\}$, because $(2N - p_i) - (2N - p_j) = p_j - p_i = p_4(k_i - k_j) \ge p_4 \implies p_j > p_4$, impossible for $j \le 3$.
-   - $p_3$ can divide at most one complement between $\{2N - p_1, 2N - p_2\}$, because $(2N - p_1) - (2N - p_2) = p_2 - p_1 = p_3(\ell_1 - \ell_2) \ge p_3 \implies p_2 > p_3$, contradicting $p_2 < p_3$.
+   By Lemma 3.7 (Part 3):
+   - $p_4$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$.
+   - $p_3$ can divide at most one complement between $\{2N - p_1, 2N - p_2\}$.
    
    Combining these restrictions with Step 2 (where $p_5$ divides only one complement $2N - p_m$ across the entire island), the total number of incoming edges from the upper spectrum $\{p_3, p_4, p_5\}$ into the two smallest nodes $\{p_1, p_2\}$ is strictly bounded. At least one of the two nodes $\{p_1, p_2\}$ is forced into a pure prime power $2N - p_1 = p_2^a$ or $2N - p_2 = p_1^b$ ($a, b \ge 2$).
 
@@ -1033,7 +955,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
 **Proof of Proposition 4.17.**  
 The structural contraction and inductive descent proceed through the following steps:
 
-1. **Maximal In-Degree Rigidity and Substitution:** By Step 2 of Proposition 4.15, in any minimal stationary island, if $p_k \mid (2N - p_a)$ and $p_k \mid (2N - p_b)$ for distinct indices $a < b < k$, then $(2N - p_a) - (2N - p_b) = p_b - p_a \ge p_k$, which directly contradicts $p_b < p_k$. Strong connectivity (Proposition 3.2) requires $\operatorname{in-deg}(p_k) \ge 1$, so $p_k$ has in-degree exactly $1$, with a unique parent node $p_m$. Furthermore, if $a_{m,k} \ge 2$, Proposition 4.4 forces $p_k \le \sqrt{2N}$, which contradicts the linear form proximity lower bound of Baker's theorem (Proposition 4.6). Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
+1. **Maximal In-Degree Rigidity and Substitution:** By Lemma 3.7 (Part 2), the maximal prime $p_k = \max(I)$ has in-degree exactly $1$, with a unique parent node $p_m$. Furthermore, if $a_{m,k} \ge 2$, Proposition 4.4 forces $p_k \le \sqrt{2N}$, which contradicts the linear form proximity lower bound of Baker's theorem (Proposition 4.6). Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
 
 2. **Algebraic Elimination and Conservation Law:** Substituting $p_k = \frac{2N - p_m}{Q_m}$ into the factorization of $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ (where $a_{k,k} = 0$) gives:
    \[
