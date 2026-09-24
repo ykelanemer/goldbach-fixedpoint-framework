@@ -272,17 +272,27 @@ Define the directed relation $R$ on $P^*_\infty$ by $p R q \iff q \mid (2N - p)$
 \]
 
 **Proof of Proposition 3.2.**  
-The topological strong connectivity of $G = (I, R)$ is deduced as follows:
+Suppose for contradiction that the finite directed graph $G = (I, R)$ is not strongly connected. The proof proceeds as follows:
 
-1. **Finite Directed Graph:** Since $P^*_\infty \subseteq \mathcal{P}_{\le \frac{2N-5}{3}}$ is finite, the relation graph $G = (I, R)$ is a finite directed graph.
-2. **Positive Out-Degree:** By Proposition 2.9, $2N - p$ is composite for every $p \in I$. By the Fundamental Theorem of Arithmetic, $2N - p$ has at least one prime factor $q$, and because $D(I) = I$, $q \in I$. Thus every vertex $p \in I$ has out-degree $\operatorname{deg}^+(p) = |D(\{p\}) \cap I| \ge 1$.
-3. **Condensation and Sink Component:** Any finite directed graph can be uniquely condensed into a directed acyclic graph (DAG) by contracting each strongly connected component to a single vertex. In any finite DAG, there exists at least one terminal sink (a component with out-degree zero). Let $I' \subseteq I$ be such a sink component in $G = (I, R)$.
-4. **Image Invariance of Sink:** Because $I'$ is a sink component, there are no directed edges leaving $I'$ to $I \setminus I'$. Consequently, for all $p \in I'$, $D(\{p\}) \subseteq I'$, which implies:
+1. **Existence of Unreachable Pairs:** By definition of strong connectivity, there exist two primes $p, q \in I$ such that $q$ is not reachable from $p$ via any directed path in $G$.
+2. **The Forward Reachable Set of $p$:** Define $I' \subseteq I$ to be the set consisting of $p$ together with all vertices reachable from $p$ via directed paths in $G$:
    \[
-   D(I') = \bigcup_{p \in I'} D(\{p\}) \subseteq I'.
+   I' = \{p\} \cup \{ x \in I \mid \exists \text{ a directed path from } p \text{ to } x \text{ in } G \}.
    \]
-5. **Minimality Contradiction:** If $G = (I, R)$ were not strongly connected, then $I'$ would be a strictly proper non-empty subset of $I$ ($I' \subsetneq I$). However, the existence of a proper non-empty subset $I' \subsetneq I$ satisfying $D(I') \subseteq I'$ directly contradicts the minimality of $I$ (Definition 3.1).
-6. **Conclusion:** Therefore, no proper sink component can exist, forcing $I' = I$. Thus $G = (I, R)$ is strongly connected. $\blacksquare$
+   - *Non-emptiness ($I' \neq \emptyset$):* Clearly $p \in I'$, so $I'$ is non-empty.
+   - *Strict inclusion ($I' \subsetneq I$):* Since $q$ is not reachable from $p$ and $q \ne p$, we have $q \notin I'$. Because $q \in I$, $I'$ is a strictly proper subset of $I$ ($I' \subsetneq I$).
+3. **Forward Invariance under $D$:** Let $z \in I'$. We verify that $D(\{z\}) \subseteq I'$:
+   - If $z = p$, every prime factor $y \in D(\{p\})$ satisfies $p R y$ by definition of relation $R$. Since $D(I) = I$, $y \in I$. Thus $(p, y)$ is a directed edge in $G$, so $y$ is reachable from $p$, whence $y \in I'$.
+   - If $z \ne p$, $z$ is reachable from $p$ via a directed path $p \rightsquigarrow z$. For any $y \in D(\{z\})$, the relation $z R y$ provides a directed edge $(z, y)$, and concatenating yields a directed path $p \rightsquigarrow y$. Hence $y$ is reachable from $p$, so $y \in I'$.
+   In either case, $D(\{z\}) \subseteq I'$ for all $z \in I'$, which yields:
+   \[
+   D(I') = \bigcup_{z \in I'} D(\{z\}) \subseteq I'.
+   \]
+4. **Minimality Contradiction:** We have exhibited a non-empty proper subset $I' \subsetneq I$ satisfying $D(I') \subseteq I'$. This directly contradicts the defining minimality of the terminal island $I$ (Definition 3.1), which asserts that no proper non-empty subset $I' \subsetneq I$ can satisfy $D(I') \subseteq I'$.
+
+Therefore, $G = (I, R)$ must be topologically strongly connected.
+
+This strong connectivity is vital for the entire subsequent framework: it proves that a minimal terminal island contains no transient feeder nodes or subordinate basins of attraction. Every prime $p_i \in I$ communicates cyclically with every other prime $p_j \in I$, ensuring that the governing exponent matrix $M$ is algebraically irreducible (Proposition 3.3 and Proposition 3.5) and allowing the rigorous application of the Perron--Frobenius spectral theorem. $\blacksquare$
 
 ### Proposition 3.3 (Existence and Irreducibility of Minimal Terminal Islands)
 Under the counterexample hypothesis, the stationary limit set $P^*_\infty$ contains at least one minimal terminal island $I \subseteq P^*_\infty$ satisfying $D(I) = I$. Every such minimal island $I$ is an irreducible, strongly connected component of cardinality $k = |I| \ge 2$:
