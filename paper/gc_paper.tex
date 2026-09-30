@@ -503,6 +503,47 @@ The algebraic and Diophantine constraints governing any hypothetical fixed-point
 
 In this section, we analyze the governing system $\mathcal{S}(2N, k, M)$ and execute a complete structural elimination across all island cardinalities $k \ge 1$.
 
+\subsection{Universal Exponent Bounds and Baker--Matveev Linear Forms}
+\label{subsec:universal_bounds}
+
+\begin{proposition}[Uniform Logarithmic Exponent Bound]
+\label{prop:baker_bound}
+Assuming $2N$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any minimal terminal island $I \subseteq P^*_\infty$ are uniformly bounded by $a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$. Formally:
+$$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
+\end{proposition}
+
+To establish Proposition~\ref{prop:baker_bound}, we recall the Baker--Matveev Theorem on Linear Forms in Logarithms:
+
+\begin{theorem}[Baker--Matveev Theorem on Linear Forms in Logarithms \cite{baker1966, baker1975, matveev2000}]
+\label{thm:baker_matveev}
+Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
+$$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(e B),$$
+where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
+\end{theorem}
+
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:baker_bound}}]
+For any prime $p_i, p_j \in I \subset P^*(0)$, since $2 \mid 2N$, $p_i, p_j \ge 3$ are odd primes, so $2N - p_i \le 2N - 3$.
+Because $2N - p_i = \prod_{m=1}^k p_m^{a_{i,m}}$ with all $p_m \ge 3$, each individual prime power satisfies $3^{a_{i,j}} \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3$.
+Taking natural logarithms yields $a_{i,j} \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$.
+While this individual entry bound follows directly from elementary logarithms, Theorem~\ref{thm:baker_matveev} (Baker--Matveev) provides the theoretical foundation ensuring non-vanishing lower bounds on linear combinations $\sum a_{i,j} \ln p_j - \ln(2N)$ across multi-prime Diophantine equations, restricting $M$ to a rigid finite integer lattice.
+\end{proof}
+
+\begin{proposition}[Exponent Root-Compression Bound]
+\label{prop:root_compression}
+If any exponent in the matrix $M$ satisfies $a_{i,j} \ge 2$, the repeated prime $p_j$ is bounded by $p_j \le \sqrt{2N - 3} = O(\sqrt{2N})$, and any co-factor prime $p_r \in I$ dividing $2N - p_i$ ($r \neq j$) is bounded by $p_r \le \frac{2N - 3}{9}$. Formally:
+\[
+\left( a_{i,j} \ge 2 \right) \implies p_j \le \sqrt{2N - 3} \quad \text{and} \quad \left( a_{i,r} \ge 1, \, r \neq j \right) \implies p_r \le \frac{2N - 3}{9}.
+\]
+\end{proposition}
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:root_compression}}]
+Suppose $a_{i,j} \ge 2$ for some $i, j \in \{1, \dots, k\}$.  
+\begin{enumerate}
+\item \textbf{Bound on $p_j$:} $2N - p_i = p_j^{a_{i,j}} \cdot \prod_{m \ne j} p_m^{a_{i,m}} \ge p_j^2$. Since $p_i \ge 3$, we have $2N - p_i \le 2N - 3$. Thus $p_j^2 \le 2N - 3 \implies p_j \le \sqrt{2N - 3}$.  
+\item \textbf{Bound on Co-Factor $p_r$:} If $a_{i,r} \ge 1$ ($r \neq j$), then $2N - p_i \ge p_j^2 p_r$. Since $p_j \ge 3$ (odd prime), $p_j^2 \ge 9$. Thus $9 p_r \le p_j^2 p_r \le 2N - 3 \implies p_r \le \frac{2N - 3}{9}$.  
+\item \textbf{Bound on Maximum Prime $s = \max(I)$:} If $s = p_j$, then $s \le \sqrt{2N - 3}$. If $s$ co-occurs with $p_j^2$ in $2N - p_i$, then $s \le \frac{2N - 3}{9}$.
+\end{enumerate}
+\end{proof}
+
 \subsection{Case \texorpdfstring{$k = 1$}{k = 1}: Elimination of Self-Loops}
 \label{subsec:k1}
 
@@ -641,24 +682,8 @@ We classify all possible exponent configurations:
 Therefore, no minimal terminal island of cardinality $k=3$ can exist in any Goldbach counterexample.
 \end{proof}
 
-\subsection{Universal Exponent Bounds and Square-Free Elimination}
-\label{subsec:bounds_squarefree}
-
-\begin{proposition}[Exponent Root-Compression Bound]
-\label{prop:root_compression}
-If any exponent in the matrix $M$ satisfies $a_{i,j} \ge 2$, the repeated prime $p_j$ is bounded by $p_j \le \sqrt{2N - 3} = O(\sqrt{2N})$, and any co-factor prime $p_r \in I$ dividing $2N - p_i$ ($r \neq j$) is bounded by $p_r \le \frac{2N - 3}{9}$. Formally:
-\[
-\left( a_{i,j} \ge 2 \right) \implies p_j \le \sqrt{2N - 3} \quad \text{and} \quad \left( a_{i,r} \ge 1, \, r \neq j \right) \implies p_r \le \frac{2N - 3}{9}.
-\]
-\end{proposition}
-\begin{proof}[\textbf{Proof of Proposition~\ref{prop:root_compression}}]
-Suppose $a_{i,j} \ge 2$ for some $i, j \in \{1, \dots, k\}$.  
-\begin{enumerate}
-\item \textbf{Bound on $p_j$:} $2N - p_i = p_j^{a_{i,j}} \cdot \prod_{m \ne j} p_m^{a_{i,m}} \ge p_j^2$. Since $p_i \ge 3$, we have $2N - p_i \le 2N - 3$. Thus $p_j^2 \le 2N - 3 \implies p_j \le \sqrt{2N - 3}$.  
-\item \textbf{Bound on Co-Factor $p_r$:} If $a_{i,r} \ge 1$ ($r \neq j$), then $2N - p_i \ge p_j^2 p_r$. Since $p_j \ge 3$ (odd prime), $p_j^2 \ge 9$. Thus $9 p_r \le p_j^2 p_r \le 2N - 3 \implies p_r \le \frac{2N - 3}{9}$.  
-\item \textbf{Bound on Maximum Prime $s = \max(I)$:} If $s = p_j$, then $s \le \sqrt{2N - 3}$. If $s$ co-occurs with $p_j^2$ in $2N - p_i$, then $s \le \frac{2N - 3}{9}$.
-\end{enumerate}
-\end{proof}
+\subsection{Square-Free Elimination and the Spectral Decoupling Barrier (\texorpdfstring{$k \ge 4$}{k >= 4})}
+\label{subsec:spectral_barrier}
 
 \begin{proposition}[Binary Exponent Domain Collapse ($a_{i,j} \in \{0, 1\}$)]
 \label{prop:squarefree_collapse}
@@ -727,31 +752,6 @@ We analyze the system via exhaustive case classification on the subset cardinali
 \end{enumerate}
 Thus, no binary exponent (square-free) matrix system can exist for any cardinality $k \ge 4$.
 \end{proof}
-
-\begin{proposition}[Uniform Logarithmic Exponent Bound]
-\label{prop:baker_bound}
-Assuming $2N$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any minimal terminal island $I \subseteq P^*_\infty$ are uniformly bounded by $a_{i,j} \le \frac{\ln(2N-3)}{\ln 3}$. Formally:
-$$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).$$
-\end{proposition}
-
-To establish Proposition~\ref{prop:baker_bound}, we recall the Baker--Matveev Theorem on Linear Forms in Logarithms:
-
-\begin{theorem}[Baker--Matveev Theorem on Linear Forms in Logarithms \cite{baker1966, baker1975, matveev2000}]
-\label{thm:baker_matveev}
-Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
-$$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(e B),$$
-where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
-\end{theorem}
-
-\begin{proof}[\textbf{Proof of Proposition~\ref{prop:baker_bound}}]
-For any prime $p_i, p_j \in I \subset P^*(0)$, since $2 \mid 2N$, $p_i, p_j \ge 3$ are odd primes, so $2N - p_i \le 2N - 3$.
-Because $2N - p_i = \prod_{m=1}^k p_m^{a_{i,m}}$ with all $p_m \ge 3$, each individual prime power satisfies $3^{a_{i,j}} \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3$.
-Taking natural logarithms yields $a_{i,j} \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$.
-While this individual entry bound follows directly from elementary logarithms, Theorem~\ref{thm:baker_matveev} (Baker--Matveev) provides the theoretical foundation ensuring non-vanishing lower bounds on linear combinations $\sum a_{i,j} \ln p_j - \ln(2N)$ across multi-prime Diophantine equations, restricting $M$ to a rigid finite integer lattice.
-\end{proof}
-
-\subsection{Spectral Radius Lower Bound and the Decoupling Barrier}
-\label{subsec:spectral_barrier}
 
 \begin{proposition}[The Spectral Radius Reduction and Perron Geometric Mean Ceiling]
 \label{prop:spectral_reduction}
