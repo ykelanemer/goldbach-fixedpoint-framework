@@ -417,17 +417,13 @@ In this section, we analyze the governing system $\mathcal{S}(2N, k, M)$ and exe
 ### 4.1 Case $k = 1$: Elimination of Self-Loops
 
 #### Proposition 4.1 (Elimination of Self-Loops: $k=1$ Collapse)
-No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no $1$-element stationary set $D(\{p\}) = \{p\}$ can exist, confirming the cardinality floor $k = |I| \ge 2$ established in Proposition 3.3. Formally:
+No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no $1$-element minimal terminal island can exist ($k = |I| \ge 2$). Formally:
 \[
 \forall p \in P^*(0), \quad p \notin D(\{p\}) \quad (p \nmid (2N - p)).
 \]
 
 **Proof of Proposition 4.1.**  
-For any prime $p \in P^*(0)$, reduction modulo $p$ yields:
-\[
-2N - p \equiv 2N \pmod p.
-\]
-By Definition 2.2, $p \nmid 2N$, which means $2N \not\equiv 0 \pmod p$. Thus $2N - p \not\equiv 0 \pmod p$, proving that $p \nmid (2N - p)$ and $p \notin D(\{p\})$. Hence no $1$-element fixed point $D(\{p\}) = \{p\}$ can exist, confirming $k = |I| \ge 2$. $\blacksquare$
+This is immediate: for any $p \in P^*(0)$, $p \nmid 2N \implies p \nmid (2N - p) \equiv 2N \pmod p$, precluding $p \in D(\{p\})$ and confirming $k = |I| \ge 2$. $\blacksquare$
 
 ---
 

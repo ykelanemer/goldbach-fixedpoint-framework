@@ -508,17 +508,13 @@ In this section, we analyze the governing system $\mathcal{S}(2N, k, M)$ and exe
 
 \begin{proposition}[Elimination of Self-Loops: $k=1$ Collapse]
 \label{prop:k1_collapse}
-No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no $1$-element stationary set $D(\{p\}) = \{p\}$ can exist, confirming the cardinality floor $k = |I| \ge 2$ established in Proposition~\ref{prop:minimal_island}. Formally:
+No prime $p \in P^*(0)$ can belong to its own divisor image $D(\{p\})$. Consequently, no $1$-element minimal terminal island can exist ($k = |I| \ge 2$). Formally:
 \[
 \forall p \in P^*(0), \quad p \notin D(\{p\}) \quad (p \nmid (2N - p)).
 \]
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:k1_collapse}}]
-For any prime $p \in P^*(0)$, reduction modulo $p$ yields:
-\[
-2N - p \equiv 2N \pmod p.
-\]
-By Definition~\ref{def:initial_domain}, every element of $P^*(0)$ satisfies $p \nmid 2N$, which enforces $2N \not\equiv 0 \pmod p$. Hence $p \nmid (2N - p)$, proving $p \notin D(\{p\})$. Consequently, no $1$-element stationary set $D(\{p\}) = \{p\}$ can exist, confirming the cardinality floor $k = |I| \ge 2$.
+This is immediate: for any $p \in P^*(0)$, $p \nmid 2N \implies p \nmid (2N - p) \equiv 2N \pmod p$, precluding $p \in D(\{p\})$ and confirming $k = |I| \ge 2$.
 \end{proof}
 
 \subsection{Case \texorpdfstring{$k = 2$}{k = 2}: Elimination of Two-Prime Cycles}
