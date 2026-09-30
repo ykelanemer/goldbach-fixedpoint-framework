@@ -23,6 +23,6 @@
 # OS generated files
 .DS_Store
 Thumbs.db
-paper/explanations/**/*.*
-paper/.calculations_details/**/*.*
-paper/presentation/**/*.*
+paper/explanations/**/*
+paper/.calculations_details/**/*
+paper/presentation/**/*
