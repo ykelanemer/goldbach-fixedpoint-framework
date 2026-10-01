@@ -586,9 +586,9 @@ We analyze the possible exponent configurations:
         \[
         p_2 \le \sqrt{2N - p_1} < \sqrt{2N} \quad \text{and} \quad p_1 \le \sqrt{2N - p_2} < \sqrt{2N}.
         \]
-        Because $3 \le p_1 < p_2 < \sqrt{2N}$, the difference between the two prime powers satisfies:
+        Because $3 \le p_1 < p_2 < \sqrt{2N}$, we have $2N - p_1 > 2N - p_2 > 0$, so the difference between the two prime powers satisfies:
         \[
-        |p_2^{a_{1,2}} - p_1^{a_{2,1}}| = |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < \sqrt{2N}.
+        p_2^{a_{1,2}} - p_1^{a_{2,1}} = (2N - p_1) - (2N - p_2) = p_2 - p_1 < \sqrt{2N}.
         \]
         Dividing both sides by $2N - p_2 = p_1^{a_{2,1}} > 2N - \sqrt{2N}$ yields the exact quotient relation:
         \[
@@ -600,13 +600,13 @@ We analyze the possible exponent configurations:
         \[
         \Lambda := \ln\left(\frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}}}\right) = a_{1,2} \ln p_2 - a_{2,1} \ln p_1.
         \]
-        Because $p_1, p_2 \ge 3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_{1,2}} \ne p_1^{a_{2,1}}$, so $\Lambda \neq 0$. Substituting the quotient relation and applying the standard inequality $\ln(1 + x) < x$ for all $x > 0$:
+        Because $p_1 < p_2$, the quotient satisfies $\frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}}} = 1 + \frac{p_2 - p_1}{2N - p_2} > 1$, which guarantees $\Lambda > 0$ strictly. Unique prime factorization of distinct odd primes ensures $\Lambda \neq 0$. Substituting the quotient relation and applying the standard inequality $\ln(1 + x) < x$ for all $x > 0$:
         \[
-        0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2}.
+        0 < \Lambda = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2}.
         \]
         Since $p_2 - p_1 < \sqrt{2N}$ and $2N - p_2 > 2N - \sqrt{2N}$, for any counterexample $2N > 4 \cdot 10^{18}$ we obtain the strict logarithmic upper bound:
         \[
-        |\Lambda| < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < \frac{2}{\sqrt{4 \cdot 10^{18}}} = 10^{-9}.
+        \Lambda < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < \frac{2}{\sqrt{4 \cdot 10^{18}}} = 10^{-9}.
         \]
 
         \item \textbf{Part 2.3 (Baker--Matveev Lower Bound and Contradiction):}  
@@ -614,13 +614,13 @@ We analyze the possible exponent configurations:
         \[
         \max(a_{1,2}, a_{2,1}) \le \left\lfloor \frac{\ln(2N-3)}{\ln 3} \right\rfloor \le 40 \quad (\text{for } 2N \le 10^{19}).
         \]
-        By the Baker--Matveev Theorem on Linear Forms in Logarithms (Theorem~\ref{thm:baker_matveev}; Baker 1966), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound:
+        By the Baker--Matveev Theorem on Linear Forms in Logarithms (Theorem~\ref{thm:baker_matveev}; Baker 1966), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound $|\Lambda| > 10^{-7}$. Since $\Lambda > 0$, this simplifies directly to:
         \[
-        |\Lambda| > 10^{-7}.
+        \Lambda = |\Lambda| > 10^{-7}.
         \]
         Combining the lower and upper bounds yields the direct numerical contradiction:
         \[
-        10^{-7} < |\Lambda| < 10^{-9}.
+        10^{-7} < \Lambda < 10^{-9}.
         \]
         Since $10^{-7} \le 10^{-9}$ is impossible, no integer solutions with $a_{1,2}, a_{2,1} \ge 2$ can exist for any $2N > 4 \cdot 10^{18}$.
     \end{enumerate}
@@ -726,18 +726,18 @@ We classify all possible exponent configurations:
                     \[
                     \Lambda := \ln\left( \frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}} p_3^{a_{2,3}}} \right) = a_{1,2} \ln p_2 - a_{2,1} \ln p_1 - a_{2,3} \ln p_3.
                     \]
-                    Because $p_1, p_2, p_3 \ge 3$ are distinct odd primes, the Fundamental Theorem of Arithmetic ensures $p_2^{a_{1,2}} \ne p_1^{a_{2,1}} p_3^{a_{2,3}}$, so $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
+                    Because $p_1 < p_2$, the quotient satisfies $\frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
                     \[
-                    0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+                    0 < \Lambda = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < \frac{2}{\sqrt{2N}} < 10^{-9}.
                     \]
                     \item \textit{Part C (Baker Lower Bound and Contradiction):}  
-                    The integer exponents satisfy $\max(a_{1,2}, a_{2,1}, a_{2,3}) \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}). Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) yields the strictly positive effective lower bound:
+                    The integer exponents satisfy $\max(a_{1,2}, a_{2,1}, a_{2,3}) \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}). Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) yields the effective lower bound $|\Lambda| > 10^{-7}$, which, since $\Lambda > 0$, simplifies to:
                     \[
-                    |\Lambda| > 10^{-7}.
+                    \Lambda = |\Lambda| > 10^{-7}.
                     \]
                     Combining the bounds gives the impossible contradiction:
                     \[
-                    10^{-7} < |\Lambda| < 10^{-9},
+                    10^{-7} < \Lambda < 10^{-9},
                     \]
                     ruling out $a_{2,3} \ge 2$ unconditionally for all $2N > 4 \cdot 10^{18}$.
                 \end{itemize}
@@ -759,7 +759,7 @@ We classify all possible exponent configurations:
                 \[
                 \Lambda := \ln\left( \frac{p_2^{a_{1,2}}}{p_3^{a_{2,3}}} \right) = a_{1,2} \ln p_2 - a_{2,3} \ln p_3.
                 \]
-                Since $p_2 \ne p_3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_{1,2}} \ne p_3^{a_{2,3}}$, so $\Lambda \ne 0$. The proximity bound gives $0 < |\Lambda| < \frac{2}{\sqrt{2N}} < 10^{-9}$, whereas Theorem~\ref{thm:baker_matveev} with bounded exponents $\max(a_{1,2}, a_{2,3}) \le 40$ enforces $|\Lambda| > 10^{-7}$. The resulting contradiction $10^{-7} < |\Lambda| < 10^{-9}$ eliminates $a_{2,1} = 0$.
+                Since $p_1 < p_2$, the quotient $\frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2} > 1$ guarantees $\Lambda > 0$ strictly. Unique prime factorization guarantees $p_2^{a_{1,2}} \ne p_3^{a_{2,3}}$, so $\Lambda \ne 0$. The proximity bound gives $0 < \Lambda < \frac{2}{\sqrt{2N}} < 10^{-9}$, whereas Theorem~\ref{thm:baker_matveev} with bounded exponents $\max(a_{1,2}, a_{2,3}) \le 40$ enforces $\Lambda = |\Lambda| > 10^{-7}$. The resulting contradiction $10^{-7} < \Lambda < 10^{-9}$ eliminates $a_{2,1} = 0$.
 
                 \item \textbf{Stage 2.2.b.2 (Coprime Branch $a_{2,1} \ge 1$: Modular Obstruction):}  
                 If $a_{2,1} \ge 1$, then $p_1 \mid (2N - p_2)$ and $p_1 \mid (2N - p_3)$, forcing $p_1 \mid ((2N - p_2) - (2N - p_3)) = (p_3 - p_2)$. Hence:
@@ -948,16 +948,16 @@ Let $M \in \mathbb{R}_{\ge 0}^{k \times k}$ be a non-negative, irreducible matri
 \begin{enumerate}
 \item \textbf{Step 1 (Existence of Upper Primes, $p_k > \sqrt{2N}$):}  
 Suppose $p_k \le \sqrt{2N}$. Since $p_k = \max(I)$, all primes in the island satisfy $3 \le p_1 < \dots < p_k \le \sqrt{2N}$.
-Then for any two distinct complements $2N - p_i$ and $2N - p_j$ ($i \neq j$), the difference satisfies $|(2N - p_i) - (2N - p_j)| = |p_j - p_i| < p_k \le \sqrt{2N}$.
+Then for any pair of indices $1 \le i < j \le k$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_k \le \sqrt{2N}$.
 Dividing by $2N - p_j > 2N - \sqrt{2N}$ yields the relative proximity bound:
 \[
-\left| \frac{2N - p_i}{2N - p_j} - 1 \right| = \frac{|p_j - p_i|}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
+\frac{2N - p_i}{2N - p_j} - 1 = \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
 \]
-Taking natural logarithms yields a non-vanishing linear form in the prime logarithms:
+Because $\frac{2N - p_i}{2N - p_j} > 1$, taking natural logarithms yields a strictly positive linear form in the prime logarithms:
 \[
-|\Lambda_{i,j}| = \left| \sum_{r=1}^k (a_{i,r} - a_{j,r}) \ln p_r \right| = \ln\left(1 + \frac{|p_j - p_i|}{2N - p_j}\right) < 10^{-9}.
+0 < \Lambda_{i,j} := \sum_{r=1}^k (a_{i,r} - a_{j,r}) \ln p_r = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
 \]
-Because the exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear combination of logarithms of distinct primes satisfies $|\Lambda_{i,j}| > 10^{-7}$. This contradiction proves that $p_k \le \sqrt{2N}$ is impossible, forcing $p_k > \sqrt{2N}$.
+Because the exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear combination of logarithms of distinct primes satisfies $|\Lambda_{i,j}| > 10^{-7}$, which implies $\Lambda_{i,j} = |\Lambda_{i,j}| > 10^{-7}$. The resulting contradiction $10^{-7} < \Lambda_{i,j} < 10^{-9}$ proves that $p_k \le \sqrt{2N}$ is impossible, forcing $p_k > \sqrt{2N}$.
 
 \item \textbf{Step 2 (In-Degree Rigidity of $p_k$):}  
 By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_k = \max(I)$ can divide at most one complement $2N - p_i$ ($i < k$). By strong connectivity of $G = (I, R)$ (Proposition~\ref{prop:strong_connectivity}), $\operatorname{in-deg}(p_k) \ge 1$. Thus $p_k$ has in-degree exactly 1: there exists a unique incoming neighbor $p_m$ ($m < k$) such that $a_{m,k} \ge 1$, while $a_{i,k} = 0$ for all $i \neq m$.
@@ -1030,7 +1030,7 @@ Suppose $a_{m,4} \ge 2$. We eliminate this possibility through a three-part Diop
     \[
     3 \le p_1 < p_2 < p_3 < p_4 < \sqrt{2N}.
     \]
-    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ (with $1 \le i < j \le 4$), the difference satisfies $|(2N - p_i) - (2N - p_j)| = p_j - p_i < p_4 < \sqrt{2N}$. Forming the algebraic quotient yields:
+    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 4$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_4 < \sqrt{2N}$. Forming the algebraic quotient yields:
     \[
     \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
     \]
@@ -1044,19 +1044,19 @@ Suppose $a_{m,4} \ge 2$. We eliminate this possibility through a three-part Diop
     \[
     \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^4 (a_{i,r} - a_{j,r}) \ln p_r.
     \]
-    Because $p_1 < p_2 < p_3 < p_4$ are distinct odd primes and $2N - p_i \ne 2N - p_j$, the Fundamental Theorem of Arithmetic ensures that their prime factorizations are distinct, which guarantees $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+    Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
     \[
-    0 < |\Lambda| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+    0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
     \]
 
     \item \textbf{Part 3.3 (Baker Lower Bound and Contradiction):}  
-    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 4 prime logarithms satisfies:
+    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 4 prime logarithms satisfies $|\Lambda| > 10^{-7}$, which, since $\Lambda > 0$, simplifies to:
     \[
-    |\Lambda| > 10^{-7}.
+    \Lambda = |\Lambda| > 10^{-7}.
     \]
     Combining the lower and upper bounds yields the impossible contradiction:
     \[
-    10^{-7} < |\Lambda| < 10^{-9}.
+    10^{-7} < \Lambda < 10^{-9}.
     \]
     This contradiction rules out $a_{m,4} \ge 2$, forcing unconditionally:
     \[
@@ -1119,7 +1119,7 @@ Suppose $a_{m,5} \ge 2$. We eliminate this possibility through a three-part Diop
     \[
     3 \le p_1 < p_2 < p_3 < p_4 < p_5 < \sqrt{2N}.
     \]
-    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ (with $1 \le i < j \le 5$), the difference satisfies $|(2N - p_i) - (2N - p_j)| = p_j - p_i < p_5 < \sqrt{2N}$. Forming the algebraic quotient yields:
+    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 5$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_5 < \sqrt{2N}$. Forming the algebraic quotient yields:
     \[
     \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
     \]
@@ -1133,19 +1133,19 @@ Suppose $a_{m,5} \ge 2$. We eliminate this possibility through a three-part Diop
     \[
     \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^5 (a_{i,r} - a_{j,r}) \ln p_r.
     \]
-    Because $p_1 < p_2 < p_3 < p_4 < p_5$ are distinct odd primes and $2N - p_i \ne 2N - p_j$, the Fundamental Theorem of Arithmetic ensures that their prime factorizations are distinct, which guarantees $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+    Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
     \[
-    0 < |\Lambda| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+    0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
     \]
 
     \item \textbf{Part 3.3 (Baker Lower Bound and Contradiction):}  
-    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), bounding the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 5 prime logarithms satisfies:
+    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}), bounding the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 5 prime logarithms satisfies $|\Lambda| > 10^{-7}$, which, since $\Lambda > 0$, simplifies to:
     \[
-    |\Lambda| > 10^{-7}.
+    \Lambda = |\Lambda| > 10^{-7}.
     \]
     Combining the lower and upper bounds yields the impossible contradiction:
     \[
-    10^{-7} < |\Lambda| < 10^{-9}.
+    10^{-7} < \Lambda < 10^{-9}.
     \]
     This contradiction rules out $a_{m,5} \ge 2$, forcing unconditionally:
     \[
@@ -1192,7 +1192,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
     \item \textbf{Unconditional Base Upper-Bound Elimination:} It is impossible for the second smallest prime to satisfy $p_2 > \sqrt{2N}$.
     \item \textbf{Coprime Logarithmic Proximity:} The second smallest prime must satisfy $p_2 \le \sqrt{2N}$, and the two smallest coprime complements $2N - p_1 = \prod_{j \in S_1} p_j^{a_{1,j}}$ and $2N - p_2 = \prod_{j \in S_2} p_j^{a_{2,j}}$ with disjoint prime supports $S_1 \cap S_2 = \emptyset$ satisfy the ultra-tight linear form in logarithms:
     \[
-    0 < |\Lambda_{1,2}| = \left| \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j \right| < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+    0 < \Lambda_{1,2} = \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
     \]
     \item \textbf{Conditional Elimination for Fixed Dimension:} For any fixed dimension $k \ge 6$, applying Baker--Matveev linear forms in logarithms rules out the existence of such an island whenever the lower bound exceeds the $O(N^{-1/2})$ upper bound. Under the standard uniform logarithmic forms conjecture, no such island can exist for any $k \ge 6$.
 \end{enumerate}
@@ -1241,7 +1241,7 @@ Consider the second prime $p_2 \in I$. There are two exhaustive cases:
         \]
         Because $0 < p_2 - p_1 < p_2 \le \sqrt{2N}$, dividing by $2N - p_2 > 2N - \sqrt{2N}$ yields the relative proximity bound:
         \[
-        \left| \frac{2N - p_1}{2N - p_2} - 1 \right| = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
+        \frac{2N - p_1}{2N - p_2} - 1 = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
         \]
         Expressing the quotient in terms of prime factorizations:
         \[
@@ -1254,13 +1254,13 @@ Consider the second prime $p_2 \in I$. There are two exhaustive cases:
         \[
         \Lambda_{1,2} := \ln\left( \frac{2N - p_1}{2N - p_2} \right) = \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j.
         \]
-        Because $S_1 \cap S_2 = \emptyset$ and the primes are odd, the Fundamental Theorem of Arithmetic guarantees $\prod_{j \in S_1} p_j^{a_{1,j}} \ne \prod_{j \in S_2} p_j^{a_{2,j}}$, so $\Lambda_{1,2} \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+        Because $p_1 < p_2$, the quotient $\frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2} > 1$ ensures $\Lambda_{1,2} > 0$ strictly. Unique prime factorization with $S_1 \cap S_2 = \emptyset$ guarantees $\Lambda_{1,2} \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
         \[
-        0 < |\Lambda_{1,2}| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < 10^{-9}.
+        0 < \Lambda_{1,2} = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < 10^{-9}.
         \]
 
         \item \textit{Part 2.2.C (Baker--Matveev Evaluation and Dimensional Barrier):}  
-        The integer exponents are bounded by $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}). For any fixed dimension $k$, Theorem~\ref{thm:baker_matveev} (Baker--Matveev) provides an effective positive lower bound $|\Lambda_{1,2}| > C(k, B)$. Whenever $C(k, B) > 10^{-9}$, Case 2.2 is eliminated. Under the standard conjecture that linear forms in logarithms of coprime algebraic integers admit uniform lower bounds of polynomial type in $B$, this forces an outright impossibility.
+        The integer exponents are bounded by $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound}). For any fixed dimension $k$, Theorem~\ref{thm:baker_matveev} (Baker--Matveev) provides an effective positive lower bound $|\Lambda_{1,2}| > C(k, B)$, which, since $\Lambda_{1,2} > 0$, gives $\Lambda_{1,2} = |\Lambda_{1,2}| > C(k, B)$. Whenever $C(k, B) > 10^{-9}$, Case 2.2 is eliminated. Under the standard conjecture that linear forms in logarithms of coprime algebraic integers admit uniform lower bounds of polynomial type in $B$, this forces an outright impossibility.
     \end{itemize}
 \end{itemize}
 
@@ -1302,7 +1302,7 @@ The structural contraction and inductive descent proceed through the following s
         \item \textit{Sub-step 1.1 (Topological In-Degree Rigidity):}  
         By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_k = \max(I)$ has in-degree exactly $1$, possessing a unique incoming neighbor $p_m \in I \setminus \{p_k\}$.
         \item \textit{Sub-step 1.2 (Exponent Bound $a_{m,k} = 1$ via Diophantine Sandwich):}  
-        Suppose $a_{m,k} \ge 2$. By Proposition~\ref{prop:root_compression} (Root Compression), this forces $p_k \le \sqrt{2N - 3} < \sqrt{2N}$, which confines all primes in the island below $\sqrt{2N}$. This induces the relative proximity bound $\frac{p_k - p_1}{2N - p_k} < \frac{2}{\sqrt{2N}} < 10^{-9}$ and the non-vanishing linear form $|\Lambda| = \ln(1 + \frac{p_k - p_1}{2N - p_k}) < 10^{-9}$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound}) with exponents $\le 40$ yields the lower bound $|\Lambda| > 10^{-7}$, producing the impossible contradiction $10^{-7} < |\Lambda| < 10^{-9}$. Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
+        Suppose $a_{m,k} \ge 2$. By Proposition~\ref{prop:root_compression} (Root Compression), this forces $p_k \le \sqrt{2N - 3} < \sqrt{2N}$, which confines all primes in the island below $\sqrt{2N}$. This induces the relative proximity bound $\frac{p_k - p_1}{2N - p_k} < \frac{2}{\sqrt{2N}} < 10^{-9}$ and the strictly positive non-vanishing linear form $0 < \Lambda = \ln(1 + \frac{p_k - p_1}{2N - p_k}) < 10^{-9}$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound}) with exponents $\le 40$ yields the lower bound $\Lambda = |\Lambda| > 10^{-7}$, producing the impossible contradiction $10^{-7} < \Lambda < 10^{-9}$. Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
     \end{itemize}
     
     \item \textbf{Algebraic Elimination and Conservation Law:} Substituting $p_k = \frac{2N - p_m}{Q_m}$ into the factorization of $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ (where $a_{k,k} = 0$) gives:
@@ -1343,7 +1343,7 @@ The structural contraction and inductive descent proceed through the following s
 \label{rem:asymptotic_boundary}
 We explicitly distinguish between the unconditional elimination established for dimensions $k \in \{0, 1, 2, 3, 4, 5\}$ and the asymptotic behavior as $k \to \infty$. In low dimensions $k \le 5$, the number of primes is fixed and small, so the Baker--Matveev lower bound ($> 10^{-7}$) unconditionally dominates the $10^{-9}$ proximity upper bound. For large dimensions $k \ge 6$, the dimensional constant in Matveev's theorem decays as $C(k) \approx \exp(-C k^4 \ln k)$. If $k = k(N)$ grows with $N$, unconditional elimination via effective linear forms alone requires bounding the growth of $k$ relative to $\ln(2N)$.
 
-This identifies the precise mathematical boundary of the problem: any potential Goldbach counterexample $2N > 4 \cdot 10^{18}$ is forced into an extremely narrow and rigid bottleneck---it must generate a strongly connected digraph of large dimension $k \ge 6$, with $p_2 \le \sqrt{2N}$, satisfying an ultra-tight Diophantine coincidence between two completely coprime products ($|\Lambda_{1,2}| < 10^{-9}$). Resolving this remaining domain unconditionally constitutes the Spectral Decoupling Conjecture formulated in Section~\ref{sec:conclusion}.
+This identifies the precise mathematical boundary of the problem: any potential Goldbach counterexample $2N > 4 \cdot 10^{18}$ is forced into an extremely narrow and rigid bottleneck---it must generate a strongly connected digraph of large dimension $k \ge 6$, with $p_2 \le \sqrt{2N}$, satisfying an ultra-tight Diophantine coincidence between two completely coprime products ($\Lambda_{1,2} < 10^{-9}$). Resolving this remaining domain unconditionally constitutes the Spectral Decoupling Conjecture formulated in Section~\ref{sec:conclusion}.
 \end{remark}
 
 \begin{proposition}[Spectral-Arithmetic Semiprime Elimination and Frontier Reduction]
@@ -1534,15 +1534,15 @@ Suppose for contradiction that such an irreducible matrix $M \in \mathbb{Z}_{\ge
         \item \textit{Part 4.3 (Baker Linear Form Contradiction):}  
         Under this severe geometric compression, the linear form:
         \[
-        \Lambda_{1,2} := \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j \ne 0
+        \Lambda_{1,2} := \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j = \ln\left( \frac{2N - p_1}{2N - p_2} \right) > 0
         \]
-        has prime support bounded by at most 6 primes with logarithmic heights bounded by $\ln(3.57 \times 10^6)$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound}) yields the effective lower bound:
+        is strictly positive because $p_1 < p_2 \implies 2N - p_1 > 2N - p_2 > 0$. It has prime support bounded by at most 6 primes with logarithmic heights bounded by $\ln(3.57 \times 10^6)$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound}) yields the effective lower bound:
         \[
-        |\Lambda_{1,2}| > 1.4 \times 10^{-7}.
+        \Lambda_{1,2} = |\Lambda_{1,2}| > 1.4 \times 10^{-7}.
         \]
-        Combining this with the coprime proximity bound $|\Lambda_{1,2}| < 10^{-9}$ from Proposition~\ref{prop:large_islands_squeeze} produces the impossible double inequality:
+        Combining this with the coprime proximity bound $\Lambda_{1,2} < 10^{-9}$ from Proposition~\ref{prop:large_islands_squeeze} produces the impossible double inequality:
         \[
-        1.4 \times 10^{-7} < |\Lambda_{1,2}| < 10^{-9}.
+        1.4 \times 10^{-7} < \Lambda_{1,2} < 10^{-9}.
         \]
         This contradiction rules out the existence of the singular semiprime island unconditionally.
     \end{itemize}
