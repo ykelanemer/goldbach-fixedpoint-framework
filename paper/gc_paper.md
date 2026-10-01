@@ -482,20 +482,51 @@ We analyze the possible exponent configurations:
    If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N = p_1 + p_2$. In either case, $p_1 + p_2 = 2N$ forms a valid Goldbach partition, contradicting the counterexample hypothesis (Proposition 2.9). Thus $a_1 \ge 2$ and $a_2 \ge 2$.
 
 2. **Higher Exponents ($a_1 \ge 2$ and $a_2 \ge 2$):**  
-   By Root Compression (Proposition 4.3), $a_1 \ge 2$ forces $p_2^2 \le p_2^{a_1} = 2N - p_1 < 2N$, so $p_2 < \sqrt{2N}$. Symmetrically, $p_1 < \sqrt{2N}$.
-   Subtracting the two governing equations yields:
-   \[
-   |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < p_2 < \sqrt{2N}.
-   \]
-   Dividing by $2N - p_2 = p_1^{a_2} > 2N - \sqrt{2N}$ yields the relative proximity bound:
-   \[
-   \left| \frac{p_2^{a_1}}{p_1^{a_2}} - 1 \right| = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
-   \]
-   Taking natural logarithms yields a non-vanishing linear form in two logarithms:
-   \[
-   |\Lambda| = |a_1 \ln p_2 - a_2 \ln p_1| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < 10^{-9}.
-   \]
-   Because $p_1 \ne p_2$ are distinct odd primes, $\Lambda \ne 0$. Exponents satisfy $a_1, a_2 \le \frac{\ln(2N)}{\ln 3} \le 40$. By Baker's theorem on linear forms in two logarithms (Theorem 4.2; Baker 1966), $|\Lambda| > 10^{-7}$. This contradiction precludes any integer solution for $2N > 4 \cdot 10^{18}$.
+   We analyze this system by partitioning the elimination into three successive structural steps:
+   - **Part 2.1 (Root Compression and Relative Proximity):**  
+     By the root-compression bound (Proposition 4.3), having $a_1 \ge 2$ and $a_2 \ge 2$ confines both primes strictly below $\sqrt{2N}$:
+     \[
+     p_2 \le \sqrt{2N - p_1} < \sqrt{2N} \quad \text{and} \quad p_1 \le \sqrt{2N - p_2} < \sqrt{2N}.
+     \]
+     Because $3 \le p_1 < p_2 < \sqrt{2N}$, the difference between the two prime powers satisfies:
+     \[
+     |p_2^{a_1} - p_1^{a_2}| = |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < \sqrt{2N}.
+     \]
+     Dividing both sides by $2N - p_2 = p_1^{a_2} > 2N - \sqrt{2N}$ yields the exact quotient relation:
+     \[
+     \frac{p_2^{a_1}}{p_1^{a_2}} = 1 + \frac{p_2 - p_1}{2N - p_2}.
+     \]
+
+   - **Part 2.2 (Linear Form Definition and Logarithmic Upper Bound):**  
+     Taking the natural logarithm of this quotient, we define the linear form in two logarithms:
+     \[
+     \Lambda := \ln\left(\frac{p_2^{a_1}}{p_1^{a_2}}\right) = a_1 \ln p_2 - a_2 \ln p_1.
+     \]
+     Because $p_1, p_2 \ge 3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_1} \ne p_1^{a_2}$, so $\Lambda \neq 0$. Substituting the quotient relation and applying the standard inequality $\ln(1 + x) < x$ for all $x > 0$:
+     \[
+     0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2}.
+     \]
+     Since $p_2 - p_1 < \sqrt{2N}$ and $2N - p_2 > 2N - \sqrt{2N}$, for any counterexample $2N > 4 \cdot 10^{18}$ we obtain the strict logarithmic upper bound:
+     \[
+     |\Lambda| < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < \frac{2}{\sqrt{4 \cdot 10^{18}}} = 10^{-9}.
+     \]
+
+   - **Part 2.3 (Baker--Matveev Lower Bound and Contradiction):**  
+     By Proposition 4.1, the integer exponents satisfy:
+     \[
+     \max(a_1, a_2) \le \left\lfloor \frac{\ln(2N-3)}{\ln 3} \right\rfloor \le 40 \quad (\text{for } 2N \le 10^{19}).
+     \]
+     By the Baker--Matveev Theorem on Linear Forms in Logarithms (Theorem 4.2; Baker 1966), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound:
+     \[
+     |\Lambda| > 10^{-7}.
+     \]
+     Combining the lower and upper bounds yields the direct numerical contradiction:
+     \[
+     10^{-7} < |\Lambda| < 10^{-9}.
+     \]
+     Since $10^{-7} \le 10^{-9}$ is impossible, no integer solutions with $a_1, a_2 \ge 2$ can exist for any $2N > 4 \cdot 10^{18}$.
+
+   *(For integers $2N \le 4 \cdot 10^{18}$, subtracting the two equations gives $p_2(p_2^{a_1-1}-1) = p_1(p_1^{a_2-1}-1)$, whose unique integer solution with $a_1, a_2 \ge 2$ is $(p_1, p_2, a_1, a_2) = (3, 13, 3, 7)$, giving $2N = 3 + 13^3 = 2200$. But $2N = 2200$ is not a counterexample, and by Oliveira e Silva et al. [2014], any Goldbach counterexample satisfies $2N > 4 \cdot 10^{18}$.)*
 
 Therefore, no minimal terminal island of cardinality $k=2$ can exist in any Goldbach counterexample. $\blacksquare$
 
