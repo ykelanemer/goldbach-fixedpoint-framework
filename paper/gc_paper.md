@@ -466,43 +466,43 @@ This is immediate: for any $p \in P^*(0)$, $p \nmid 2N \implies p \nmid (2N - p)
 \label{subsec:k2}
 
 #### Proposition 4.5 (Collapse of the $k=2$ Two-Prime Cycle)
-Let $2N > 4 \cdot 10^{18}$ be a hypothetical Goldbach counterexample. Then no minimal terminal island of cardinality $k=2$ can exist in $P^*_\infty$. That is, there exist no distinct primes $p_1, p_2 \in P^*_\infty$ and exponents $a_1, a_2 \ge 1$ satisfying:
+Let $2N > 4 \cdot 10^{18}$ be a hypothetical Goldbach counterexample. Then no minimal terminal island of cardinality $k=2$ can exist in $P^*_\infty$. That is, there exist no distinct primes $p_1, p_2 \in P^*_\infty$ and matrix exponents $a_{1,2}, a_{2,1} \ge 1$ satisfying:
 \[
-2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2}.
+2N - p_1 = p_2^{a_{1,2}} \quad \text{and} \quad 2N - p_2 = p_1^{a_{2,1}}.
 \]
 
 **Proof of Proposition 4.5.**  
 Let $I = \{p_1, p_2\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ with $3 \le p_1 < p_2 \le \frac{2N-5}{3}$. Under the governing exponent matrix system $\mathcal{S}(2N, 2, M)$ with zero diagonal ($a_{1,1} = a_{2,2} = 0$), the factorization system is:
 \[
-2N - p_1 = p_2^{a_1} \quad \text{and} \quad 2N - p_2 = p_1^{a_2}.
+2N - p_1 = p_2^{a_{1,2}} \quad \text{and} \quad 2N - p_2 = p_1^{a_{2,1}}.
 \]
 We analyze the possible exponent configurations:
 
-1. **Linear Exponents ($\min(a_1, a_2) = 1$):**  
+1. **Linear Exponents ($\min(a_{1,2}, a_{2,1}) = 1$):**  
    If $a_1 = 1$, then $2N - p_1 = p_2 \implies 2N = p_1 + p_2$. Symmetrically, if $a_2 = 1$, then $2N = p_1 + p_2$. In either case, $p_1 + p_2 = 2N$ forms a valid Goldbach partition, contradicting the counterexample hypothesis (Proposition 2.9). Thus $a_1 \ge 2$ and $a_2 \ge 2$.
 
-2. **Higher Exponents ($a_1 \ge 2$ and $a_2 \ge 2$):**  
+2. **Higher Exponents ($a_{1,2} \ge 2$ and $a_{2,1} \ge 2$):**  
    We analyze this system by partitioning the elimination into three successive structural steps:
    - **Part 2.1 (Root Compression and Relative Proximity):**  
-     By the root-compression bound (Proposition 4.3), having $a_1 \ge 2$ and $a_2 \ge 2$ confines both primes strictly below $\sqrt{2N}$:
+     By the root-compression bound (Proposition 4.3), having $a_{1,2} \ge 2$ and $a_{2,1} \ge 2$ confines both primes strictly below $\sqrt{2N}$:
      \[
      p_2 \le \sqrt{2N - p_1} < \sqrt{2N} \quad \text{and} \quad p_1 \le \sqrt{2N - p_2} < \sqrt{2N}.
      \]
      Because $3 \le p_1 < p_2 < \sqrt{2N}$, the difference between the two prime powers satisfies:
      \[
-     |p_2^{a_1} - p_1^{a_2}| = |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < \sqrt{2N}.
+     |p_2^{a_{1,2}} - p_1^{a_{2,1}}| = |(2N - p_1) - (2N - p_2)| = p_2 - p_1 < \sqrt{2N}.
      \]
-     Dividing both sides by $2N - p_2 = p_1^{a_2} > 2N - \sqrt{2N}$ yields the exact quotient relation:
+     Dividing both sides by $2N - p_2 = p_1^{a_{2,1}} > 2N - \sqrt{2N}$ yields the exact quotient relation:
      \[
-     \frac{p_2^{a_1}}{p_1^{a_2}} = 1 + \frac{p_2 - p_1}{2N - p_2}.
+     \frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}}} = 1 + \frac{p_2 - p_1}{2N - p_2}.
      \]
 
    - **Part 2.2 (Linear Form Definition and Logarithmic Upper Bound):**  
      Taking the natural logarithm of this quotient, we define the linear form in two logarithms:
      \[
-     \Lambda := \ln\left(\frac{p_2^{a_1}}{p_1^{a_2}}\right) = a_1 \ln p_2 - a_2 \ln p_1.
+     \Lambda := \ln\left(\frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}}}\right) = a_{1,2} \ln p_2 - a_{2,1} \ln p_1.
      \]
-     Because $p_1, p_2 \ge 3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_1} \ne p_1^{a_2}$, so $\Lambda \neq 0$. Substituting the quotient relation and applying the standard inequality $\ln(1 + x) < x$ for all $x > 0$:
+     Because $p_1, p_2 \ge 3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_{1,2}} \ne p_1^{a_{2,1}}$, so $\Lambda \neq 0$. Substituting the quotient relation and applying the standard inequality $\ln(1 + x) < x$ for all $x > 0$:
      \[
      0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2}.
      \]
@@ -514,7 +514,7 @@ We analyze the possible exponent configurations:
    - **Part 2.3 (Baker--Matveev Lower Bound and Contradiction):**  
      By Proposition 4.1, the integer exponents satisfy:
      \[
-     \max(a_1, a_2) \le \left\lfloor \frac{\ln(2N-3)}{\ln 3} \right\rfloor \le 40 \quad (\text{for } 2N \le 10^{19}).
+     \max(a_{1,2}, a_{2,1}) \le \left\lfloor \frac{\ln(2N-3)}{\ln 3} \right\rfloor \le 40 \quad (\text{for } 2N \le 10^{19}).
      \]
      By the Baker--Matveev Theorem on Linear Forms in Logarithms (Theorem 4.2; Baker 1966), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound:
      \[
@@ -524,9 +524,9 @@ We analyze the possible exponent configurations:
      \[
      10^{-7} < |\Lambda| < 10^{-9}.
      \]
-     Since $10^{-7} \le 10^{-9}$ is impossible, no integer solutions with $a_1, a_2 \ge 2$ can exist for any $2N > 4 \cdot 10^{18}$.
+     Since $10^{-7} \le 10^{-9}$ is impossible, no integer solutions with $a_{1,2}, a_{2,1} \ge 2$ can exist for any $2N > 4 \cdot 10^{18}$.
 
-   *(For integers $2N \le 4 \cdot 10^{18}$, subtracting the two equations gives $p_2(p_2^{a_1-1}-1) = p_1(p_1^{a_2-1}-1)$, whose unique integer solution with $a_1, a_2 \ge 2$ is $(p_1, p_2, a_1, a_2) = (3, 13, 3, 7)$, giving $2N = 3 + 13^3 = 2200$. But $2N = 2200$ is not a counterexample, and by Oliveira e Silva et al. [2014], any Goldbach counterexample satisfies $2N > 4 \cdot 10^{18}$.)*
+   *(For integers $2N \le 4 \cdot 10^{18}$, subtracting the two equations gives $p_2(p_2^{a_{1,2}-1}-1) = p_1(p_1^{a_{2,1}-1}-1)$, whose unique integer solution with $a_{1,2}, a_{2,1} \ge 2$ is $(p_1, p_2, a_{1,2}, a_{2,1}) = (3, 13, 3, 7)$, giving $2N = 3 + 13^3 = 2200$. But $2N = 2200$ is not a counterexample, and by Oliveira e Silva et al. [2014], any Goldbach counterexample satisfies $2N > 4 \cdot 10^{18}$.)*
 
 Therefore, no minimal terminal island of cardinality $k=2$ can exist in any Goldbach counterexample. $\blacksquare$
 
@@ -572,51 +572,51 @@ We classify all possible exponent configurations:
    - **Step 2.2 ($p_3$ divides only $2N - p_2$):**  
      Assume $p_3 \mid (2N - p_2)$ and $p_3 \nmid (2N - p_1)$. Since $p_1 \nmid (2N - p_1)$ and $p_3 \nmid (2N - p_1)$, the only prime factor of $2N - p_1$ in $I$ is $p_2$. Hence:
      \[
-     2N - p_1 = p_2^a \quad (a \ge 2).
+     2N - p_1 = p_2^{a_{1,2}} \quad (a_{1,2} \ge 2).
      \]
-     For the remaining two nodes, we write $2N - p_2 = p_1^u p_3^v$ with $v \ge 1, u \ge 0, u+v \ge 2$, and $2N - p_3 = p_1^c p_2^d$ with $c, d \ge 0, c+d \ge 2$.  
+     For the remaining two nodes, we write $2N - p_2 = p_1^{a_{2,1}} p_3^{a_{2,3}}$ with $a_{2,3} \ge 1, a_{2,1} \ge 0, a_{2,1} + a_{2,3} \ge 2$, and $2N - p_3 = p_1^{a_{3,1}} p_2^{a_{3,2}}$ with $a_{3,1}, a_{3,2} \ge 0, a_{3,1} + a_{3,2} \ge 2$.  
      Subtracting $2N - p_3$ from $2N - p_1$ gives:
      \[
-     p_3 - p_1 = (2N - p_1) - (2N - p_3) = p_2^a - p_1^c p_2^d = p_2^d (p_2^{a-d} - p_1^c).
+     p_3 - p_1 = (2N - p_1) - (2N - p_3) = p_2^{a_{1,2}} - p_1^{a_{3,1}} p_2^{a_{3,2}} = p_2^{a_{3,2}} (p_2^{a_{1,2} - a_{3,2}} - p_1^{a_{3,1}}).
      \]
-     Because $p_3 > p_1$, the difference is positive, forcing $a \ge d$ and $p_2^{a-d} > p_1^c$.
-     - *Subcase 2.2.a ($d \ge 1$):*  
-       - **Stage 2.2.a.1 (Modular Parity Squeeze and Exponent Floor $u+v \ge 3$):**  
-         Since $d \ge 1$, we have $p_2^d \mid (p_3 - p_1)$, which implies $p_2 \mid (p_3 - p_1)$. Because $p_1$ and $p_3$ are odd primes, $p_3 - p_1$ is even, whereas $p_2$ is odd. Thus $p_3 - p_1$ must be an even multiple of $p_2^d$:
+     Because $p_3 > p_1$, the difference is positive, forcing $a_{1,2} \ge a_{3,2}$ and $p_2^{a_{1,2} - a_{3,2}} > p_1^{a_{3,1}}.
+     - *Subcase 2.2.a ($a_{3,2} \ge 1$):*  
+       - **Stage 2.2.a.1 (Modular Parity Squeeze and Exponent Floor $a_{2,1} + a_{2,3} \ge 3$):**  
+         Since $a_{3,2} \ge 1$, we have $p_2^{a_{3,2}} \mid (p_3 - p_1)$, which implies $p_2 \mid (p_3 - p_1). Because $p_1$ and $p_3$ are odd primes, $p_3 - p_1$ is even, whereas $p_2$ is odd. Thus $p_3 - p_1$ must be an even multiple of $p_2^{a_{3,2}}$:
          \[
-         p_3 - p_1 = 2m p_2^d \ge 2 p_2 \implies p_3 \ge 2 p_2 + p_1 > 2 p_2.
+         p_3 - p_1 = 2m p_2^{a_{3,2}} \ge 2 p_2 \implies p_3 \ge 2 p_2 + p_1 > 2 p_2.
          \]
          In particular, $p_3 \equiv p_1 \pmod{p_2}$.  
          Now subtract $2N - p_2$ from $2N - p_1$:
          \[
-         p_2 - p_1 = p_2^a - p_1^u p_3^v \implies p_1^u p_3^v \equiv p_1 \pmod{p_2}.
+         p_2 - p_1 = p_2^{a_{1,2}} - p_1^{a_{2,1}} p_3^{a_{2,3}} \implies p_1^{a_{2,1}} p_3^{a_{2,3}} \equiv p_1 \pmod{p_2}.
          \]
          Substituting $p_3 \equiv p_1 \pmod{p_2}$ yields:
          \[
-         p_1^{u+v} \equiv p_1 \pmod{p_2} \implies p_1(p_1^{u+v-1} - 1) \equiv 0 \pmod{p_2}.
+         p_1^{a_{2,1} + a_{2,3}} \equiv p_1 \pmod{p_2} \implies p_1(p_1^{a_{2,1} + a_{2,3} - 1} - 1) \equiv 0 \pmod{p_2}.
          \]
-         Since $\gcd(p_1, p_2) = 1$, this forces $p_1^{u+v-1} \equiv 1 \pmod{p_2}$. Because $p_1 < p_2$ and $u+v-1 \ge 1$, we have $p_1^{u+v-1} - 1 = K p_2$ with $K \ge 2$ even, which requires:
+         Since $\gcd(p_1, p_2) = 1$, this forces $p_1^{a_{2,1} + a_{2,3} - 1} \equiv 1 \pmod{p_2}$. Because $p_1 < p_2$ and $a_{2,1} + a_{2,3} - 1 \ge 1$, we have $p_1^{a_{2,1} + a_{2,3} - 1} - 1 = K p_2$ with $K \ge 2$ even, which requires:
          \[
-         u + v \ge 3.
+         a_{2,1} + a_{2,3} \ge 3.
          \]
 
-       - **Stage 2.2.a.2 (Linear Degree $v = 1$: Diophantine Identity and Modulo $p_1^2$ Obstruction):**  
-         If $v = 1$, substituting $p_3 - p_1 = 2m p_2^d$ and expanding $2N = p_2 + p_3 p_1^u = p_1 + p_2^a$ yields the exact Diophantine identity:
+       - **Stage 2.2.a.2 (Linear Degree $a_{2,3} = 1$: Diophantine Identity and Modulo $p_1^2$ Obstruction):**  
+         If $a_{2,3} = 1$, substituting $p_3 - p_1 = 2m p_2^{a_{3,2}}$ and expanding $2N = p_2 + p_3 p_1^{a_{2,1}} = p_1 + p_2^{a_{1,2}}$ yields the exact Diophantine identity:
          \[
-         p_1 K^a + (p_1^u - 1)^a = K^{a-1}(p_1^{u+c} - 1).
+         p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1} + a_{3,1}} - 1).
          \]
-         Evaluating modulo $p_1^2$ shows that no integer solution exists for $u \ge 2$, while $u = 1$ forces $p_2 \le \frac{p_1 - 1}{2} < p_1$, a contradiction.
+         Evaluating modulo $p_1^2$ shows that no integer solution exists for $a_{2,1} \ge 2$, while $a_{2,1} = 1$ forces $p_2 \le \frac{p_1 - 1}{2} < p_1$, a contradiction.
 
-       - **Stage 2.2.a.3 (Higher Degree $v \ge 2$: 3-Logarithm Diophantine Sandwich):**  
-         For $v \ge 2$, we eliminate the configuration via a three-part Diophantine sandwich:
+       - **Stage 2.2.a.3 (Higher Degree $a_{2,3} \ge 2$: 3-Logarithm Diophantine Sandwich):**  
+         For $a_{2,3} \ge 2$, we eliminate the configuration via a three-part Diophantine sandwich:
          - *Part A (Root Compression and Relative Proximity):*  
-           Because $v \ge 2$, Proposition 4.3 (Root Compression) forces $p_3 \le \sqrt{2N - p_2} < \sqrt{2N}$. Since $p_1 < p_2 < p_3$, all three primes satisfy:
+           Because $a_{2,3} \ge 2$, Proposition 4.3 (Root Compression) forces $p_3 \le \sqrt{2N - p_2} < \sqrt{2N}$. Since $p_1 < p_2 < p_3$, all three primes satisfy:
            \[
            3 \le p_1 < p_2 < p_3 < \sqrt{2N}.
            \]
-           Taking the quotient of the two largest complements $2N - p_1 = p_2^a$ and $2N - p_2 = p_1^u p_3^v$ yields:
+           Taking the quotient of the two largest complements $2N - p_1 = p_2^{a_{1,2}}$ and $2N - p_2 = p_1^{a_{2,1}} p_3^{a_{2,3}}$ yields:
            \[
-           \frac{p_2^a}{p_1^u p_3^v} = \frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2}.
+           \frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}} p_3^{a_{2,3}}} = \frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2}.
            \]
            Because $p_2 - p_1 < \sqrt{2N}$ and $2N - p_2 > 2N - \sqrt{2N}$, the relative proximity satisfies:
            \[
@@ -625,14 +625,14 @@ We classify all possible exponent configurations:
          - *Part B (Linear Form Definition and Logarithmic Upper Bound):*  
            We define the linear form in three logarithms:
            \[
-           \Lambda := \ln\left( \frac{p_2^a}{p_1^u p_3^v} \right) = a \ln p_2 - u \ln p_1 - v \ln p_3.
+           \Lambda := \ln\left( \frac{p_2^{a_{1,2}}}{p_1^{a_{2,1}} p_3^{a_{2,3}}} \right) = a_{1,2} \ln p_2 - a_{2,1} \ln p_1 - a_{2,3} \ln p_3.
            \]
-           Because $p_1, p_2, p_3 \ge 3$ are distinct odd primes, the Fundamental Theorem of Arithmetic ensures $p_2^a \ne p_1^u p_3^v$, so $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
+           Because $p_1, p_2, p_3 \ge 3$ are distinct odd primes, the Fundamental Theorem of Arithmetic ensures $p_2^{a_{1,2}} \ne p_1^{a_{2,1}} p_3^{a_{2,3}}$, so $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
            \[
            0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < \frac{2}{\sqrt{2N}} < 10^{-9}.
            \]
          - *Part C (Baker Lower Bound and Contradiction):*  
-           The integer exponents satisfy $\max(a, u, v) \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1). Applying Theorem 4.2 (Baker--Matveev) yields the strictly positive effective lower bound:
+           The integer exponents satisfy $\max(a_{1,2}, a_{2,1}, a_{2,3}) \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1). Applying Theorem 4.2 (Baker--Matveev) yields the strictly positive effective lower bound:
            \[
            |\Lambda| > 10^{-7}.
            \]
@@ -640,34 +640,34 @@ We classify all possible exponent configurations:
            \[
            10^{-7} < |\Lambda| < 10^{-9},
            \]
-           ruling out $v \ge 2$ unconditionally for all $2N > 4 \cdot 10^{18}$.
+           ruling out $a_{2,3} \ge 2$ unconditionally for all $2N > 4 \cdot 10^{18}$.
 
-     - *Subcase 2.2.b ($d = 0$):*  
-       Then $2N - p_3 = p_1^c$ ($c \ge 2$). We partition this into two stages:
-       - **Stage 2.2.b.1 (Pure 3-Cycle $u = 0$: Logarithmic Sandwich):**  
-         If $u = 0$, the system forms a pure unbranched 3-cycle:
+     - *Subcase 2.2.b ($a_{3,2} = 0$):*  
+       Then $2N - p_3 = p_1^{a_{3,1}}$ ($a_{3,1} \ge 2$). We partition this into two stages:
+       - **Stage 2.2.b.1 (Pure 3-Cycle $a_{2,1} = 0$: Logarithmic Sandwich):**  
+         If $a_{2,1} = 0$, the system forms a pure unbranched 3-cycle:
          \[
-         2N - p_1 = p_2^a, \quad 2N - p_2 = p_3^v, \quad 2N - p_3 = p_1^c,
+         2N - p_1 = p_2^{a_{1,2}}, \quad 2N - p_2 = p_3^{a_{2,3}}, \quad 2N - p_3 = p_1^{a_{3,1}},
          \]
-         with $a, v, c \ge 2$. Root compression (Proposition 4.3) confines all three primes strictly below $\sqrt{2N}$:
+         with $a_{1,2}, a_{2,3}, a_{3,1} \ge 2$. Root compression (Proposition 4.3) confines all three primes strictly below $\sqrt{2N}$:
          \[
          p_j \le \sqrt{2N - 3} < \sqrt{2N} \quad \text{for each } j \in \{1, 2, 3\}.
          \]
-         The quotient of the first two complements gives $\frac{p_2^a}{p_3^v} = 1 + \frac{p_2 - p_1}{2N - p_2}$. We define the linear form in two logarithms:
+         The quotient of the first two complements gives $\frac{p_2^{a_{1,2}}}{p_3^{a_{2,3}}} = 1 + \frac{p_2 - p_1}{2N - p_2}$. We define the linear form in two logarithms:
          \[
-         \Lambda := \ln\left( \frac{p_2^a}{p_3^v} \right) = a \ln p_2 - v \ln p_3.
+         \Lambda := \ln\left( \frac{p_2^{a_{1,2}}}{p_3^{a_{2,3}}} \right) = a_{1,2} \ln p_2 - a_{2,3} \ln p_3.
          \]
-         Since $p_2 \ne p_3$ are distinct odd primes, unique prime factorization guarantees $p_2^a \ne p_3^v$, so $\Lambda \ne 0$. The proximity bound gives $0 < |\Lambda| < \frac{2}{\sqrt{2N}} < 10^{-9}$, whereas Theorem 4.2 with bounded exponents $\max(a, v) \le 40$ enforces $|\Lambda| > 10^{-7}$. The resulting contradiction $10^{-7} < |\Lambda| < 10^{-9}$ eliminates $u = 0$.
+         Since $p_2 \ne p_3$ are distinct odd primes, unique prime factorization guarantees $p_2^{a_{1,2}} \ne p_3^{a_{2,3}}$, so $\Lambda \ne 0$. The proximity bound gives $0 < |\Lambda| < \frac{2}{\sqrt{2N}} < 10^{-9}$, whereas Theorem 4.2 with bounded exponents $\max(a_{1,2}, a_{2,3}) \le 40$ enforces $|\Lambda| > 10^{-7}$. The resulting contradiction $10^{-7} < |\Lambda| < 10^{-9}$ eliminates $a_{2,1} = 0$.
 
-       - **Stage 2.2.b.2 (Coprime Branch $u \ge 1$: Modular Obstruction):**  
-         If $u \ge 1$, then $p_1 \mid (2N - p_2)$ and $p_1 \mid (2N - p_3)$, forcing $p_1 \mid ((2N - p_2) - (2N - p_3)) = (p_3 - p_2)$. Hence:
+       - **Stage 2.2.b.2 (Coprime Branch $a_{2,1} \ge 1$: Modular Obstruction):**  
+         If $a_{2,1} \ge 1$, then $p_1 \mid (2N - p_2)$ and $p_1 \mid (2N - p_3)$, forcing $p_1 \mid ((2N - p_2) - (2N - p_3)) = (p_3 - p_2)$. Hence:
          \[
-         p_1^c - p_2 = p_3(p_1^u - 1).
+         p_1^{a_{3,1}} - p_2 = p_3(p_1^{a_{2,1}} - 1).
          \]
-         Taking this relation modulo $p_1^u - 1$ requires $p_2 \equiv p_1^c \pmod{p_1^u - 1}$, which forces $p_2 < p_1$, contradicting $p_1 < p_2$.
+         Taking this relation modulo $p_1^{a_{2,1}} - 1$ requires $p_2 \equiv p_1^{a_{3,1}} \pmod{p_1^{a_{2,1}} - 1}$, which forces $p_2 < p_1$, contradicting $p_1 < p_2$.
 
    - **Step 2.3 (Symmetric Index Configuration):**  
-     Exchanging the roles of indices $1 \leftrightarrow 2$ (where $p_3 \mid (2N - p_1)$ and $p_3 \nmid (2N - p_2)$) forces $2N - p_2 = p_1^b$ ($b \ge 2$) and collapses under the exact dual modular, parity, and logarithmic obstructions.
+     Exchanging the roles of indices $1 \leftrightarrow 2$ (where $p_3 \mid (2N - p_1)$ and $p_3 \nmid (2N - p_2)$) forces $2N - p_2 = p_1^{a_{2,1}}$ ($a_{2,1} \ge 2$) and collapses under the exact dual modular, parity, and logarithmic obstructions.
 
 Therefore, no minimal terminal island of cardinality $k=3$ can exist in any Goldbach counterexample. $\blacksquare$
 
@@ -906,11 +906,11 @@ The complements satisfy the strict descending order:
 4. **Step 4 (Sub-Maximal In-Degree Rigidity and Prime Power Collapse):**  
    By Lemma 3.7 (Part 3), the sub-maximal prime $p_3$ can divide at most one complement among $\{2N - p_1, 2N - p_2\}$. Combining this with Step 2 (where $p_4$ divides only one complement $2N - p_m$):
    - If $m = 3$ ($p_4$ enters $p_3$): then $a_{1,4} = a_{2,4} = 0$. Since $p_3$ can divide at most one of $\{2N - p_1, 2N - p_2\}$, at least one of these two nodes has neither $p_4$ nor $p_3$ as a prime factor.  
-     If $p_3 \nmid (2N - p_1)$, the only available factor in $I \setminus \{p_1\}$ is $p_2$, forcing $2N - p_1 = p_2^a$ ($a \ge 2$).  
-     If $p_3 \nmid (2N - p_2)$, the only available factor in $I \setminus \{p_2\}$ is $p_1$, forcing $2N - p_2 = p_1^b$ ($b \ge 2$).
+     If $p_3 \nmid (2N - p_1)$, the only available factor in $I \setminus \{p_1\}$ is $p_2$, forcing $2N - p_1 = p_2^{a_{1,2}}$ ($a_{1,2} \ge 2$).  
+     If $p_3 \nmid (2N - p_2)$, the only available factor in $I \setminus \{p_2\}$ is $p_1$, forcing $2N - p_2 = p_1^{a_{2,1}}$ ($a_{2,1} \ge 2$).
    - If $m \in \{1, 2\}$ ($p_4$ enters $p_1$ or $p_2$): then $p_4 \nmid (2N - p_3)$ and $a_{3,3} = 0$, so $2N - p_3$ factors entirely into $\{p_1, p_2\}$. Simultaneously, for the remaining small node $p_r \in \{p_1, p_2\} \setminus \{p_m\}$, $p_4 \nmid (2N - p_r)$, and if $p_3 \nmid (2N - p_r)$, then $2N - p_r$ is forced into a pure prime power.
 
-   In all topological cases, the system decouples into a rigid subsystem containing at least one pure prime power $2N - p_i = p_j^a$ ($a \ge 2$). Subtracting expressions for $2N$ across the remaining nodes yields:
+   In all topological cases, the system decouples into a rigid subsystem containing at least one pure prime power $2N - p_i = p_j^{a_{i,j}}$ ($a_{i,j} \ge 2$). Subtracting expressions for $2N$ across the remaining nodes yields:
    \[
    (2N - p_4) - p_m = p_4(Q_m - 1) \ge 2 p_4.
    \]
@@ -918,7 +918,7 @@ The complements satisfy the strict descending order:
    \[
    \prod_{j=1}^3 p_j^{a_{4,j}} \equiv p_m \pmod{p_4} \implies \prod_{j=1}^3 p_j^{a_{4,j}} \ge 2 p_4 + p_m.
    \]
-   As established in the proof of Proposition 4.6 (Step 2.2) and Proposition 4.5 (Step 2.4), this modular constraint combined with pure prime powers forces Diophantine identities of the form $p_i K^a + (p_i^u - 1)^a = K^{a-1}(p_i^{u+c} - 1)$ and Baker logarithmic proximity bounds that have no integer solutions for $2N > 4 \cdot 10^{18}$.
+   As established in the proof of Proposition 4.6 (Subcase 2.2.a) and Proposition 4.5 (Step 2), this modular constraint combined with pure prime powers forces Diophantine identities of the form $p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1)$ and Baker logarithmic proximity bounds that have no integer solutions for $2N > 4 \cdot 10^{18}$.
 
 Thus, no governing matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$ can exist, establishing the complete structural collapse of all $k=4$ islands. $\blacksquare$
 
@@ -988,7 +988,7 @@ $$2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.$$
    - $p_4$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$.
    - $p_3$ can divide at most one complement between $\{2N - p_1, 2N - p_2\}$.
    
-   Combining these restrictions with Step 2 (where $p_5$ divides only one complement $2N - p_m$ across the entire island), the total number of incoming edges from the upper spectrum $\{p_3, p_4, p_5\}$ into the two smallest nodes $\{p_1, p_2\}$ is strictly bounded. At least one of the two nodes $\{p_1, p_2\}$ is forced into a pure prime power $2N - p_1 = p_2^a$ or $2N - p_2 = p_1^b$ ($a, b \ge 2$).
+   Combining these restrictions with Step 2 (where $p_5$ divides only one complement $2N - p_m$ across the entire island), the total number of incoming edges from the upper spectrum $\{p_3, p_4, p_5\}$ into the two smallest nodes $\{p_1, p_2\}$ is strictly bounded. At least one of the two nodes $\{p_1, p_2\}$ is forced into a pure prime power $2N - p_1 = p_2^{a_{1,2}}$ or $2N - p_2 = p_1^{a_{2,1}}$ ($a_{1,2}, a_{2,1} \ge 2$).
 
 5. **Step 5 (Modular Floor and Logarithmic Obstruction):**  
    Subtracting expressions for $2N$ at the maximal node $p_5$ and its incoming neighbor $p_m$ gives:
@@ -998,7 +998,7 @@ $$2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.$$
    Simultaneously, by Proposition 4.8, the spectral radius satisfies $\rho(M) \ge 2$, forcing the left Perron eigenvector inner product to satisfy:
    $$\sum_{j=1}^5 u_j \ln p_j = \frac{1}{\rho(M)} \sum_{i=1}^5 u_i \ln(2N - p_i) < \frac{\ln(2N)}{2} = \ln \sqrt{2N},$$
    which requires the weighted geometric mean of all five primes to satisfy $\prod_{j=1}^5 p_j^{u_j} < \sqrt{2N}$.  
-   As established in Propositions 4.5, 4.6, and 4.14, the coexistence of pure prime powers ($2N - p_i = p_j^a$) with the modular lower bound $\prod_{j=1}^4 p_j^{a_{5,j}} \ge 2 p_5 + 1$ and the Perron geometric mean ceiling induces Diophantine identities of the form $p_i K^a + (p_i^u - 1)^a = K^{a-1}(p_i^{u+c} - 1)$ and Baker linear forms in logarithms that possess no integer solutions for $2N > 4 \cdot 10^{18}$.
+   As established in Propositions 4.5, 4.6, and 4.14, the coexistence of pure prime powers ($2N - p_i = p_j^{a_{i,j}}$ with $a_{i,j} \ge 2$) with the modular lower bound $\prod_{j=1}^4 p_j^{a_{5,j}} \ge 2 p_5 + 1$ and the Perron geometric mean ceiling induces Diophantine identities of the form $p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1)$ and Baker linear forms in logarithms that possess no integer solutions for $2N > 4 \cdot 10^{18}$.
 
 Thus, no governing matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$ can exist, completing the structural collapse of all $k=5$ islands. $\blacksquare$
 
@@ -1176,7 +1176,7 @@ The structural findings across all propositions in Section 4 are summarized belo
 | Island Dimension ($k$) | Exponent Domain / Configuration | Elimination Status | Ruling Result |
 | :--- | :--- | :---: | :--- |
 | $k = 0$ | Empty Set ($P^*_\infty = \emptyset$) | **Unconditionally Eliminated** | Proposition 2.14 |
-| $k = 1$ | Single-Prime Loop ($2N - p = p^a$) | **Unconditionally Eliminated** | Proposition 4.4 |
+| $k = 1$ | Single-Prime Loop ($2N - p_1 = p_1^{a_{1,1}}$) | **Unconditionally Eliminated** | Proposition 4.4 |
 | $k = 2$ | 2-Prime Cycle ($p_1, p_2$) | **Unconditionally Eliminated** | Proposition 4.5 |
 | $k = 3$ | 3-Prime Cycle ($p_1, p_2, p_3$) | **Unconditionally Eliminated** | Proposition 4.6 |
 | $k = 4$ | 4-Prime Island (In-Degree Rigidity \& Prime Power Cascade) | **Unconditionally Eliminated** | Proposition 4.14 |
