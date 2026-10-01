@@ -26,3 +26,5 @@ Thumbs.db
 paper/explanations/**/*
 paper/.calculations_details/**/*
 paper/presentation/**/*
+.agents/**/*
+paper/.agents/**/*

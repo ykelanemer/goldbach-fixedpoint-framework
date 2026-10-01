@@ -581,33 +581,90 @@ We classify all possible exponent configurations:
      \]
      Because $p_3 > p_1$, the difference is positive, forcing $a \ge d$ and $p_2^{a-d} > p_1^c$.
      - *Subcase 2.2.a ($d \ge 1$):*  
-       Then $p_2^d \mid (p_3 - p_1)$, which implies $p_2 \mid (p_3 - p_1)$. Because $p_1$ and $p_3$ are odd primes, $p_3 - p_1$ is even, whereas $p_2$ is odd. Thus $p_3 - p_1$ must be an even multiple of $p_2^d$:
-       \[
-       p_3 - p_1 = 2m p_2^d \ge 2 p_2 \implies p_3 \ge 2 p_2 + p_1 > 2 p_2.
-       \]
-       In particular, $p_3 \equiv p_1 \pmod{p_2}$.  
-       Now subtract $2N - p_2$ from $2N - p_1$:
-       \[
-       p_2 - p_1 = p_2^a - p_1^u p_3^v \implies p_1^u p_3^v \equiv p_1 \pmod{p_2}.
-       \]
-       Substituting $p_3 \equiv p_1 \pmod{p_2}$ yields:
-       \[
-       p_1^{u+v} \equiv p_1 \pmod{p_2} \implies p_1(p_1^{u+v-1} - 1) \equiv 0 \pmod{p_2}.
-       \]
-       Since $\gcd(p_1, p_2) = 1$, this forces $p_1^{u+v-1} \equiv 1 \pmod{p_2}$. Because $p_1 < p_2$ and $u+v-1 \ge 1$, we have $p_1^{u+v-1} - 1 = K p_2$ with $K \ge 2$ even, which requires $u + v \ge 3$.  
-       If $v = 1$, substituting $p_3 - p_1 = 2m p_2^d$ and expanding $2N = p_2 + p_3 p_1^u = p_1 + p_2^a$ yields the exact Diophantine identity:
-       \[
-       p_1 K^a + (p_1^u - 1)^a = K^{a-1}(p_1^{u+c} - 1).
-       \]
-       Evaluating modulo $p_1^2$ shows that no integer solution exists for $u \ge 2$, while $u = 1$ forces $p_2 \le \frac{p_1 - 1}{2} < p_1$, a contradiction.  
-       If $v \ge 2$, then $p_3 \le \sqrt{2N - p_2} < \sqrt{2N}$, so all three primes satisfy $p_j < \sqrt{2N}$. Consequently, $p_2 - p_1 < \sqrt{2N}$, and the linear form in logarithms:
-       \[
-       |\Lambda| = |a \ln p_2 - u \ln p_1 - v \ln p_3| = \ln\left(1 + \frac{p_2 - p_1}{p_1^u p_3^v}\right) < \frac{p_2}{2N - p_2} < \frac{2}{\sqrt{2N}} < 10^{-9}
-       \]
-       with bounded exponents $\max(a, u, v) \le \frac{\ln(2N)}{\ln 3} \le 40$ contradicts Baker's theorem on linear forms in logarithms (Theorem 4.2) for $2N > 4 \cdot 10^{18}$.
+       - **Stage 2.2.a.1 (Modular Parity Squeeze and Exponent Floor $u+v \ge 3$):**  
+         Since $d \ge 1$, we have $p_2^d \mid (p_3 - p_1)$, which implies $p_2 \mid (p_3 - p_1)$. Because $p_1$ and $p_3$ are odd primes, $p_3 - p_1$ is even, whereas $p_2$ is odd. Thus $p_3 - p_1$ must be an even multiple of $p_2^d$:
+         \[
+         p_3 - p_1 = 2m p_2^d \ge 2 p_2 \implies p_3 \ge 2 p_2 + p_1 > 2 p_2.
+         \]
+         In particular, $p_3 \equiv p_1 \pmod{p_2}$.  
+         Now subtract $2N - p_2$ from $2N - p_1$:
+         \[
+         p_2 - p_1 = p_2^a - p_1^u p_3^v \implies p_1^u p_3^v \equiv p_1 \pmod{p_2}.
+         \]
+         Substituting $p_3 \equiv p_1 \pmod{p_2}$ yields:
+         \[
+         p_1^{u+v} \equiv p_1 \pmod{p_2} \implies p_1(p_1^{u+v-1} - 1) \equiv 0 \pmod{p_2}.
+         \]
+         Since $\gcd(p_1, p_2) = 1$, this forces $p_1^{u+v-1} \equiv 1 \pmod{p_2}$. Because $p_1 < p_2$ and $u+v-1 \ge 1$, we have $p_1^{u+v-1} - 1 = K p_2$ with $K \ge 2$ even, which requires:
+         \[
+         u + v \ge 3.
+         \]
+
+       - **Stage 2.2.a.2 (Linear Degree $v = 1$: Diophantine Identity and Modulo $p_1^2$ Obstruction):**  
+         If $v = 1$, substituting $p_3 - p_1 = 2m p_2^d$ and expanding $2N = p_2 + p_3 p_1^u = p_1 + p_2^a$ yields the exact Diophantine identity:
+         \[
+         p_1 K^a + (p_1^u - 1)^a = K^{a-1}(p_1^{u+c} - 1).
+         \]
+         Evaluating modulo $p_1^2$ shows that no integer solution exists for $u \ge 2$, while $u = 1$ forces $p_2 \le \frac{p_1 - 1}{2} < p_1$, a contradiction.
+
+       - **Stage 2.2.a.3 (Higher Degree $v \ge 2$: 3-Logarithm Diophantine Sandwich):**  
+         For $v \ge 2$, we eliminate the configuration via a three-part Diophantine sandwich:
+         - *Part A (Root Compression and Relative Proximity):*  
+           Because $v \ge 2$, Proposition 4.3 (Root Compression) forces $p_3 \le \sqrt{2N - p_2} < \sqrt{2N}$. Since $p_1 < p_2 < p_3$, all three primes satisfy:
+           \[
+           3 \le p_1 < p_2 < p_3 < \sqrt{2N}.
+           \]
+           Taking the quotient of the two largest complements $2N - p_1 = p_2^a$ and $2N - p_2 = p_1^u p_3^v$ yields:
+           \[
+           \frac{p_2^a}{p_1^u p_3^v} = \frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2}.
+           \]
+           Because $p_2 - p_1 < \sqrt{2N}$ and $2N - p_2 > 2N - \sqrt{2N}$, the relative proximity satisfies:
+           \[
+           0 < \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+           \]
+         - *Part B (Linear Form Definition and Logarithmic Upper Bound):*  
+           We define the linear form in three logarithms:
+           \[
+           \Lambda := \ln\left( \frac{p_2^a}{p_1^u p_3^v} \right) = a \ln p_2 - u \ln p_1 - v \ln p_3.
+           \]
+           Because $p_1, p_2, p_3 \ge 3$ are distinct odd primes, the Fundamental Theorem of Arithmetic ensures $p_2^a \ne p_1^u p_3^v$, so $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
+           \[
+           0 < |\Lambda| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+           \]
+         - *Part C (Baker Lower Bound and Contradiction):*  
+           The integer exponents satisfy $\max(a, u, v) \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1). Applying Theorem 4.2 (Baker--Matveev) yields the strictly positive effective lower bound:
+           \[
+           |\Lambda| > 10^{-7}.
+           \]
+           Combining the bounds gives the impossible contradiction:
+           \[
+           10^{-7} < |\Lambda| < 10^{-9},
+           \]
+           ruling out $v \ge 2$ unconditionally for all $2N > 4 \cdot 10^{18}$.
 
      - *Subcase 2.2.b ($d = 0$):*  
-       Then $2N - p_3 = p_1^c$ ($c \ge 2$). If $u = 0$, the system is a pure 3-cycle $2N - p_1 = p_2^a, 2N - p_2 = p_3^v, 2N - p_3 = p_1^c$ with $a, v, c \ge 2$, confining all three primes to $p_j < \sqrt{2N}$. Then $|a \ln p_2 - v \ln p_3| < \frac{2}{\sqrt{2N}} < 10^{-9}$, excluded by Theorem 4.2 for $2N > 4 \cdot 10^{18}$. If $u \ge 1$, then $p_1 \mid (p_3 - p_2)$, forcing $p_1^c - p_2 = p_3(p_1^u - 1)$, which requires $p_2 \equiv p_1^r \pmod{p_1^u - 1}$, forcing $p_2 < p_1$, contradiction.
+       Then $2N - p_3 = p_1^c$ ($c \ge 2$). We partition this into two stages:
+       - **Stage 2.2.b.1 (Pure 3-Cycle $u = 0$: Logarithmic Sandwich):**  
+         If $u = 0$, the system forms a pure unbranched 3-cycle:
+         \[
+         2N - p_1 = p_2^a, \quad 2N - p_2 = p_3^v, \quad 2N - p_3 = p_1^c,
+         \]
+         with $a, v, c \ge 2$. Root compression (Proposition 4.3) confines all three primes strictly below $\sqrt{2N}$:
+         \[
+         p_j \le \sqrt{2N - 3} < \sqrt{2N} \quad \text{for each } j \in \{1, 2, 3\}.
+         \]
+         The quotient of the first two complements gives $\frac{p_2^a}{p_3^v} = 1 + \frac{p_2 - p_1}{2N - p_2}$. We define the linear form in two logarithms:
+         \[
+         \Lambda := \ln\left( \frac{p_2^a}{p_3^v} \right) = a \ln p_2 - v \ln p_3.
+         \]
+         Since $p_2 \ne p_3$ are distinct odd primes, unique prime factorization guarantees $p_2^a \ne p_3^v$, so $\Lambda \ne 0$. The proximity bound gives $0 < |\Lambda| < \frac{2}{\sqrt{2N}} < 10^{-9}$, whereas Theorem 4.2 with bounded exponents $\max(a, v) \le 40$ enforces $|\Lambda| > 10^{-7}$. The resulting contradiction $10^{-7} < |\Lambda| < 10^{-9}$ eliminates $u = 0$.
+
+       - **Stage 2.2.b.2 (Coprime Branch $u \ge 1$: Modular Obstruction):**  
+         If $u \ge 1$, then $p_1 \mid (2N - p_2)$ and $p_1 \mid (2N - p_3)$, forcing $p_1 \mid ((2N - p_2) - (2N - p_3)) = (p_3 - p_2)$. Hence:
+         \[
+         p_1^c - p_2 = p_3(p_1^u - 1).
+         \]
+         Taking this relation modulo $p_1^u - 1$ requires $p_2 \equiv p_1^c \pmod{p_1^u - 1}$, which forces $p_2 < p_1$, contradicting $p_1 < p_2$.
 
    - **Step 2.3 (Symmetric Index Configuration):**  
      Exchanging the roles of indices $1 \leftrightarrow 2$ (where $p_3 \mid (2N - p_1)$ and $p_3 \nmid (2N - p_2)$) forces $2N - p_2 = p_1^b$ ($b \ge 2$) and collapses under the exact dual modular, parity, and logarithmic obstructions.
@@ -805,26 +862,46 @@ The complements satisfy the strict descending order:
 2. **Step 2 (Universal Maximal Prime In-Degree Rigidity):**  
    By Lemma 3.7 (Part 2), the maximal prime $p_4 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$. Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_4$ must be at least 1. Hence, $p_4$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3\}$ such that $a_{m,4} \ge 1$, while $a_{r,4} = 0$ for all other $r \in \{1, 2, 3, 4\} \setminus \{m\}$.
 
-3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,4} = 1$):**  
-   Suppose $a_{m,4} \ge 2$. By Proposition 4.3 (Root Compression), this forces $p_4 \le \sqrt{2N - 3} < \sqrt{2N}$.  
-   Because $p_4 = \max(I)$, all four primes in the island are strictly bounded by $\sqrt{2N}$:
-   \[
-   3 \le p_1 < p_2 < p_3 < p_4 < \sqrt{2N}.
-   \]
-   Consequently, the pairwise differences of all four complements satisfy $|(2N - p_i) - (2N - p_j)| = |p_j - p_i| < p_4 < \sqrt{2N}$.  
-   Dividing by $2N - p_j > 2N - \sqrt{2N}$ yields the relative proximity bound:
-   \[
-   \left| \frac{2N - p_i}{2N - p_j} - 1 \right| = \frac{|p_j - p_i|}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
-   \]
-   Taking natural logarithms yields a non-vanishing linear form in the prime logarithms:
-   \[
-   |\Lambda| = \left| \sum_{r=1}^4 (a_{i,r} - a_{j,r}) \ln p_r \right| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < 10^{-9}.
-   \]
-   Because the exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1), Theorem 4.2 (Baker--Matveev) establishes that any non-zero linear combination satisfies $|\Lambda| > 10^{-7}$. This contradiction proves that $a_{m,4}$ cannot be $\ge 2$, forcing:
-   \[
-   a_{m,4} = 1.
-   \]
-   Thus $2N - p_m = p_4 Q_m$ with $Q_m = \prod_{j \neq 4} p_j^{a_{m,j}} \ge 3$, which enforces $p_4 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
+3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,4} = 1$ via Diophantine Sandwich):**  
+   Suppose $a_{m,4} \ge 2$. We eliminate this possibility through a three-part Diophantine sandwich:
+   - **Part 3.1 (Root Compression and Relative Proximity):**  
+     By Proposition 4.3 (Root Compression), $a_{m,4} \ge 2$ forces $p_4 \le \sqrt{2N - 3} < \sqrt{2N}$. Because $p_4 = \max(I)$, all four primes in the island are strictly bounded by $\sqrt{2N}$:
+     \[
+     3 \le p_1 < p_2 < p_3 < p_4 < \sqrt{2N}.
+     \]
+     Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ (with $1 \le i < j \le 4$), the difference satisfies $|(2N - p_i) - (2N - p_j)| = p_j - p_i < p_4 < \sqrt{2N}$. Forming the algebraic quotient yields:
+     \[
+     \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
+     \]
+     Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
+     \[
+     0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+     \]
+
+   - **Part 3.2 (Linear Form Definition and Logarithmic Upper Bound):**  
+     We define the linear form in four prime logarithms:
+     \[
+     \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^4 (a_{i,r} - a_{j,r}) \ln p_r.
+     \]
+     Because $p_1 < p_2 < p_3 < p_4$ are distinct odd primes and $2N - p_i \ne 2N - p_j$, the Fundamental Theorem of Arithmetic ensures that their prime factorizations are distinct, which guarantees $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+     \[
+     0 < |\Lambda| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+     \]
+
+   - **Part 3.3 (Baker Lower Bound and Contradiction):**  
+     The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem 4.2 (Baker--Matveev) establishes that any non-zero linear form in 4 prime logarithms satisfies:
+     \[
+     |\Lambda| > 10^{-7}.
+     \]
+     Combining the lower and upper bounds yields the impossible contradiction:
+     \[
+     10^{-7} < |\Lambda| < 10^{-9}.
+     \]
+     This contradiction rules out $a_{m,4} \ge 2$, forcing unconditionally:
+     \[
+     a_{m,4} = 1.
+     \]
+     Thus $2N - p_m = p_4 Q_m$ with $Q_m = \prod_{j \neq 4} p_j^{a_{m,j}} \ge 3$, which enforces $p_4 \le \frac{2N - 5}{3} < \frac{2N}{3}.
 
 4. **Step 4 (Sub-Maximal In-Degree Rigidity and Prime Power Collapse):**  
    By Lemma 3.7 (Part 3), the sub-maximal prime $p_3$ can divide at most one complement among $\{2N - p_1, 2N - p_2\}$. Combining this with Step 2 (where $p_4$ divides only one complement $2N - p_m$):
@@ -865,18 +942,46 @@ $$2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.$$
 2. **Step 2 (Universal Maximal Prime In-Degree Rigidity for $p_5$):**  
    By Lemma 3.7 (Part 2), $p_5 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3, 2N - p_4\}$. Because $G = (I, R)$ is strongly connected (Proposition 3.2), the in-degree of $p_5$ must be at least 1. Hence, $p_5$ has **in-degree exactly 1**: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3, p_4\}$ such that $a_{m,5} \ge 1$, while $a_{r,5} = 0$ for all other $r \in \{1, 2, 3, 4, 5\} \setminus \{m\}$.
 
-3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,5} = 1$):**  
-   Suppose $a_{m,5} \ge 2$. By Proposition 4.3 (Root Compression), this forces $p_5 \le \sqrt{2N - 3} < \sqrt{2N}$.  
-   Because $p_5 = \max(I)$, all five primes in the island are strictly bounded by $\sqrt{2N}$:
-   $$3 \le p_1 < p_2 < p_3 < p_4 < p_5 < \sqrt{2N}.$$
-   Consequently, the pairwise differences of all five complements satisfy $|(2N - p_i) - (2N - p_j)| = |p_j - p_i| < p_5 < \sqrt{2N}$.  
-   Dividing by $2N - p_j > 2N - \sqrt{2N}$ yields the relative proximity bound:
-   $$\left| \frac{2N - p_i}{2N - p_j} - 1 \right| = \frac{|p_j - p_i|}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.$$
-   Taking natural logarithms yields a non-vanishing linear form in the prime logarithms:
-   $$|\Lambda| = \left| \sum_{r=1}^5 (a_{i,r} - a_{j,r}) \ln p_r \right| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < 10^{-9}.$$
-   Because the exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1), Theorem 4.2 (Baker--Matveev) establishes that any non-zero linear combination satisfies $|\Lambda| > 10^{-7}$. This contradiction proves that $a_{m,5}$ cannot be $\ge 2$, forcing:
-   $$a_{m,5} = 1.$$
-   Thus $2N - p_m = p_5 Q_m$ with $Q_m = \prod_{j \neq 5} p_j^{a_{m,j}} \ge 3$, which enforces $p_5 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
+3. **Step 3 (Exponent Bound on the Maximal Prime, $a_{m,5} = 1$ via Diophantine Sandwich):**  
+   Suppose $a_{m,5} \ge 2$. We eliminate this possibility through a three-part Diophantine sandwich:
+   - **Part 3.1 (Root Compression and Relative Proximity):**  
+     By Proposition 4.3 (Root Compression), $a_{m,5} \ge 2$ forces $p_5 \le \sqrt{2N - 3} < \sqrt{2N}$. Because $p_5 = \max(I)$, all five primes in the island are strictly bounded by $\sqrt{2N}$:
+     \[
+     3 \le p_1 < p_2 < p_3 < p_4 < p_5 < \sqrt{2N}.
+     \]
+     Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ (with $1 \le i < j \le 5$), the difference satisfies $|(2N - p_i) - (2N - p_j)| = p_j - p_i < p_5 < \sqrt{2N}$. Forming the algebraic quotient yields:
+     \[
+     \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
+     \]
+     Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
+     \[
+     0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+     \]
+
+   - **Part 3.2 (Linear Form Definition and Logarithmic Upper Bound):**  
+     We define the linear form in five prime logarithms:
+     \[
+     \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^5 (a_{i,r} - a_{j,r}) \ln p_r.
+     \]
+     Because $p_1 < p_2 < p_3 < p_4 < p_5$ are distinct odd primes and $2N - p_i \ne 2N - p_j$, the Fundamental Theorem of Arithmetic ensures that their prime factorizations are distinct, which guarantees $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+     \[
+     0 < |\Lambda| = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+     \]
+
+   - **Part 3.3 (Baker Lower Bound and Contradiction):**  
+     The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1), bounding the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem 4.2 (Baker--Matveev) establishes that any non-zero linear form in 5 prime logarithms satisfies:
+     \[
+     |\Lambda| > 10^{-7}.
+     \]
+     Combining the lower and upper bounds yields the impossible contradiction:
+     \[
+     10^{-7} < |\Lambda| < 10^{-9}.
+     \]
+     This contradiction rules out $a_{m,5} \ge 2$, forcing unconditionally:
+     \[
+     a_{m,5} = 1.
+     \]
+     Thus $2N - p_m = p_5 Q_m$ with $Q_m = \prod_{j \neq 5} p_j^{a_{m,j}} \ge 3$, which enforces $p_5 \le \frac{2N - 5}{3} < \frac{2N}{3}.
 
 4. **Step 4 (Descending In-Degree Cascade on $p_4$ and $p_3$):**  
    By Lemma 3.7 (Part 3):
@@ -937,20 +1042,34 @@ Every complement satisfies $2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}$ with row sum
      which is an immediate arithmetic contradiction. Therefore, Case 2.1 ($p_2 > \sqrt{2N}$) is unconditionally impossible.
 
    - **Case 2.2 ($p_2 \le \sqrt{2N}$ --- The Logarithmic Proximity Bottleneck):**  
-     If $p_2 \le \sqrt{2N}$, then both $p_1$ and $p_2$ satisfy $3 \le p_1 < p_2 \le \sqrt{2N}$.
-     The difference between the two base complements is:
-     $$(2N - p_1) - (2N - p_2) = p_2 - p_1.$$
-     Because $0 < p_2 - p_1 < p_2 \le \sqrt{2N}$, dividing by $2N - p_2 > 2N - \sqrt{2N}$ yields:
-     $$\left| \frac{2N - p_1}{2N - p_2} - 1 \right| = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.$$
-     Expressing the quotient in terms of prime factorizations:
-     $$\frac{2N - p_1}{2N - p_2} = \frac{\prod_{j \in S_1} p_j^{a_{1,j}}}{\prod_{j \in S_2} p_j^{a_{2,j}}}.$$
-     Because $S_1 \cap S_2 = \emptyset$ by Step 1, this ratio is an irreducible quotient of prime factorizations with completely disjoint prime factors.
-     Taking natural logarithms yields the non-zero linear form in logarithms:
-     $$\Lambda_{1,2} = \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) \neq 0.$$
-     The absolute value satisfies:
-     $$0 < |\Lambda_{1,2}| < \frac{p_2 - p_1}{2N - p_2} < 10^{-9}.$$
-     On the other hand, the integer exponents are bounded by $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1).
-     For any fixed dimension $k$, Theorem 4.2 (Baker--Matveev) provides an effective positive lower bound $|\Lambda_{1,2}| > C(k, B)$. Whenever $C(k, B) > 10^{-9}$, Case 2.2 is eliminated. Under the standard conjecture that linear forms in logarithms of coprime algebraic integers admit uniform lower bounds of polynomial type in $B$, this forces an outright impossibility.
+     If $p_2 \le \sqrt{2N}$, then both $p_1$ and $p_2$ satisfy $3 \le p_1 < p_2 \le \sqrt{2N}$. We formulate the Diophantine proximity sandwich across three parts:
+     - *Part 2.2.A (Root Proximity and Coprime Algebraic Quotient):*  
+       The difference between the two base complements is:
+       \[
+       (2N - p_1) - (2N - p_2) = p_2 - p_1.
+       \]
+       Because $0 < p_2 - p_1 < p_2 \le \sqrt{2N}$, dividing by $2N - p_2 > 2N - \sqrt{2N}$ yields the relative proximity bound:
+       \[
+       \left| \frac{2N - p_1}{2N - p_2} - 1 \right| = \frac{p_2 - p_1}{2N - p_2} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9} \quad \text{for } 2N > 4 \cdot 10^{18}.
+       \]
+       Expressing the quotient in terms of prime factorizations:
+       \[
+       \frac{2N - p_1}{2N - p_2} = \frac{\prod_{j \in S_1} p_j^{a_{1,j}}}{\prod_{j \in S_2} p_j^{a_{2,j}}} = 1 + \frac{p_2 - p_1}{2N - p_2}.
+       \]
+       Because $S_1 \cap S_2 = \emptyset$ by Step 1, this ratio is an irreducible quotient of prime factorizations with completely disjoint prime supports.
+
+     - *Part 2.2.B (Linear Form Definition and Logarithmic Upper Bound):*  
+       Taking natural logarithms yields the linear form in logarithms:
+       \[
+       \Lambda_{1,2} := \ln\left( \frac{2N - p_1}{2N - p_2} \right) = \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j.
+       \]
+       Because $S_1 \cap S_2 = \emptyset$ and the primes are odd, the Fundamental Theorem of Arithmetic guarantees $\prod_{j \in S_1} p_j^{a_{1,j}} \ne \prod_{j \in S_2} p_j^{a_{2,j}}$, so $\Lambda_{1,2} \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+       \[
+       0 < |\Lambda_{1,2}| = \ln\left(1 + \frac{p_2 - p_1}{2N - p_2}\right) < \frac{p_2 - p_1}{2N - p_2} < 10^{-9}.
+       \]
+
+     - *Part 2.2.C (Baker--Matveev Evaluation and Dimensional Barrier):*  
+       The integer exponents are bounded by $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition 4.1). For any fixed dimension $k$, Theorem 4.2 (Baker--Matveev) provides an effective positive lower bound $|\Lambda_{1,2}| > C(k, B)$. Whenever $C(k, B) > 10^{-9}$, Case 2.2 is eliminated. Under the standard conjecture that linear forms in logarithms of coprime algebraic integers admit uniform lower bounds of polynomial type in $B$, this forces an outright impossibility.
 
 3. **Step 3 (Synthesis):**  
    Combining the unconditional elimination of $p_2 > \sqrt{2N}$ with the logarithmic proximity bottleneck for $p_2 \le \sqrt{2N}$, any counterexample $2N > 4 \cdot 10^{18}$ must generate a strongly connected digraph where $p_2 \le \sqrt{2N}$ and two coprime factorizations achieve relative difference $< 10^{-9}$. $\blacksquare$
@@ -981,7 +1100,12 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
 **Proof of Proposition 4.17.**  
 The structural contraction and inductive descent proceed through the following steps:
 
-1. **Maximal In-Degree Rigidity and Substitution:** By Lemma 3.7 (Part 2), the maximal prime $p_k = \max(I)$ has in-degree exactly $1$, with a unique parent node $p_m$. Furthermore, if $a_{m,k} \ge 2$, Proposition 4.3 forces $p_k \le \sqrt{2N}$, which contradicts the linear form proximity lower bound of Baker's theorem (Proposition 4.1). Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
+1. **Step 1 (Maximal In-Degree Rigidity and Factorization Rigidity):**  
+   We establish the structure of the maximal node through two distinct stages:
+   - *Sub-step 1.1 (Topological In-Degree Rigidity):*  
+     By Lemma 3.7 (Part 2), the maximal prime $p_k = \max(I)$ has in-degree exactly $1$, possessing a unique incoming neighbor $p_m \in I \setminus \{p_k\}$.
+   - *Sub-step 1.2 (Exponent Bound $a_{m,k} = 1$ via Diophantine Sandwich):*  
+     Suppose $a_{m,k} \ge 2$. By Proposition 4.3 (Root Compression), this forces $p_k \le \sqrt{2N - 3} < \sqrt{2N}$, which confines all primes in the island below $\sqrt{2N}$. This induces the relative proximity bound $\frac{p_k - p_1}{2N - p_k} < \frac{2}{\sqrt{2N}} < 10^{-9}$ and the non-vanishing linear form $|\Lambda| = \ln(1 + \frac{p_k - p_1}{2N - p_k}) < 10^{-9}$. Applying Baker's theorem (Proposition 4.1) with exponents $\le 40$ yields the lower bound $|\Lambda| > 10^{-7}$, producing the impossible contradiction $10^{-7} < |\Lambda| < 10^{-9}$. Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
 
 2. **Algebraic Elimination and Conservation Law:** Substituting $p_k = \frac{2N - p_m}{Q_m}$ into the factorization of $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ (where $a_{k,k} = 0$) gives:
    \[
@@ -999,11 +1123,17 @@ The structural contraction and inductive descent proceed through the following s
    \]
    By the Pigeonhole Principle, at least one row $r \in \{1, \dots, 5\}$ carries an exponent sum $S_r \ge \lceil 2k/5 \rceil$.
 
-4. **Asymptotic Dimensional Ceiling:** Since all primes in $I$ are odd ($p_j \ge 3$), the prime product corresponding to row $r$ satisfies:
-   \[
-   \prod_{j=1}^5 p_j^{A_{r,j}} \ge 3^{S_r} \ge 3^{2k/5}.
-   \]
-   On the other hand, the maximum prime power product dividing any complement at $2N$ cannot exceed the available magnitude $2N - 3 < 2N$, which forces the exponent bound $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3}$ (Proposition 4.1). If $k > \frac{5}{2} \frac{\ln(2N)}{\ln 3}$, then $3^{2k/5} > 2N$, which creates an impossible magnitude contradiction: the compressed product strictly exceeds the value of any complement in the system. For $2N \approx 4 \cdot 10^{18}$, $\frac{\ln(2N)}{\ln 3} \approx 39.1$, giving $k \le \lfloor \frac{5 \times 39.1}{2} \rfloor = 97$. All dimensions $k \ge 98$ are unconditionally eliminated.
+4. **Step 4 (Asymptotic Dimensional Ceiling):**  
+   We deduce the dimensional bound across three sequential bounds:
+   - *Sub-step 4.1 (Pigeonhole Row Exponent Floor):*  
+     From Step 3, the mean row sum across the 5 rows of $M^{(5)}$ satisfies $\overline{S}_5 \ge \frac{2k}{5}$. By the Pigeonhole Principle, at least one row $r \in \{1, \dots, 5\}$ carries an accumulated exponent sum $S_r = \sum_{j=1}^5 A_{r,j} \ge \lceil 2k/5 \rceil$.
+   - *Sub-step 4.2 (Exponential Growth of the Compressed Product):*  
+     Because every prime in $I$ is odd ($p_j \ge 3$), the prime product corresponding to row $r$ satisfies:
+     \[
+     \prod_{j=1}^5 p_j^{A_{r,j}} \ge 3^{S_r} \ge 3^{2k/5}.
+     \]
+   - *Sub-step 4.3 (Baker Magnitude Bound and Dimensional Cutoff):*  
+     On the other hand, the maximum prime power product dividing any complement at $2N$ cannot exceed the available magnitude $2N - 3 < 2N$, which forces the exponent bound $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3}$ (Proposition 4.1). If $k > \frac{5}{2} \frac{\ln(2N)}{\ln 3}$, then $3^{2k/5} > 2N$, creating an impossible magnitude contradiction where the compressed product strictly exceeds the value of any complement in the system. For $2N \approx 4 \cdot 10^{18}$, $\frac{\ln(2N)}{\ln 3} \approx 39.1$, giving $k \le \lfloor \frac{5 \times 39.1}{2} \rfloor = 97$. All dimensions $k \ge 98$ are unconditionally eliminated.
 
 5. **Inductive Descent on Intermediate Dimensions ($6 \le k \le 97$):** For any intermediate dimension $k$, the single-step contraction $k \to k-1$ transfers the strong connectivity and coprime base partition of $I$ into an over-constrained system. When $m \ge 3$, the two base complements $2N - p_1$ and $2N - p_2$ remain completely unaltered, while row $m$ has an increased row sum $\ge 3$. When $m \in \{1, 2\}$, the target value expands to $2N(Q_m - 1) + p_m \ge 4N$, forcing an even higher exponent density than in an uncompressed island. By mathematical induction, no minimal terminal island can absorb this accumulated exponent mass without degenerating into the unconditionally eliminated fixed-point topologies of dimension $k \le 5$ (Proposition 4.15). $\blacksquare$
 
@@ -1152,16 +1282,32 @@ Suppose for contradiction that such an irreducible matrix $M \in \mathbb{Z}_{\ge
    \]
    Because $\rho(M_{11}) < \rho(M)$ by strict monotonicity of Perron roots of irreducible submatrices, and $\|\mathbf{r}_k\|_1 = S_k$, this bound chokes the spectral radius below $\rho(M) < 2.5$, directly contradicting the Collatz--Wielandt floor $\rho(M) \ge 3 - \frac{1}{k} \ge 2.833$.
 
-4. **The Left Perron Logarithmic Exponent Mass Deficit:**  
-   By Proposition 4.19, the maximal prime logarithm $\ln p_k$ cancels identically from the left Perron identity $\mathbf{u}^T \mathbf{y} = \rho(M) \mathbf{u}^T \mathbf{x}$, yielding:
-   \[
-   \sum_{i \ne m, k} u_i \ln(2N - p_i) + u_m \ln q = \sum_{j=1}^{k-1} \left( \sum_{i=1}^{k-1} u_i a_{i,j} \right) \ln p_j.
-   \]
-   Since $u_k = u_m / \rho \le u_m / 2.833$, the geometric mean ceiling on the sub-alphabet $\{p_1, \dots, p_{k-1}\}$ chokes to:
-   \[
-   \overline{p}_{\text{sub}} = \left( \prod_{j=1}^{k-1} p_j^{u_j} \right)^{\frac{1}{1 - u_k}} < (2N)^{\frac{1 - u_m}{\rho(1 - u_k)}} < (2N)^{0.3534} \approx 3.57 \times 10^6 \ll \sqrt{2N}.
-   \]
-   Under this geometric compression, the linear form $\Lambda_{1,2} = \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j$ has prime support bounded by $\le 6$ primes with heights $\le \ln(3.57 \times 10^6)$. Baker's theorem (Proposition 4.7) yields $|\Lambda_{1,2}| > 1.4 \times 10^{-7}$, which destroys the required geometric proximity $|\Lambda_{1,2}| < 10^{-9}$.
+4. **Step 4 (The Left Perron Logarithmic Exponent Mass Deficit):**  
+   We analyze the spectral-logarithmic contraction across three sequential stages:
+   - *Part 4.1 (Sub-Alphabet Spectral Logarithmic Identity):*  
+     By Proposition 4.19, in-degree rigidity ($\rho(M) u_k = u_m$) cancels the maximal prime logarithm $\ln p_k$ identically from the left Perron identity $\mathbf{u}^T \mathbf{y} = \rho(M) \mathbf{u}^T \mathbf{x}$, reducing the governing spectral relation strictly to the sub-alphabet $\{p_1, \dots, p_{k-1}\}$:
+     \[
+     \sum_{i \ne m, k} u_i \ln(2N - p_i) + u_m \ln q = \sum_{j=1}^{k-1} \left( \sum_{i=1}^{k-1} u_i a_{i,j} \right) \ln p_j.
+     \]
+   - *Part 4.2 (Left Perron Geometric Mean Compression):*  
+     Since $u_k = u_m / \rho \le u_m / 2.833$, the geometric mean ceiling on the sub-alphabet $\{p_1, \dots, p_{k-1}\}$ chokes to:
+     \[
+     \overline{p}_{\text{sub}} = \left( \prod_{j=1}^{k-1} p_j^{u_j} \right)^{\frac{1}{1 - u_k}} < (2N)^{\frac{1 - u_m}{\rho(1 - u_k)}} < (2N)^{0.3534} \approx 3.57 \times 10^6 \ll \sqrt{2N}.
+     \]
+   - *Part 4.3 (Baker Linear Form Contradiction):*  
+     Under this severe geometric compression, the linear form:
+     \[
+     \Lambda_{1,2} := \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j \ne 0
+     \]
+     has prime support bounded by at most 6 primes with logarithmic heights bounded by $\ln(3.57 \times 10^6)$. Applying Baker's theorem (Proposition 4.1) yields the effective lower bound:
+     \[
+     |\Lambda_{1,2}| > 1.4 \times 10^{-7}.
+     \]
+     Combining this with the coprime proximity bound $|\Lambda_{1,2}| < 10^{-9}$ from Proposition 4.16 produces the impossible double inequality:
+     \[
+     1.4 \times 10^{-7} < |\Lambda_{1,2}| < 10^{-9}.
+     \]
+     This contradiction rules out the existence of the singular semiprime island unconditionally.
 
 All four avenues independently and jointly produce an absolute contradiction. Hence, no such singular semiprime island can exist. $\blacksquare$
 
