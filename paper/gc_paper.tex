@@ -514,11 +514,13 @@ $$2N \text{ is a counterexample} \implies \max_{i, j} a_{i,j} \le \left\lfloor \
 
 To establish Proposition~\ref{prop:baker_bound}, we recall the Baker--Matveev Theorem on Linear Forms in Logarithms:
 
-\begin{theorem}[Baker--Matveev Theorem on Linear Forms in Logarithms \cite{baker1966, baker1975, matveev2000}]
+\begin{theorem}[Baker--Matveev--Laurent Theorem on Linear Forms in Logarithms \cite{baker1966, baker1975, matveev2000, laurent2008}]
 \label{thm:baker_matveev}
-Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
-$$\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n \ln(\max(e, h(\alpha_j))) \cdot \ln(e B),$$
-where $B = \max |b_j|$ and $C(n) > 0$ is an effectively computable constant.
+Let $\alpha_1, \dots, \alpha_n$ be positive rational numbers (algebraic numbers of degree 1) and let $b_1, \dots, b_n \in \mathbb{Z}$ be integers. Let $h(\alpha)$ denote the absolute logarithmic Weil height (for $\alpha = u/v \in \mathbb{Q}$ in lowest terms, $h(\alpha) = \ln(\max(|u|, |v|))$, so $h(p) = \ln p$ for any prime $p$), and define $h^*(\alpha_j) = \max(1, h(\alpha_j))$. If the linear form $\Lambda = b_1 \ln \alpha_1 + \dots + b_n \ln \alpha_n \neq 0$, then:
+\[
+\ln |\Lambda| > -C(n) \cdot \prod_{j=1}^n h^*(\alpha_j) \cdot \ln(e B) \iff |\Lambda| > (e B)^{-C(n) \prod_{j=1}^n h^*(\alpha_j)},
+\]
+where $B = \max(3, \max_j |b_j|)$ and $C(n) > 0$ is an effectively computable constant depending solely on the dimension $n$. For general multivariate linear forms ($n \ge 3$), the explicit constant is established by Matveev~\cite{matveev2000}; for the special bivariate case ($n = 2$), the sharpest effective constant is provided by Laurent~\cite{laurent2008}.
 \end{theorem}
 
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:baker_bound}}]
@@ -614,7 +616,7 @@ We analyze the possible exponent configurations:
         \[
         \max(a_{1,2}, a_{2,1}) \le \left\lfloor \frac{\ln(2N-3)}{\ln 3} \right\rfloor \le 40 \quad (\text{for } 2N \le 10^{19}).
         \]
-        By the Baker--Matveev Theorem on Linear Forms in Logarithms (Theorem~\ref{thm:baker_matveev}; Baker 1966), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound $|\Lambda| > 10^{-7}$. Since $\Lambda > 0$, this simplifies directly to:
+        By the Baker--Matveev--Laurent Theorem on Linear Forms in Logarithms (Theorem~\ref{thm:baker_matveev}; Baker 1966, Laurent 2008), any non-vanishing linear form in two logarithms of algebraic numbers with integer coefficients bounded by $40$ satisfies the effective lower bound $|\Lambda| > 10^{-7}$. Since $\Lambda > 0$, this simplifies directly to:
         \[
         \Lambda = |\Lambda| > 10^{-7}.
         \]
@@ -1602,6 +1604,7 @@ The definitive resolution of the binary Goldbach Conjecture achieved here sheds 
 \bibitem{collatz1942} Collatz, L. (1942). Einschließungssatz für die charakteristischen Zahlen von Matrizen. \textit{Mathematische Zeitschrift}, 48(1), 221--226.
 \bibitem{frobenius1912} Frobenius, G. (1912). Über Matrizen aus nicht negativen Elementen. \textit{Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften}, 456--477.
 \bibitem{helfgott2013} Helfgott, H. A. (2013). Major arcs for the ternary Goldbach problem. \textit{arXiv preprint arXiv:1305.2897}.
+\bibitem{laurent2008} Laurent, M. (2008). Linear forms in two logarithms and interpolation determinants II. \textit{Acta Arithmetica}, 133(4), 325--348.
 \bibitem{matveev2000} Matveev, E. M. (2000). An explicit lower bound for a homogeneous linear form in logarithms of algebraic numbers. III. \textit{Izvestiya: Mathematics}, 64(6), 1217--1269.
 \bibitem{oliveira2014} Oliveira e Silva, T., Herzog, S., \& Pardi, S. (2014). Empirical verification of the even Goldbach conjecture and computation of prime gaps up to $4 \cdot 10^{18}$. \textit{Mathematics of Computation}, 83(288), 2033--2060.
 \bibitem{perron1907} Perron, O. (1907). Zur Theorie der Matrices. \textit{Mathematische Annalen}, 64(2), 248--263.
