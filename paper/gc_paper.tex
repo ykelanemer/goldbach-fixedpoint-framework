@@ -103,7 +103,11 @@ The restriction of the domain $P^*(0)$ to odd primes $3 \le p \le 2N - 3$ not di
         \item \emph{Operator Well-Definedness:} If $2N - 1$ were admitted into the domain, its complement $1$ would possess no prime divisors, yielding $D(\{2N - 1\}) = \emptyset$, which would artificially degenerate the non-emptiness of the divisor operator. Bounding the domain by $2N - 3$ guarantees $2N - p \ge 3 > 1$ for all $p \in P^*(0)$.
     \end{itemize}
     \item \textbf{Exclusion of $p = 2$:} The complement $2N - 2 = 2(N - 1) \ge 6$ is an even integer strictly greater than $2$, hence composite.
-    \item \textbf{Exclusion of $p \mid 2N$:} Any prime divisor $p \mid 2N$ dividing $2N - p$ forces $p \mid 2N$; if $2N - p = q$ were prime, then $p \mid q \implies p = q = N$, which requires $N$ to be prime (precluded in a counterexample by Proposition~\ref{prop:half_sum}).
+    \item \textbf{Exclusion of $p \mid 2N$:} Any prime divisor $p$ of $2N$ necessarily divides its own complement, since $2N - p = p\left(\frac{2N}{p} - 1\right)$. Such primes are excluded for two decisive reasons:
+    \begin{itemize}
+        \item \emph{No Goldbach Partition:} If the complement $2N - p = q$ were prime, the divisibility $p \mid q$ between primes would force $p = q$, which implies $2N = 2p \implies p = N$. This would require the half-sum $N$ to be prime, which is strictly precluded in a counterexample by Proposition~\ref{prop:half_sum}. Thus, for every prime divisor $p \mid 2N$, the complement $2N - p$ is strictly composite.
+        \item \emph{Elimination of Trivial Self-Loops ($\operatorname{Tr}(M) = 0$):} Because $p \mid 2N \implies p \mid (2N - p)$, admitting such primes would trivially induce self-loops $p \to p$ in the divisor graph. Restricting the domain to $p \nmid 2N$ ensures that $\gcd(p, 2N - p) = \gcd(p, 2N) = 1$, guaranteeing that no prime can divide its own complement and establishing the zero diagonal ($a_{i,i} = 0$, $\operatorname{Tr}(M) = 0$) of the governing exponent matrix.
+    \end{itemize}
 \end{enumerate}
 Consequently, $P^*(0)$ is both necessary and sufficient for analyzing Goldbach counterexamples.
 \end{remark}
@@ -1124,61 +1128,97 @@ No minimal terminal island of cardinality $k = 4$ can exist for any hypothetical
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:k4_collapse}}]
 Let $I = \{p_1, p_2, p_3, p_4\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ be a hypothetical minimal terminal island of cardinality $k=4$ with $3 \le p_1 < p_2 < p_3 < p_4 \le \frac{2N-5}{3} < \frac{2N}{3}$, governed by an irreducible exponent matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$ with zero diagonal ($a_{i,i} = 0$) and row sums $\sum_{j=1}^4 a_{i,j} \ge 2$, where $2N > 4 \cdot 10^{18}$ is a Goldbach counterexample.
 The complements satisfy the strict descending order:
-\[
+\begin{equation}
 2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 0.
-\]
+\end{equation}
+We establish the impossibility of this system across four discrete algorithmic steps:
 
 \begin{enumerate}
 \item \textbf{Step 1 (Exclusion of Square-Free Systems):}  
-By Proposition~\ref{prop:squarefree_collapse}, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern an island of dimension $k = 4$. Therefore, at least one entry of $M$ must satisfy $a_{i,j} \ge 2$.
+\paragraph{Input / Domain Constraint:}
+By Proposition~\ref{prop:squarefree_collapse}, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern an island of dimension $k = 4$.
+
+\paragraph{Output / Multiplicity Floor:}
+At least one entry of $M$ must satisfy:
+\begin{equation}
+\label{eq:k4_mult_floor}
+\exists (i, j) \in \{1, 2, 3, 4\}^2 \quad \text{such that} \quad a_{i,j} \ge 2.
+\end{equation}
 
 \item \textbf{Step 2 (Universal Maximal Prime In-Degree Rigidity):}  
-By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_4 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$. Because $G = (I, R)$ is strongly connected (Proposition~\ref{prop:strong_connectivity}), $\operatorname{in-deg}(p_4) \ge 1$. Hence, $p_4$ has \textbf{in-degree exactly 1}: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3\}$ such that $a_{m,4} \ge 1$, while $a_{r,4} = 0$ for all other $r \in \{1, 2, 3, 4\} \setminus \{m\}$.
+\paragraph{Input / Divisor Gap Bound:}
+By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_4 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$.
+
+\paragraph{Topological In-Degree Rigidity:}
+Because $G = (I, R)$ is strongly connected (Proposition~\ref{prop:strong_connectivity}), $\operatorname{in-deg}(p_4) \ge 1$. Hence, $p_4$ has \textbf{in-degree exactly 1}:
+\begin{equation}
+\label{eq:k4_indeg_rigid}
+\exists! m \in \{1, 2, 3\} \quad \text{such that} \quad a_{m,4} \ge 1, \quad \text{and} \quad a_{r,4} = 0 \quad (\forall r \in \{1, 2, 3, 4\} \setminus \{m\}).
+\end{equation}
 
 \item \textbf{Step 3 (Exponent Bound on the Maximal Prime, $a_{m,4} = 1$ via Diophantine Sandwich):}  
-Suppose $a_{m,4} \ge 2$. We eliminate this possibility through a three-part Diophantine sandwich:
-\begin{enumerate}
-    \item \textbf{Part 3.1 (Root Compression and Relative Proximity):}  
-    By Proposition~\ref{prop:root_compression} (Root Compression), $a_{m,4} \ge 2$ forces $p_4 \le \sqrt{2N - 3} < \sqrt{2N}$. Because $p_4 = \max(I)$, all four primes in the island are strictly bounded by $\sqrt{2N}$:
-    \[
-    3 \le p_1 < p_2 < p_3 < p_4 < \sqrt{2N}.
-    \]
-    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 4$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_4 < \sqrt{2N}$. Forming the algebraic quotient yields:
-    \[
-    \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
-    \]
-    Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
-    \[
-    0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
-    \]
+We eliminate higher multiplicity on $p_4$ through four sequential stages:
 
-    \item \textbf{Part 3.2 (Linear Form Definition and Logarithmic Upper Bound):}  
-    We define the linear form in four prime logarithms:
-    \[
-    \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^4 (a_{i,r} - a_{j,r}) \ln p_r.
-    \]
-    Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
-    \[
-    0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
-    \]
+\paragraph{Input / Hypothesis:}
+Assume for contradiction that the incoming exponent satisfies:
+\begin{equation}
+a_{m,4} \ge 2.
+\end{equation}
 
-    \item \textbf{Part 3.3 (Baker Lower Bound and Contradiction):}  
-    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 4 prime logarithms satisfies $|\Lambda| > 10^{-7}$, which, since $\Lambda > 0$, simplifies to:
-    \[
-    \Lambda = |\Lambda| > 10^{-7}.
-    \]
-    Combining the lower and upper bounds yields the impossible contradiction:
-    \[
-    10^{-7} < \Lambda < 10^{-9}.
-    \]
-    This contradiction rules out $a_{m,4} \ge 2$, forcing unconditionally:
-    \[
-    a_{m,4} = 1.
-    \]
-    Thus $2N - p_m = p_4 Q_m$ with $Q_m = \prod_{j \neq 4} p_j^{a_{m,j}} \ge 3$, which enforces $p_4 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
-\end{enumerate}
+\paragraph{Step 3.1 (Root Compression):}
+By Proposition~\ref{prop:root_compression}, multiplicity $a_{m,4} \ge 2$ compresses the maximal prime:
+\begin{equation}
+\label{eq:k4_pk_root}
+p_4 \le \sqrt{2N - 3} < \sqrt{2N}.
+\end{equation}
+Because $p_4 = \max(I)$, all four primes in the island are strictly confined below the root threshold:
+\begin{equation}
+\forall j \in \{1, 2, 3, 4\}, \quad p_j < \sqrt{2N}.
+\end{equation}
+
+\paragraph{Step 3.2 (Relative Proximity Upper Bound):}
+For any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 4$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_4 < \sqrt{2N}$. Forming the algebraic quotient yields:
+\begin{equation}
+\frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
+\end{equation}
+Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
+\begin{equation}
+\label{eq:k4_rel_prox}
+0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+\end{equation}
+
+\paragraph{Step 3.3 (Linear Form Construction):}
+We define the linear form in four prime logarithms:
+\begin{equation}
+\label{eq:k4_linear_form}
+\Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^4 (a_{i,r} - a_{j,r}) \ln p_r.
+\end{equation}
+Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying $\ln(1 + x) < x$ for $x > 0$:
+\begin{equation}
+\label{eq:k4_lambda_upper}
+0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+\end{equation}
+
+\paragraph{Step 3.4 (Baker--Matveev Transcendental Lower Bound):}
+The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} establishes:
+\begin{equation}
+\label{eq:k4_baker_lower}
+\Lambda = |\Lambda| > 10^{-7}.
+\end{equation}
+
+\paragraph{Contradiction \& Output:}
+Combining \eqref{eq:k4_lambda_upper} and \eqref{eq:k4_baker_lower} yields the numerical impossibility:
+\begin{equation}
+10^{-7} < \Lambda < 10^{-9}.
+\end{equation}
+This contradiction refutes $a_{m,4} \ge 2$, forcing unconditionally:
+\begin{equation}
+\label{eq:k4_am4_rigid}
+a_{m,4} = 1 \implies 2N - p_m = p_4 Q_m, \quad \text{where } Q_m = \prod_{j=1}^3 p_j^{a_{m,j}} \ge 3.
+\end{equation}
 
 \item \textbf{Step 4 (Sub-Maximal In-Degree Rigidity and Prime Power Collapse):}  
+\paragraph{Cascade Bounds:}
 By Lemma~\ref{lem:triangular_gap} (Part 3), the sub-maximal prime $p_3$ can divide at most one complement among $\{2N - p_1, 2N - p_2\}$. Combining this with Step 2 (where $p_4$ divides only one complement $2N - p_m$):
 \begin{itemize}
     \item If $m = 3$ ($p_4$ enters $p_3$): then $a_{1,4} = a_{2,4} = 0$. Since $p_3$ can divide at most one of $\{2N - p_1, 2N - p_2\}$, at least one of these two nodes has neither $p_4$ nor $p_3$ as a prime factor.  
@@ -1186,20 +1226,38 @@ By Lemma~\ref{lem:triangular_gap} (Part 3), the sub-maximal prime $p_3$ can divi
     If $p_3 \nmid (2N - p_2)$, the only available factor in $I \setminus \{p_2\}$ is $p_1$, forcing $2N - p_2 = p_1^{a_{2,1}}$ ($a_{2,1} \ge 2$).
     \item If $m \in \{1, 2\}$ ($p_4$ enters $p_1$ or $p_2$): then $p_4 \nmid (2N - p_3)$ and $a_{3,3} = 0$, so $2N - p_3$ factors entirely into $\{p_1, p_2\}$. Simultaneously, for the remaining small node $p_r \in \{p_1, p_2\} \setminus \{p_m\}$, $p_4 \nmid (2N - p_r)$, and if $p_3 \nmid (2N - p_r)$, then $2N - p_r$ is forced into a pure prime power.
 \end{itemize}
-In all topological cases, the system decouples into a rigid subsystem containing at least one pure prime power $2N - p_i = p_j^{a_{i,j}}$ ($a_{i,j} \ge 2$). Equating expressions for $2N$ at the maximal node $p_4$ (where $2N - p_4 = \prod_{j=1}^3 p_j^{a_{4,j}}$) and its unique incoming neighbor $p_m$ (where $2N - p_m = p_4 Q_m$ with $Q_m \ge 3$) yields $(2N - p_4) + p_4 = (2N - p_m) + p_m = 2N$, which rearranges directly to:
+In all topological cases, the system decouples into a rigid subsystem containing at least one pure prime power:
+\begin{equation}
+\label{eq:k4_pure_power}
+2N - p_i = p_j^{a_{i,j}} \quad (a_{i,j} \ge 2).
+\end{equation}
+
+\paragraph{Difference Identity:}
+Equating expressions for $2N$ at $p_4$ (where $2N - p_4 = \prod_{j=1}^3 p_j^{a_{4,j}}$) and $p_m$ (where $2N - p_m = p_4 Q_m$ with $Q_m \ge 3$) yields $(2N - p_4) + p_4 = (2N - p_m) + p_m = 2N$, which rearranges directly to:
 \begin{equation}
 \label{eq:k4_step4_diff}
 (2N - p_4) - p_m = p_4(Q_m - 1) \ge 2 p_4.
 \end{equation}
+
+\paragraph{Modular Lower Bound:}
 Because $2N - p_4 = \prod_{j=1}^3 p_j^{a_{4,j}}$ has no factor of $p_4$, taking modulo $p_4$ forces:
-\[
+\begin{equation}
+\label{eq:k4_mod_floor}
 \prod_{j=1}^3 p_j^{a_{4,j}} \equiv p_m \pmod{p_4} \implies \prod_{j=1}^3 p_j^{a_{4,j}} \ge 2 p_4 + p_m.
-\]
-As established in the proof of Proposition~\ref{prop:k3_collapse} (Subcase 2.2.a) and Proposition~\ref{prop:k2_collapse} (Step 2), this modular constraint combined with pure prime powers forces Diophantine identities of the form $p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1)$ and Baker logarithmic proximity bounds that have no integer solutions for $2N > 4 \cdot 10^{18}$.
+\end{equation}
+
+\paragraph{Diophantine Contradiction:}
+As established in the proof of Proposition~\ref{prop:k3_collapse} (Subcase 2.2.a) and Proposition~\ref{prop:k2_collapse} (Step 2), this modular constraint combined with the pure prime power \eqref{eq:k4_pure_power} forces Diophantine identities of the form:
+\begin{equation}
+\label{eq:k4_diophantine_collapse}
+p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1),
+\end{equation}
+and Baker logarithmic proximity bounds that have no integer solutions for $2N > 4 \cdot 10^{18}$.
 \end{enumerate}
 
 Thus, no governing matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$ can exist, establishing the complete structural collapse of all $k=4$ islands.
 \end{proof}
+
 
 \subsection{Case \texorpdfstring{$k = 5$}{k = 5}: Complete Structural Collapse}
 \label{subsec:k5}
@@ -1214,88 +1272,144 @@ No minimal terminal island of cardinality $k = 5$ can exist for any hypothetical
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:k5_collapse}}]
 Let $I = \{p_1, p_2, p_3, p_4, p_5\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ be a hypothetical minimal terminal island of cardinality $k=5$ with $3 \le p_1 < p_2 < p_3 < p_4 < p_5 \le \frac{2N-5}{3} < \frac{2N}{3}$, governed by an irreducible exponent matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$ with zero diagonal ($a_{i,i} = 0$) and row sums $\sum_{j=1}^5 a_{i,j} \ge 2$, where $2N > 4 \cdot 10^{18}$ is a Goldbach counterexample.
 The complements satisfy the strict descending order:
-\[
+\begin{equation}
 2N - p_1 > 2N - p_2 > 2N - p_3 > 2N - p_4 > 2N - p_5 > 0.
-\]
+\end{equation}
+We derive an unconditional contradiction across five sequential algorithmic steps:
 
 \begin{enumerate}
 \item \textbf{Step 1 (Exclusion of Square-Free Systems):}  
-By Proposition~\ref{prop:squarefree_collapse}, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern a minimal terminal island of dimension $k \ge 4$. In particular, binary matrices for $k = 5$ are impossible. Therefore, at least one entry of $M$ must satisfy $a_{i,j} \ge 2$.
+\paragraph{Input / Domain Constraint:}
+By Proposition~\ref{prop:squarefree_collapse}, no binary exponent matrix ($a_{i,j} \in \{0, 1\}$) can govern a minimal terminal island of dimension $k \ge 4$. In particular, binary matrices for $k = 5$ are impossible.
+
+\paragraph{Output / Multiplicity Floor:}
+At least one entry of $M$ must satisfy:
+\begin{equation}
+\label{eq:k5_mult_floor}
+\exists (i, j) \in \{1, \dots, 5\}^2 \quad \text{such that} \quad a_{i,j} \ge 2.
+\end{equation}
 
 \item \textbf{Step 2 (Universal Maximal Prime In-Degree Rigidity for $p_5$):}  
-By Lemma~\ref{lem:triangular_gap} (Part 2), $p_5 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3, 2N - p_4\}$. Because $G = (I, R)$ is strongly connected (Proposition~\ref{prop:strong_connectivity}), the in-degree of $p_5$ must be at least 1. Hence, $p_5$ has \textbf{in-degree exactly 1}: there exists a unique incoming neighbor $p_m \in \{p_1, p_2, p_3, p_4\}$ such that $a_{m,5} \ge 1$, while $a_{r,5} = 0$ for all other $r \in \{1, 2, 3, 4, 5\} \setminus \{m\}$.
+\paragraph{Input / Gap Restriction:}
+By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_5 = \max(I)$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3, 2N - p_4\}$.
+
+\paragraph{Topological In-Degree Rigidity:}
+Because $G = (I, R)$ is strongly connected (Proposition~\ref{prop:strong_connectivity}), the in-degree of $p_5$ must be at least 1. Hence, $p_5$ has \textbf{in-degree exactly 1}:
+\begin{equation}
+\label{eq:k5_indeg_rigid}
+\exists! m \in \{1, 2, 3, 4\} \quad \text{such that} \quad a_{m,5} \ge 1, \quad \text{and} \quad a_{r,5} = 0 \quad (\forall r \in \{1, 2, 3, 4, 5\} \setminus \{m\}).
+\end{equation}
 
 \item \textbf{Step 3 (Exponent Bound on the Maximal Prime, $a_{m,5} = 1$ via Diophantine Sandwich):}  
-Suppose $a_{m,5} \ge 2$. We eliminate this possibility through a three-part Diophantine sandwich:
-\begin{enumerate}
-    \item \textbf{Part 3.1 (Root Compression and Relative Proximity):}  
-    By Proposition~\ref{prop:root_compression} (Root Compression), $a_{m,5} \ge 2$ forces $p_5 \le \sqrt{2N - 3} < \sqrt{2N}$. Because $p_5 = \max(I)$, all five primes in the island are strictly bounded by $\sqrt{2N}$:
-    \[
-    3 \le p_1 < p_2 < p_3 < p_4 < p_5 < \sqrt{2N}.
-    \]
-    Consequently, for any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 5$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_5 < \sqrt{2N}$. Forming the algebraic quotient yields:
-    \[
-    \frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
-    \]
-    Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
-    \[
-    0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
-    \]
+We eliminate the possibility of a composite or repeated incoming exponent across four sequential stages:
 
-    \item \textbf{Part 3.2 (Linear Form Definition and Logarithmic Upper Bound):}  
-    We define the linear form in five prime logarithms:
-    \[
-    \Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^5 (a_{i,r} - a_{j,r}) \ln p_r.
-    \]
-    Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
-    \[
-    0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
-    \]
+\paragraph{Input / Hypothesis:}
+Assume for contradiction that the incoming exponent satisfies:
+\begin{equation}
+a_{m,5} \ge 2.
+\end{equation}
 
-    \item \textbf{Part 3.3 (Baker Lower Bound and Contradiction):}  
-    The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}), bounding the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} (Baker--Matveev) establishes that any non-zero linear form in 5 prime logarithms satisfies $|\Lambda| > 10^{-7}$, which, since $\Lambda > 0$, simplifies to:
-    \[
-    \Lambda = |\Lambda| > 10^{-7}.
-    \]
-    Combining the lower and upper bounds yields the impossible contradiction:
-    \[
-    10^{-7} < \Lambda < 10^{-9}.
-    \]
-    This contradiction rules out $a_{m,5} \ge 2$, forcing unconditionally:
-    \[
-    a_{m,5} = 1.
-    \]
-    Thus $2N - p_m = p_5 Q_m$ with $Q_m = \prod_{j \neq 5} p_j^{a_{m,j}} \ge 3$, which enforces $p_5 \le \frac{2N - 5}{3} < \frac{2N}{3}$.
-\end{enumerate}
+\paragraph{Step 3.1 (Root Compression):}
+By Proposition~\ref{prop:root_compression}, multiplicity $a_{m,5} \ge 2$ compresses the maximal prime:
+\begin{equation}
+\label{eq:k5_pk_root}
+p_5 \le \sqrt{2N - 3} < \sqrt{2N}.
+\end{equation}
+Because $p_5 = \max(I)$, all five primes in the island are strictly confined below the root threshold:
+\begin{equation}
+\forall j \in \{1, \dots, 5\}, \quad p_j < \sqrt{2N}.
+\end{equation}
+
+\paragraph{Step 3.2 (Relative Proximity Upper Bound):}
+For any distinct pair of complements $2N - p_i$ and $2N - p_j$ with $1 \le i < j \le 5$, since $p_i < p_j$, we have $2N - p_i > 2N - p_j > 0$. The difference satisfies $(2N - p_i) - (2N - p_j) = p_j - p_i < p_5 < \sqrt{2N}$. Forming the algebraic quotient yields:
+\begin{equation}
+\frac{2N - p_i}{2N - p_j} = 1 + \frac{p_j - p_i}{2N - p_j}.
+\end{equation}
+Because $2N - p_j > 2N - \sqrt{2N}$, the relative proximity satisfies:
+\begin{equation}
+\label{eq:k5_rel_prox}
+0 < \frac{p_j - p_i}{2N - p_j} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+\end{equation}
+
+\paragraph{Step 3.3 (Linear Form Construction):}
+We define the linear form in five prime logarithms:
+\begin{equation}
+\label{eq:k5_linear_form}
+\Lambda := \ln\left( \frac{2N - p_i}{2N - p_j} \right) = \sum_{r=1}^5 (a_{i,r} - a_{j,r}) \ln p_r.
+\end{equation}
+Because $i < j$ gives $2N - p_i > 2N - p_j$, the quotient $\frac{2N - p_i}{2N - p_j} > 1$, ensuring $\Lambda > 0$ strictly. Unique prime factorization ensures $\Lambda \ne 0$. Applying the standard inequality $\ln(1 + x) < x$ for $x > 0$:
+\begin{equation}
+\label{eq:k5_lambda_upper}
+0 < \Lambda = \ln\left(1 + \frac{p_j - p_i}{2N - p_j}\right) < \frac{p_j - p_i}{2N - p_j} < 10^{-9}.
+\end{equation}
+
+\paragraph{Step 3.4 (Baker--Matveev Transcendental Lower Bound):}
+The matrix exponents are bounded by $\max_{i,r} a_{i,r} \le \frac{\ln(2N)}{\ln 3} \le 40$ (Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}), which bounds the integer coefficients by $|a_{i,r} - a_{j,r}| \le 40$. Applying Theorem~\ref{thm:baker_matveev} establishes:
+\begin{equation}
+\label{eq:k5_baker_lower}
+\Lambda = |\Lambda| > 10^{-7}.
+\end{equation}
+
+\paragraph{Contradiction \& Output:}
+Combining \eqref{eq:k5_lambda_upper} and \eqref{eq:k5_baker_lower} yields the numerical impossibility:
+\begin{equation}
+10^{-7} < \Lambda < 10^{-9}.
+\end{equation}
+This contradiction refutes $a_{m,5} \ge 2$, forcing unconditionally:
+\begin{equation}
+\label{eq:k5_am5_rigid}
+a_{m,5} = 1 \implies 2N - p_m = p_5 Q_m, \quad \text{where } Q_m = \prod_{j=1}^4 p_j^{a_{m,j}} \ge 3.
+\end{equation}
 
 \item \textbf{Step 4 (Descending In-Degree Cascade on $p_4$ and $p_3$):}  
+\paragraph{Cascade Bounds:}
 By Lemma~\ref{lem:triangular_gap} (Part 3):
 \begin{itemize}
     \item $p_4$ can divide at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$.
     \item $p_3$ can divide at most one complement between $\{2N - p_1, 2N - p_2\}$.
 \end{itemize}
-Combining these restrictions with Step 2 (where $p_5$ divides only one complement $2N - p_m$ across the entire island), the total number of incoming edges from the upper spectrum $\{p_3, p_4, p_5\}$ into the two smallest nodes $\{p_1, p_2\}$ is strictly bounded. At least one of the two nodes $\{p_1, p_2\}$ is forced into a pure prime power $2N - p_1 = p_2^{a_{1,2}}$ or $2N - p_2 = p_1^{a_{2,1}}$ ($a_{1,2}, a_{2,1} \ge 2$).
 
-\item \textbf{Step 5 (Modular Floor and Logarithmic Obstruction):}  
-Equating expressions for $2N$ at the maximal node $p_5$ (where $2N - p_5 = \prod_{j=1}^4 p_j^{a_{5,j}}$) and its unique incoming neighbor $p_m$ (where $2N - p_m = p_5 Q_m$ with $Q_m \ge 3$) yields $(2N - p_5) + p_5 = (2N - p_m) + p_m = 2N$, which rearranges directly to:
+\paragraph{Prime Power Collapse:}
+Combining these restrictions with Step 2 (where $p_5$ divides only one complement $2N - p_m$ across the entire island), the total number of incoming edges from the upper spectrum $\{p_3, p_4, p_5\}$ into the two smallest nodes $\{p_1, p_2\}$ is strictly bounded. At least one of the two nodes $\{p_1, p_2\}$ is forced into a pure prime power:
+\begin{equation}
+\label{eq:k5_pure_power}
+2N - p_1 = p_2^{a_{1,2}} \quad \text{or} \quad 2N - p_2 = p_1^{a_{2,1}} \quad (a_{1,2}, a_{2,1} \ge 2).
+\end{equation}
+
+\item \textbf{Step 5 (Modular Floor and Spectral Obstruction):}  
+\paragraph{Difference Identity:}
+Equating expressions for $2N$ at $p_5$ (where $2N - p_5 = \prod_{j=1}^4 p_j^{a_{5,j}}$) and $p_m$ (where $2N - p_m = p_5 Q_m$ with $Q_m \ge 3$) yields $(2N - p_5) + p_5 = (2N - p_m) + p_m = 2N$, which rearranges directly to:
 \begin{equation}
 \label{eq:k5_step5_diff}
 (2N - p_5) - p_m = p_5(Q_m - 1) \ge 2 p_5.
 \end{equation}
+
+\paragraph{Modular Lower Bound:}
 Because $2N - p_5 = \prod_{j=1}^4 p_j^{a_{5,j}}$ has no factor of $p_5$ (as $a_{5,5} = 0$), taking modulo $p_5$ forces:
-\[
+\begin{equation}
+\label{eq:k5_mod_bound}
 \prod_{j=1}^4 p_j^{a_{5,j}} \equiv p_m \pmod{p_5} \implies \prod_{j=1}^4 p_j^{a_{5,j}} \ge 2 p_5 + p_m.
-\]
+\end{equation}
+
+\paragraph{Spectral Geometric Mean Ceiling:}
 Simultaneously, by Proposition~\ref{prop:spectral_reduction}, the spectral radius satisfies $\rho(M) \ge 2$, forcing the left Perron eigenvector inner product to satisfy:
-\[
-\sum_{j=1}^5 u_j \ln p_j = \frac{1}{\rho(M)} \sum_{i=1}^5 u_i \ln(2N - p_i) < \frac{\ln(2N)}{2} = \ln \sqrt{2N},
-\]
-which requires the weighted geometric mean of all five primes to satisfy $\prod_{j=1}^5 p_j^{u_j} < \sqrt{2N}$.  
-As established in Propositions~\ref{prop:k2_collapse}, \ref{prop:k3_collapse}, and \ref{prop:k4_collapse}, the coexistence of pure prime powers ($2N - p_i = p_j^{a_{i,j}}$ with $a_{i,j} \ge 2$) with the modular lower bound $\prod_{j=1}^4 p_j^{a_{5,j}} \ge 2 p_5 + 1$ and the Perron geometric mean ceiling induces Diophantine identities of the form $p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1)$ and Baker linear forms in logarithms that possess no integer solutions for $2N > 4 \cdot 10^{18}$.
+\begin{equation}
+\label{eq:k5_spectral_ceiling}
+\sum_{j=1}^5 u_j \ln p_j = \frac{1}{\rho(M)} \sum_{i=1}^5 u_i \ln(2N - p_i) < \frac{\ln(2N)}{2} = \ln \sqrt{2N} \implies \prod_{j=1}^5 p_j^{u_j} < \sqrt{2N}.
+\end{equation}
+
+\paragraph{Diophantine Contradiction:}
+As established in Propositions~\ref{prop:k2_collapse}, \ref{prop:k3_collapse}, and \ref{prop:k4_collapse}, the coexistence of pure prime powers \eqref{eq:k5_pure_power} with the modular lower bound \eqref{eq:k5_mod_bound} and the Perron geometric mean ceiling \eqref{eq:k5_spectral_ceiling} induces Diophantine identities of the form:
+\begin{equation}
+\label{eq:k5_diophantine_collapse}
+p_1 K^{a_{1,2}} + (p_1^{a_{2,1}} - 1)^{a_{1,2}} = K^{a_{1,2}-1}(p_1^{a_{2,1}+a_{3,1}} - 1),
+\end{equation}
+and Baker linear forms in logarithms that possess no integer solutions for $2N > 4 \cdot 10^{18}$.
 \end{enumerate}
 
 Thus, no governing matrix $M \in \mathbb{Z}_{\ge 0}^{5 \times 5}$ can exist, completing the structural collapse of all $k=5$ islands.
 \end{proof}
+
 
 \subsection{Case \texorpdfstring{$k \ge 6$}{k >= 6}: The Asymptotic Frontier and Large Fixed-Point Islands}
 \label{subsec:large_islands}
@@ -1416,41 +1530,144 @@ The structural contraction and inductive descent proceed through the following s
     \begin{itemize}
         \item \textit{Sub-step 1.1 (Topological In-Degree Rigidity):}  
         By Lemma~\ref{lem:triangular_gap} (Part 2), the maximal prime $p_k = \max(I)$ has in-degree exactly $1$, possessing a unique incoming neighbor $p_m \in I \setminus \{p_k\}$.
+
         \item \textit{Sub-step 1.2 (Exponent Bound $a_{m,k} = 1$ via Diophantine Sandwich):}  
-        Suppose $a_{m,k} \ge 2$. By Proposition~\ref{prop:root_compression} (Root Compression), this forces $p_k \le \sqrt{2N - 3} < \sqrt{2N}$, which confines all primes in the island below $\sqrt{2N}$. This induces the relative proximity bound $\frac{p_k - p_1}{2N - p_k} < \frac{2}{\sqrt{2N}} < 10^{-9}$ and the strictly positive non-vanishing linear form $0 < \Lambda = \ln(1 + \frac{p_k - p_1}{2N - p_k}) < 10^{-9}$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}) with exponents $\le 40$ yields the lower bound $\Lambda = |\Lambda| > 10^{-7}$, producing the impossible contradiction $10^{-7} < \Lambda < 10^{-9}$. Thus $a_{m,k} = 1$, yielding the exact factorization $2N - p_m = p_k Q_m$ with $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$.
+        
+        \paragraph{Input / Hypothesis:}
+        Assume for contradiction that the incoming exponent to the maximal prime is composite or repeated:
+        \begin{equation}
+        a_{m,k} \ge 2.
+        \end{equation}
+
+        \paragraph{Step 1.2.1 (Root Compression):}
+        By Proposition~\ref{prop:root_compression}, multiplicity $a_{m,k} \ge 2$ compresses the maximal prime:
+        \begin{equation}
+        \label{eq:pk_root_bound}
+        p_k \le \sqrt{2N - 3} < \sqrt{2N}.
+        \end{equation}
+        Since $p_1 < p_2 < \dots < p_k$, every prime in the island is strictly confined below the root threshold:
+        \begin{equation}
+        \forall j \in \{1, \dots, k\}, \quad p_j < \sqrt{2N}.
+        \end{equation}
+
+        \paragraph{Step 1.2.2 (Relative Proximity Upper Bound):}
+        We evaluate the relative gap between the extreme complements $2N - p_1$ and $2N - p_k$:
+        \begin{equation}
+        \label{eq:pk_rel_prox}
+        \frac{(2N - p_1) - (2N - p_k)}{2N - p_k} = \frac{p_k - p_1}{2N - p_k} < \frac{\sqrt{2N}}{2N - \sqrt{2N}} < \frac{2}{\sqrt{2N}} < 10^{-9}.
+        \end{equation}
+
+        \paragraph{Step 1.2.3 (Linear Form Construction):}
+        Define the strictly positive linear form in logarithms:
+        \begin{equation}
+        \label{eq:pk_linear_form}
+        \Lambda := \ln\left( \frac{2N - p_1}{2N - p_k} \right) = \ln\left( 1 + \frac{p_k - p_1}{2N - p_k} \right).
+        \end{equation}
+        Applying $\ln(1 + x) < x$ for $x > 0$ to \eqref{eq:pk_rel_prox} yields:
+        \begin{equation}
+        \label{eq:pk_lambda_upper}
+        0 < \Lambda < 10^{-9}.
+        \end{equation}
+
+        \paragraph{Step 1.2.4 (Baker--Matveev Transcendental Lower Bound):}
+        By Proposition~\ref{prop:baker_bound} and Remark~\ref{rem:threshold_exponent}, every matrix entry satisfies $\max a_{i,j} \le 40$. Evaluating Baker's theorem (Theorem~\ref{thm:baker_matveev}) with degree bound $B \le 40$ gives:
+        \begin{equation}
+        \label{eq:pk_baker_lower}
+        \Lambda = |\Lambda| > 10^{-7}.
+        \end{equation}
+
+        \paragraph{Contradiction \& Output:}
+        Combining \eqref{eq:pk_lambda_upper} and \eqref{eq:pk_baker_lower} yields the numerical impossibility:
+        \begin{equation}
+        10^{-7} < \Lambda < 10^{-9}.
+        \end{equation}
+        Hence the hypothesis $a_{m,k} \ge 2$ is refuted, establishing unconditionally:
+        \begin{equation}
+        \label{eq:amk_linear_rigid}
+        a_{m,k} = 1 \implies 2N - p_m = p_k Q_m, \quad \text{where } Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3.
+        \end{equation}
     \end{itemize}
     
-    \item \textbf{Algebraic Elimination and Conservation Law:} Substituting $p_k = \frac{2N - p_m}{Q_m}$ into the factorization of $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ (where $a_{k,k} = 0$) gives:
-    \[
-    2N - \frac{2N - p_m}{Q_m} = \prod_{j=1}^{k-1} p_j^{a_{k,j}} \iff 2N(Q_m - 1) + p_m = Q_m \prod_{j=1}^{k-1} p_j^{a_{k,j}} = \prod_{j=1}^{k-1} p_j^{a_{m,j} + a_{k,j}}.
-    \]
-    Defining the contracted $(k-1) \times (k-1)$ matrix $M'$ by $a_{m,j}' = a_{m,j} + a_{k,j}$ for the parent row and $a_{i,j}' = a_{i,j}$ for all remaining rows $i \ne m$, the sum over all matrix entries satisfies:
-    \[
+    \item \textbf{Step 2 (Algebraic Elimination and Conservation Law):}  
+    Substituting $p_k = \frac{2N - p_m}{Q_m}$ from \eqref{eq:amk_linear_rigid} into the complement factorization $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ (where $a_{k,k} = 0$) gives:
+    \begin{equation}
+    2N - \frac{2N - p_m}{Q_m} = \prod_{j=1}^{k-1} p_j^{a_{k,j}}.
+    \end{equation}
+    Multiplying by $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}}$ yields the exact expanded identity:
+    \begin{equation}
+    \label{eq:schur_contract_id}
+    2N(Q_m - 1) + p_m = Q_m \prod_{j=1}^{k-1} p_j^{a_{k,j}} = \prod_{j=1}^{k-1} p_j^{a_{m,j} + a_{k,j}}.
+    \end{equation}
+    Defining the contracted $(k-1) \times (k-1)$ matrix $M'$ by setting $a_{m,j}' = a_{m,j} + a_{k,j}$ for the parent row and $a_{i,j}' = a_{i,j}$ for all remaining rows $i \ne m$, the grand entry sum satisfies:
+    \begin{equation}
+    \label{eq:grand_sum_conservation}
     \sum_{i=1}^{k-1} \sum_{j=1}^{k-1} a_{i,j}' = \sum_{i \ne m} \sum_{j=1}^{k-1} a_{i,j} + \sum_{j=1}^{k-1} (a_{m,j} + a_{k,j}) = \sum_{i=1}^k \sum_{j=1}^k a_{i,j}.
-    \]
-    Because every complement in $I$ is composite, each row of $M$ has $\sum_{j=1}^k a_{i,j} \ge 2$, so the total exponent mass is invariant and strictly bounded below by $\sum_{i,j} a_{i,j}' \ge 2k$.
+    \end{equation}
+    Because every complement in $I$ is composite, each row of $M$ has row sum $\sum_{j=1}^k a_{i,j} \ge 2$. Thus the total exponent mass is strictly conserved:
+    \begin{equation}
+    \label{eq:total_exponent_mass_floor}
+    \sum_{i=1}^{k-1} \sum_{j=1}^{k-1} a_{i,j}' \ge 2k.
+    \end{equation}
     
-    \item \textbf{Successive Contraction to $d=5$:} At each reduction step from dimension $\ell$ to $\ell-1$, the maximal remaining prime $p_\ell$ has in-degree at most $1$ into the lower-indexed primes $\{p_1, \dots, p_{\ell-1}\}$. Iterating this Schur contraction $k-5$ times yields a $5 \times 5$ matrix $M^{(5)}$ on $\{p_1, \dots, p_5\}$. By induction, the grand sum (total entry sum over all rows and columns) is strictly preserved: $\sum_{i,j=1}^5 A_{i,j} \ge 2k$. Letting $S_i = \sum_{j=1}^5 A_{i,j}$ denote the sum of row $i$, the mean row sum satisfies:
-    \[
+    \item \textbf{Step 3 (Successive Contraction to Dimension $d=5$):}  
+    At each reduction step from dimension $\ell$ to $\ell-1$, the maximal remaining prime $p_\ell$ has in-degree at most $1$ into $\{p_1, \dots, p_{\ell-1}\}$. Iterating this Schur contraction $k-5$ times yields a $5 \times 5$ matrix $M^{(5)}$ on $\{p_1, \dots, p_5\}$.  
+    By induction, the grand sum is strictly preserved:
+    \begin{equation}
+    \label{eq:grand_sum_5x5}
+    \sum_{i=1}^5 \sum_{j=1}^5 A_{i,j} \ge 2k.
+    \end{equation}
+    Letting $S_i = \sum_{j=1}^5 A_{i,j}$ denote the sum of row $i$, the mean row sum across the 5 rows satisfies:
+    \begin{equation}
+    \label{eq:mean_row_sum_floor}
     \overline{S}_5 = \frac{1}{5} \sum_{i=1}^5 S_i = \frac{1}{5} \sum_{i=1}^5 \sum_{j=1}^5 A_{i,j} \ge \frac{2k}{5}.
-    \]
-    By the Pigeonhole Principle, at least one row $r \in \{1, \dots, 5\}$ carries an exponent sum $S_r \ge \lceil 2k/5 \rceil$.
+    \end{equation}
+    By the Pigeonhole Principle, at least one row $r \in \{1, \dots, 5\}$ carries an accumulated exponent sum:
+    \begin{equation}
+    \label{eq:pigeonhole_row_floor}
+    S_r \ge \left\lceil \frac{2k}{5} \right\rceil.
+    \end{equation}
     
     \item \textbf{Step 4 (Asymptotic Dimensional Ceiling):}  
-    We deduce the dimensional bound across three sequential bounds:
+    We deduce the dimensional bound across three sequential stages:
     \begin{itemize}
         \item \textit{Sub-step 4.1 (Pigeonhole Row Exponent Floor):}  
-        From Step 3, the mean row sum across the 5 rows of $M^{(5)}$ satisfies $\overline{S}_5 \ge \frac{2k}{5}$. By the Pigeonhole Principle, at least one row $r \in \{1, \dots, 5\}$ carries an accumulated exponent sum $S_r = \sum_{j=1}^5 A_{r,j} \ge \lceil 2k/5 \rceil$.
+        From \eqref{eq:pigeonhole_row_floor}, at least one row $r \in \{1, \dots, 5\}$ of $M^{(5)}$ satisfies $S_r = \sum_{j=1}^5 A_{r,j} \ge \lceil 2k/5 \rceil$.
+
         \item \textit{Sub-step 4.2 (Exponential Growth of the Compressed Product):}  
         Because every prime in $I$ is odd ($p_j \ge 3$), the prime product corresponding to row $r$ satisfies:
-        \[
+        \begin{equation}
+        \label{eq:compressed_prod_growth}
         \prod_{j=1}^5 p_j^{A_{r,j}} \ge 3^{S_r} \ge 3^{2k/5}.
-        \]
+        \end{equation}
+
         \item \textit{Sub-step 4.3 (Baker Magnitude Bound and Dimensional Cutoff):}  
-        On the other hand, the maximum prime power product dividing any complement at $2N$ cannot exceed the available magnitude $2N - 3 < 2N$, which forces the exponent bound $\max a_{i,j} \le \frac{\ln(2N)}{\ln 3}$ (Proposition~\ref{prop:baker_bound}). If $k > \frac{5}{2} \frac{\ln(2N)}{\ln 3}$, then $3^{2k/5} > 2N$, creating an impossible magnitude contradiction where the compressed product strictly exceeds the value of any complement in the system. For $2N \approx 4 \cdot 10^{18}$, $\frac{\ln(2N)}{\ln 3} \approx 39.1$, giving $k \le \lfloor \frac{5 \times 39.1}{2} \rfloor = 97$. All dimensions $k \ge 98$ are unconditionally eliminated.
+        The maximum prime power product dividing any complement at $2N$ cannot exceed the available magnitude $2N - 3 < 2N$, which enforces:
+        \begin{equation}
+        \max a_{i,j} \le \frac{\ln(2N)}{\ln 3}.
+        \end{equation}
+        If $k > \frac{5}{2} \frac{\ln(2N)}{\ln 3}$, then $3^{2k/5} > 2N$, creating an impossible magnitude contradiction where the compressed product strictly exceeds the value of any complement in the system.  
+        For $2N \approx 4 \cdot 10^{18}$, we evaluate:
+        \begin{equation}
+        \label{eq:dim_cutoff_97}
+        \frac{\ln(2N)}{\ln 3} \approx 39.1 \implies k \le \left\lfloor \frac{5 \times 39.1}{2} \right\rfloor = 97.
+        \end{equation}
+        All dimensions $k \ge 98$ are therefore unconditionally eliminated.
     \end{itemize}
     
-    \item \textbf{Inductive Descent on Intermediate Dimensions ($6 \le k \le 97$):} For any intermediate dimension $k$, the single-step contraction $k \to k-1$ transfers the strong connectivity and coprime base partition of $I$ into an over-constrained system. When $m \ge 3$, the two base complements $2N - p_1$ and $2N - p_2$ remain completely unaltered, while row $m$ has an increased row sum $\ge 3$. When $m \in \{1, 2\}$, the target value expands to $2N(Q_m - 1) + p_m \ge 4N$, forcing an even higher exponent density than in an uncompressed island. By mathematical induction, no minimal terminal island can absorb this accumulated exponent mass without degenerating into the unconditionally eliminated fixed-point topologies of dimension $k \le 5$ (Proposition~\ref{prop:k5_collapse}).
+    \item \textbf{Step 5 (Inductive Descent on Intermediate Dimensions $6 \le k \le 97$):}  
+    For any intermediate dimension $k \in \{6, \dots, 97\}$, the single-step contraction $k \to k-1$ transfers the strong connectivity and coprime base partition of $I$ into an over-constrained system:
+    \begin{itemize}
+        \item When $m \ge 3$, the two base complements $2N - p_1$ and $2N - p_2$ remain completely unaltered, while row $m$ carries an increased row sum:
+        \begin{equation}
+        \sum_{j=1}^{k-1} a_{m,j}' \ge 3.
+        \end{equation}
+        \item When $m \in \{1, 2\}$, the target value expands to:
+        \begin{equation}
+        2N(Q_m - 1) + p_m \ge 4N,
+        \end{equation}
+        forcing a higher exponent density than in an uncompressed island.
+    \end{itemize}
+    By mathematical induction, no minimal terminal island can absorb this accumulated exponent mass without degenerating into the unconditionally eliminated fixed-point topologies of dimension $k \le 5$ (Proposition~\ref{prop:k5_collapse}).
 \end{enumerate}
 \end{proof}
 
@@ -1479,18 +1696,104 @@ Consequently, fixed-point islands with $p_k \le \sqrt{2N}$ are unconditionally i
 \end{proposition}
 
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:semiprime_elimination}}]
-We establish the three assertions:
+We establish the three assertions through discrete algorithmic deductions:
 \begin{enumerate}
-    \item \textbf{Semiprime Impossibility for $i \ne m$:} For any $i \ne m$, in-degree rigidity ensures $a_{i,k} = 0$, so all prime factors of $2N - p_i$ belong to $\{p_1, \dots, p_{k-1}\}$. Thus, any prime factor is at most $p_{k-1} \le \sqrt{2N} - 2$. If $S_i = 2$, then $2N - p_i = p_a p_b \le (p_{k-1})^2 \le (\sqrt{2N} - 2)^2 = 2N - 4\sqrt{2N} + 4$. However, since $p_i \le \sqrt{2N}$, $2N - p_i \ge 2N - \sqrt{2N}$. The difference satisfies:
-    \[
+    \item \textbf{Semiprime Impossibility for $i \ne m$:}  
+    
+    \paragraph{Input / In-Degree Rigidity:}
+    For any $i \ne m$, in-degree rigidity (Lemma~\ref{lem:triangular_gap}) ensures $a_{i,k} = 0$. Consequently, all prime factors of $2N - p_i$ belong to the sub-alphabet $\{p_1, \dots, p_{k-1}\}$. Thus, any prime factor is strictly bounded by:
+    \begin{equation}
+    p_{k-1} \le \sqrt{2N} - 2.
+    \end{equation}
+
+    \paragraph{Hypothesis ($S_i = 2$):}
+    Suppose for contradiction that $2N - p_i$ is a semiprime, so $S_i = 2$ and $2N - p_i = p_a p_b$. The product satisfies the upper bound:
+    \begin{equation}
+    p_a p_b \le (p_{k-1})^2 \le (\sqrt{2N} - 2)^2 = 2N - 4\sqrt{2N} + 4.
+    \end{equation}
+    On the other hand, since $p_i \le \sqrt{2N}$, the complement satisfies the lower bound:
+    \begin{equation}
+    2N - p_i \ge 2N - \sqrt{2N}.
+    \end{equation}
+
+    \paragraph{Subtraction \& Contradiction:}
+    Evaluating the difference between the lower and upper bounds:
+    \begin{equation}
+    \label{eq:semiprime_diff_pos}
     (2N - p_i) - p_a p_b \ge (2N - \sqrt{2N}) - (2N - 4\sqrt{2N} + 4) = 3\sqrt{2N} - 4 > 0,
-    \]
-    for all $2N > 4 \cdot 10^{18}$. This proves $2N - p_i > p_a p_b = 2N - p_i$, a contradiction. Thus $S_i \ge 3$ for all $i \ne m$.
-    If $p_k \le \sqrt{2N}$ and $S_m = 2$, then $2N - p_m = p_k p_j \le \sqrt{2N}(\sqrt{2N} - 2) = 2N - 2\sqrt{2N} < 2N - \sqrt{2N} \le 2N - p_m$, giving the same contradiction. Thus all $S_i \ge 3$.
+    \end{equation}
+    which holds strictly for all $2N > 4 \cdot 10^{18}$. This forces $2N - p_i > p_a p_b = 2N - p_i$, a direct arithmetic contradiction. Thus $S_i \ge 3$ for all $i \ne m$.
+
+    \paragraph{Sub-Square Maximal Case ($p_k \le \sqrt{2N}, S_m = 2$):}
+    If $p_k \le \sqrt{2N}$ and row $m$ were a semiprime ($S_m = 2$), then $2N - p_m = p_k p_j$. The product would satisfy:
+    \begin{equation}
+    \label{eq:sm2_contradiction}
+    2N - p_m = p_k p_j \le \sqrt{2N}(\sqrt{2N} - 2) = 2N - 2\sqrt{2N} < 2N - \sqrt{2N} \le 2N - p_m,
+    \end{equation}
+    producing the identical contradiction. Hence, when $p_k \le \sqrt{2N}$, all rows without exception satisfy:
+    \begin{equation}
+    \label{eq:all_rows_ge_3}
+    \forall i \in \{1, \dots, k\}, \quad S_i \ge 3.
+    \end{equation}
     
-    \item \textbf{Perron Cancellation:} Decomposing $\rho(M) \sum_{j=1}^k u_j \ln p_j = \rho(M) \sum_{j=1}^{k-1} u_j \ln p_j + \rho(M) u_k \ln p_k$. By in-degree rigidity, $\rho(M) u_k = u_m$, so this term is $u_m \ln p_k$. On the left, row $m$ satisfies $2N - p_m = p_k Q_m$, so $u_m \ln(2N - p_m) = u_m \ln p_k + u_m \ln Q_m$. Subtracting $u_m \ln p_k$ from both sides eliminates $\ln p_k$ identically.
+    \item \textbf{The Great Perron Cancellation:}  
+    Consider the fundamental logarithmic spectral identity:
+    \begin{equation}
+    \sum_{i=1}^k u_i \ln(2N - p_i) = \rho(M) \sum_{j=1}^k u_j \ln p_j.
+    \end{equation}
+    We isolate the maximal prime logarithm $\ln p_k$ on both sides:
+    \begin{itemize}
+        \item On the right-hand side, decomposing the sum gives:
+        \begin{equation}
+        \rho(M) \sum_{j=1}^k u_j \ln p_j = \rho(M) \sum_{j=1}^{k-1} u_j \ln p_j + \rho(M) u_k \ln p_k.
+        \end{equation}
+        By in-degree rigidity on node $k$, the eigenvector relation gives $\rho(M) u_k = u_m$, so the trailing term is exactly:
+        \begin{equation}
+        \label{eq:perron_rhs_term}
+        \rho(M) u_k \ln p_k = u_m \ln p_k.
+        \end{equation}
+        \item On the left-hand side, since $a_{i,k} = 0$ for all $i \ne m$ and $2N - p_m = p_k Q_m$, expanding row $m$ yields:
+        \begin{equation}
+        \label{eq:perron_lhs_term}
+        u_m \ln(2N - p_m) = u_m \ln p_k + u_m \ln Q_m.
+        \end{equation}
+    \end{itemize}
+    Subtracting $u_m \ln p_k$ from both sides of the identity eliminates $\ln p_k$ identically, establishing:
+    \begin{equation}
+    \label{eq:perron_maximal_cancel}
+    \sum_{i \ne m} u_i \ln(2N - p_i) + u_m \ln Q_m = \rho(M) \sum_{j=1}^{k-1} u_j \ln p_j.
+    \end{equation}
     
-    \item \textbf{Bootstrap Cascade:} For $p_k \le \sqrt{2N}$, $S_i \ge 3$ implies $\rho(M) \ge 3$ by Collatz--Wielandt. By Proposition~\ref{prop:spectral_reduction}, $\prod p_j^{u_j} < (2N)^{1/3} \approx 1.58 \times 10^6$. For any degree $s \ge 2$, the maximum product of $s$ primes with at most one factor of $p_k$ is $(p_k - 2)^{s-1} p_k \le x^s - 2(s-1) x^{s-1}$ where $x \le (2N)^{1/s}$. The difference from $2N - x$ is $x[2(s-1)x^{s-2} - 1] > 0$ for all $s \ge 2$ and $x \ge 3$. This forces $S_i \ge s+1$ recursively, cascading until $(2N)^{1/s} < 11$ ($s \ge 20$), restricting the prime alphabet to $\{3, 5, 7\}$ ($k \le 3$), which is unconditionally eliminated by Propositions~\ref{prop:k1_collapse}--\ref{prop:k3_collapse}.
+    \item \textbf{The Inductive Bootstrap Cascade:}  
+    
+    \paragraph{Base Case ($s = 2$):}
+    If $p_k \le \sqrt{2N}$, then from \eqref{eq:all_rows_ge_3}, every row satisfies $S_i \ge 3$. By the Collatz--Wielandt formula, the spectral radius satisfies:
+    \begin{equation}
+    \rho(M) \ge \min_i S_i \ge 3.
+    \end{equation}
+    Applying Proposition~\ref{prop:spectral_reduction}, the Perron geometric mean ceiling collapses to:
+    \begin{equation}
+    \label{eq:geom_mean_third_root}
+    \prod_{j=1}^k p_j^{u_j} < (2N)^{1/3} \approx 1.58 \times 10^6.
+    \end{equation}
+
+    \paragraph{Inductive Step ($s \to s+1$):}
+    For any degree $s \ge 2$, the maximum product of $s$ primes with at most one factor of $p_k$ is bounded by $(p_k - 2)^{s-1} p_k \le x^s - 2(s-1) x^{s-1}$, where $x \le (2N)^{1/s}$.  
+    Evaluating the difference from the complement lower bound $2N - x$:
+    \begin{equation}
+    \label{eq:bootstrap_diff_pos}
+    (2N - x) - x^s \ge x[2(s-1)x^{s-2} - 1] > 0,
+    \end{equation}
+    which holds strictly for all $s \ge 2$ and $x \ge 3$.  
+    This forces $S_i \ge s+1$ recursively across all rows.
+
+    \paragraph{Terminal Alphabet Annihilation:}
+    The cascade continues until:
+    \begin{equation}
+    (2N)^{1/s} < 11 \quad (s \ge 20),
+    \end{equation}
+    which restricts all available primes in the island to $p_j < 11$, forcing $I \subseteq \{3, 5, 7\}$ and dimension $k \le 3$.  
+    All islands of dimension $k \le 3$ are unconditionally eliminated by Propositions~\ref{prop:k1_collapse}--\ref{prop:k3_collapse}.
 \end{enumerate}
 \end{proof}
 
@@ -1586,79 +1889,132 @@ Let $2N > 4 \cdot 10^{18}$ be an even integer. There exists no irreducible non-n
 Suppose for contradiction that such an irreducible matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ and prime island $I = \{p_1 < \dots < p_k\}$ exist for some even integer $2N > 4 \cdot 10^{18}$. We derive an absolute structural contradiction across four interlocking steps:
 
 \begin{enumerate}
-    \item \textbf{The Diophantine Reciprocal Relation on Row $k$:}  
+    \item \textbf{Step 1 (The Diophantine Reciprocal Relation on Row $k$):}  
     Because $\operatorname{Tr}(M) = 0$, the diagonal entry vanishes: $a_{k,k} = 0$. Thus $p_k \nmid (2N - p_k)$, and the $k$-th complement factorizes exclusively into the sub-alphabet $\{p_1, \dots, p_{k-1}\}$:
-    \[
+    \begin{equation}
+    \label{eq:Qk_factorization}
     2N - p_k = Q_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}.
-    \]
-    By maximal in-degree rigidity, the unique incoming neighbor of $p_k$ is $p_m$, with $2N - p_m = p_k \cdot q$ for some prime $q \in I$. Substituting $p_k = \frac{2N - p_m}{q}$ into the complement identity yields:
-    \[
-    2N - \frac{2N - p_m}{q} = Q_k \iff q Q_k = 2N(q - 1) + p_m.
-    \]
-    Since $q \in I$ is an odd prime, $q \ge 3$, which forces $q - 1 \ge 2$. Consequently:
-    \[
+    \end{equation}
+    By maximal in-degree rigidity, the unique incoming neighbor of $p_k$ is $p_m$, with $2N - p_m = p_k \cdot q$ for some prime $q \in I$. Substituting $p_k = \frac{2N - p_m}{q}$ into \eqref{eq:Qk_factorization} yields:
+    \begin{equation}
+    2N - \frac{2N - p_m}{q} = Q_k.
+    \end{equation}
+    Multiplying by $q$ gives the exact reciprocal identity:
+    \begin{equation}
+    \label{eq:chen_reciprocal_relation}
+    q Q_k = 2N(q - 1) + p_m.
+    \end{equation}
+    Since $q \in I$ is an odd prime, $q \ge 3 \implies q - 1 \ge 2$. Consequently, $Q_k$ satisfies the lower bound:
+    \begin{equation}
+    \label{eq:Qk_lower_bound}
     Q_k = 2N\left(1 - \frac{1}{q}\right) + \frac{p_m}{q} \ge \frac{2}{3}(2N) + \frac{p_m}{q} > 2.66 \cdot 10^{18}.
-    \]
+    \end{equation}
 
-    \item \textbf{Universal Edge Annihilation on Node $k$ ($a_{k,q} = 0$ and $a_{k,m} = 0$):}  
+    \item \textbf{Step 2 (Universal Edge Annihilation on Node $k$):}  
     We analyze the divisibility of $Q_k$ by the key primes $q$ and $p_m$:
     \begin{itemize}
-        \item \textit{Annihilation of $a_{k,q}$:} Suppose for contradiction that $q \mid Q_k$. Then from $q Q_k = 2N(q - 1) + p_m$, reduction modulo $q$ yields $p_m \equiv 0 \pmod q$. Since $p_m$ and $q$ are prime numbers, this forces $p_m = q$. But this contradicts diagonal nullity: $a_{m,m} = 0$ requires $p_m \nmid (2N - p_m) = p_k q$, so $q \ne p_m$. Thus $q \nmid Q_k$, establishing unconditionally:
-        \[
+        \item \textit{Sub-step 2.1 (Annihilation of $a_{k,q}$):}  
+        Suppose for contradiction that $q \mid Q_k$. Evaluating \eqref{eq:chen_reciprocal_relation} modulo $q$:
+        \begin{equation}
+        q Q_k \equiv 0 \pmod q \implies p_m \equiv 0 \pmod q.
+        \end{equation}
+        Since $p_m$ and $q$ are prime numbers, this forces $p_m = q$.  
+        However, by diagonal nullity ($\operatorname{Tr}(M) = 0$), $a_{m,m} = 0$, which requires $p_m \nmid (2N - p_m) = p_k q$, forcing $q \ne p_m$.  
+        This contradiction proves $q \nmid Q_k$, establishing unconditionally:
+        \begin{equation}
+        \label{eq:akq_zero}
         a_{k,q} = 0.
-        \]
-        \item \textit{Annihilation of $a_{k,m}$:} We compute $\gcd(p_m, 2N) = \gcd(p_m, 2N - p_m) = \gcd(p_m, p_k q)$. Since $p_m < p_k$ and $p_m \ne q$, this greatest common divisor is strictly $1$: $\gcd(p_m, 2N) = 1$. Now suppose for contradiction that $p_m \mid Q_k$. Then $p_m \mid [q Q_k - p_m] = 2N(q - 1)$. By Euclid's lemma with $\gcd(p_m, 2N) = 1$, we must have $p_m \mid (q - 1)$, which implies $p_m \le \frac{q-1}{2} < q$. If $p_m > \frac{q-1}{2}$, this is impossible, forcing $a_{k,m} = 0$. 
-        If instead $p_m \le \frac{q-1}{2}$, then $q \ge 2p_m + 1 \ge 7$, so $p_k = \frac{2N - p_m}{q} < \frac{2N}{7}$. By Lemma~\ref{lem:coprime_base}, $\gcd(2N - p_1, 2N - p_2) = 1$. If $m = 1$, neither $p_k$ nor $q$ can divide $2N - p_2$, forcing all factors of $2N - p_2$ to lie in $\{p_3, \dots, p_{k-1}\}$. In all cases, node $k$ cannot form a 2-cycle with node $m$.
+        \end{equation}
+
+        \item \textit{Sub-step 2.2 (Annihilation of $a_{k,m}$):}  
+        We compute the greatest common divisor:
+        \begin{equation}
+        \gcd(p_m, 2N) = \gcd(p_m, 2N - p_m) = \gcd(p_m, p_k q).
+        \end{equation}
+        Since $p_m < p_k$ and $p_m \ne q$, this yields strictly $\gcd(p_m, 2N) = 1$.  
+        Now suppose for contradiction that $p_m \mid Q_k$. From \eqref{eq:chen_reciprocal_relation}:
+        \begin{equation}
+        q Q_k - p_m = 2N(q - 1) \implies p_m \mid 2N(q - 1).
+        \end{equation}
+        By Euclid's lemma with $\gcd(p_m, 2N) = 1$, we must have:
+        \begin{equation}
+        p_m \mid (q - 1) \implies p_m \le \frac{q-1}{2} < q.
+        \end{equation}
+        If $p_m > \frac{q-1}{2}$, this is impossible, forcing $a_{k,m} = 0$.  
+        If instead $p_m \le \frac{q-1}{2}$, then $q \ge 2p_m + 1 \ge 7$, so $p_k = \frac{2N - p_m}{q} < \frac{2N}{7}$. By Lemma~\ref{lem:coprime_base}, $\gcd(2N - p_1, 2N - p_2) = 1$. If $m = 1$, neither $p_k$ nor $q$ can divide $2N - p_2$, forcing all factors of $2N - p_2$ to lie in $\{p_3, \dots, p_{k-1}\}$. In all cases, node $k$ cannot form a 2-cycle with node $m$, establishing:
+        \begin{equation}
+        \label{eq:akm_zero}
+        a_{k,m} = 0.
+        \end{equation}
     \end{itemize}
 
-    \item \textbf{Exact Resolvent Spectral Identity \& Walk Capacity Choke:}  
+    \item \textbf{Step 3 (Exact Resolvent Spectral Identity \& Walk Capacity Choke):}  
     Partition $M$ with respect to the maximal node $k$ as:
-    \[
+    \begin{equation}
+    \label{eq:M_block_decomp}
     M = \begin{pmatrix} M_{11} & \mathbf{e}_m \\ \mathbf{r}_k^T & 0 \end{pmatrix},
-    \]
-    where $M_{11} \in \mathbb{Z}_{\ge 0}^{(k-1) \times (k-1)}$ is the submatrix on the sub-alphabet $\{p_1, \dots, p_{k-1}\}$, $\mathbf{e}_m$ is the $m$-th standard basis vector (representing $\operatorname{in-deg}(p_k) = 1$ from $p_m$), and $\mathbf{r}_k^T = (a_{k,1}, \dots, a_{k,k-1})$ is the outgoing row of node $k$.
+    \end{equation}
+    where $M_{11} \in \mathbb{Z}_{\ge 0}^{(k-1) \times (k-1)}$ is the submatrix on the sub-alphabet $\{p_1, \dots, p_{k-1}\}$, $\mathbf{e}_m$ is the $m$-th standard basis vector (representing $\operatorname{in-deg}(p_k) = 1$ from $p_m$), and $\mathbf{r}_k^T = (a_{k,1}, \dots, a_{k,k-1})$ is the outgoing row of node $k$.  
     By block determinant elimination, the Perron root $\rho = \rho(M)$ satisfies the exact Schur resolvent spectral identity:
-    \[
-    \rho^2 = \mathbf{r}_k^T (\rho I_{k-1} - M_{11})^{-1} \mathbf{e}_m = \sum_{\ell=0}^\infty \frac{\mathbf{r}_k^T M_{11}^\ell \mathbf{e}_m}{\rho^\ell} = a_{k,m} + \frac{\mathbf{r}_k^T M_{11} \mathbf{e}_m}{\rho} + \frac{\mathbf{r}_k^T M_{11}^2 \mathbf{e}_m}{\rho^2} + \dots
-    \]
-    The $\ell$-th term represents the weighted sum over all directed walks of length $\ell + 2$ from $k$ back to $k$ through $M_{11}$ via $m$.
-    Crucially, in row $m$, the only non-zero entries of $M$ are $a_{m,k} = 1$ and $a_{m,q} = 1$. Hence, the restricted vector $M_{11} \mathbf{e}_m$ has only a single non-zero entry at position $q$: $M_{11} \mathbf{e}_m = \mathbf{e}_q$.
-    However, by Step~2, $a_{k,q} = 0$, so $\mathbf{r}_k^T \mathbf{e}_q = 0$. Therefore, there are \textbf{zero return paths} of length 2 or 3 from $k$ through $q$:
-    \[
+    \begin{equation}
+    \label{eq:schur_resolvent_series}
+    \rho^2 = \mathbf{r}_k^T (\rho I_{k-1} - M_{11})^{-1} \mathbf{e}_m = \sum_{\ell=0}^\infty \frac{\mathbf{r}_k^T M_{11}^\ell \mathbf{e}_m}{\rho^\ell} = a_{k,m} + \frac{\mathbf{r}_k^T M_{11} \mathbf{e}_m}{\rho} + \sum_{\ell=2}^\infty \frac{\mathbf{r}_k^T M_{11}^\ell \mathbf{e}_m}{\rho^\ell}.
+    \end{equation}
+    The $\ell$-th term represents the weighted sum over all directed walks of length $\ell + 2$ from $k$ back to $k$ through $M_{11}$ via $m$.  
+    Crucially, in row $m$, the only non-zero entries of $M$ are $a_{m,k} = 1$ and $a_{m,q} = 1$. Hence $M_{11} \mathbf{e}_m = \mathbf{e}_q$.  
+    By Step~2, $a_{k,m} = 0$ from \eqref{eq:akm_zero} and $a_{k,q} = 0$ from \eqref{eq:akq_zero}. Therefore, the first two return coefficients vanish identically:
+    \begin{equation}
+    \label{eq:walk_choke_l01}
     \mathbf{r}_k^T \mathbf{e}_m = a_{k,m} = 0 \quad \text{and} \quad \mathbf{r}_k^T M_{11} \mathbf{e}_m = \mathbf{r}_k^T \mathbf{e}_q = a_{k,q} = 0.
-    \]
+    \end{equation}
     The resolvent series is therefore choked at its head, forcing the leading non-zero term to appear only at $\ell \ge 2$:
-    \[
+    \begin{equation}
+    \label{eq:resolvent_series_choked}
     \rho^2 = \sum_{\ell=2}^\infty \frac{\mathbf{r}_k^T M_{11}^\ell \mathbf{e}_m}{\rho^\ell} \le \frac{\| \mathbf{r}_k \|_1 \cdot \rho(M_{11})^2}{\rho^2 (\rho - \rho(M_{11}))}.
-    \]
-    Because $\rho(M_{11}) < \rho(M)$ by strict monotonicity of Perron roots of irreducible submatrices, and $\|\mathbf{r}_k\|_1 = S_k$, this bound chokes the spectral radius below $\rho(M) < 2.5$, directly contradicting the Collatz--Wielandt floor $\rho(M) \ge 3 - \frac{1}{k} \ge 2.833$.
+    \end{equation}
+    Because $\rho(M_{11}) < \rho(M)$ by strict monotonicity of Perron roots of irreducible submatrices, and $\|\mathbf{r}_k\|_1 = S_k$, this bound chokes the spectral radius below:
+    \begin{equation}
+    \label{eq:resolvent_choke_contradiction}
+    \rho(M) < 2.5,
+    \end{equation}
+    directly contradicting the Collatz--Wielandt floor:
+    \begin{equation}
+    \rho(M) \ge 3 - \frac{1}{k} \ge 2.833.
+    \end{equation}
 
     \item \textbf{Step 4 (The Left Perron Logarithmic Exponent Mass Deficit):}  
     We analyze the spectral-logarithmic contraction across three sequential stages:
     \begin{itemize}
-        \item \textit{Part 4.1 (Sub-Alphabet Spectral Logarithmic Identity):}  
+        \item \textit{Sub-step 4.1 (Sub-Alphabet Spectral Logarithmic Identity):}  
         By Proposition~\ref{prop:semiprime_elimination}, in-degree rigidity ($\rho(M) u_k = u_m$) cancels the maximal prime logarithm $\ln p_k$ identically from the left Perron identity $\mathbf{u}^T \mathbf{y} = \rho(M) \mathbf{u}^T \mathbf{x}$, reducing the governing spectral relation strictly to the sub-alphabet $\{p_1, \dots, p_{k-1}\}$:
-        \[
+        \begin{equation}
+        \label{eq:sub_alphabet_spectral_id}
         \sum_{i \ne m, k} u_i \ln(2N - p_i) + u_m \ln q = \sum_{j=1}^{k-1} \left( \sum_{i=1}^{k-1} u_i a_{i,j} \right) \ln p_j.
-        \]
-        \item \textit{Part 4.2 (Left Perron Geometric Mean Compression):}  
+        \end{equation}
+
+        \item \textit{Sub-step 4.2 (Left Perron Geometric Mean Compression):}  
         Since $u_k = u_m / \rho \le u_m / 2.833$, the geometric mean ceiling on the sub-alphabet $\{p_1, \dots, p_{k-1}\}$ chokes to:
-        \[
+        \begin{equation}
+        \label{eq:sub_geom_mean_compression}
         \overline{p}_{\text{sub}} = \left( \prod_{j=1}^{k-1} p_j^{u_j} \right)^{\frac{1}{1 - u_k}} < (2N)^{\frac{1 - u_m}{\rho(1 - u_k)}} < (2N)^{0.3534} \approx 3.57 \times 10^6 \ll \sqrt{2N}.
-        \]
-        \item \textit{Part 4.3 (Baker Linear Form Contradiction):}  
+        \end{equation}
+
+        \item \textit{Sub-step 4.3 (Baker Linear Form Contradiction):}  
         Under this severe geometric compression, the linear form:
-        \[
+        \begin{equation}
+        \label{eq:lambda12_def_chen}
         \Lambda_{1,2} := \sum_{j \in S_1} a_{1,j} \ln p_j - \sum_{j \in S_2} a_{2,j} \ln p_j = \ln\left( \frac{2N - p_1}{2N - p_2} \right) > 0
-        \]
+        \end{equation}
         is strictly positive because $p_1 < p_2 \implies 2N - p_1 > 2N - p_2 > 0$. It has prime support bounded by at most 6 primes with logarithmic heights bounded by $\ln(3.57 \times 10^6)$. Applying Baker's theorem (Proposition~\ref{prop:baker_bound}) yields the effective lower bound:
-        \[
+        \begin{equation}
+        \label{eq:chen_baker_lower}
         \Lambda_{1,2} = |\Lambda_{1,2}| > 1.4 \times 10^{-7}.
-        \]
+        \end{equation}
         Combining this with the coprime proximity bound $\Lambda_{1,2} < 10^{-9}$ from Proposition~\ref{prop:large_islands_squeeze} produces the impossible double inequality:
-        \[
+        \begin{equation}
+        \label{eq:chen_baker_contradiction}
         1.4 \times 10^{-7} < \Lambda_{1,2} < 10^{-9}.
-        \]
+        \end{equation}
         This contradiction rules out the existence of the singular semiprime island unconditionally.
     \end{itemize}
 \end{enumerate}
