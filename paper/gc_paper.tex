@@ -20,8 +20,8 @@
 
 \title{\textbf{An Arithmetic-Dynamical and Spectral Framework for the Binary Goldbach Conjecture}}
 \author{\textbf{Dr. Youcef Kelanemer}\\[3pt]
-\small Ph.D. in Numerical Analysis, Université Paris XI (Paris-Sud)}
-\date{July 2026}
+\small Ph.D. in Numerical Analysis, Universit\'e Paris XI (Paris-Sud)}
+\date{November 2026}
 
 \begin{document}
 
@@ -30,7 +30,7 @@
 \begin{abstract}
 We introduce an arithmetic-dynamical and spectral framework for the binary Goldbach Conjecture based on the prime divisor operator $D(S) = \bigcup_{p \in S} \{ q \in \mathbb{P} \mid q \mid (2N - p) \}$. Under the hypothesis that $2N > 100$ is a counterexample, the iterated sequence $P^*(n+1) = D(P^*(n))$ forms a monotonically non-increasing chain of finite prime sets that stabilizes in finitely many steps at a non-empty stationary fixed point $P^*_\infty = D(P^*_\infty) \subset \mathcal{P}_{\le \frac{2N-5}{3}}$. Every minimal terminal island $I = \{p_1 < p_2 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) induces a strongly connected directed graph governed by an irreducible exponent matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with zero diagonal ($\operatorname{Tr}(M) = 0$), row sums $R_i \ge 2$, and spectral radius $\rho(M) \ge 2$.
 
-Combining divisor-gap bounds with Perron--Frobenius theory, we establish universal invariants valid for every minimal terminal island: strict coprimality and support compression of the two base complements ($\gcd(2N - p_1, 2N - p_2) = 1$, $|S_1| + |S_2| \le k$), the sub-square base squeeze ($3 \le p_1 < p_2 < \sqrt{2N}$ and $0 < \Lambda_{1,2} < \frac{2}{\sqrt{2N}}$), unit in-degree across all upper-half primes $p_r > \frac{p_k - p_1}{2}$ (in particular $\operatorname{in-deg}(p_k) = 1$), and the Perron geometric mean ceiling $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/\rho(M)}$. Coupled with Baker--Matveev--Laurent linear forms in logarithms, polynomial obstructions, and Schur node contraction, these invariants unconditionally rule out $k \in \{0, 1\}$, $k = 2$ for $2N \le 10^{24}$ and for fixed prime bases, square-free systems ($k \in \{3, 4\}$, uniformly dense, and short-span $p_k - p_1 < 2p_2$), arbitrary-exponent symmetric-cofactor subsystems, and all bounded-height regimes for $k \ge 2$, while eliminating root-compressed high-multiplicity regimes for sufficiently large $2N$ conditionally under the $abc$ conjecture and isolating the remaining Diophantine-spectral obstacles.
+Combining divisor-gap bounds with Perron--Frobenius theory, we establish universal invariants valid for every minimal terminal island: strict coprimality and support compression of the two base complements ($\gcd(2N - p_1, 2N - p_2) = 1$, $|S_1| + |S_2| \le k$), the sub-square base squeeze ($3 \le p_1 < p_2 < \sqrt{2N}$ and $0 < \Lambda_{1,2} < \frac{2}{\sqrt{2N}}$), unit in-degree across all upper-half primes $p_r > \frac{p_k - p_1}{2}$ (in particular $\operatorname{in-deg}(p_k) = 1$), and the Perron geometric mean ceiling $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/\rho(M)}$. Coupled with Baker--Matveev--Laurent linear forms in logarithms, cyclotomic--interval and polynomial obstructions, and Schur node contraction, these invariants unconditionally rule out $k \in \{0, 1\}$, $k = 2$ for $a_1 = 2$ ($\forall a_2 \ge 3$), all multiple pairs $a_2 = m a_1$, $(3,4)$--$(3,7)$, all $2N \le 10^{24}$, and fixed prime bases, square-free systems ($k \in \{3, 4\}$, uniformly dense, and short-span $p_k - p_1 < 2p_2$), arbitrary-exponent symmetric-cofactor subsystems, and all bounded-height regimes for $k \ge 2$, while eliminating root-compressed high-multiplicity regimes for sufficiently large $2N$ conditionally under the $abc$ conjecture and isolating the remaining Diophantine-spectral obstacles.
 \end{abstract}
 
 \textbf{MSC2020 Subject Classification:} Primary 11P32; Secondary 15A18, 05C20, 11D45.\\
@@ -53,7 +53,7 @@ The existence of a Goldbach counterexample is thus equivalent to the solvability
 \begin{enumerate}
     \item \textbf{Universal Arithmetic-Spectral Invariants:} For every minimal island $I$ of cardinality $k \ge 2$, the two smallest primes satisfy $\gcd(2N - p_1, 2N - p_2) = 1$ (with $|S_1| + |S_2| \le k$), $3 \le p_1 < p_2 < \sqrt{2N}$, and $0 < \Lambda_{1,2} = \ln\frac{2N - p_1}{2N - p_2} < \frac{2}{\sqrt{2N}}$ (Theorem~\ref{thm:universal_coprime_base}); every prime $p_r > \frac{p_k - p_1}{2}$ (including $p_k$) has incoming degree $1$ (Lemma~\ref{lem:triangular_gap}); and the normalized left Perron eigenvector $\mathbf{u} > \mathbf{0}$ satisfies $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/\rho(M)}$ with exact cancellation of $\ln p_k$ whenever $a_{m,k} = 1$ (Theorem~\ref{thm:universal_spectral_laws}).
     \item \textbf{Unconditional and Conditional Eliminations:} We unconditionally eliminate $k \in \{0, 1\}$ (Propositions~\ref{prop:limit_nonempty} and \ref{prop:k1_collapse}), $k = 2$ for $2N \le 10^{24}$, for $a_1 = 2$ ($\forall a_2 \ge 3$), for all multiple pairs $a_2 = m a_1$, for $(a_1, a_2) \in \{(3,4), (3,5), (3,6), (3,7)\}$, and for fixed prime bases via Laurent's two-logarithm theorem (Proposition~\ref{prop:k2_collapse}), square-free islands for $k \in \{3, 4\}$, short-span square-free islands ($p_k - p_1 < 2p_2$) for all $k \ge 2$, uniformly dense square-free islands ($k \ge 4$), and generalized symmetric-cofactor islands ($2N - p_a = p_b^t Q, \, 2N - p_b = p_a^t Q$) for all $k \ge 2$ (Lemma~\ref{lem:triangular_gap} and Propositions~\ref{prop:k3_collapse}, \ref{prop:squarefree_collapse}), and all bounded-height regimes for $k \ge 2$ via Laurent--Matveev bounds (Proposition~\ref{prop:bounded_height_elimination}). Root-compressed high-multiplicity regimes satisfying $p_2 \prod_{j \in S_1 \cup S_2} p_j \le (2N)^{1-\delta}$ are eliminated conditionally for sufficiently large $2N$ under the $abc$ conjecture (Proposition~\ref{prop:abc_universal_collapse}).
-    \item \textbf{High-Dimensional Contraction and Sub-Square Compression:} Single-parent Schur node contraction accumulates exponent mass into a $5 \times 5$ system and bounds $k \le 93$ at $2N \approx 4 \cdot 10^{18}$ when the contracted average row sum stays below $\lfloor \frac{\ln(2N-3)}{\ln 3} \rfloor$ (Proposition~\ref{prop:inductive_contraction}), while sub-square islands ($p_k \le \sqrt{2N}, a_{m,k} = 1$) satisfy $R_i \ge 3$ for all $i$, elevating $\rho(M) \ge 3$ and compressing $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/3}$ (Proposition~\ref{prop:semiprime_elimination}).
+    \item \textbf{Node Contraction and Sub-Square Compression:} Single-parent Schur node contraction accumulates exponent mass into a $5 \times 5$ matrix and bounds $k \le 93$ at $2N \approx 4 \cdot 10^{18}$ when the contracted average row sum stays below $\lfloor \frac{\ln(2N-3)}{\ln 3} \rfloor$ (Proposition~\ref{prop:inductive_contraction}), while sub-square islands ($p_k \le \sqrt{2N}, a_{m,k} = 1$) satisfy $R_i \ge 3$ for all $i$, elevating $\rho(M) \ge 3$ and compressing $\prod_{j=1}^k p_j^{u_j} < (2N)^{1/3}$ (Proposition~\ref{prop:semiprime_elimination}).
 \end{enumerate}
 
 \paragraph{Organization of the Paper.}
@@ -78,7 +78,7 @@ If $N$ were prime, then $2N = N + N$ would be an explicit representation of $2N$
 
 \begin{definition}[Initial Search Domain $P^*(0)$]
 \label{def:initial_domain}
-For any even integer $2N > 100$, let $\mathcal{P}_{\le 2N-3} = \{ p \in \mathbb{P} \mid 3 \le p \le 2N - 3 \}$ denote the set of odd primes strictly bounded between $3$ and $2N - 3$. The initial search domain $P^*(0)$ is defined as the set of primes in $\mathcal{P}_{\le 2N-3}$ that do not divide $2N$:
+For any even integer $2N > 100$, let $\mathcal{P}_{\le 2N-3} = \{ p \in \mathbb{P} \mid 3 \le p \le 2N - 3 \}$ denote the set of odd primes satisfying $3 \le p \le 2N - 3$. The initial search domain $P^*(0)$ is defined as the set of primes in $\mathcal{P}_{\le 2N-3}$ that do not divide $2N$:
 \[
 P^*(0) = \{ p \in \mathcal{P}_{\le 2N-3} \mid p \nmid 2N \}.
 \]
@@ -106,7 +106,7 @@ Consequently, $P^*(0)$ is both necessary and sufficient for analyzing Goldbach c
 
 \begin{definition}[Prime Divisor Mapping Operator $D$ and Iterated Chains]
 \label{def:divisor_mapping}
-For any subset of primes $S \subseteq \mathcal{P}_{\le 2N-3}$, the prime divisor mapping operator $D: \mathcal{P}(\mathcal{P}_{\le 2N-3}) \to \mathcal{P}(\mathcal{P}_{\le 2N-3})$ is defined as the union of all prime factors dividing the complements $2N - p$:
+For any subset of primes $S \subseteq \mathcal{P}_{\le 2N-3}$, the prime divisor mapping operator $D: 2^{\mathcal{P}_{\le 2N-3}} \to 2^{\mathcal{P}_{\le 2N-3}}$ is defined as the union of all prime factors dividing the complements $2N - p$:
 \[
 D(S) = \bigcup_{p \in S} \{ q \in \mathbb{P} \mid q \mid (2N - p) \},
 \]
@@ -118,7 +118,7 @@ P^*(n+1) = D(P^*(n)), \quad \forall n \ge 0.
 
 To establish the non-emptiness of $P^*(0)$, we recall the classical form of Bertrand's Postulate (Chebyshev's Theorem):
 
-\begin{theorem}[Bertrand's Postulate / Chebyshev's Theorem \cite{chebyshev1852, rosser1962}]
+\begin{theorem}[Bertrand's Postulate / Chebyshev's Theorem \cite{chebyshev1852}]
 \label{thm:bertrand}
 For any real number $x > 1$, there exists at least one prime number $p \in \mathbb{P}$ satisfying $x < p < 2x$. In particular, for any integer $N > 2$, setting $x = N - 1$ guarantees the existence of at least one prime $p$ in the open interval $(N - 1, 2N - 2)$.
 \end{theorem}
@@ -233,7 +233,7 @@ The nested sequence structure is proved through the following steps:
 \label{prop:convergence}
 Because $P^*(0)$ is finite and the sequence $P^*(n)$ undergoes a strictly proper initial contraction followed by a monotonically non-increasing nested chain, there exists a finite iteration index $n_0 \in \mathbb{N}_{\ge 1}$ at which the set stabilizes:
 \[
-\exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) \equiv P^*_\infty,
+\exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad \forall n \ge n_0, \quad P^*(n) = P^*(n_0) =: P^*_\infty,
 \]
 where $P^*_\infty$ satisfies the stationary identity $D(P^*_\infty) = P^*_\infty$.
 \end{proposition}
@@ -249,7 +249,7 @@ The convergence of the finite nested chain proceeds as follows:
     \[
     \exists n_0 \in \mathbb{N}_{\ge 1} \quad \text{such that} \quad |P^*(n_0)| = |P^*(n_0+1)|.
     \]
-    \item \textbf{Set Identity \& Fixed Point:} Since $P^*(n_0+1) \subseteq P^*(n_0)$ and $|P^*(n_0+1)| = |P^*(n_0)|$, it follows that $P^*(n_0+1) = P^*(n_0) \equiv P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. By immediate induction on $n \ge n_0$, $P^*(n) = P^*_\infty$ holds for all $n \ge n_0$.
+    \item \textbf{Set Identity \& Fixed Point:} Since $P^*(n_0+1) \subseteq P^*(n_0)$ and $|P^*(n_0+1)| = |P^*(n_0)|$, it follows that $P^*(n_0+1) = P^*(n_0) =: P^*_\infty$, which satisfies $D(P^*_\infty) = P^*_\infty$. By immediate induction on $n \ge n_0$, $P^*(n) = P^*_\infty$ holds for all $n \ge n_0$.
 \end{enumerate}
 \end{proof}
 
@@ -541,20 +541,20 @@ Properties (1)--(4) follow directly:
 
 The algebraic, spectral, and Diophantine constraints governing any hypothetical minimal terminal island in the matrix system $\mathcal{S}(2N, k, M)$ (where $M \in \mathbb{Z}_{\ge 0}^{k \times k}$, $k \ge 2$, is an \textbf{irreducible non-negative integer matrix} with $\operatorname{Tr}(M) = 0$) are summarized by the 8-condition system:
 
-\begin{small}
+\begin{footnotesize}
 \[
 \begin{cases}
-1. \textbf{Prime Domain Bounds:} & 3 \le p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3}, \quad p_i \in \mathbb{P}, \quad k \ge 2 \\[4pt]
-2. \textbf{Diophantine Factorization:} & 2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}, \quad \forall i \in \{1, \dots, k\} \\[4pt]
-3. \textbf{Zero Diagonal Identity:} & a_{i,i} = 0, \quad \forall i \in \{1, \dots, k\} \quad (\operatorname{Tr}(M) = 0) \\[4pt]
-4. \textbf{Minimum Row Sum:} & \sum_{j=1}^k a_{i,j} \ge 2, \quad \forall i \in \{1, \dots, k\} \\[4pt]
-5. \textbf{Spectral Radius Bound:} & \rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum u_i \ln(2N - p_i)}{\sum u_j \ln p_j} \ge 2 \quad (\mathbf{u} > \mathbf{0}, \, \sum u_i = 1) \\[4pt]
-6. \textbf{Exponent Lattice Ceiling:} & a_{i,j} \in \left\{0, 1, \dots, \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor \right\} \\[4pt]
-7. \textbf{Root Compression Constraint:} & (a_{i,j} \ge 2) \implies p_j \le \sqrt{2N - 3} \\[4pt]
-8. \textbf{Coprime Base \& In-Degree Rigidity:} & \gcd(2N - p_1, 2N - p_2) = 1 \ (a_{1,j} a_{2,j} = 0), \quad \operatorname{in-deg}(p_k) = 1
+1.\ \textbf{Prime Domain Bounds:} & 3 \le p_1 < p_2 < \dots < p_k \le \frac{2N-5}{3}, \; p_i \in \mathbb{P}, \; k \ge 2 \\[4pt]
+2.\ \textbf{Diophantine Factorization:} & 2N - p_i = \prod_{j=1}^k p_j^{a_{i,j}}, \; \forall i \in \{1, \dots, k\} \\[4pt]
+3.\ \textbf{Zero Diagonal Identity:} & a_{i,i} = 0, \; \forall i \in \{1, \dots, k\} \; (\operatorname{Tr}(M) = 0) \\[4pt]
+4.\ \textbf{Minimum Row Sum:} & \sum_{j=1}^k a_{i,j} \ge 2, \; \forall i \in \{1, \dots, k\} \\[4pt]
+5.\ \textbf{Spectral Radius Bound:} & \rho(M) = \frac{\mathbf{u}^T \mathbf{y}}{\mathbf{u}^T \mathbf{x}} = \frac{\sum u_i \ln(2N - p_i)}{\sum u_j \ln p_j} \ge 2 \; (\mathbf{u} > \mathbf{0}, \, \sum u_i = 1) \\[4pt]
+6.\ \textbf{Exponent Lattice Ceiling:} & a_{i,j} \in \left\{0, 1, \dots, \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor \right\} \\[4pt]
+7.\ \textbf{Root Compression:} & (a_{i,j} \ge 2) \implies p_j \le \sqrt{2N - 3} \\[4pt]
+8.\ \textbf{Coprime Base \& Rigidity:} & \gcd(2N - p_1, 2N - p_2) = 1 \; (a_{1,j} a_{2,j} = 0), \; \operatorname{in-deg}(p_k) = 1
 \end{cases}
 \]
-\end{small}
+\end{footnotesize}
 
 \section{Unified Structural Invariants and Low-Dimensional Elimination}
 \label{sec:structural_elimination}
@@ -564,32 +564,19 @@ Rather than analyzing each cardinality $k = |I|$ in isolation, we establish a un
 \subsection{Universal Structural Laws for All Minimal Terminal Islands (\texorpdfstring{$k \ge 2$}{k >= 2})}
 \label{subsec:universal_bounds}
 
-\begin{proposition}[Uniform Logarithmic Exponent Bound]
-\label{prop:baker_bound}
-Assuming $2N > 100$ is a Goldbach counterexample, the entries of the exponent matrix $M = (a_{i,j})_{k \times k}$ governing any minimal terminal island $I \subseteq P^*_\infty$ ($k \ge 2$) are uniformly bounded by:
-\[
-\max_{1 \le i, j \le k} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N).
-\]
-In particular, at the empirical verification benchmark $2N \approx 4 \cdot 10^{18}$ \cite{oliveira2014}, every exponent satisfies $a_{i,j} \le 38 < 40$.
-\end{proposition}
-\begin{proof}[\textbf{Proof of Proposition~\ref{prop:baker_bound}}]
-For any prime $p_i, p_j \in I \subset P^*(0)$, since $p_i, p_j \ge 3$ are odd primes, $2N - p_i \le 2N - 3$. Because $2N - p_i = \prod_{m=1}^k p_m^{a_{i,m}}$ with all $p_m \ge 3$, each individual prime power satisfies $3^{a_{i,j}} \le p_j^{a_{i,j}} \le 2N - p_i \le 2N - 3$. Taking natural logarithms yields $a_{i,j} \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$.
-\end{proof}
-
-\begin{proposition}[Exponent Root-Compression Bound]
+\begin{proposition}[Logarithmic Exponent Ceiling and Root-Compression Bounds]
 \label{prop:root_compression}
-Let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island. If any exponent in $M$ satisfies $a_{i,j} \ge 2$, then the repeated prime $p_j$ is strictly confined below $\sqrt{2N - 3}$, and any distinct co-factor prime $p_r \in I$ dividing $2N - p_i$ ($r \neq j$) is bounded by $\frac{2N - 3}{9}$:
+Assuming $2N > 100$ is a Goldbach counterexample, let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island governed by $M = (a_{i,j}) \in \mathbb{Z}_{\ge 0}^{k \times k}$. By Proposition~\ref{prop:spectral_system}(5), every exponent satisfies
+\[
+\max_{1 \le i, j \le k} a_{i,j} \le \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor = O(\ln N)
+\]
+(in particular, $a_{i,j} \le 38 < 40$ at the empirical verification benchmark $2N \approx 4 \cdot 10^{18}$ \cite{oliveira2014}). Moreover, whenever an entry satisfies $a_{i,j} \ge 2$, the repeated prime $p_j$ is confined below $\sqrt{2N - 3}$, and any distinct co-factor prime $p_r \in I$ dividing $2N - p_i$ ($r \neq j$) is bounded by $\frac{2N - 3}{9}$:
 \[
 \left( a_{i,j} \ge 2 \right) \implies p_j \le \sqrt{2N - 3} < \sqrt{2N} \quad \text{and} \quad \left( a_{i,r} \ge 1, \, r \neq j \right) \implies p_r \le \frac{2N - 3}{9}.
 \]
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:root_compression}}]
-Suppose $a_{i,j} \ge 2$ for some $i, j \in \{1, \dots, k\}$. Since $p_i \ge 3$:
-\begin{equation}
-\label{eq:root_comp_pj}
-p_j^2 \le p_j^{a_{i,j}} \prod_{m \ne j} p_m^{a_{i,m}} = 2N - p_i \le 2N - 3 \implies p_j \le \sqrt{2N - 3} < \sqrt{2N}.
-\end{equation}
-If $a_{i,r} \ge 1$ for some $r \neq j$, then since $p_j \ge 3 \implies p_j^2 \ge 9$, we have $9 p_r \le p_j^2 p_r \le 2N - p_i \le 2N - 3 \implies p_r \le \frac{2N - 3}{9}$.
+Both the uniform exponent ceiling $a_{i,j} \le \lfloor \ln(2N - 3)/\ln 3 \rfloor$ and the root bound $p_j \le \sqrt{2N - 3}$ (for $a_{i,j} \ge 2$) are established in Proposition~\ref{prop:spectral_system}(5). Evaluating at $2N = 4 \cdot 10^{18}$ gives $\lfloor \ln(4 \cdot 10^{18} - 3) / \ln 3 \rfloor = 38$. Finally, if $a_{i,j} \ge 2$ and $a_{i,r} \ge 1$ for some $r \neq j$, then $p_j \ge 3 \implies p_j^2 \ge 9$, whence $9 p_r \le p_j^2 p_r \le 2N - p_i \le 2N - 3 \implies p_r \le \frac{2N - 3}{9}$.
 \end{proof}
 
 We now establish the first universal structural theorem governing the base primes $p_1 < p_2$ across \textbf{all} dimensions $k \ge 2$. Throughout the remainder of the paper, for each row $i \in \{1, \dots, k\}$, we denote its \textbf{index support} by $S_i := \{j \in \{1, \dots, k\} \mid a_{i,j} \ge 1\}$ and its \textbf{row sum} (total prime factor multiplicity of $2N - p_i$) by $R_i := \sum_{j=1}^k a_{i,j} = \Omega(2N - p_i)$.
@@ -608,7 +595,7 @@ Let $2N > 100$ be a hypothetical Goldbach counterexample, and let $I = \{p_1 < p
     \label{eq:universal_coprime_supports}
     \gcd(2N - p_1, 2N - p_2) = 1 \iff S_1 \cap S_2 = \emptyset,
     \end{equation}
-    where $S_1 \subseteq \{2, 3, \dots, k\}$ and $S_2 \subseteq \{1, 3, \dots, k\}$. Consequently, $|S_1| + |S_2| = |S_1 \cup S_2| \le k$ and $\min(|S_1|, |S_2|) \le \lfloor k / 2 \rfloor$; more sharply, if $s$ primes $p_r \in \{p_3, \dots, p_k\}$ satisfy $p_r > \frac{p_k - p_1}{2}$ and enter nodes outside $\{p_1, p_2\}$ (e.g., $s \ge 1$ whenever $m \in \{3, \dots, k-1\}$ at $p_k$), then $|S_1| + |S_2| \le k - s$ and $\min(|S_1|, |S_2|) \le \lfloor (k - s) / 2 \rfloor$.
+    where $S_1 \subseteq \{2, 3, \dots, k\}$ and $S_2 \subseteq \{1, 3, \dots, k\}$. Consequently, $|S_1| + |S_2| = |S_1 \cup S_2| \le k$ and $\min(|S_1|, |S_2|) \le \lfloor k / 2 \rfloor$; more sharply, if $s$ primes $p_r \in \{p_3, \dots, p_k\}$ satisfy $p_r > \frac{p_k - p_1}{2}$ and have their unique incoming edge originating from $\{p_3, \dots, p_k\}$ (e.g., $s \ge 1$ whenever $m \in \{3, \dots, k-1\}$ at $p_k$), then $|S_1| + |S_2| \le k - s$ and $\min(|S_1|, |S_2|) \le \lfloor (k - s) / 2 \rfloor$.
     \item \textbf{Universal Coprime Proximity Identity:} The disjoint prime factorizations of $2N - p_1$ and $2N - p_2$ satisfy the exact additive-multiplicative bridge:
     \begin{equation}
     \label{eq:universal_coprime_diff}
@@ -628,7 +615,7 @@ Let $2N > 100$ be a hypothetical Goldbach counterexample, and let $I = \{p_1 < p
     \[
     2N - 3 \ge 2N - p_1 = \prod_{j=2}^k p_j^{a_{1,j}} \ge p_2^{\sum_{j=2}^k a_{1,j}} \ge p_2^2 \implies p_2 \le \sqrt{2N - p_1} \le \sqrt{2N - 3} < \sqrt{2N}.
     \]
-    \item \textbf{Proof of (2):} By Lemma~\ref{lem:triangular_gap}(1), $\gcd(2N - p_1, 2N - p_2) = 1$, which is equivalent to $S_1 \cap S_2 = \emptyset$ since every prime divisor of $2N - p_1$ and $2N - p_2$ belongs to $I$. Hence $|S_1| + |S_2| = |S_1 \cup S_2| \le k$ and $\min(|S_1|, |S_2|) \le \lfloor k/2 \rfloor$. Moreover, by Lemma~\ref{lem:triangular_gap}(4), any prime $p_r \in \{p_3, \dots, p_k\}$ with $p_r > \frac{p_k - p_1}{2}$ has total in-degree $1$, so if its unique incoming edge enters $\{p_3, \dots, p_k\}$, then $r \notin S_1 \cup S_2$; excluding $s$ such indices shrinks $|S_1 \cup S_2| \le k - s$ and forces $\min(|S_1|, |S_2|) \le \lfloor (k - s)/2 \rfloor$.
+    \item \textbf{Proof of (2):} By Lemma~\ref{lem:triangular_gap}(1), $\gcd(2N - p_1, 2N - p_2) = 1$, which is equivalent to $S_1 \cap S_2 = \emptyset$ since every prime divisor of $2N - p_1$ and $2N - p_2$ belongs to $I$. Hence $|S_1| + |S_2| = |S_1 \cup S_2| \le k$ and $\min(|S_1|, |S_2|) \le \lfloor k/2 \rfloor$. Moreover, by Lemma~\ref{lem:triangular_gap}(4), any prime $p_r \in \{p_3, \dots, p_k\}$ with $p_r > \frac{p_k - p_1}{2}$ has total in-degree $1$, so if its unique incoming edge originates from a node in $\{p_3, \dots, p_k\}$, then $p_r$ divides neither $2N - p_1$ nor $2N - p_2$, i.e., $r \notin S_1 \cup S_2$; excluding $s$ such indices shrinks $|S_1 \cup S_2| \le k - s$ and forces $\min(|S_1|, |S_2|) \le \lfloor (k - s)/2 \rfloor$.
     \item \textbf{Proof of (3):} Subtracting $2N - p_2 = \prod_{r \in S_2} p_r^{a_{2,r}}$ from $2N - p_1 = \prod_{j \in S_1} p_j^{a_{1,j}}$ yields \eqref{eq:universal_coprime_diff}, and $p_2 - p_1 < p_2 \le \sqrt{2N - 3}$ follows from (1). Since $p_1 < p_2$, we have $\frac{2N - p_1}{2N - p_2} = 1 + \frac{p_2 - p_1}{2N - p_2} > 1$. Taking natural logarithms and applying $\ln(1 + x) < x$ for $x > 0$ yields \eqref{eq:universal_lambda12_bound}.
 \end{enumerate}
 \end{proof}
@@ -683,7 +670,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a mini
 
 \begin{proposition}[Universal Sub-Square Semiprime Impossibility]
 \label{prop:semiprime_impossibility}
-Let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island. For any row $i \in \{1, \dots, k\}$, if every prime factor $p_j$ ($j \in S_i$) dividing $2N - p_i$ satisfies $p_j < \sqrt{2N - p_i}$---which holds automatically whenever $p_i \le \sqrt{2N}$ and $\max_{j \in S_i} p_j \le \sqrt{2N} - 2$ (and in particular for all $i \in \{1, \dots, k-1\} \setminus \{m\}$ whenever $p_{k-1} \le \sqrt{2N} - 2$, as well as for $i = k$ whenever $p_k \le \sqrt{2N}$ or $p_{k-1} \le \sqrt{\frac{2}{3}(2N)}$)---then $2N - p_i$ cannot be a semiprime; its row sum must satisfy:
+Let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island, and let $p_m$ ($1 \le m \le k - 1$) denote the unique incoming parent of $p_k = \max(I)$ (Lemma~\ref{lem:triangular_gap}(2)). For any row $i \in \{1, \dots, k\}$, if every prime factor $p_j$ ($j \in S_i$) dividing $2N - p_i$ satisfies $p_j < \sqrt{2N - p_i}$---which holds automatically whenever $p_i \le \sqrt{2N}$ and $\max_{j \in S_i} p_j \le \sqrt{2N} - 2$ (and in particular for all $i \in \{1, \dots, k-1\} \setminus \{m\}$ whenever $p_{k-1} \le \sqrt{2N} - 2$, as well as for $i = k$ whenever $p_k \le \sqrt{2N}$ or $p_{k-1} \le \sqrt{\frac{2}{3}(2N)}$)---then $2N - p_i$ cannot be a semiprime; its row sum must satisfy:
 \begin{equation}
 \label{eq:universal_si_ge_3}
 R_i = \sum_{j=1}^k a_{i,j} \ge 3.
@@ -694,25 +681,25 @@ Suppose for contradiction that $R_i = 2$, so $2N - p_i = p_a p_b$ (allowing $a =
 \[
 2N - \sqrt{2N} \le 2N - p_i = p_a p_b \le (\sqrt{2N} - 2)^2 = 2N - 4\sqrt{2N} + 4 \implies 3\sqrt{2N} \le 4,
 \]
-an impossibility for all $2N > 100$. Similarly, for $i = k$, since $p_k \le \frac{2N-5}{3} < \frac{1}{3}(2N)$, we have $2N - p_k > \frac{2}{3}(2N)$, so $p_{k-1} \le \sqrt{\frac{2}{3}(2N)}$ implies $\max_{j \in S_k} p_j \le p_{k-1} < \sqrt{2N - p_k}$, forcing $R_k \ge 3$.
+an impossibility for all $2N > 100$. Specifically: (i) if $p_{k-1} \le \sqrt{2N} - 2$, every $i \in \{1, \dots, k-1\} \setminus \{m\}$ satisfies $p_i \le p_{k-1} < \sqrt{2N}$ and $a_{i,k} = 0 \implies \max_{j \in S_i} p_j \le p_{k-1} \le \sqrt{2N} - 2$; (ii) if $p_k \le \sqrt{2N}$, then $a_{k,k} = 0$ and parity of odd primes give $\max_{j \in S_k} p_j \le p_{k-1} \le p_k - 2 \le \sqrt{2N} - 2$; and (iii) if $p_{k-1} \le \sqrt{\frac{2}{3}(2N)}$, then $p_k \le \frac{2N-5}{3} < \frac{1}{3}(2N)$ yields $2N - p_k > \frac{2}{3}(2N)$, whence $\max_{j \in S_k} p_j \le p_{k-1} < \sqrt{2N - p_k}$. In all cases $R_i \ge 3$.
 \end{proof}
 
 \subsection{Unified Diophantine and Radical Obstructions Across All Dimensions (\texorpdfstring{$k \ge 2$}{k >= 2})}
 \label{subsec:diophantine_radical_obstructions}
 
-By Theorem~\ref{thm:universal_coprime_base}, \textbf{every} minimal terminal island of dimension $k \ge 2$ generates the coprime proximity equation $(2N - p_1) - (2N - p_2) = p_2 - p_1 < \sqrt{2N}$ with $S_1 \cap S_2 = \emptyset$. We now state the two complementary Diophantine mechanisms—effective linear forms in logarithms (Baker--Matveev--Laurent) and coprime radical bounds ($abc$)—that obstruct this coincidence.
+By Theorem~\ref{thm:universal_coprime_base}, \textbf{every} minimal terminal island of dimension $k \ge 2$ generates the coprime proximity equation $(2N - p_1) - (2N - p_2) = p_2 - p_1 < \sqrt{2N}$ with $S_1 \cap S_2 = \emptyset$. We now state the two complementary Diophantine mechanisms---effective linear forms in logarithms (Baker--Matveev--Laurent) and coprime radical bounds ($abc$)---that obstruct this coincidence.
 
-\begin{theorem}[Baker--Matveev--Laurent Explicit Quantitative Lower Bounds \cite{baker1966, matveev2000, laurent2008}]
+\begin{theorem}[Baker--Matveev--Laurent Explicit Quantitative Lower Bounds \cite{baker1966, matveev2000, bugeaud2006, laurent2008}]
 \label{thm:baker_matveev}
-Let $\alpha_1, \dots, \alpha_n \in \mathbb{P}$ be distinct prime numbers, and let $b_1, \dots, b_n \in \mathbb{Z} \setminus \{0\}$ be non-zero integers with $B = \max(3, \max_j |b_j|)$. Then $\Lambda = \sum_{j=1}^n b_j \ln \alpha_j \neq 0$ by unique prime factorization, and:
+Let $\alpha_1, \dots, \alpha_n \in \mathbb{P}_{\ge 3}$ be distinct odd prime numbers (so that $\ln \alpha_j \ge \ln 3 > 1$ for all $j$), and let $b_1, \dots, b_n \in \mathbb{Z} \setminus \{0\}$ be non-zero integers with $B = \max(3, \max_j |b_j|)$. Then $\Lambda = \sum_{j=1}^n b_j \ln \alpha_j \neq 0$ by unique prime factorization, and:
 \begin{enumerate}
-    \item \textbf{Bivariate Forms ($n = 2$; Laurent \cite{laurent2008}, Corollary~2 with $m = 10$):} When $b_1 b_2 > 0$, $|\Lambda| \ge \ln 6 > 1$ trivially; when $b_1 b_2 < 0$,
+    \item \textbf{Bivariate Forms ($n = 2$; Laurent \cite{laurent2008}, Corollary~2 with $m = 10$):} When $b_1 b_2 > 0$, $|\Lambda| \ge \ln 15 > 2.7$ trivially; when $b_1 b_2 < 0$, since $\ln \alpha_j > 1$ allows the height choice $\log A_j = \ln \alpha_j$,
     \begin{equation}
     \label{eq:laurent_exact}
     \ln |\Lambda| \ge -25.2 \cdot \left( \max\left\{ \ln\left( \frac{|b_1|}{\ln \alpha_2} + \frac{|b_2|}{\ln \alpha_1} \right) + 0.38, \, 10 \right\} \right)^2 \cdot \ln \alpha_1 \ln \alpha_2.
     \end{equation}
-    In particular, whenever $b' := \frac{|b_1|}{\ln \alpha_2} + \frac{|b_2|}{\ln \alpha_1} \le e^{9.62} \approx 15{,}063$ (which holds for all $B \le 6{,}400$, and for all $B \le 9{,}800$ when $\alpha_1, \alpha_2 \ge 3$), $\ln|\Lambda| \ge -2520 \ln \alpha_1 \ln \alpha_2$.
-    \item \textbf{Multivariate Forms ($n \ge 3$; Matveev \cite{matveev2000}):}
+    In particular, whenever $b' := \frac{|b_1|}{\ln \alpha_2} + \frac{|b_2|}{\ln \alpha_1} \le e^{9.62} \approx 15{,}063$ (which holds for all $B \le 9{,}800$, since $\frac{1}{\ln 3} + \frac{1}{\ln 5} < 1.532$), $\ln|\Lambda| \ge -2520 \ln \alpha_1 \ln \alpha_2$.
+    \item \textbf{Multivariate Forms ($n \ge 3$; Matveev \cite{matveev2000}, as formulated in \cite{bugeaud2006}, Theorem~9.4):}
     \begin{equation}
     \label{eq:matveev_exact}
     \ln \left| \prod_{j=1}^n \alpha_j^{b_j} - 1 \right| = \ln |e^{\Lambda} - 1| > -C(n) \ln(eB) \prod_{j=1}^n \ln \alpha_j, \quad \text{where } C(n) = 1.4 \cdot 30^{n+3} \cdot n^{4.5}
@@ -723,7 +710,7 @@ Let $\alpha_1, \dots, \alpha_n \in \mathbb{P}$ be distinct prime numbers, and le
 
 \begin{proposition}[Unconditional Elimination in the Bounded-Height Regime ($k \ge 2$)]
 \label{prop:bounded_height_elimination}
-Let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island, and let $1 \le i < j \le k$ be any pair of indices with $p_j \le \sqrt{2N}$. Let $S_{i,j} = \{r \in \{1, \dots, k\} \mid a_{i,r} \neq a_{j,r}\}$ have cardinality $n = |S_{i,j}| \ge 2$, write $b_r = a_{i,r} - a_{j,r}$, set $B = \max(3, \max_{r \in S_{i,j}} |b_r|)$, and (when $n = 2$ with $S_{i,j} = \{a, b\}$) denote $b' := \frac{|b_a|}{\ln p_b} + \frac{|b_b|}{\ln p_a}$. Then the linear form $\Lambda_{i,j} = \ln\left(\frac{2N - p_i}{2N - p_j}\right) = \sum_{r \in S_{i,j}} b_r \ln p_r$ satisfies $0 < \Lambda_{i,j} < e^{\Lambda_{i,j}} - 1 = \frac{p_j - p_i}{2N - p_j} < \frac{2}{\sqrt{2N}}$, and the configuration is \textbf{unconditionally impossible} whenever the prime heights in $S_{i,j}$ satisfy:
+Let $I = \{p_1 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) be a minimal terminal island, and let $1 \le i < j \le k$ be any pair of indices with $p_j \le \sqrt{2N}$. Let $S_{i,j} = \{r \in \{1, \dots, k\} \mid a_{i,r} \neq a_{j,r}\}$ have cardinality $n = |S_{i,j}|$ (necessarily $n \ge 2$), write $b_r = a_{i,r} - a_{j,r}$, set $B = \max(3, \max_{r \in S_{i,j}} |b_r|)$, and (when $n = 2$ with $S_{i,j} = \{a, b\}$) denote $b' := \frac{|b_a|}{\ln p_b} + \frac{|b_b|}{\ln p_a}$. Then the linear form $\Lambda_{i,j} = \ln\left(\frac{2N - p_i}{2N - p_j}\right) = \sum_{r \in S_{i,j}} b_r \ln p_r$ satisfies $0 < \Lambda_{i,j} < e^{\Lambda_{i,j}} - 1 = \frac{p_j - p_i}{2N - p_j} < \frac{2}{\sqrt{2N}}$, and the configuration is \textbf{unconditionally impossible} whenever the prime heights in $S_{i,j}$ satisfy:
 \begin{equation}
 \label{eq:unconditional_baker_regime}
 \begin{cases}
@@ -734,11 +721,11 @@ C(n) \ln(eB) \prod_{r \in S_{i,j}} \ln p_r < \ln(2N - p_j) - \ln(p_j - p_i) & \t
 (where for $n = 2$ with $b' \le e^{9.62}$, the left-hand side simplifies to $2520 \ln p_a \ln p_b$). In particular, for any fixed prime subset $\{p_r\}_{r \in S_{i,j}}$, Theorem~\ref{thm:baker_matveev} unconditionally eliminates all counterexamples $2N$ above an explicit finite threshold $N_0(\{p_r\})$.
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:bounded_height_elimination}}]
-From $e^{\Lambda_{i,j}} - 1 = \frac{2N - p_i}{2N - p_j} - 1 = \frac{p_j - p_i}{2N - p_j} > 0$, we have $\Lambda_{i,j} < e^{\Lambda_{i,j}} - 1 = \frac{p_j - p_i}{2N - p_j}$, so taking natural logarithms gives:
+Since $p_i < p_j \le \sqrt{2N}$, we have $2N - p_i > 2N - p_j$ while $3(2N - p_j) > 2N > 2N - p_i$, so $(2N - p_j) \nmid (2N - p_i)$; hence $b_r$ cannot all be non-negative (nor all non-positive), forcing at least one $b_r > 0$ and one $b_{r'} < 0$, and in particular $n = |S_{i,j}| \ge 2$. From $e^{\Lambda_{i,j}} - 1 = \frac{2N - p_i}{2N - p_j} - 1 = \frac{p_j - p_i}{2N - p_j} > 0$, we have $\Lambda_{i,j} < e^{\Lambda_{i,j}} - 1 = \frac{p_j - p_i}{2N - p_j}$, so taking natural logarithms gives:
 \[
 \ln |\Lambda_{i,j}| < \ln |e^{\Lambda_{i,j}} - 1| = \ln(p_j - p_i) - \ln(2N - p_j).
 \]
-When $n = 2$, $2N > 100$ gives $0 < \Lambda_{i,j} < \frac{2}{\sqrt{2N}} < \frac{1}{5} < \ln 6$, forcing $b_a b_b < 0$, so \eqref{eq:laurent_exact} applies; comparing directly with \eqref{eq:laurent_exact} (for $n = 2$) and \eqref{eq:matveev_exact} (for $n \ge 3$) yields an immediate contradiction whenever \eqref{eq:unconditional_baker_regime} holds. For any fixed primes $\{p_r\}_{r \in S_{i,j}}$, $B = O(\ln N)$, so the left-hand side of \eqref{eq:unconditional_baker_regime} grows only as $O\bigl((\ln\ln N)^2\bigr)$ for $n = 2$ and $O(\ln\ln N)$ for $n \ge 3$, whereas $p_j \le \sqrt{2N}$ gives $\ln(2N - p_j) - \ln(p_j - p_i) \ge \frac{1}{2}\ln(2N) - O(1)$, guaranteeing unconditional elimination for all $2N > N_0(\{p_r\})$.
+When $n = 2$, $b_a b_b < 0$ (and $0 < \Lambda_{i,j} < \frac{2}{\sqrt{2N}} < \frac{1}{5} < \ln 15$), so \eqref{eq:laurent_exact} applies; comparing directly with \eqref{eq:laurent_exact} (for $n = 2$) and \eqref{eq:matveev_exact} (for $n \ge 3$) yields an immediate contradiction whenever \eqref{eq:unconditional_baker_regime} holds. For any fixed primes $\{p_r\}_{r \in S_{i,j}}$, $B = O(\ln N)$, so the left-hand side of \eqref{eq:unconditional_baker_regime} grows only as $O\bigl((\ln\ln N)^2\bigr)$ for $n = 2$ and $O(\ln\ln N)$ for $n \ge 3$, whereas $p_j \le \sqrt{2N}$ gives $\ln(2N - p_j) - \ln(p_j - p_i) \ge \frac{1}{2}\ln(2N) - O(1)$, guaranteeing unconditional elimination for all $2N > N_0(\{p_r\})$.
 \end{proof}
 
 When the primes in $S_1 \cup S_2$ are not fixed but grow as fractional powers of $2N$ with high exponents $a_{1,j}, a_{2,r} \ge 2$, the coprimality $\gcd(2N - p_1, 2N - p_2) = 1$ of Theorem~\ref{thm:universal_coprime_base} directly activates the radical obstruction of Masser and Oesterl\'e \cite{masser1985, oesterle1988} ($abc$):
@@ -796,7 +783,7 @@ Then:
     p_1^{\frac{a_2}{a_1}} < p_2 < p_1^{\frac{a_2 - 1}{a_1 - 1}} \quad \text{and} \quad p_2 \le \max_{d \mid (a_2 - 1)} \Phi_d(p_1),
     \end{equation}
     where $\Phi_d(x)$ denotes the $d$-th cyclotomic polynomial.
-    \item \textbf{Complete Unconditional Elimination of $a_1 = 2$ ($\forall a_2 \ge 3$):} The exponent $a_1 = 2$ possesses \textbf{no solutions in odd primes $3 \le p_1 < p_2$ for any $a_2 \ge 3$ and any $2N \ge 4$}.
+    \item \textbf{Complete Unconditional Elimination of $a_1 = 2$ ($\forall a_2 \ge 3$):} The exponent $a_1 = 2$ possesses \textbf{no solutions in odd primes $3 \le p_1 < p_2$ for any $a_2 \ge 3$ and any even integer $2N$}.
     \item \textbf{Complete Unconditional Elimination of Multiple Exponent Pairs ($a_2 = m a_1$) and $(3, 4), (3, 5), (3, 6), (3, 7)$:}
     \begin{itemize}
         \item Every multiple exponent pair $a_2 = m a_1$ ($m \ge 2, a_1 \ge 2$) has \textbf{no solution} in odd primes $3 \le p_1 < p_2$.
@@ -804,8 +791,8 @@ Then:
     \end{itemize}
     \item \textbf{Complete Elimination Across Empirical, Fixed-Base, and Radical Regimes ($a_1 \ge 3$):}
     \begin{itemize}
-        \item \emph{Unconditional Verification up to $2N \le 10^{24}$:} For all $2N \le 10^{24}$, $(p_1, p_2, a_1, a_2) = (3, 13, 3, 7)$ ($2N = 2200$) is the unique solution to \eqref{eq:k2_system_def} in odd primes.
-        \item \emph{Unconditional Fixed-Base Elimination (Laurent):} For any fixed prime pair $(p_1, p_2)$, Theorem~\ref{thm:baker_matveev} \eqref{eq:laurent_exact} unconditionally eliminates all $a_2 > \frac{2520 \ln p_1 \ln p_2 + \ln p_2}{\ln p_1}$.
+        \item \emph{Unconditional Verification up to $2N \le 10^{24}$:} For all $2N \le 10^{24}$, $(p_1, p_2, a_1, a_2) = (3, 13, 3, 7)$ ($2N = 2200$) is the unique solution to \eqref{eq:k2_system_def} in odd primes with $a_1, a_2 \ge 2$.
+        \item \emph{Unconditional Fixed-Base Elimination (Laurent):} For any fixed prime pair $(p_1, p_2)$, Theorem~\ref{thm:baker_matveev} \eqref{eq:laurent_exact} unconditionally eliminates all $a_2 > 2520 \ln p_2 + \frac{\ln p_2}{\ln p_1}$.
         \item \emph{Radical ($abc$) Elimination for All $a_1 \ge 3, a_2 \ge 4$:} Since $p_1 < (2N)^{1/a_2}$ and $p_2 < (2N)^{1/a_1}$, $p_1 p_2^2 < (2N)^{\frac{2}{a_1} + \frac{1}{a_2}} \le (2N)^{11/12}$ for all $a_1 \ge 3, a_2 \ge 4$, so Proposition~\ref{prop:abc_universal_collapse} eliminates all remaining $k = 2$ cycles under the $abc$ conjecture for all sufficiently large $2N$.
     \end{itemize}
 \end{enumerate}
@@ -818,7 +805,7 @@ Then:
     \label{eq:k2_diff_identity}
     p_2^{a_1} - p_1^{a_2} = p_2 - p_1 > 0 \iff p_2(p_2^{a_1 - 1} - 1) = p_1(p_1^{a_2 - 1} - 1).
     \end{equation}
-    From $p_2^{a_1} > p_1^{a_2}$, we immediately obtain the lower bound $p_2 > p_1^{a_2 / a_1}$. Conversely, since $p_1 < p_2$, \eqref{eq:k2_diff_identity} implies $p_2^{a_1 - 1} - 1 = \frac{p_1}{p_2}(p_1^{a_2 - 1} - 1) < p_1^{a_2 - 1} - 1$, yielding $p_2 < p_1^{(a_2 - 1)/(a_1 - 1)}$ and $2 \le a_1 < a_2$. Since $\gcd(p_1, p_2) = 1$, $c = \frac{p_2^{a_1 - 1} - 1}{p_1} = \frac{p_1^{a_2 - 1} - 1}{p_2} \ge 2$ is an even integer satisfying \eqref{eq:k2_c_def}. Finally, because $p_2$ is prime and divides $p_1^{a_2 - 1} - 1 = \prod_{d \mid (a_2 - 1)} \Phi_d(p_1)$, Euclid's lemma guarantees $p_2 \mid \Phi_d(p_1)$ for at least one divisor $d \mid (a_2 - 1)$, whence $p_2 \le \Phi_d(p_1) \le \max_{d \mid (a_2 - 1)} \Phi_d(p_1)$.
+    From $p_2^{a_1} > p_1^{a_2}$, we immediately obtain the lower bound $p_2 > p_1^{a_2 / a_1}$. Conversely, since $p_1 < p_2$, \eqref{eq:k2_diff_identity} implies $p_2^{a_1 - 1} - 1 = \frac{p_1}{p_2}(p_1^{a_2 - 1} - 1) < p_1^{a_2 - 1} - 1$, yielding $p_2 < p_1^{(a_2 - 1)/(a_1 - 1)}$ and $2 \le a_1 < a_2$. Since $\gcd(p_1, p_2) = 1$, $c = \frac{p_2^{a_1 - 1} - 1}{p_1} = \frac{p_1^{a_2 - 1} - 1}{p_2} \ge 2$ is an even integer satisfying \eqref{eq:k2_c_def}. Finally, because $p_2$ is prime and divides $p_1^{a_2 - 1} - 1 = \prod_{d \mid (a_2 - 1)} \Phi_d(p_1)$, Euclid's lemma guarantees $p_2 \mid \Phi_d(p_1)$ for at least one divisor $d \mid (a_2 - 1)$; since $\Phi_d(p_1) \ge (p_1 - 1)^{\varphi(d)} > 0$ for $p_1 \ge 3$, this forces $p_2 \le \Phi_d(p_1) \le \max_{d \mid (a_2 - 1)} \Phi_d(p_1)$.
 
     \item \textbf{Proof of (2) (Complete Unconditional Elimination of $a_1 = 2$ for All $a_2 \ge 3$):}  
     When $a_1 = 2$, \eqref{eq:k2_interval_cyclotomic} gives $p_2 > p_1^{a_2 / 2} > p_1^{(a_2 - 1)/2}$. We split on the parity of $a_2 \ge 3$:
@@ -900,11 +887,11 @@ Then:
     K^{a_{1,2}-1}(K p_1 + 1) \equiv (-1)^{a_{1,2}-1} \pmod{p_1^{a_{2,1}}}.
     \end{equation*}
     (Symmetrically, in Branch B with $a_{3,1} \ge 1$ and $a_{1,3} = 1$, there exists an even integer $K' \ge 2$ satisfying $p_2^{a_{1,2}} - 1 = K' p_1$, $p_1^{a_{3,1}-1} p_2^{a_{3,2}} - 1 = K' p_3$, $K' p_1^{a_{2,1}} + K' p_2 + 1 = p_1^{a_{3,1}-1} p_2^{a_{1,2} + a_{3,2}}$, and $K'^{a_{2,1}-1}(K' p_2 + 1) \equiv (-1)^{a_{2,1}-1} \pmod{p_2^{a_{1,2}}}$.)
-    \item \textbf{Bounded-Height and Root-Compressed Radical ($abc$) Elimination:} Every $k = 3$ cycle satisfying \eqref{eq:unconditional_baker_regime} is unconditionally eliminated in the bounded-height regime by Proposition~\ref{prop:bounded_height_elimination}. Under the $abc$ conjecture, Proposition~\ref{prop:abc_universal_collapse} eliminates any root-compressed configuration with $p_2 \prod_{j \in S_1 \cup S_2} p_j \le (2N)^{1 - \delta}$ ($\delta > 0$) for all sufficiently large $2N$; in particular, this holds in Branch A whenever $\frac{2}{a_{1,2}} + \frac{1}{a_{2,3}} < 1$ (if $a_{2,1} = 0$) or
+    \item \textbf{Bounded-Height and Root-Compressed Radical ($abc$) Elimination:} Every $k = 3$ cycle satisfying \eqref{eq:unconditional_baker_regime} is unconditionally eliminated in the bounded-height regime by Proposition~\ref{prop:bounded_height_elimination}. Under the $abc$ conjecture, Proposition~\ref{prop:abc_universal_collapse} eliminates any root-compressed configuration with $p_2 \prod_{j \in S_1 \cup S_2} p_j \le (2N)^{1 - \delta}$ (for fixed $\delta > 0$) for all sufficiently large $2N$; in particular, this holds uniformly in Branch A whenever $\frac{2}{a_{1,2}} + \frac{1}{a_{2,3}} < 1$ (if $a_{2,1} = 0$, which automatically implies $\le \frac{11}{12}$) or
     \[
-    \min\left\{ \frac{2}{a_{1,2}} + \frac{1}{\min(a_{2,1}, a_{2,3})}, \; \frac{3 - \min(1, a_{2,1}/a_{2,3})}{a_{1,2}} + \frac{1}{a_{2,3}} \right\} < 1 \quad (a_{2,1} \ge 1),
+    \min\left\{ \frac{2}{a_{1,2}} + \frac{1}{\min(a_{2,1}, a_{2,3})}, \; \frac{3 - \min(1, a_{2,1}/a_{2,3})}{a_{1,2}} + \frac{1}{a_{2,3}} \right\} \le 1 - \delta \quad (a_{2,1} \ge 1),
     \]
-    and in Branch B whenever $\frac{1}{a_{2,1}} + \frac{2}{a_{1,3}} < 1$ (if $a_{1,2} = 0$) or $\frac{1}{a_{2,1}} + \max\bigl(\frac{3}{a_{1,2} + a_{1,3}}, \, \frac{1}{a_{1,3}}\bigr) < 1$ (if $a_{1,2} \ge 1$).
+    and in Branch B whenever $\frac{1}{a_{2,1}} + \frac{2}{a_{1,3}} < 1$ (if $a_{1,2} = 0$, automatically $\le \frac{11}{12}$) or $\frac{1}{a_{2,1}} + \max\bigl(\frac{3}{a_{1,2} + a_{1,3}}, \, \frac{1}{a_{1,3}}\bigr) < 1$ (if $a_{1,2} \ge 1$, automatically $\le \frac{19}{20}$). (For any fixed exponent tuple in Branch A with $a_{2,1} \ge 1$, strict inequality $< 1$ suffices automatically.)
 \end{enumerate}
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:k3_collapse}}]
@@ -918,10 +905,10 @@ Then:
     Subtracting $2N - p_2$ from $2N - p_1$ gives $p_2 - p_1 = p_3(p_2 - p_1)$. Dividing by $p_2 - p_1 > 0$ forces $p_3 = 1$, contradicting $p_3 > p_2 > p_1 \ge 3 \implies p_3 \ge 7$.
 
     \item \textbf{Proof of (2) (Maximal Prime In-Degree Reduction):}  
-    By Lemma~\ref{lem:triangular_gap} (Part 2), $p_3 = \max(I)$ has in-degree $1$ and divides at most one of $\{2N - p_1, 2N - p_2\}$. If $m = 2$ ($p_3 \mid (2N - p_2)$ and $p_3 \nmid (2N - p_1)$), the only available prime factor for $2N - p_1$ in $I \setminus \{p_1\}$ is $p_2$, forcing $2N - p_1 = p_2^{a_{1,2}}$ with $a_{1,2} \ge 2$ and establishing \eqref{eq:k3_canonical_system}. Subtracting $2N - p_3$ from $2N - p_1$ in Branch A yields:
+    By Lemma~\ref{lem:triangular_gap} (Part 2), $p_3 = \max(I)$ has in-degree $1$ and divides at most one of $\{2N - p_1, 2N - p_2\}$. If $m = 2$ ($p_3 \mid (2N - p_2)$ and $p_3 \nmid (2N - p_1)$), the only available prime factor for $2N - p_1$ in $I \setminus \{p_1\}$ is $p_2$, forcing $2N - p_1 = p_2^{a_{1,2}}$ with $a_{1,2} \ge 2$ and establishing \eqref{eq:k3_canonical_system}. Subtracting $2N - p_3$ from $2N - p_1$ in Branch A gives $p_2^{a_{1,2}} - p_1^{a_{3,1}} p_2^{a_{3,2}} = p_3 - p_1 > 0$; hence $p_2^{a_{1,2}} > p_1^{a_{3,1}} p_2^{a_{3,2}} \ge p_2^{a_{3,2}}$, forcing $a_{1,2} > a_{3,2}$ and allowing us to factor:
     \begin{equation}
     \label{eq:k3_diff_p3_p1}
-    p_3 - p_1 = p_2^{a_{1,2}} - p_1^{a_{3,1}} p_2^{a_{3,2}} = p_2^{a_{3,2}}\bigl(p_2^{a_{1,2} - a_{3,2}} - p_1^{a_{3,1}}\bigr) > 0 \implies a_{1,2} \ge a_{3,2}.
+    p_3 - p_1 = p_2^{a_{3,2}}\bigl(p_2^{a_{1,2} - a_{3,2}} - p_1^{a_{3,1}}\bigr) > 0.
     \end{equation}
     If $m = 1$ ($p_3 \mid (2N - p_1)$ and $p_3 \nmid (2N - p_2)$), the only available prime factor for $2N - p_2$ in $I \setminus \{p_2\}$ is $p_1$, forcing $2N - p_2 = p_1^{a_{2,1}}$ with $a_{2,1} \ge 2$ and establishing \eqref{eq:k3_canonical_system_B}.
 
@@ -946,7 +933,7 @@ Then:
         \[
         p_2 (p_1 p_2 p_3) < p_1^{1 - \frac{a_{2,1}}{a_{2,3}}} p_2^2 (2N)^{\frac{1}{a_{2,3}}} < p_2^{3 - \frac{a_{2,1}}{a_{2,3}}} (2N)^{\frac{1}{a_{2,3}}} < (2N)^{\frac{3 - a_{2,1}/a_{2,3}}{a_{1,2}} + \frac{1}{a_{2,3}}}.
         \]
-        \item In Branch B, $p_1 < (2N)^{1/a_{2,1}}$ and $p_2 < p_3$. When $a_{1,2} = 0$, $p_2 < p_3 < (2N)^{1/a_{1,3}}$ gives $p_2(p_1 p_3) < p_1 p_3^2 < (2N)^{\frac{1}{a_{2,1}} + \frac{2}{a_{1,3}}}$. When $a_{1,2} \ge 1$, if $a_{1,2} \ge 2a_{1,3}$, then $(p_2^2 p_3)^{a_{1,3}} \le p_2^{a_{1,2}} p_3^{a_{1,3}} < 2N \implies p_2^2 p_3 < (2N)^{1/a_{1,3}}$; if instead $a_{1,2} < 2a_{1,3}$, then $p_2 < p_3$ gives $(p_2^2 p_3)^{a_{1,2} + a_{1,3}} = (p_2^{a_{1,2}} p_3^{a_{1,3}})^3 (p_2 / p_3)^{2a_{1,3} - a_{1,2}} < (2N)^3$, so $p_2^2 p_3 < (2N)^{\frac{3}{a_{1,2} + a_{1,3}}}$. Combining with $p_1 < (2N)^{1/a_{2,1}}$ yields $p_2(p_1 p_2 p_3) < (2N)^{\frac{1}{a_{2,1}} + \max\bigl(\frac{3}{a_{1,2} + a_{1,3}}, \frac{1}{a_{1,3}}\bigr)}$. Applying Proposition~\ref{prop:abc_universal_collapse} whenever the governing exponent sum is $< 1$ eliminates the configuration under $abc$ for sufficiently large $2N$.
+        \item In Branch B, $p_1 < (2N)^{1/a_{2,1}}$ and $p_2 < p_3$. When $a_{1,2} = 0$, $p_2 < p_3 < (2N)^{1/a_{1,3}}$ gives $p_2(p_1 p_3) < p_1 p_3^2 < (2N)^{\frac{1}{a_{2,1}} + \frac{2}{a_{1,3}}}$. When $a_{1,2} \ge 1$, if $a_{1,2} \ge 2a_{1,3}$, then $(p_2^2 p_3)^{a_{1,3}} \le p_2^{a_{1,2}} p_3^{a_{1,3}} < 2N \implies p_2^2 p_3 < (2N)^{1/a_{1,3}}$; if instead $a_{1,2} < 2a_{1,3}$, then $p_2 < p_3$ gives $(p_2^2 p_3)^{a_{1,2} + a_{1,3}} = (p_2^{a_{1,2}} p_3^{a_{1,3}})^3 (p_2 / p_3)^{2a_{1,3} - a_{1,2}} < (2N)^3$, so $p_2^2 p_3 < (2N)^{\frac{3}{a_{1,2} + a_{1,3}}}$. Combining with $p_1 < (2N)^{1/a_{2,1}}$ yields $p_2(p_1 p_2 p_3) < (2N)^{\frac{1}{a_{2,1}} + \max\bigl(\frac{3}{a_{1,2} + a_{1,3}}, \frac{1}{a_{1,3}}\bigr)}$. Applying Proposition~\ref{prop:abc_universal_collapse} whenever the governing exponent sum is bounded by $1 - \delta$ (for fixed $\delta > 0$) eliminates the configuration under $abc$ for sufficiently large $2N$.
     \end{itemize}
 \end{enumerate}
 \end{proof}
@@ -966,7 +953,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:squarefree_collapse}}]
 \begin{enumerate}
-    \item \textbf{Case 1 (Uniformly Dense Square-Free Islands, $|S_i| = k - 1$):}  
+    \item \textbf{Case 1 (Uniformly Dense Square-Free, $|S_i| = k - 1$):}  
     If $a_{i,j} \in \{0, 1\}$ and $|S_i| = k - 1$ for all $i$, then $2N - p_1 = p_2 Q$ and $2N - p_2 = p_1 Q$ with $Q = \prod_{r=3}^k p_r \ge 7 \cdot 11 = 77$, which is a special case of (4) below with $(a, b, t) = (1, 2, 1)$.
 
     \item \textbf{Case 2 (Complete Polynomial Elimination of Sparse Square-Free Graphs for $k = 4$):}  
@@ -1007,7 +994,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
     \end{itemize}
 
     \item \textbf{Case 3 (Short-Span Square-Free Elimination, $p_k - p_1 < 2p_2$):}  
-    If $p_k - p_1 < 2p_2$, then every $p_r$ with $r \in \{2, \dots, k\}$ satisfies $p_r \ge p_2 > \frac{p_k - p_1}{2}$, so Lemma~\ref{lem:triangular_gap}(4) forces $\operatorname{in-deg}(p_r) = 1$. Since $a_{1,1} = 0$, $\operatorname{in-deg}(p_1) \le k - 1$, so the number of directed edges satisfies $|E(G)| = \sum_{r=1}^k \operatorname{in-deg}(p_r) \le (k - 1) + (k - 1) = 2k - 2$. Meanwhile, $\sum_{i,j} a_{i,j} = \sum_{i=1}^k R_i \ge 2k$, forcing $\sum_{i,j} \max(a_{i,j} - 1, 0) = \sum_{i,j} a_{i,j} - |E(G)| \ge 2$. In particular, no square-free island ($a_{i,j} \in \{0, 1\}$) can satisfy $p_k - p_1 < 2p_2$.
+    This follows immediately from Lemma~\ref{lem:triangular_gap}(4), which proves that $p_k - p_1 < 2p_2$ forces $|E(G)| \le 2k - 2$ and hence a multiplicity excess $\sum_{i,j} \max(a_{i,j} - 1, 0) \ge 2$, precluding any square-free island ($a_{i,j} \in \{0, 1\}$).
 
     \item \textbf{Case 4 (Generalized Symmetric-Cofactor Subsystems):}  
     Suppose $p_a < p_b$ satisfy $2N - p_a = p_b^t Q$ and $2N - p_b = p_a^t Q$ with $t \ge 1$ and $Q \ge 1$. Subtracting yields:
@@ -1024,7 +1011,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ b
 In an irreducible non-negative integer matrix $M \in \mathbb{Z}_{\ge 0}^{k \times k}$ with row sums $R_i = \sum_{j=1}^k a_{i,j} \ge 2$, every component $u_j$ of the normalized left Perron eigenvector $\mathbf{u} > \mathbf{0}$ ($\sum_{i=1}^k u_i = 1$) satisfies:
 \begin{equation}
 \label{eq:perron_floor_bound}
-u_j \ge \frac{1}{k \cdot \rho(M)^{k-1}} \equiv \delta(k, \rho) > 0 \quad (\forall j \in \{1, \dots, k\}).
+u_j \ge \frac{1}{k \cdot \rho(M)^{k-1}} =: \delta(k, \rho) > 0 \quad (\forall j \in \{1, \dots, k\}).
 \end{equation}
 Consequently, writing $\rho(M) = \sum_{i=1}^k u_i R_i$ (Theorem~\ref{thm:perron_frobenius}) yields the quantitative spectral gap:
 \[
@@ -1033,11 +1020,15 @@ Consequently, writing $\rho(M) = \sum_{i=1}^k u_i R_i$ (Theorem~\ref{thm:perron_
 whenever not all row sums are equal; in particular, if $R_i \ge 3$ for all $i \ne m$ and $R_m \ge 2$, then $\rho(M) \ge \max\bigl(3 - u_m, \, 2 + (k-1)\delta(k, \rho)\bigr) > 2$.
 \end{lemma}
 \begin{proof}
-Since $\sum_{i=1}^k u_i = 1$, the maximal component satisfies $\max_{1 \le i \le k} u_i \ge \frac{1}{k}$. By irreducibility, there exists a directed path of length $\ell \le k - 1$ from the maximal-weight node $i$ to any node $j$ with $(M^\ell)_{i,j} \ge 1$. The eigenvector relation $\mathbf{u}^T M^\ell = \rho(M)^\ell \mathbf{u}^T$ enforces:
+Since $\sum_{i=1}^k u_i = 1$, the maximal component satisfies $\max_{1 \le i \le k} u_i \ge \frac{1}{k}$. Fix an index $i$ attaining this maximum. By irreducibility, for any node $j$ there exists a directed path of length $0 \le \ell \le k - 1$ from $i$ to $j$ (taking $\ell = 0$ when $j = i$, where $(M^0)_{i,i} = 1$) with $(M^\ell)_{i,j} \ge 1$. Since $\rho(M) \ge 2 > 1$ gives $\rho(M)^\ell \le \rho(M)^{k-1}$, the eigenvector relation $\mathbf{u}^T M^\ell = \rho(M)^\ell \mathbf{u}^T$ enforces:
 \[
 u_j = \frac{1}{\rho(M)^\ell} \sum_{r=1}^k u_r (M^\ell)_{r,j} \ge \frac{u_i (M^\ell)_{i,j}}{\rho(M)^\ell} \ge \frac{1}{k \cdot \rho(M)^{k-1}} = \delta(k, \rho) > 0.
 \]
-Summing $\rho(M) u_j = \sum_{i=1}^k u_i a_{i,j}$ over $j$ gives $\rho(M) = \sum_{i=1}^k u_i R_i = \min_r R_r + \sum_{i : R_i > \min_r R_r} u_i(R_i - \min_r R_r)$, which immediately yields the quantitative gap bounds via \eqref{eq:perron_floor_bound}.
+Summing $\rho(M) u_j = \sum_{i=1}^k u_i a_{i,j}$ over $j$ gives
+\[
+\rho(M) = \sum_{i=1}^k u_i R_i = \min_{1 \le r \le k} R_r + \sum_{i : R_i > \min_r R_r} u_i\bigl(R_i - \min_{1 \le r \le k} R_r\bigr),
+\]
+which immediately yields the quantitative gap bounds via \eqref{eq:perron_floor_bound}.
 \end{proof}
 
 \subsection{Cases \texorpdfstring{$k = 4$}{k = 4} and \texorpdfstring{$k = 5$}{k = 5}: Descending In-Degree Cascade and Structural Reduction}
@@ -1050,7 +1041,7 @@ We now apply the Descending In-Degree Rigidity of Lemma~\ref{lem:triangular_gap}
 Let $I = \{p_1 < p_2 < p_3 < p_4\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ be a minimal terminal island of cardinality $k = 4$ governed by the irreducible exponent matrix $M \in \mathbb{Z}_{\ge 0}^{4 \times 4}$. Then:
 \begin{enumerate}
     \item \textbf{Non-Binary Multiplicity Floor:} By Proposition~\ref{prop:squarefree_collapse}(2), $M$ cannot be binary; at least one entry satisfies $a_{i,j} \ge 2$.
-    \item \textbf{Base Pure-Power Reduction:} By Lemma~\ref{lem:triangular_gap}(2)--(3), $\operatorname{in-deg}(p_4) = 1$ (entering a unique node $p_m$, $m \in \{1, 2, 3\}$) and $p_3$ divides at most one of $\{2N - p_1, 2N - p_2\}$. Consequently:
+    \item \textbf{Base Pure-Power Reduction:} By Lemma~\ref{lem:triangular_gap}(2)--(3), $\operatorname{in-deg}(p_4) = 1$ (dividing a unique complement $2N - p_m$, $m \in \{1, 2, 3\}$, i.e., with unique incoming edge $p_m \to p_4$) and $p_3$ divides at most one of $\{2N - p_1, 2N - p_2\}$. Consequently:
     \begin{itemize}
         \item If $m = 3$ ($p_4 \mid (2N - p_3)$), then $p_4$ divides neither $2N - p_1$ nor $2N - p_2$, and $p_3$ divides at most one of them, forcing at least one base complement to be a \textbf{pure prime power}:
         \begin{equation}
@@ -1078,8 +1069,8 @@ Let $I = \{p_1 < p_2 < p_3 < p_4 < p_5\} \subset \mathcal{P}_{\le \frac{2N-5}{3}
         \item $p_4$ divides at most one complement among $\{2N - p_1, 2N - p_2, 2N - p_3\}$;
         \item $p_3$ divides at most one complement between $\{2N - p_1, 2N - p_2\}$.
     \end{itemize}
-    Consequently, the upper spectrum $\{p_3, p_4, p_5\}$ supplies at most $3$ incoming edges in total to the two base complements $\{2N - p_1, 2N - p_2\}$ (and at most $2$ incoming edges whenever $m \in \{3, 4\}$).
-    \item \textbf{Base Support Compression:} By the Pigeonhole Principle, at least one of the two coprime base complements $2N - p_1$ or $2N - p_2$ has prime support of cardinality $|S_r| \le 2$ (and is forced into a pure prime power $2N - p_1 = p_2^{a_{1,2}}$ or $2N - p_2 = p_1^{a_{2,1}}$ whenever $|S_r \cap \{3, 4, 5\}| = 0$, for instance when $\{p_3, p_4, p_5\}$ enter only $\{p_3, p_4\}$ or the opposite base node).
+    Consequently, the upper spectrum $\{p_3, p_4, p_5\}$ receives at most $3$ directed edges in total from the two base nodes $\{p_1, p_2\}$ (i.e., $|(S_1 \cup S_2) \cap \{3, 4, 5\}| \le 3$, and at most $2$ whenever $m \in \{3, 4\}$).
+    \item \textbf{Base Support Compression:} By the Pigeonhole Principle, at least one of the two coprime base complements $2N - p_1$ or $2N - p_2$ has prime support of cardinality $|S_r| \le 2$ (and is forced into a pure prime power $2N - p_1 = p_2^{a_{1,2}}$ or $2N - p_2 = p_1^{a_{2,1}}$ whenever $|S_r \cap \{3, 4, 5\}| = 0$, for instance when every prime in $\{p_3, p_4, p_5\}$ divides only complements among $\{2N - p_3, 2N - p_4\}$ or the opposite base complement).
     \item \textbf{Reciprocal Floor and Coprime Base Reduction:} At node $p_5$, $Q_5 = 2N - p_5 = \prod_{j=1}^4 p_j^{a_{5,j}}$ satisfies $Q_5 - p_m = p_5(p_5^{a_{m,5}-1} Q_m - 1) \ge 2p_5$, while the coprime base proximity equation $\prod_{j \in S_1} p_j^{a_{1,j}} - \prod_{r \in S_2} p_r^{a_{2,r}} = p_2 - p_1 < \sqrt{2N}$ of Theorem~\ref{thm:universal_coprime_base} is eliminated unconditionally in the bounded-height regime of Proposition~\ref{prop:bounded_height_elimination} and conditionally for sufficiently large $2N$ under the $abc$ conjecture in the root-compressed high-multiplicity regime $p_2 \prod_{j \in S_1 \cup S_2} p_j \le (2N)^{1 - \delta}$ of Proposition~\ref{prop:abc_universal_collapse}.
 \end{enumerate}
 \end{proposition}
@@ -1106,7 +1097,7 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ (
     \label{eq:grand_sum_conservation}
     \sum_{i=1}^{k-1} \sum_{j=1}^{k-1} a_{i,j}' = \sum_{i=1}^k \sum_{j=1}^k a_{i,j} - 1 \ge 2k - 1.
     \end{equation}
-    \item \textbf{Inductive Contraction to Dimension $d = 5$ ($k \to 5$):} If each successive maximal prime $p_\ell$ ($\ell = k, k-1, \dots, 6$) has a single incoming parent with unit exponent in the contracted system, iterating \eqref{eq:schur_contract_id} $k - 5$ times compresses the exponent mass into a $5 \times 5$ matrix $M^{(5)} = (A_{i,j})$ on $\{p_1, \dots, p_5\}$ with row sums $R_i^{(5)} := \sum_{j=1}^5 A_{i,j}$ satisfying:
+    \item \textbf{Inductive Matrix Contraction to Dimension $d = 5$ ($k \to 5$):} Suppose that at each step $\ell = k, k-1, \dots, 6$, column $\ell$ of the current $\ell \times \ell$ matrix $M^{(\ell)}$ has a unique non-zero entry, equal to $1$, in a row $m_\ell < \ell$ (so $a^{(\ell)}_{\ell,\ell} = 0$ and $\sum_{i=1}^\ell a^{(\ell)}_{i,\ell} = 1$). Iterating the matrix contraction (adding row $\ell$ to row $m_\ell$ and deleting row and column $\ell$) $k - 5$ times compresses the exponent mass into a $5 \times 5$ matrix $M^{(5)} = (A_{i,j})$ on $\{p_1, \dots, p_5\}$ with row sums $R_i^{(5)} := \sum_{j=1}^5 A_{i,j}$ satisfying:
     \begin{equation}
     \label{eq:grand_sum_5x5}
     \sum_{i=1}^5 R_i^{(5)} = \sum_{i=1}^k R_i - (k - 5) \ge k + 5,
@@ -1120,12 +1111,13 @@ Let $I = \{p_1 < p_2 < \dots < p_k\} \subset \mathcal{P}_{\le \frac{2N-5}{3}}$ (
     \item \textbf{Uncontracted Base Ceiling and Conditional Dimension Cutoff:} For every row $i \in \{1, \dots, 5\}$ that does not serve as a parent node during contraction, its product remains strictly equal to $2N - p_i < 2N$, bounding its row sum by $R_i^{(5)} = R_i \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$ (whereas for any contracted parent row $m$, the left-hand side increases to $2N(Q_m - 1) + p_m$). In the non-semiprime regime \eqref{eq:grand_sum_5x5_nonsemiprime}, if the contracted average row sum satisfies $\overline{R}_5 \le \lfloor \frac{\ln(2N - 3)}{\ln 3} \rfloor$, then:
     \begin{equation}
     \label{eq:dim_cutoff_97}
-    k \le \frac{5}{2} \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor - 2 \quad \Bigl(\text{giving } k \le 93 \text{ at } 2N \approx 4 \cdot 10^{18}, \text{ where } \Bigl\lfloor \frac{\ln(4 \cdot 10^{18} - 3)}{\ln 3} \Bigr\rfloor = 38\Bigr).
+    k \le \frac{5}{2} \left\lfloor \frac{\ln(2N - 3)}{\ln 3} \right\rfloor - 2,
     \end{equation}
+    which gives $k \le 93$ at $2N \approx 4 \cdot 10^{18}$ (where $\lfloor \ln(4 \cdot 10^{18} - 3) / \ln 3 \rfloor = 38$).
 \end{enumerate}
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:inductive_contraction}}]
-By Lemma~\ref{lem:triangular_gap}(2), $p_k$ divides only $2N - p_m$. With $a_{m,k} = 1$, we have $2N - p_m = p_k Q_m$ where $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$ (since $R_m = 1 + \sum_{j=1}^{k-1} a_{m,j} \ge 2$). Substituting $p_k = \frac{2N - p_m}{Q_m}$ into $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ and multiplying by $Q_m$ yields \eqref{eq:schur_contract_id}. Since $a_{k,k} = 0$ and $a_{i,k} = 0$ for all $i \ne m$, removing row $k$ (with sum $R_k = \sum_{j=1}^{k-1} a_{k,j} \ge 2$) and column $k$ (with single non-zero entry $a_{m,k} = 1$) while adding $a_{k,j}$ to row $m$ gives $R_m' = (R_m - 1) + R_k \ge R_m + 1 \ge 3$ and $\sum_{i=1}^{k-1} R_i' = \sum_{i=1}^k R_i - 1 \ge 2k - 1$, proving \eqref{eq:grand_sum_conservation}. Iterating this single-parent elimination $k - 5$ times subtracts $1$ from the total exponent sum at each step, yielding \eqref{eq:grand_sum_5x5}--\eqref{eq:dim_cutoff_97}.
+By Lemma~\ref{lem:triangular_gap}(2), $p_k$ divides only $2N - p_m$. With $a_{m,k} = 1$, we have $2N - p_m = p_k Q_m$ where $Q_m = \prod_{j=1}^{k-1} p_j^{a_{m,j}} \ge 3$ (since $R_m = 1 + \sum_{j=1}^{k-1} a_{m,j} \ge 2$). Substituting $p_k = \frac{2N - p_m}{Q_m}$ into $2N - p_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ and multiplying by $Q_m$ yields \eqref{eq:schur_contract_id}. Since $a_{k,k} = 0$ and $a_{i,k} = 0$ for all $i \ne m$, removing row $k$ (with sum $R_k = \sum_{j=1}^{k-1} a_{k,j} \ge 2$) and column $k$ (with single non-zero entry $a_{m,k} = 1$) while adding $a_{k,j}$ to row $m$ gives $R_m' = (R_m - 1) + R_k \ge R_m + 1 \ge 3$ and $\sum_{i=1}^{k-1} R_i' = \sum_{i=1}^k R_i - 1 \ge 2k - 1$, proving \eqref{eq:grand_sum_conservation}. Under the single-parent unit-column hypothesis at each step $\ell = k, \dots, 6$, iterating this matrix contraction $k - 5$ times subtracts $1$ from the total exponent sum at each step, yielding \eqref{eq:grand_sum_5x5}--\eqref{eq:dim_cutoff_97}. (At the algebraic level, the pure monomial form \eqref{eq:schur_contract_id} iterates directly whenever each eliminated prime $p_\ell$ does not also divide a previously absorbed cofactor $Q$.)
 \end{proof}
 
 \begin{remark}[The Asymptotic Dimension Boundary and the Spectral Decoupling Frontier]
@@ -1171,7 +1163,7 @@ Let $2N > 100$ be a hypothetical Goldbach counterexample, and let $I = \{p_1 < p
 \subsection{Summary of Proven Results}
 \label{subsec:master_classification}
 
-Across Sections~\ref{sec:dynamical_system}--\ref{sec:structural_elimination}, we have established that any hypothetical Goldbach counterexample $2N > 4 \cdot 10^{18}$ generates a non-empty stationary fixed point $P^*_\infty = D(P^*_\infty) \subset \mathcal{P}_{\le \frac{2N-5}{3}}$, whose minimal terminal islands $I = \{p_1 < p_2 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) are governed by irreducible integer exponent matrices $M = (a_{i,j}) \in \mathbb{Z}_{\ge 0}^{k \times k}$ with $\operatorname{Tr}(M) = 0$, row sums $R_i = \sum_{j=1}^k a_{i,j} \ge 2$, and spectral radius $\rho(M) \ge 2$. Every such island is subject to the following universal invariants:
+Across Sections~\ref{sec:dynamical_system}--\ref{sec:structural_elimination}, we have established that any hypothetical Goldbach counterexample $2N > 4 \cdot 10^{18}$ \cite{oliveira2014} generates a non-empty stationary fixed point $P^*_\infty = D(P^*_\infty) \subset \mathcal{P}_{\le \frac{2N-5}{3}}$, whose minimal terminal islands $I = \{p_1 < p_2 < \dots < p_k\} \subseteq P^*_\infty$ ($k \ge 2$) are governed by irreducible integer exponent matrices $M = (a_{i,j}) \in \mathbb{Z}_{\ge 0}^{k \times k}$ with $\operatorname{Tr}(M) = 0$, row sums $R_i = \sum_{j=1}^k a_{i,j} \ge 2$, and spectral radius $\rho(M) \ge 2$. Every such island is subject to the following universal invariants:
 \begin{itemize}
     \item \textbf{Coprime Base \& Sub-Square Squeeze (Theorem~\ref{thm:universal_coprime_base}):} $\gcd(2N - p_1, 2N - p_2) = 1$ ($S_1 \cap S_2 = \emptyset$, $|S_1| + |S_2| \le k$), $3 \le p_1 < p_2 < \sqrt{2N}$, and $0 < \Lambda_{1,2} < \frac{2}{\sqrt{2N}} < 10^{-9}$.
     \item \textbf{Descending \& Upper-Half In-Degree Rigidity (Lemma~\ref{lem:triangular_gap}):} $\operatorname{in-deg}(p_k) = 1$, each prime $p_r$ ($r \ge 2$) divides at most one of $\{2N - p_1, \dots, 2N - p_{r-1}\}$, and every prime $p_r > \frac{p_k - p_1}{2}$ satisfies $\operatorname{in-deg}(p_r) = 1$ across the entire island.
@@ -1200,7 +1192,7 @@ $k \in \{3, 4, 5\}$ & Root-Compressed High-Multiplicity Regimes & \textbf{Condit
 $k \ge 2$ & Upper Base Regime ($p_2 > \sqrt{2N}$) & \textbf{Unconditionally Eliminated} & Theorem~\ref{thm:universal_coprime_base}(1) (Sub-square base bound $p_1 < p_2 < \sqrt{2N}$) \\
 $k \ge 2$ & Short-Span Square-Free ($p_k - p_1 < 2p_2$, $a_{i,j} \in \{0,1\}$) & \textbf{Unconditionally Eliminated} & Lemma~\ref{lem:triangular_gap}(4) \& Proposition~\ref{prop:squarefree_collapse}(3) (Upper-half $\operatorname{in-deg}=1$ edge deficit) \\
 $k \ge 4$ & Uniformly Dense Square-Free ($|S_i| = k-1$) & \textbf{Unconditionally Eliminated} & Proposition~\ref{prop:squarefree_collapse}(1) (Symmetric cofactor difference forces $Q = 1$) \\
-$k \ge 4$ & Symmetric-Cofactor Pairs ($2N - p_a = p_b^t Q, \, 2N - p_b = p_a^t Q$) & \textbf{Unconditionally Eliminated} & Proposition~\ref{prop:squarefree_collapse}(4) (Difference identity forces $t = Q = 1$) \\
+$k \ge 2$ & Symmetric-Cofactor Pairs ($2N - p_a = p_b^t Q, \, 2N - p_b = p_a^t Q$) & \textbf{Unconditionally Eliminated} & Proposition~\ref{prop:squarefree_collapse}(4) (Difference identity forces $t = Q = 1$) \\
 $k \ge 2$ & Sub-Square Islands ($p_k \le \sqrt{2N}, a_{m,k} = 1$) & \textbf{Compressed ($\mathcal{G}_{\mathbf{u}} < (2N)^{1/3}$)} & Proposition~\ref{prop:semiprime_elimination} ($R_i \ge 3 \, \forall i \implies \rho(M) \ge 3 \implies p_1 < (2N)^{1/3}$) \\
 $k \ge 6$ & Single-Parent Contractible with $\overline{R}_5 \le \lfloor \frac{\ln(2N-3)}{\ln 3} \rfloor$ & \textbf{Bounded to $k \le 93$} & Proposition~\ref{prop:inductive_contraction} (Schur contraction $\overline{R}_5 \ge \frac{2k+4}{5}$ in $R_i \ge 3$ regime) \\ \bottomrule
 \end{tabular}%
@@ -1216,13 +1208,13 @@ To convert the reductions of Table~\ref{tab:master_classification} into a comple
 
 \begin{enumerate}
     \item \textbf{Unconditional High-Multiplicity Closing ($k \ge 2$):}  
-    When both the primes $p_j \in I$ and the exponents $a_{i,j}$ grow with $2N$ above the Baker--Matveev logarithmic height cutoff of Proposition~\ref{prop:bounded_height_elimination}, our elimination in Propositions~\ref{prop:abc_universal_collapse}--\ref{prop:k5_collapse} relies on the Masser--Oesterl\'e $abc$ conjecture. Replacing this conditional step requires an unconditional upper bound on $\Lambda_{1,2}$ (or a two-equation Diophantine obstruction using $p_1 + \prod_{j \in S_1} p_j^{a_{1,j}} = p_2 + \prod_{r \in S_2} p_r^{a_{2,r}} = 2N$ simultaneously) when the prime bases vary.
+    When both the primes $p_j \in I$ and the exponents $a_{i,j}$ grow with $2N$ above the Baker--Matveev logarithmic height cutoff of Proposition~\ref{prop:bounded_height_elimination}, our elimination in Propositions~\ref{prop:abc_universal_collapse}--\ref{prop:k5_collapse} relies on the Masser--Oesterl\'e $abc$ conjecture. Replacing this conditional step requires a sharp unconditional lower bound on $\Lambda_{1,2}$ (or a two-equation Diophantine obstruction using $p_1 + \prod_{j \in S_1} p_j^{a_{1,j}} = p_2 + \prod_{r \in S_2} p_r^{a_{2,r}} = 2N$ simultaneously) when the prime bases vary.
 
     \item \textbf{Low-Multiplicity Multi-Prime Base Support ($k \ge 3$):}  
     Although Theorem~\ref{thm:universal_coprime_base}(2) enforces $|S_1 \cup S_2| = |S_1| + |S_2| \le k$ and $\min(|S_1|, |S_2|) \le \lfloor k/2 \rfloor$, whenever the disjoint base supports $S_1, S_2$ have $n = |S_1 \cup S_2| \ge 3$ with low exponents ($a_{i,j} \in \{1, 2\}$) and large varying primes, the radical product $p_2 \prod_{j \in S_1 \cup S_2} p_j$ need not be compressed below $(2N)^{1-\delta}$ (disabling Proposition~\ref{prop:abc_universal_collapse}). Simultaneously, in Proposition~\ref{prop:bounded_height_elimination}, the height product $\prod_{r \in S_{1,2}} \ln p_r \sim (\ln(2N))^n$ and Matveev's dimensional constant $C(n) = 1.4 \cdot 30^{n+3} n^{4.5}$ exceed $\ln(2N - p_2)$ (and even at $n = 2$, Laurent's $\ln p_a \ln p_b$ exceeds $\ln(2N)$ whenever $p_a, p_b \gg \exp(\sqrt{\ln(2N)})$).
 
-    \item \textbf{Super-Square Primes, Intermediate In-Degree Branching, and Cofactor Growth ($k \ge 6$):}  
-    When $p_k > \sqrt{2N}$ and the unique parent complement is a Chen-type semiprime $2N - p_m = p_k q$ ($q \in \{p_1, \dots, p_{k-1}\} \setminus \{p_m\}$, $R_m = 2$), the minimum row sum remains $2$ rather than $3$, preventing a direct Collatz--Wielandt jump to $\rho(M) \ge 3$ in Proposition~\ref{prop:semiprime_elimination}. Moreover, in the inductive Schur contraction of Proposition~\ref{prop:inductive_contraction}, two obstructions arise: (i) contracted primes $p_\ell \le \frac{p_k - p_1}{2}$ need not satisfy $\operatorname{in-deg}(p_\ell) = 1$ with unit exponent in the reduced matrix, and (ii) any parent row $m$ absorbing an eliminated prime multiplies its left-hand side to $2N(Q_m - 1) + p_m > 2N$, allowing $\overline{R}_5$ to exceed the uncontracted ceiling $\lfloor \frac{\ln(2N-3)}{\ln 3} \rfloor$.
+    \item \textbf{Super-Square Primes, In-Degree Branching, and Cofactor Growth ($k \ge 6$):}  
+    When $p_k > \sqrt{2N}$ and the unique parent complement is a Chen-type semiprime $2N - p_m = p_k q$ ($q \in \{p_1, \dots, p_{k-1}\} \setminus \{p_m\}$, $R_m = 2$), the minimum row sum remains $2$ rather than $3$, preventing a direct Collatz--Wielandt jump to $\rho(M) \ge 3$ in Proposition~\ref{prop:semiprime_elimination}. Moreover, in the inductive Schur contraction of Proposition~\ref{prop:inductive_contraction}, two obstructions arise: (i) intermediate contracted primes $p_\ell \le \frac{p_k - p_1}{2}$ need not satisfy $\operatorname{in-deg}(p_\ell) = 1$ with unit exponent in the reduced matrix, and (ii) any parent row $m$ absorbing an eliminated prime multiplies its left-hand side to $2N(Q_m - 1) + p_m > 2N$, allowing $\overline{R}_5$ to exceed the uncontracted ceiling $\lfloor \frac{\ln(2N-3)}{\ln 3} \rfloor$.
 \end{enumerate}
 
 \subsection{Possible Approaches to Overcome These Obstacles}
@@ -1232,12 +1224,12 @@ The structural identities established in Sections~\ref{sec:graph_topology} and \
 
 \begin{enumerate}
     \item \textbf{Diophantine Reciprocal Congruences at $p_k$:}  
-    In the super-square Chen-semiprime bottleneck $2N - p_m = p_k q$ ($p_k > \sqrt{2N}$, forcing $q \in \{p_1, \dots, p_{k-1}\} \setminus \{p_m\}$), substituting $p_k = \frac{2N - p_m}{q}$ into $2N - p_k = Q_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ yields the exact reciprocal identity (Theorem~\ref{thm:universal_spectral_laws}(3)):
+    In the super-square Chen-semiprime bottleneck $2N - p_m = p_k q$ ($p_k > \sqrt{2N}$, forcing $q = p_r \in \{p_1, \dots, p_{k-1}\} \setminus \{p_m\}$), substituting $p_k = \frac{2N - p_m}{q}$ into $2N - p_k = Q_k = \prod_{j=1}^{k-1} p_j^{a_{k,j}}$ yields the exact reciprocal identity (Theorem~\ref{thm:universal_spectral_laws}(3)):
     \begin{equation}
     \label{eq:chen_reciprocal_relation}
     q Q_k = 2N(q - 1) + p_m.
     \end{equation}
-    Reducing modulo $q$ shows that if $a_{k,q} \ge 1$ ($q \mid Q_k$), then $2N \equiv p_m \pmod q$ and $2N \equiv p_k \pmod q$ force $p_k \equiv p_m \pmod q$. Meanwhile, reducing \eqref{eq:chen_reciprocal_relation} modulo $p_m$ shows that $a_{k,m} \ge 1 \implies p_m \mid 2N(q - 1)$, and since $\gcd(2N, p_m) = 1$, $p_m \mid (q - 1)$. Because $q - 1 \ge 2$ is even and $p_m$ is odd, this forces $a_{k,m} = 0$ whenever $p_m > \frac{q-1}{2}$ and compresses $p_k < \frac{2N}{2p_m + 1}$ otherwise.
+    Reducing modulo $q$ shows that if $a_{k,r} \ge 1$ ($q \mid Q_k$), then $2N \equiv p_m \pmod q$ and $2N \equiv p_k \pmod q$ force $p_k \equiv p_m \pmod q$. Meanwhile, reducing \eqref{eq:chen_reciprocal_relation} modulo $p_m$ shows that $a_{k,m} \ge 1 \implies p_m \mid 2N(q - 1)$, and since $\gcd(2N, p_m) = 1$, $p_m \mid (q - 1)$. Because $q - 1 \ge 2$ is even and $p_m$ is odd, this forces $a_{k,m} = 0$ whenever $p_m > \frac{q-1}{2}$ and compresses $p_k < \frac{2N}{2p_m + 1}$ otherwise.
 
     \item \textbf{Schur Resolvent Walk-Capacity Bounds:}  
     Partitioning $M = \begin{pmatrix} M_{11} & \mathbf{e}_m \\ \mathbf{r}_k^T & 0 \end{pmatrix}$ at node $k$ (when $a_{m,k} = 1$, where $\rho(M_{11}) < \rho(M)$ by irreducibility), the eigenvector equation $(M - \rho(M)I_k)\mathbf{v} = \mathbf{0}$ yields the Schur resolvent identity:
@@ -1245,7 +1237,7 @@ The structural identities established in Sections~\ref{sec:graph_topology} and \
     \label{eq:schur_resolvent_series}
     \rho(M)^2 = \mathbf{r}_k^T \rho(M)\bigl(\rho(M) I_{k-1} - M_{11}\bigr)^{-1} \mathbf{e}_m = a_{k,m} + \frac{\mathbf{r}_k^T M_{11} \mathbf{e}_m}{\rho(M)} + \sum_{\ell=2}^\infty \frac{\mathbf{r}_k^T M_{11}^\ell \mathbf{e}_m}{\rho(M)^\ell}.
     \end{equation}
-    Whenever $p_m \nmid (q - 1)$, the congruence above enforces $a_{k,m} = 0$, killing the $\ell = 0$ direct return term $p_k \to p_m \to p_k$ and restricting short return walks to length $\ge 3$. The resulting upper capacity constraint on $\rho(M)$ competes directly against the Collatz--Wielandt convex-combination lower bound $\rho(M) = \sum_{i=1}^k u_i R_i \ge 3 - u_m$ when $R_i \ge 3$ for all $i \ne m$.
+    Whenever $p_m \nmid (q - 1)$, the congruence above enforces $a_{k,m} = 0$, killing the $\ell = 0$ direct return term $p_k \to p_m \to p_k$ and restricting short return walks to length $\ge 3$. The resulting upper capacity constraint on $\rho(M)$ competes directly against the Collatz--Wielandt convex-combination lower bound $\rho(M) = \sum_{i=1}^k u_i R_i \ge 3 - u_m$ (Lemma~\ref{lem:perron_floor}) when $R_i \ge 3$ for all $i \ne m$.
 
     \item \textbf{Sub-Alphabet Perron Compression ($p_k > \sqrt{2N}$):}  
     Whenever $p_k > \sqrt{2N}$, Proposition~\ref{prop:root_compression} guarantees $a_{m,k} = 1$ and $Q_m = \frac{2N - p_m}{p_k} < \sqrt{2N}$, while Theorem~\ref{thm:universal_spectral_laws}(4) yields the reduced identity \eqref{eq:universal_perron_cancellation} on $\{p_1, \dots, p_{k-1}\}$. Bounding $\ln(2N - p_i) < \ln(2N)$ for $i \ne m$ and $\ln Q_m < \frac{1}{2}\ln(2N)$, and dividing by $\sum_{j=1}^{k-1} u_j = 1 - u_k = 1 - \frac{u_m}{\rho(M)}$, produces a strictly sharper $(k-1)$-prime geometric mean ceiling whenever $\rho(M) > 2$:
@@ -1261,16 +1253,16 @@ The structural identities established in Sections~\ref{sec:graph_topology} and \
 
 \begin{thebibliography}{99}
 \bibitem{baker1966} Baker, A. (1966). Linear forms in the logarithms of algebraic numbers. \textit{Mathematika}, 13(2), 204--216.
+\bibitem{bugeaud2006} Bugeaud, Y., Mignotte, M., \& Siksek, S. (2006). Classical and modular approaches to exponential Diophantine equations I. Fibonacci and Lucas perfect powers. \textit{Annals of Mathematics}, 163(3), 969--1018.
 \bibitem{chebyshev1852} Chebyshev, P. L. (1852). M\'emoire sur les nombres premiers. \textit{Journal de math\'ematiques pures et appliqu\'ees}, 1re s\'er., 17, 366--390.
-\bibitem{collatz1942} Collatz, L. (1942). Einschließungssatz für die charakteristischen Zahlen von Matrizen. \textit{Mathematische Zeitschrift}, 48(1), 221--226.
-\bibitem{frobenius1912} Frobenius, G. (1912). Über Matrizen aus nicht negativen Elementen. \textit{Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften}, 456--477.
+\bibitem{collatz1942} Collatz, L. (1942). Einschlie\ss{}ungssatz f\"ur die charakteristischen Zahlen von Matrizen. \textit{Mathematische Zeitschrift}, 48(1), 221--226.
+\bibitem{frobenius1912} Frobenius, G. (1912). \"Uber Matrizen aus nicht negativen Elementen. \textit{Sitzungsberichte der K\"oniglich Preussischen Akademie der Wissenschaften}, 456--477.
 \bibitem{laurent2008} Laurent, M. (2008). Linear forms in two logarithms and interpolation determinants II. \textit{Acta Arithmetica}, 133(4), 325--348.
 \bibitem{masser1985} Masser, D. W. (1985). Open problems. In W. W. L. Chen (Ed.), \textit{Proceedings of the Symposium on Analytic Number Theory}, Imperial College, London.
-\bibitem{matveev2000} Matveev, E. M. (2000). An explicit lower bound for a homogeneous linear form in logarithms of algebraic numbers. III. \textit{Izvestiya: Mathematics}, 64(6), 1217--1269.
+\bibitem{matveev2000} Matveev, E. M. (2000). An explicit lower bound for a homogeneous rational linear form in the logarithms of algebraic numbers. II. \textit{Izvestiya: Mathematics}, 64(6), 1217--1269.
 \bibitem{oesterle1988} Oesterl\'e, J. (1988). Nouvelles approches du ``th\'eor\`eme'' de Fermat. \textit{S\'eminaire Bourbaki}, Vol. 1987/88, Exp. No. 694, \textit{Ast\'erisque}, 161--162, 165--186.
 \bibitem{oliveira2014} Oliveira e Silva, T., Herzog, S., \& Pardi, S. (2014). Empirical verification of the even Goldbach conjecture and computation of prime gaps up to $4 \cdot 10^{18}$. \textit{Mathematics of Computation}, 83(288), 2033--2060.
 \bibitem{perron1907} Perron, O. (1907). Zur Theorie der Matrices. \textit{Mathematische Annalen}, 64(2), 248--263.
-\bibitem{rosser1962} Rosser, J. B., \& Schoenfeld, L. (1962). Approximate formulas for some functions of prime numbers. \textit{Illinois Journal of Mathematics}, 6(1), 64--94.
 \bibitem{varga2009} Varga, R. S. (2009). \textit{Matrix Iterative Analysis} (Vol. 27). Springer Science \& Business Media.
 \bibitem{wielandt1950} Wielandt, H. (1950). Unzerlegbare, nichtnegative Matrizen. \textit{Mathematische Zeitschrift}, 52(1), 642--648.
 \end{thebibliography}
